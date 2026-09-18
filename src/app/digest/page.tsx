@@ -80,6 +80,9 @@ export default function DigestPage() {
           </div>
           {cards.length > 0 && (
             <div className="flex items-center gap-2">
+              <Link href="/digest/email" className="btn">
+                Email this week
+              </Link>
               <form action={approveAllAction}>
                 <button className="btn" disabled={unflagged === 0}>
                   Approve all unflagged{unflagged ? ` (${unflagged})` : ""}
