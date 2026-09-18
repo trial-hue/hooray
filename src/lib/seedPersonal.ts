@@ -1,13 +1,15 @@
 // A personal account: one owner, and the people they care about.
 import type { Company, Person } from "./types";
 
-export function seedPersonalAccount(opts: { name: string; brandHex: string; toneWords: string[]; signOff: string; address?: Person["homeAddress"] }): { company: Company; owner: Person } {
+export function seedPersonalAccount(opts: { name: string; brandHex: string; toneWords: string[]; signOff: string; address?: Person["homeAddress"]; email?: string }): { company: Company; owner: Person } {
   const first = opts.name.trim().split(/\s+/)[0] || "Me";
   const last = opts.name.trim().split(/\s+/).slice(1).join(" ") || "";
   const id = `me-${first.toLowerCase()}`;
   const company: Company = {
     id: `personal-${first.toLowerCase()}`,
     kind: "personal",
+    subscription: false,
+    email: opts.email?.trim() || undefined,
     name: opts.name.trim(),
     shortName: first,
     sector: "other",

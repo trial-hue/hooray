@@ -16,6 +16,7 @@ import { seedPersonalAccount, seedPersonalContacts } from "./seedPersonal";
 import { submitBatch, progressPrintJobs } from "./printPartner";
 import { closeCollection, openCollection } from "./collections";
 import { defaultGiftFor } from "./gifts";
+import { sendOccasionEmail } from "./occasionEmail";
 import { DISPATCH_DAYS, LEAD_DAYS, SIM_START, type Card, type CardStatus, type DB, type DraftVersion, type ISODate, type Occasion, type Person, type Usage } from "./types";
 
 const AI_DISABLED = process.env.AI_DISABLED === "1";
@@ -47,7 +48,7 @@ export async function loadDemoRoster(db: DB): Promise<{ staff: number; clients: 
 }
 
 /** Personal workspace: start an account for one person. */
-export async function startPersonal(db: DB, opts: { name: string; brandHex: string; toneWords: string[]; signOff: string; address?: Person["homeAddress"] }): Promise<void> {
+export async function startPersonal(db: DB, opts: { name: string; brandHex: string; toneWords: string[]; signOff: string; address?: Person["homeAddress"]; email?: string }): Promise<void> {
   const acct = seedPersonalAccount(opts);
   db.company = acct.company;
   db.people = [acct.owner];
@@ -158,6 +159,10 @@ export async function ensureCards(db: DB, from: ISODate, to: ISODate): Promise<C
     const t0 = Date.now();
     const stats = await draftMany(db, toDraft);
     logEvent(db, `Drafted ${toDraft.length} card${toDraft.length === 1 ? "" : "s"} in ${((Date.now() - t0) / 1000).toFixed(1)}s (${stats.cache} cached, ${stats.claude} live, ${stats.template} template)`);
+    // Personal accounts: one email per occasion, when its card is drafted.
+    if (db.company.kind === "personal" && process.env.NO_EMAIL !== "1") {
+      for (const c of toDraft) if (c.status === "drafted" || c.status === "needs_review") await sendOccasionEmail(db, c);
+    }
   }
   return created;
 }

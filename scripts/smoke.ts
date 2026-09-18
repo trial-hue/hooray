@@ -1,6 +1,7 @@
 // End-to-end loop check, headless. Run with:
 //   AI_DISABLED=1 npx tsx scripts/smoke.ts      (template drafts, no API key)
 //   node --env-file=.env.local --import tsx scripts/smoke.ts   (real drafts, cached after first run)
+process.env.NO_EMAIL = "1";
 import { resetDb, mutate, getDb } from "../src/lib/db";
 import { loadDemoRoster, tick, approveCard, editCard, markLeaving, pendingCards } from "../src/lib/engine";
 import { contribute, potPence } from "../src/lib/collections";

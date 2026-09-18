@@ -31,9 +31,16 @@ export default function StartPersonalPage() {
         <details className="card-panel mt-12 text-left">
           <summary className="cursor-pointer px-6 py-4 font-display text-lg">Or start with your own name</summary>
           <form action={startPersonalAction} className="grid gap-3 px-6 pb-6">
-            <div>
-              <label className="label">Your name</label>
-              <input name="name" className="input" placeholder="Akshay Devon" required />
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="label">Your name</label>
+                <input name="name" className="input" placeholder="Akshay Devon" required />
+              </div>
+              <div>
+                <label className="label">Your email</label>
+                <input name="email" type="email" className="input" placeholder="you@example.com" />
+                <p className="mt-1 text-[11px] text-ink-3">One email per occasion, ten days out, with the card and a button.</p>
+              </div>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>

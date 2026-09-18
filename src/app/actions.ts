@@ -197,7 +197,8 @@ export async function startPersonalAction(formData: FormData): Promise<void> {
     .map((s) => s.trim())
     .filter(Boolean);
   const signOff = String(formData.get("signOff") ?? "").trim();
-  await mutate("personal", (db) => startPersonal(db, { name, brandHex, toneWords, signOff }));
+  const email = String(formData.get("email") ?? "").trim();
+  await mutate("personal", (db) => startPersonal(db, { name, brandHex, toneWords, signOff, email }));
   refresh();
   redirect("/me/people");
 }
