@@ -2,7 +2,7 @@
 
 ### Business unit plan: occasion cards for companies, then for everyone
 
-*Telemachus trial day, 18 September 2026, revised 14:30. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement.*
+*Telemachus trial day, 18 September 2026, revised 15:10. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
 
 ---
 
@@ -20,7 +20,7 @@ Moonpig Group plc, year to 30 April 2026. **[V]**
 | Profit after tax | £51.7m |
 | Shipping and logistics | £88.2m, 23.6% of revenue |
 | Marketing | £38.7m, 10.4% of revenue |
-| Attached gifting | £123m, against £8m standalone |
+| Cards, attached gifting, standalone gifting, Moonpig plus Greetz | £203.5m, £123.8m, £8.2m |
 | Active customers | 12.3m, ordering 2.92 times a year at £9.32 |
 | Occasion reminders held | 113m |
 | Average employees | 676, of which 143 in operations |
@@ -33,6 +33,8 @@ Comfortably past the Telemachus threshold of more than $10m annual net profit. H
 ## 2. The thesis in one line
 
 Moonpig sells at the reminder. We sell at the contract. They hold 113 million occasions and convert about 13%, because a reminder hands the work to the customer at a bad moment. We draft the card first and ask for approval second. We enter through companies, where acquisition costs a signature rather than £38.7m a year, and reach consumers through the people who work there.
+
+An analysis of the filings dated 6 August reached the same conclusion from the numbers alone: attack the seams, frequency and attach, where the incumbent is visibly stuck, not the reminder graph head-on and not the cost base. This plan arrived there by a different route, through the value chain, and the two agree.
 
 ## 3. Three phases, one loop
 
@@ -50,14 +52,16 @@ Each row is a measured inefficiency at the incumbent, the structural change that
 
 | # | The inefficiency | Our structural attack | In the MVP today |
 |---|---|---|---|
-| 1 | 87% of reminders produce no order. 113m held, ~14.4m orders caused **[D]** | Draft first, approve second. Anything untouched at dispatch goes anyway | **Built.** Rolling engine drafts at T-10, dispatches at T-5, auto-approves |
+| 1 | 87% of reminders produce no order: 9.2 reminders held per active customer, 2.92 orders of any kind, about 1.2 caused by a reminder **[V] [D]**. The CEO: "Most customers use Moonpig for only a small proportion of the occasions they celebrate." | Draft first, approve second. Anything untouched at dispatch goes anyway. The roster converts at 100% by construction: every occasion on it produces a card and the firm has paid for all of them | **Built.** Rolling engine drafts at T-10, dispatches at T-5, auto-approves |
 | 2 | They capture 18% of their own customers' card occasions: 3.5 cards a year against ~19 bought. Management now frames the opportunity as frequency, not penetration **[V]** | The roster supplies every occasion up front. Frequency is not a marketing problem, it is a data problem we do not have | **Built.** Occasion calendar from the roster |
+| 2a | Orders fell 9.5% from FY22 to FY26, 39.8m to 36.0m, while average order value rose 21%. Group revenue is up 1.3% on FY21. All growth is price and mix; frequency is 2.92 and falling **[V]** | We do not need the category to grow. A 200-person firm produces about 400 occasions a year whether or not anyone buys more cards nationally | Structural |
 | 3 | Marketing of £38.7m against ~£39.5m of new-customer revenue **[D]** | Acquire consumers through the employer, not through advertising | **Partly.** Roster import built. The employee account is on the critical path |
 | 4 | 533 of 676 staff outside operations **[V]** | No catalogue, no editor, no merchandising, no marketing department | **Built.** Templated layouts from brand colours, no catalogue |
-| 5 | Shipping is 23.6% of revenue, larger than the cost of inventories at 14.5% and larger than marketing and platform fees combined. It grew 9.4% against 6.5% revenue growth and drove the 1.2-point margin decline **[V]** | Draft ten days ahead, post economy. Our £1.39 is all-in, postage included | **Built.** Ten-day lead, five-day dispatch, economy post |
+| 5 | Shipping is 23.6% of revenue, larger than the cost of inventories at 14.5% and larger than marketing and platform fees combined. It grew 9.4% against 6.5% revenue growth and drove the 1.2-point margin decline **[V]** | Draft ten days ahead, post economy. Our £1.39 is all-in, postage included, and it is not lower than theirs per card; it is simply a line we buy rather than run | **Built.** Ten-day lead, five-day dispatch, economy post |
 | 6 | Same-day printing exists to serve panic buying caused by the failed reminder | Treat print as a supplier, never own a factory | **Built.** Real print request and print-ready PDF |
-| 7 | Gifts are 45% of Moonpig-brand revenue, yet only 17.9% of orders attach one, at ~£19 each **[V]** | Collections are the attach mechanism. The pot buys a sourced gift; the client roster buys a £50 one | **Built** for pots. **Not built** for sourcing |
-| 8 | Their own words: generative AI commoditises design, so the moat migrates to manufacturing, fulfilment and first-party data **[V]** | Agreed on design. On fulfilment, £1.39 all-in says it has migrated to a price list. On data, a roster is first-party data we get in one signature | Structural |
+| 7 | Gifts are 39% of Moonpig plus Greetz revenue, £132m of £335.5m, yet only 17.9% of orders attach one, at ~£19 each, and attach grows about 0.2 points a year **[V]** | Collections are the attach mechanism. The pot buys a sourced gift; the client roster buys a £50 one | **Built** for pots. **Not built** for sourcing |
+| 8 | Their own words: generative AI commoditises design, so the moat migrates to manufacturing, fulfilment and first-party data **[V]** | Agreed on design. On fulfilment, it is available at a price list, so we need not own it, though we pay slightly more per card than they do. On data, a roster is first-party data we get in one signature | Structural |
+| 8a | Full automation breaks on four things at 36m orders: moderating user uploads, IP exposure on generated artwork, physical exceptions, and a Christmas peak that print lines cannot absorb, with H1 free cash flow of £8.6m out of £73.5m **[V]** | No uploads, so nothing to moderate. Templated layouts from brand colours, no generated imagery. Office delivery by default. Work occasions are flat across the year, so no peak, no seasonal hiring, no H1 cash trough | **Built.** The failure modes are designed out, not handled |
 | 9 | Reminders accumulated one at a time since 2011 | Import the calendar in one consent. Google's People API returns contact birthdays under one OAuth scope **[V]** | **Not built** |
 | 10 | Plus discounts 30% to buy loyalty the data should deliver free **[V]** | A subscription that sends the cards rather than discounting them | **Not built.** Consumer pricing designed, not tested |
 | 11 | Business channel 39% below consumer price, so improving it cannibalises **[V]** | No legacy channel to protect | Structural |
@@ -95,7 +99,9 @@ Moonpig Plus proves consumers pay £10.99 a year for a card subscription; 1.2m d
 
 ## 6. Unit economics
 
-Card cost verified at £1.39 all-in via Docmail, A5 card in a C5 envelope, economy post included. **[V]** Against Moonpig's own numbers, shipping alone is about £2.45 per order. **[D]** The comparison is not print against print. It is a price list against a logistics operation that is eating their margin.
+Card cost verified at £1.39 all-in via Docmail, A5 card in a C5 envelope, economy post included. **[V]**
+
+Moonpig plus Greetz per order, FY26: average order value £9.32, cost of sales £4.24, gross profit £5.08 at 54.5%, adjusted EBITDA £2.66. Shipping £2.45, employment £1.55, marketing £1.07. **[V]** Two things follow. First, half their cost base, shipping and inventories at £142.1m, is physical and immune to software, and a sub-scale entrant pays an estimated £0.30 to £0.60 *more* per card on postage and print than they do. **[C] [E]** We do not win on card cost and the plan does not need us to. Second, our margin is subscription margin, not card margin: at £30 a seat and about two cards per seat a year, print is £2.78 of the £30. The card cost could double and the seat would still clear 70%.
 
 **Company account A, staff roster, 200 employees**
 
@@ -115,7 +121,7 @@ Card cost verified at £1.39 all-in via Docmail, A5 card in a C5 envelope, econo
 
 Fully expanded company account: **£17,297 revenue, £13,074 gross profit, £15,365 of gift value under management.**
 
-Gift value under management is a headline metric, not a footnote. At Moonpig, gifts are 45% of brand revenue on an 18% attach rate. Ours attaches through a mechanism the recipient wants, at a moment colleagues have already committed money to. The take on it is thin today because the sourcing is not built. When it is, that line is where the account value moves.
+Gift value under management is a headline metric, not a footnote. At Moonpig plus Greetz, gifts are 39% of revenue on an 18% attach rate that grows about 0.2 points a year. Ours attaches through a mechanism the recipient wants, at a moment colleagues have already committed money to. The take on it is thin today because the sourcing is not built. When it is, that line is where the account value moves.
 
 **Consumer account, annual [E]**
 
@@ -125,7 +131,9 @@ Gift value under management is a headline metric, not a footnote. At Moonpig, gi
 | Pay-per-card, 3.5 cards a year | £19.22 | £4.87 | £14.35, 75% |
 | Blended at 10% subscribers | £23.28 | £5.49 | £17.79 |
 
-A Moonpig customer produces £27.22 of revenue a year and about £15.22 of gross profit at the segment margin, from which roughly £3.15 of marketing per active customer is spent to keep them. **[D]** Our blended consumer account is worth about the same before marketing and carries no marketing cost, because it arrived through an employer. The advantage is not a richer customer. It is a free one.
+A Moonpig customer produces £27.28 of revenue a year **[C]** and about £15.25 of gross profit at the segment margin, from which roughly £3.15 of marketing per active customer is spent to keep them. **[D]** Our blended consumer account is worth about the same before marketing and carries no marketing cost, because it arrived through an employer. The advantage is not a richer customer. It is a free one.
+
+Our company seat is £30 a year. The revenue per head is nearly identical to Moonpig's per active customer; the difference is that ours is contracted annually, costs a signature rather than £3.15 of marketing to keep, and covers every work occasion instead of about 18% of them.
 
 ## 7. The path to scale
 
@@ -185,6 +193,7 @@ Paid acquisition begins only when the seeded cohort has shown a lifetime value a
 | Approve-without-edit of 60% or more by month three | Open, early signal today | On the dashboard. Real drafts now live |
 | Employees activate as consumers at 30% | Open | Falsified below 15% at month six |
 | Consumers send more cards than at Moonpig | Open | Falsified below 2.5 a year at month twelve |
+| Category volume growth is required for the plan | **Not required** | Orders fell 9.5% FY22 to FY26 at the market leader **[V]**. The model is share of occasions within a firm, not share of a growing market |
 
 ## 10. What the machine does and what the operator does
 
@@ -219,15 +228,18 @@ No product on either side of the market drafts the card before being asked. Feat
 | Collections read as social pressure | High-consent occasions only, team-scoped, amounts hidden | Leaver participation below 50% |
 | Paid acquisition started too early | Only against measured cohort lifetime value | Any paid spend before month twelve |
 | Account values stay staff-only | Client roster and gift attach | Expansion below 30% by month nine |
+| We are read as a cost play | The plan's margin is the seat, not the card. Never claim a print-cost advantage; claim the contract, the roster and the collection | Any pitch line that leads with "cheaper than Moonpig" |
+
+Context for all of the above: the incumbent's category has not grown on volume in four years, and its weaknesses are on the revenue side, frequency at 2.92 and attach at +0.2 points a year, not the cost side. **[V]**
 
 ## 13. Capital and team
 
-Four people through phase one. A fifth, on consumer growth, when phase two has 10,000 active accounts to work with. Working capital is light: cards are paid for before they are printed and collections settle before they are spent. The consumer product adds no fixed cost, since it is the same engine with a different customer at the front.
+Four people through phase one. That is our cost structure, not our defence: Moonpig can deploy the same tools, and cost efficiency is not defensible against a company that already holds 113m reminders. The defence is the contract, the roster and the collection. A fifth person, on consumer growth, when phase two has 10,000 active accounts to work with. Working capital is light: cards are paid for before they are printed and collections settle before they are spent. The consumer product adds no fixed cost, since it is the same engine with a different customer at the front.
 
 ---
 
 ## Sources
 
-Moonpig Group plc FY26 Annual Report and Final Results RNS, 25 June and 10 July 2026, via moonpig.group and Investegate, read directly. Segment margins, gift attach, occasion capture and the AI posture quotation via the 16 September reference dossier, itself sourced to the same report. The 16 September reference build report for the consumer subscription model and its acquisition-cost result. Moonpig for Business pricing and Moonpig Plus FAQ, moonpig.com. Stannp and Docmail price lists. instantprint workplace collections survey, 2023. Collection Pot platform data via HR News. Reward Gateway pricing via GetApp UK. Google People API reference. Telemachus thesis from careers.telemachus.io and jobs.ashbyhq.com/telemachus.
+Moonpig Group plc FY26 Annual Report and Final Results RNS, 25 June and 10 July 2026, via moonpig.group and Investegate, read directly. Segment margins, gift attach, occasion capture and the AI posture quotation via the 16 September reference dossier, itself sourced to the same report. The 16 September reference build report for the consumer subscription model and its acquisition-cost result. Filings analysis of Moonpig Group plc, 6 August 2026, 62 documents FY21 to FY26 with per-row citations, orders times average order value reconciled to reported revenue in every year FY23 to FY26; marked **[C]** where a figure is taken from its derivations rather than directly from a filing. Moonpig for Business pricing and Moonpig Plus FAQ, moonpig.com. Stannp and Docmail price lists. instantprint workplace collections survey, 2023. Collection Pot platform data via HR News. Reward Gateway pricing via GetApp UK. Google People API reference. Telemachus thesis from careers.telemachus.io and jobs.ashbyhq.com/telemachus.
 
 Full inefficiency teardown with workings in `docs/INEFFICIENCY.md`. Presentation prep in `docs/QA_PREP.md`.

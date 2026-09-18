@@ -49,9 +49,12 @@ export const MOONPIG = {
   experiencesGrossMargin: 0.938, // [V]
   shippingGbp: 88_200_000, // [V] shipping and logistics, 23.6% of revenue, grew 9.4%
   inventoryCostPct: 0.145, // [V]
-  attachedGiftingGbp: 123_000_000, // [V]
-  standaloneGiftingGbp: 8_000_000, // [V]
-  brandRevenueGbp: 284_500_000, // [V] Moonpig brand
+  cardsRevenueGbp: 203_500_000, // [V] Moonpig plus Greetz, cards
+  attachedGiftingGbp: 123_800_000, // [V]
+  standaloneGiftingGbp: 8_200_000, // [V]
+  cardsAndGiftsRevenueGbp: 335_500_000, // [V] Moonpig plus Greetz: £203.5m cards + £132m gifts
+  ordersChangeFy22ToFy26: -0.095, // [V] category volume shrinking; AOV +21%
+  aovChangeFy22ToFy26: 0.21, // [V]
   giftAttachRate: 0.179, // [V]
   giftRevenuePerAttachedOrder: 19, // [V] ~£19
   cardsPerCustomerPerYear: 3.5, // [V]
@@ -65,10 +68,22 @@ export const MOONPIG_DERIVED = {
   consumerAllIn: MOONPIG.consumerCardPrice + MOONPIG.consumerPostage, // £5.89
   internalCardCostEstimate: 1.05, // [E] business plan estimate
   cogsPerOrder: MOONPIG.aov * (1 - MOONPIG.grossMargin),
+  // Shipping figures are context only. Never show a card-cost comparison against Moonpig: a sub-scale
+  // entrant pays an estimated £0.30–0.60 MORE per card than Moonpig does. Our margin is the seat.
   shippingPerOrder: MOONPIG.shippingGbp / MOONPIG.ordersPerYear, // [D] ~£2.45
   shippingPct: MOONPIG.shippingGbp / MOONPIG.revenueGbp, // [D] 23.6%
-  giftShareOfBrandRevenue: MOONPIG.attachedGiftingGbp / MOONPIG.brandRevenueGbp, // [D] £123m / £284.5m ≈ 43%
+  giftShareOfRevenue: (MOONPIG.attachedGiftingGbp + MOONPIG.standaloneGiftingGbp) / MOONPIG.cardsAndGiftsRevenueGbp, // [D] £132m / £335.5m ≈ 39%
 };
+
+/** Seat margin: the cost story. Print is ~£2.78 of a £30 seat (two company cards a year at £1.39). */
+export function seatMargin(cardCostGbp = UNIT.cardCostProductionGbp, aiGbp = UNIT.aiFallbackGbp) {
+  const price = UNIT.pricePerEmployeePerYearGbp;
+  const printPerSeat = UNIT.occasionsPerEmployeePerYear * cardCostGbp; // £2.78 at £1.39 [V]
+  const aiPerSeat = UNIT.occasionsPerEmployeePerYear * aiGbp;
+  const infraPerSeat = 120 / 200; // [E] £120 of infrastructure per 200-seat account
+  const cost = printPerSeat + aiPerSeat + infraPerSeat;
+  return { price, printPerSeat, aiPerSeat, infraPerSeat, cost, margin: (price - cost) / price };
+}
 
 /** Phase 2 consumer pricing. DESIGNED, NOT TESTED [E]. No consumer UI today; used only for the dashboard's phase 2 line. */
 export const CONSUMER = {
