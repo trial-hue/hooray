@@ -34,7 +34,7 @@ export type SendResult = {
   error?: string;
 };
 
-const OUTBOX_DIR = path.join(process.cwd(), "data", "outbox");
+const OUTBOX_DIR = path.join(process.env.DATA_DIR ?? path.join(process.cwd(), "data"), "outbox");
 
 export function emailProvider(): EmailProvider {
   const p = process.env.EMAIL_PROVIDER as EmailProvider | undefined;

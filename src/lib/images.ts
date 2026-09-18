@@ -6,7 +6,7 @@ import path from "node:path";
 import { logEvent } from "./db";
 import { currentDraft, type Card, type DB } from "./types";
 
-const DIR = path.join(process.cwd(), "data", "images");
+const DIR = path.join(process.env.DATA_DIR ?? path.join(process.cwd(), "data"), "images");
 
 export function imageConfigured(): boolean {
   return Boolean(process.env.OPENAI_API_KEY);

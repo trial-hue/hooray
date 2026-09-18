@@ -55,3 +55,16 @@ A second workspace at `/me`: one person, the people they care about, the same dr
 ## Out of scope today
 
 Real payments, authentication, email, live HR/CRM sync, image generation, the employee personal account, gift fulfilment, multi-tenancy.
+
+## Hosting
+
+The app is one container: Next.js plus Chromium for PDFs. State is JSON files under `DATA_DIR` (default `./data`), so the host needs one persistent volume.
+
+Railway, from the GitHub repo, works with no code changes:
+
+1. New project → Deploy from GitHub repo → `trial-hue/hooray`. Railway picks up the `Dockerfile`.
+2. Add a volume mounted at `/data`.
+3. Variables: `NEXT_PUBLIC_BASE_URL` (the Railway URL, once known), `PRINT_TOKEN`, `EMAIL_PROVIDER=brevo`, `EMAIL_FROM`, `BREVO_API_KEY`, `DIGEST_TO`, `STANNP_API_KEY`. Leave `STANNP_LIVE` unset. `OPENAI_API_KEY` only if pictures are wanted.
+4. Generate a domain under Settings → Networking. Put that URL in `NEXT_PUBLIC_BASE_URL` and in the landing page's demo button.
+
+First boot on an empty volume copies the year of cached drafts and the personal demo, and stages the business demo on 21 September. Nothing else is needed.

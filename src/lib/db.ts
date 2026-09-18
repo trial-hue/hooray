@@ -11,7 +11,7 @@ import { emptyDb, type DB } from "./types";
 export type Workspace = "business" | "personal";
 export const WORKSPACES: Workspace[] = ["business", "personal"];
 
-const DATA_DIR = path.join(process.cwd(), "data");
+const DATA_DIR = process.env.DATA_DIR ?? path.join(process.cwd(), "data");
 const MEMORY = process.env.DATA_MODE === "memory";
 
 function fileFor(ws: Workspace): string {

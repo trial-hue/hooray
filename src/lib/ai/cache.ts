@@ -3,7 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import type { DraftVersion } from "../types";
 
-const DIR = path.join(process.cwd(), "data", "drafts");
+const DIR = path.join(process.env.DATA_DIR ?? path.join(process.cwd(), "data"), "drafts");
 
 export function draftCacheKey(parts: Record<string, unknown>): string {
   return crypto.createHash("sha1").update(JSON.stringify(parts)).digest("hex");
