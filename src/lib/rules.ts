@@ -19,7 +19,7 @@ export function rulesFor(p: Person, occ: Occasion, c: Company | undefined): Chan
     humour: client || solemn ? "none" : "light",
     maxExclamations: client || solemn || formality === "high" ? 0 : 1,
     mentionAge: "never",
-    mentionOrdinal: occ.type === "work-anniversary" || occ.type === "client-anniversary" ? "required" : "no",
+    mentionOrdinal: (occ.type === "work-anniversary" || occ.type === "client-anniversary" || ((occ.type === "leaver" || occ.type === "retirement") && Boolean(occ.ordinal))) ? "required" : "no",
     voice: client ? "we" : "i",
   };
 }

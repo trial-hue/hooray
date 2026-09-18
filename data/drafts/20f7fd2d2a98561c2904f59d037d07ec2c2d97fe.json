@@ -1,29 +1,27 @@
 {
  "draft": {
   "front_headline": "Thank you, Rob",
-  "inside_message": "Eight years and not one late payroll run, which anyone who has done the job will tell you is no small thing. Thank you too for the pivot tables and the Friday bacon rolls. Leeds will be quieter without you, and we wish you well in what comes next.",
-  "sign_off": "With thanks and warm wishes,",
+  "inside_message": "Eight years and not one payroll run missed, which is a record I doubt anyone here will match. Thank you too for teaching half of Leeds to use pivot tables, and for the Friday bacon rolls. We'll miss you, and I wish you well in whatever comes next.",
+  "sign_off": "With thanks and best wishes,",
   "signature_line": "Lucy Pemberton, Outsourcing Manager and James Hartley, Managing Partner",
   "artwork_brief": {
-   "template": "waves",
+   "template": "rings",
    "palette_variant": "muted",
-   "style_note": "calm horizontal waves, understated, brand navy"
+   "style_note": "soft concentric rings, understated, brand colours on paper"
   },
-  "flags": [
-   "Ordinal supplied as 8 but rules say not to state it; eight years is referenced as a plain fact from the public facts - remove if unwanted."
-  ],
-  "rationale": "Leans on the unbroken payroll record, the pivot tables and the bacon rolls for warmth and specificity, with a plain send-off and no questions about where he is going."
+  "flags": [],
+  "rationale": "Leans on the eight-year unbroken payroll record, the pivot tables and the bacon rolls for warmth and specificity, with a plain send-off and no question about where he is going."
  },
  "createdAt": "2026-10-05",
- "promptHash": "ff3a3c02cbab0306",
+ "promptHash": "dee408089d71c5d3",
  "model": "claude-opus-5",
  "usage": {
   "input_tokens": 532,
-  "output_tokens": 326,
+  "output_tokens": 288,
   "cache_read_input_tokens": 4522,
   "cache_creation_input_tokens": 0
  },
  "attempts": 1,
  "source": "claude",
- "ms": 5203
+ "ms": 4782
 }
