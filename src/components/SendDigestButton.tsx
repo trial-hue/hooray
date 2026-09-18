@@ -17,7 +17,7 @@ export function SendDigestButton({ disabled, live }: { disabled: boolean; live: 
           {state.mode === "sent" ? (
             <>
               Sent to {state.to}
-              {state.id ? ` · Resend id ${state.id}` : ""}
+              {state.id ? ` · id ${state.id}` : ""}
             </>
           ) : (
             <>Written to {state.outboxPath.replace(/^.*\/data\//, "data/")}</>

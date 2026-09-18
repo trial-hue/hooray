@@ -30,7 +30,7 @@ async function main() {
     process.exit(1);
   }
   if (!("mode" in r)) return;
-  console.log(r.mode === "sent" ? `sent · id ${r.id}` : `outbox only (no RESEND_API_KEY)`);
+  console.log(r.mode === "sent" ? `sent via ${r.provider} · id ${r.id}` : `outbox only (no email provider configured)`);
   console.log(`copy:    ${r.outboxPath}`);
   if (process.argv.includes("--open")) spawnSync("open", [r.outboxPath]);
 }

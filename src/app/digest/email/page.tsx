@@ -4,7 +4,7 @@ import { ClockBar } from "@/components/ClockBar";
 import { SendDigestButton } from "@/components/SendDigestButton";
 import { getDb } from "@/lib/db";
 import { buildDigestEmail } from "@/lib/digestEmail";
-import { emailConfigured } from "@/lib/email";
+import { emailConfigured, emailProvider } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +14,7 @@ export default function DigestEmailPage() {
   if (!db.company) redirect("/onboarding");
   const built = buildDigestEmail(db);
   const live = emailConfigured();
+  const provider = emailProvider();
   return (
     <>
       <ClockBar active="/digest" />
@@ -31,7 +32,7 @@ export default function DigestEmailPage() {
               {built ? (
                 <>
                   Goes to <strong>{built.summary.toName}</strong> ({built.summary.to}). {built.summary.total} card{built.summary.total === 1 ? "" : "s"}, {built.summary.needs} needing a decision.{" "}
-                  {live ? "Sending is live via Resend." : "No RESEND_API_KEY set: sends are written to data/outbox/ instead."}
+                  {live ? `Sending is live via ${provider === "mail-app" ? "Mail.app (plain text)" : provider === "brevo" ? "Brevo" : "Resend"}.` : "No email provider configured: sends are written to data/outbox/ instead."}
                 </>
               ) : (
                 <>No recipient. Set <code>DIGEST_TO</code> in <code>.env.local</code> or give the approver an email on the roster.</>
