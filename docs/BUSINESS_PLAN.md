@@ -2,7 +2,7 @@
 
 ### Business unit plan: occasion cards for companies, then for everyone
 
-*Telemachus trial day, 18 September 2026, revised 15:45. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
+*Telemachus trial day, 18 September 2026, revised 16:00. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
 
 ---
 
@@ -187,11 +187,27 @@ Three loops that do not need a marketing budget. The received card, with a small
 
 Paid acquisition begins only when the seeded cohort has shown a lifetime value a campaign can be priced against.
 
+## 7b. Distribution: social media is a channel, not a budget line
+
+The plan declines to buy consumers on social media, because the reference build priced cold paid social at £45 a customer with a nine-month payback. **[A]** It does not decline social media. Four uses cost nothing and one is deferred.
+
+**LinkedIn is the operator's outbound channel, phase one.** People ops leads, office managers and founders at UK firms of 50 to 500 staff are findable by title and company size. Direct messages, not advertising. The first fifty conversations come from here, alongside the operator's own network.
+
+**The collection card is shareable content, phase two.** Leaving posts are among the most common on LinkedIn. A card with eight handwritten lines from colleagues is what gets photographed and posted. A 200-person firm runs about 37 collections a year; if a fifth of recipients share, that is seven posts per account per year, each reaching the recipient's network, with a small mark on the card. **[E]** The product generates its own reach, and it lands in front of exactly the people who work at the next firm.
+
+**The circle request is a social mechanic, phase three.** "Tell me your birthday" travels as a WhatsApp broadcast, an Instagram story or a LinkedIn post. It needs no platform API and every reply is a lead with an occasion attached.
+
+**Founder content throughout.** Posting what is being built, the numbers, the thesis. Cheap, slow, compounding, and standard for an AI-native unit.
+
+**Paid social, deferred to month twelve, to the warm audience only.** The £45 figure was for strangers. Retargeting people who have received a Hooray card, or who work at a client firm, is a different economics. It is testable once the seeded cohort has a lifetime value to price a campaign against, and not before. Any paid spend before month twelve remains a kill signal.
+
+Moonpig spends £38.7m a year buying strangers. We reach people the product has already touched.
+
 ## 8. Ninety days
 
 | Block | Build | Gate |
 |---|---|---|
-| Days 1 to 30 | BambooHR and HiBob connectors. The consent email as the consumer signup. Ten free pilots. **Named, not built:** preference learning from edits | Approve-without-edit above 70%, five pilots asking to pay |
+| Days 1 to 30 | BambooHR and HiBob connectors. The consent email as the consumer signup. Ten free pilots from the operator's network and LinkedIn outbound. **Named, not built:** preference learning from edits | Approve-without-edit above 70%, five pilots asking to pay |
 | Days 31 to 60 | Convert pilots to paid. Client-roster product. Gift sourcing so pots buy a real product. Google calendar import for employees | 30 paying accounts, a quarter expanded, first 2,000 employee accounts |
 | Days 61 to 90 | Second print supplier. Slack and Teams approval. The card allowance switched on | £1m ARR, first consumer subscription taken |
 
