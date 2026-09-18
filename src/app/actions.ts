@@ -233,6 +233,20 @@ export async function chooseGiftAction(formData: FormData): Promise<void> {
   refresh();
 }
 
+export async function simulateSyncAction(formData: FormData): Promise<void> {
+  const provider = String(formData.get("provider") ?? "").trim();
+  const kind = (String(formData.get("kind")) === "crm" ? "crm" : "hr") as "hr" | "crm";
+  if (!provider) return;
+  await mutate(async (db) => {
+    const { logEvent } = await import("@/lib/db");
+    await loadDemoRoster(db);
+    if (db.company) db.company.source = { provider, kind, simulated: true, syncedOn: db.clock.today };
+    logEvent(db, `Synced ${db.people.filter((p) => p.kind === "staff").length} staff and ${db.people.filter((p) => p.kind === "client").length} clients from ${provider} (simulated for the demo)`);
+  });
+  refresh();
+  redirect("/digest");
+}
+
 export async function resetDemoAction(): Promise<void> {
   resetDb();
   refresh();

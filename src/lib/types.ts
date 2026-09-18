@@ -39,6 +39,7 @@ export type Company = {
   approverId?: string;
   managingPartnerId?: string;
   allowAgeMentions: boolean;
+  source?: { provider: string; kind: "hr" | "crm" | "csv"; simulated: boolean; syncedOn: ISODate };
 };
 
 export type PersonKind = "staff" | "client";

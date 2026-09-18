@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ClockBar } from "@/components/ClockBar";
 import { importCsvAction, loadDemoRosterAction } from "@/app/actions";
 import { CSV_COLUMNS } from "@/lib/roster";
@@ -19,6 +20,13 @@ export default function Onboarding() {
           <LoadDemoButton />
         </form>
         <p className="hint mt-3">Hartley &amp; Crane LLP, chartered accountants. 50 staff in Manchester and Leeds, 10 clients. A leaver, a parental leave, an opted-out colleague, a milestone birthday.</p>
+        <p className="mt-6 text-sm text-ink-2">
+          Or{" "}
+          <Link href="/connect" className="underline underline-offset-2 hover:text-ink">
+            connect your HR system or CRM
+          </Link>
+          .
+        </p>
         <p className="hint mt-6">
           <a href={process.env.NEXT_PUBLIC_SITE_URL ?? "https://hooray-your-people-project.lovable.app"} className="underline underline-offset-2 hover:text-ink">
             About Hooray

@@ -24,7 +24,19 @@ export default function PeoplePage() {
           <h1 className="h1">
             {staff.length} staff · {clients.length} clients
           </h1>
-          <p className="hint mt-1.5">Record a leaver, a wedding or a new baby and the rest happens by itself.</p>
+          <p className="hint mt-1.5">
+            Record a leaver, a wedding or a new baby and the rest happens by itself.{" "}
+            {db.company?.source ? (
+              <>
+                Synced from {db.company.source.provider}
+                {db.company.source.simulated ? " (simulated)" : ""}.{" "}
+              </>
+            ) : null}
+            <Link href="/connect" className="underline underline-offset-2 hover:text-ink">
+              {db.company?.source ? "Manage connection" : "Connect your HR system or CRM"}
+            </Link>
+            .
+          </p>
         </div>
 
         {collections.length > 0 && (
