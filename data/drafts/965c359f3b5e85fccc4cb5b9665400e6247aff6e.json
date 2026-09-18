@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy anniversary, Tom",
+  "inside_message": "Happy anniversary to you and Sam. I'm very glad you found each other, and slightly jealous that Sam gets the good coffee before the market even opens. Have a lovely day, both of you.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "loose scattered sparks, hand-drawn feel, warm colours"
+  },
+  "flags": [],
+  "rationale": "Leans on the anniversary with Sam and the coffee cart for a personal, teasing note from a lifelong friend, with no number named as the ordinal was ruled out."
+ },
+ "createdAt": "2026-10-03",
+ "promptHash": "979f59309287793b",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1042,
+  "output_tokens": 634,
+  "cache_read_input_tokens": 9360,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 9806
+}

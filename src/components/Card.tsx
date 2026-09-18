@@ -13,6 +13,7 @@ export type RenderableCard = {
   coSignAs?: string;
   ref: string;
   signatures?: { name: string; line: string }[];
+  personal?: boolean;
 };
 
 // Geometry (mm)
@@ -48,13 +49,15 @@ export function FrontPanel({ card, bleed = false }: { card: RenderableCard; blee
 export function BackPanel({ card }: { card: RenderableCard }) {
   return (
     <div className="relative overflow-hidden" style={{ width: mm(PANEL_W), height: mm(PANEL_H), background: card.palette.paper }}>
-      <div className="absolute left-0 right-0 text-center" style={{ bottom: mm(40) }}>
-        <div className="font-display" style={{ fontSize: "13pt", color: card.palette.ink, fontWeight: 600 }}>
-          {card.shortName}
+      {!card.personal && (
+        <div className="absolute left-0 right-0 text-center" style={{ bottom: mm(40) }}>
+          <div className="font-display" style={{ fontSize: "13pt", color: card.palette.ink, fontWeight: 600 }}>
+            {card.shortName}
+          </div>
         </div>
-      </div>
+      )}
       <div className="absolute left-0 right-0 text-center font-body" style={{ bottom: mm(12), fontSize: "7pt", color: card.palette.muted }}>
-        Sent with care by {card.shortName} · made with Hooray
+        {card.personal ? "Made with Hooray" : `Sent with care by ${card.shortName} · made with Hooray`}
       </div>
       <div className="absolute left-0 right-0 text-center font-body" style={{ bottom: mm(6), fontSize: "5pt", color: card.palette.muted }}>
         {card.ref}

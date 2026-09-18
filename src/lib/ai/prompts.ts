@@ -144,6 +144,7 @@ export function companyBlock(c: Company): string {
       `Their usual sign-off is "${c.signOff}" but vary it to suit the card.`,
       "Relationship to the recipient is given per card; write as that person would (a son to his mum, a friend to a friend). Warm, personal, specific, never corporate. No 'team', 'firm' or work vocabulary unless the facts mention work.",
       "Only the facts given are known. Do not claim the signer was present at an event, remembers a moment, or shares a memory unless a fact says so. Referring to a fact ('I hear a tooth went missing') is fine; inventing shared history is not.",
+      "Address people the way the signer would ('Mum', 'Tom'); the headline may use either. signature_line is just the signer's first name as given in preferred_signature, no surname, no role. Do not flag the recipient being described as family or friend; that is expected here.",
       c.neverMention.length ? `Never mention: ${c.neverMention.join("; ")}` : "",
     ]
       .filter(Boolean)
@@ -188,6 +189,7 @@ export function toRequest(ctx: DraftContext) {
   };
   if (r.pronouns) rec.pronouns = r.pronouns;
   if (r.kind === "friend") {
+    rec.kind = "family or friend";
     rec.relationship = r.relationship ?? "friend";
     delete rec.role;
   } else if (r.kind === "staff") {

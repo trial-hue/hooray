@@ -50,7 +50,8 @@ export function runChecks(draft: DraftOutput, ctx: DraftContext, otherCompanyNam
   const textForName = `${draft.front_headline} ${draft.inside_message}`;
   const hasName = new RegExp(`\\b${escapeRe(name)}\\b`).test(textForName);
   const companyOk = r.kind === "client" && r.clientCompanyName && textForName.includes(r.clientCompanyName);
-  if (!hasName && !companyOk) v.push(`the recipient's name "${name}" must appear in the headline or message`);
+  const relationOk = r.kind === "friend" && /\b(mum|mam|mom|mother|dad|father|gran|grandma|grandad|nan|nana|auntie|aunt|uncle|sis|bro|love|darling|mate|pal)\b/i.test(textForName);
+  if (!hasName && !companyOk && !relationOk) v.push(`the recipient's name "${name}" must appear in the headline or message`);
   for (const w of textForName.split(/[^\p{L}'’-]+/u)) {
     if (w.length >= 3 && w[0] === name[0] && w !== name) {
       const d = levenshtein(w.toLowerCase(), name.toLowerCase());
@@ -60,9 +61,12 @@ export function runChecks(draft: DraftOutput, ctx: DraftContext, otherCompanyNam
 
   // 6 signer
   const s = ctx.signer;
-  if (!draft.signature_line.includes(s.lastName)) v.push(`signature_line must include the signer's surname "${s.lastName}"`);
+  const personal = ctx.company.kind === "personal";
+  if (personal) {
+    if (!draft.signature_line.includes(s.signAs ?? s.firstName)) v.push(`signature_line should be just "${s.signAs ?? s.firstName}"`);
+  } else if (!draft.signature_line.includes(s.lastName)) v.push(`signature_line must include the signer's surname "${s.lastName}"`);
   if (ctx.coSigner && !draft.signature_line.includes(ctx.coSigner.lastName)) v.push(`signature_line must also include the co-signer "${ctx.coSigner.firstName} ${ctx.coSigner.lastName}"`);
-  if (draft.signature_line.includes(r.lastName) && r.lastName !== s.lastName) v.push("signature_line must not contain the recipient's name");
+  if (!personal && draft.signature_line.includes(r.lastName) && r.lastName !== s.lastName) v.push("signature_line must not contain the recipient's name");
 
   // 7 banned phrases
   const lower = all.toLowerCase();

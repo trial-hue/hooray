@@ -31,5 +31,6 @@ export function renderableCard(db: DB, card: Card): RenderableCard | undefined {
     coSignAs: co ? signAsFor(co) : undefined,
     ref: `${company.id.slice(0, 2).toUpperCase()}-${card.dueDate.replace(/-/g, "").slice(2)}-${card.id.slice(-5)}`,
     signatures,
+    personal: company.kind === "personal",
   };
 }
