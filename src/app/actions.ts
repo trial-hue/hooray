@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getDb, isWorkspace, mutate, resetDb, type Workspace } from "@/lib/db";
+import { getDb, isWorkspace, logEvent, mutate, resetDb, type Workspace } from "@/lib/db";
 import { paths } from "@/lib/paths";
 import { addDays } from "@/lib/dates";
 import { addContact, addHumanOccasion, recordSignup, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, loadExampleContacts, markLeaving, releaseHeld, sendNow, skipCard, startPersonal, tick } from "@/lib/engine";
@@ -286,6 +286,16 @@ export async function recipientSignupAction(formData: FormData): Promise<void> {
   }
   refresh();
   redirect(`/c/${code}?done=1`);
+}
+
+export async function setPersonalEmailAction(formData: FormData): Promise<void> {
+  const email = String(formData.get("email") ?? "").trim();
+  await mutate("personal", (db) => {
+    if (!db.company) return;
+    db.company.email = email || undefined;
+    logEvent(db, email ? `Reminders now go to ${email}` : "Reminder email cleared");
+  });
+  refresh();
 }
 
 export async function resetPersonalAction(): Promise<void> {
