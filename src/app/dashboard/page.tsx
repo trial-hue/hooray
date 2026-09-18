@@ -37,17 +37,17 @@ export default function DashboardPage() {
   const potTotal = collections.reduce((s, c) => s + potPence(c), 0) / 100;
   const contributors = collections.reduce((s, c) => s + c.contributions.length, 0);
   const moonpigAdminPerCard = (UNIT.manualMinutesPerCard / 60) * 15;
-  const clientGiftValue = clients.length * UNIT.clientGiftRate * UNIT.clientGiftValueGbp; // [E]
+  const clientGiftValue = clients.length * UNIT.clientGiftRate * UNIT.clientGiftValueGbp; //
   const giftUnderManagement = potTotal + clientGiftValue;
   const seat = seatMargin(UNIT.cardCostProductionGbp, aiPerCard);
   const seatDoubled = seatMargin(UNIT.cardCostProductionGbp * 2, aiPerCard);
 
   const versus: [string, string, string, string, string][] = [
-    ["Gross margin", pct(seats.margin), `on ${gbp(seats.revenue, 0)} of seats for this roster`, pct(MOONPIG.segmentGrossMargin), "Moonpig segment, FY26 [V]"],
-    ["Where the margin sits", `${gbp(seat.printPerSeat)} of £30`, `print in a seat: two cards a year at ${gbp(UNIT.cardCostProductionGbp)} [V] · the seat clears ${pct(seatDoubled.margin)} even if card cost doubles [D]`, `${pct(MOONPIG_DERIVED.shippingPct)} of revenue`, "shipping and logistics, £88.2m, growing 9.4% against 6.5% revenue growth [V]"],
-    ["Marketing to win an order", "≈ £0", "one signature per firm; the roster does the reminding", gbp(MOONPIG_DERIVED.marketingPerOrder), `£38.7m a year across 36m orders [D]`],
-    ["Cost structure", `${UNIT.teamSize} people`, `~${gbp(3_100_000 / UNIT.teamSize / 1000, 0)}k revenue each at £3.1m ARR. A cost structure, not a defence: the defence is the contract, the roster and the collection`, `${MOONPIG.employees} people`, `${gbp(MOONPIG_DERIVED.revenuePerEmployee / 1000, 0)}k revenue each [V]`],
-    ["Team collections", "Built in", "open themselves on leaver, retirement, milestones, weddings, babies; team-scoped, with a pot and the recipient's gift choice", "Group cards", `up to ${MOONPIG.groupCardMaxContributors} contributors, shared by link. No pot, no roster trigger, no gift choice [V]`],
+    ["Gross margin", pct(seats.margin), `on ${gbp(seats.revenue, 0)} of seats for this roster`, pct(MOONPIG.segmentGrossMargin), "Moonpig segment, FY26"],
+    ["Where the margin sits", `${gbp(seat.printPerSeat)} of £30`, `print in a seat: two cards a year at ${gbp(UNIT.cardCostProductionGbp)} · the seat clears ${pct(seatDoubled.margin)} even if card cost doubles`, `${pct(MOONPIG_DERIVED.shippingPct)} of revenue`, "shipping and logistics, £88.2m, growing 9.4% against 6.5% revenue growth"],
+    ["Marketing to win an order", "≈ £0", "one signature per firm; the roster does the reminding", gbp(MOONPIG_DERIVED.marketingPerOrder), `£38.7m a year across 36m orders`],
+    ["Cost structure", `${UNIT.teamSize} people`, `~${gbp(3_100_000 / UNIT.teamSize / 1000, 0)}k revenue each at £3.1m ARR. A cost structure, not a defence: the defence is the contract, the roster and the collection`, `${MOONPIG.employees} people`, `${gbp(MOONPIG_DERIVED.revenuePerEmployee / 1000, 0)}k revenue each`],
+    ["Team collections", "Built in", "open themselves on leaver, retirement, milestones, weddings, babies; team-scoped, with a pot and the recipient's gift choice", "Group cards", `up to ${MOONPIG.groupCardMaxContributors} contributors, shared by link. No pot, no roster trigger, no gift choice`],
   ];
 
   return (
@@ -64,10 +64,10 @@ export default function DashboardPage() {
         <div className="grid gap-4 sm:grid-cols-3">
           <Hero value={String(sent.length)} label="cards sent" sub={`${cardsPerYear} occasions under management for ${staff.length} staff and ${clients.length} clients`} />
           <Hero value={pct(approveRate)} label="approved without an edit" sub={`${decided.length - skipped} approved · ${editedCount} edited · ${autoApproved} went out by themselves`} accent="hooray" />
-          <Hero value={pct(seat.margin)} label="seat margin" sub={`print is ${gbp(seat.printPerSeat)} of a £30 seat (two cards at ${gbp(UNIT.cardCostProductionGbp)}) · AI ${pence(seat.aiPerSeat)} · still ${pct(seatDoubled.margin)} if card cost doubles [D]`} />
+          <Hero value={pct(seat.margin)} label="seat margin" sub={`print is ${gbp(seat.printPerSeat)} of a £30 seat (two cards at ${gbp(UNIT.cardCostProductionGbp)}) · AI ${pence(seat.aiPerSeat)} · still ${pct(seatDoubled.margin)} if card cost doubles`} />
         </div>
         <div className="mt-4 grid gap-4 sm:grid-cols-4">
-          <Tile label="Gift value under management" value={gbp(giftUnderManagement, 0)} sub={`${gbp(potTotal, 0)} in collection pots · ${gbp(clientGiftValue, 0)} client gifts [E] · Moonpig attaches a gift to ${pct(MOONPIG.giftAttachRate)} of orders`} accent="gold" />
+          <Tile label="Gift value under management" value={gbp(giftUnderManagement, 0)} sub={`${gbp(potTotal, 0)} in collection pots · ${gbp(clientGiftValue, 0)} client gifts · Moonpig attaches a gift to ${pct(MOONPIG.giftAttachRate)} of orders`} accent="gold" />
           <Tile label="Collections" value={String(collections.length)} sub={`${contributors} contributions · ${gbp(potTotal, 0)} raised`} accent="gold" />
           <Tile label="Human minutes" value={String(Math.round((touches * UNIT.digestSecondsPerCard) / 60))} sub={`${touches} touches · ${hoursSaved.toFixed(1)} hours saved against doing it by hand`} />
           <Tile label="AI spend, measured" value={gbp(aiTotal, 2)} sub={`${drafted.length} drafts · ${liveDrafts} live · ${pence(aiPerCard)} a card at Claude Opus 5 prices`} />
@@ -76,24 +76,26 @@ export default function DashboardPage() {
         <section className="card-panel mt-8 p-6">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="h2">Next to Moonpig</h2>
-            <span className="hint">Moonpig Group FY26 · £373m revenue · 676 people · Moonpig for Business at £3.60 a card · [V] verified, [D] derived, [E] estimate</span>
+            <span className="hint">Moonpig Group, year to April 2026 · £373m revenue · 676 people</span>
           </div>
-          <div className="mt-4 grid grid-cols-[1fr_auto_1fr] gap-x-6">
-            <div className="label">Hooray</div>
-            <div />
-            <div className="label text-right">Moonpig</div>
+          <div className="mt-4">
+            <div className="grid grid-cols-[1fr_auto_1fr] gap-x-6 pb-2">
+              <div className="label">Hooray</div>
+              <div />
+              <div className="label text-right">Moonpig</div>
+            </div>
             {versus.map(([k, a, aSub, b, bSub]) => (
-              <Fragment key={k}>
-                <div className="border-t border-line py-4">
+              <div key={k} className="grid grid-cols-[1fr_auto_1fr] items-center gap-x-8 border-t border-line py-5">
+                <div>
                   <div className="stat text-navy">{a}</div>
-                  <div className="hint mt-1">{aSub}</div>
+                  <div className="hint mt-1 max-w-sm">{aSub}</div>
                 </div>
-                <div className="label self-center border-t border-line py-4 text-center">{k}</div>
-                <div className="border-t border-line py-4 text-right">
+                <div className="label w-40 text-center">{k}</div>
+                <div className="text-right">
                   <div className="stat text-ink-3">{b}</div>
-                  <div className="hint mt-1">{bSub}</div>
+                  <div className="hint ml-auto mt-1 max-w-sm">{bSub}</div>
                 </div>
-              </Fragment>
+              </div>
             ))}
           </div>
           <details className="mt-4">
@@ -102,10 +104,10 @@ export default function DashboardPage() {
               <tbody className="divide-y divide-line">
                 <Row k="What the firm pays" a={`${gbp(UNIT.pricePerEmployeePerYearGbp, 0)} per employee per year, all occasions, plus six personal cards each`} b={`${gbp(MOONPIG.businessCardPrice)} a card at Moonpig for Business. Consumer: ${gbp(MOONPIG.consumerCardPrice)} + ${gbp(MOONPIG.consumerPostage)} post = ${gbp(MOONPIG_DERIVED.consumerAllIn)}`} />
                 <Row k="For this roster" a={`${gbp(seats.revenue, 0)} a year for ${staff.length} seats covering ~${cardsPerYear} occasions`} b={`${gbp(cardsPerYear * MOONPIG.businessCardPrice, 0)} in cards, plus ~${gbp(cardsPerYear * moonpigAdminPerCard, 0)} of an office manager's time`} />
-                <Row k="Print in the seat" a={`${gbp(seat.printPerSeat)} of £30: two cards a year at ${gbp(UNIT.cardCostProductionGbp)} all in (Docmail; Stannp ${gbp(UNIT.cardCostPrototypeGbp)} for prototypes) [V]. A sub-scale entrant pays more per card than Moonpig, not less [E]; the margin is the seat.`} b={`Shipping and logistics ${pct(MOONPIG_DERIVED.shippingPct)} of revenue, growing faster than revenue [V]`} />
-                <Row k="Gifts" a={`Collections are the attach mechanism: the pot buys a sourced gift, the client roster buys a £50 one [E]`} b={`${pct(MOONPIG_DERIVED.giftShareOfRevenue)} of Moonpig and Greetz revenue is gifts (£132m of £335.5m; £123.8m attached, £8.2m standalone) on a ${pct(MOONPIG.giftAttachRate)} attach rate at ~£${MOONPIG.giftRevenuePerAttachedOrder} each [V]`} />
-                <Row k="Occasions captured" a="Every occasion on the roster, the day the export lands. A 200-person firm produces ~400 a year whether or not the category grows." b={`${pct(MOONPIG.occasionCaptureRate)}: ${MOONPIG.cardsPerCustomerPerYear} cards a year against ~19 bought [V]. Category orders fell 9.5% FY22 to FY26 while AOV rose 21% [V]`} />
-                <Row k="Phase 2, employees as consumers [E]" a={`Designed, not tested: ${gbp(CONSUMER.perCardGbp)} a card including post, or ${gbp(CONSUMER.subscriptionMonthlyGbp)} a month for up to ${CONSUMER.subscriptionCardsPerYear} cards sent automatically. No consumer UI today.`} b={`${gbp(MOONPIG_DERIVED.consumerAllIn)} a card including post`} />
+                <Row k="Print in the seat" a={`${gbp(seat.printPerSeat)} of £30: two cards a year at ${gbp(UNIT.cardCostProductionGbp)} all in (Docmail; Stannp ${gbp(UNIT.cardCostPrototypeGbp)} for prototypes). A sub-scale entrant pays more per card than Moonpig, not less; the margin is the seat.`} b={`Shipping and logistics ${pct(MOONPIG_DERIVED.shippingPct)} of revenue, growing faster than revenue`} />
+                <Row k="Gifts" a={`Collections are the attach mechanism: the pot buys a sourced gift, the client roster buys a £50 one`} b={`${pct(MOONPIG_DERIVED.giftShareOfRevenue)} of Moonpig and Greetz revenue is gifts (£132m of £335.5m; £123.8m attached, £8.2m standalone) on a ${pct(MOONPIG.giftAttachRate)} attach rate at ~£${MOONPIG.giftRevenuePerAttachedOrder} each`} />
+                <Row k="Occasions captured" a="Every occasion on the roster, the day the export lands. A 200-person firm produces ~400 a year whether or not the category grows." b={`${pct(MOONPIG.occasionCaptureRate)}: ${MOONPIG.cardsPerCustomerPerYear} cards a year against ~19 bought. Category orders fell 9.5% FY22 to FY26 while AOV rose 21%`} />
+                <Row k="Phase 2, employees as consumers" a={`Designed, not tested: ${gbp(CONSUMER.perCardGbp)} a card including post, or ${gbp(CONSUMER.subscriptionMonthlyGbp)} a month for up to ${CONSUMER.subscriptionCardsPerYear} cards sent automatically. No consumer UI today.`} b={`${gbp(MOONPIG_DERIVED.consumerAllIn)} a card including post`} />
                 <Row k="Who remembers the date" a="The roster. Every occasion is known the day the HR export lands." b={`The customer, prompted by ${(MOONPIG.remindersStored / 1e6).toFixed(0)}m stored reminders driving ~40% of orders`} />
                 <Row k="Human minutes per card" a="≈ 0.3 · one glance in the weekly queue" b={`≈ ${UNIT.manualMinutesPerCard} · remember, choose, write, address, pay`} />
               </tbody>

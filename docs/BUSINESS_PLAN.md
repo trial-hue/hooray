@@ -2,7 +2,7 @@
 
 ### Business unit plan: occasion cards for companies, then for everyone
 
-*Telemachus trial day, 18 September 2026, revised 15:25. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
+*Telemachus trial day, 18 September 2026, revised 15:45. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
 
 ---
 
@@ -84,7 +84,11 @@ Priced at £30 per employee per year, all occasions included, plus six personal 
 
 ### 5b. Hooray for people
 
-The same loop for your own life. Sign in with Google and the birthdays in your contacts become your calendar in one consent. Ten days before each one, the card exists. One tap sends it.
+The same loop for your own life. Sign in with Google or Microsoft and the birthdays in your contacts become your calendar in one consent; both APIs return the field. **[V]** Apple grants contact access per contact since iOS 18, so it is the degraded path. Facebook and the other social networks closed friend data to third-party apps in 2018 **[V]**, so there is no social-network import, and the plan does not claim one.
+
+The social mechanic that does work needs no platform: a share link that says "tell me your birthday". Each person adds their own date. It is opt-in, it crosses every network because it is a message rather than an API call, and every reply is a lead with a known occasion attached. It is how gift registries grow, and it is the third loop in phase three.
+
+Ten days before each occasion, the card exists. One tap sends it.
 
 Against Moonpig the difference is the order of operations. They send a reminder and wait. We send a finished card and wait.
 
@@ -179,7 +183,7 @@ By the end of year two the unit holds 30,000 consumer accounts whose behaviour i
 
 **Why not go straight to consumers.** The reference build on 16 September modelled exactly that: an £8 a month subscription with unlimited cards to a circle of fifteen. Paid-social acquisition came out at £45 a customer, with a range of £35 to £60, and payback at nine to ten months on one card a month, which is longer than a monthly subscriber typically lasts. Its conclusion was that paid social on its own does not work. **[A]** A second first-principles memo reached the same open question and left it as a hypothesis. The roster route has no marginal acquisition cost. That is not a preference, it is the only route that closes.
 
-Three loops that do not need a marketing budget. The received card, with a small mark on the back; at 100,000 cards a year and 1.5% recipient conversion **[E]** that is 1,500 accounts a year, compounding with volume. The calendar import, which turns a sign-up into a customer with nine known occasions on day one. Referral, where the recipient's first card is free.
+Three loops that do not need a marketing budget. The received card, with a small mark on the back; at 100,000 cards a year and 1.5% recipient conversion **[E]** that is 1,500 accounts a year, compounding with volume. The contact import, which turns a sign-up into a customer with nine known occasions on day one. And the circle request, a share link asking each contact for their own birthday, which is opt-in, platform-independent, and turns every reply into a lead. Referral, where the recipient's first card is free, sits on top of all three.
 
 Paid acquisition begins only when the seeded cohort has shown a lifetime value a campaign can be priced against.
 
