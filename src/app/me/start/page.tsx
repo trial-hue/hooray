@@ -20,7 +20,7 @@ export default function StartPersonalPage() {
           Add the people you care about, or import their birthdays from Google. Hooray drafts a card in your voice, you change a word if you want, and it&apos;s printed and posted five days before the date.
         </p>
         <p className="hint mt-3">
-          {gbp(CONSUMER.perCardGbp)} a card including post, or {gbp(CONSUMER.subscriptionMonthlyGbp)} a month for up to {CONSUMER.subscriptionCardsPerYear} cards a year sent automatically. Launching soon; today is a free try.
+          Free for {CONSUMER.freeCardsPerYear} cards a year. Circle is {gbp(CONSUMER.subscriptionYearlyGbp)} a year for {CONSUMER.subscriptionCardsPerYear} cards sent automatically. Beyond that, {gbp(CONSUMER.perCardGbp)} a card, posted. Launching soon; today is a free try.
         </p>
 
         <form action={loadExampleContactsAction} className="mt-8">

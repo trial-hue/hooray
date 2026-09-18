@@ -86,11 +86,13 @@ export function seatMargin(cardCostGbp = UNIT.cardCostProductionGbp, aiGbp = UNI
   return { price, printPerSeat, aiPerSeat, infraPerSeat, cost, margin: (price - cost) / price };
 }
 
-/** Phase 2 consumer pricing. DESIGNED, NOT TESTED [E]. No consumer UI today; used only for the dashboard's phase 2 line. */
+/** Consumer pricing, per BUSINESS_PLAN.md section 2. DESIGNED, NOT TESTED [E]. Annual, because occasions are annual. */
 export const CONSUMER = {
-  perCardGbp: 5.49, // including post; matches Moonpig's £5.89 within a few pence
-  subscriptionMonthlyGbp: 4.99, // up to twelve cards a year, sent automatically
-  subscriptionCardsPerYear: 12,
+  freeCardsPerYear: 2, // Free: two cards a year; six through an employer
+  employerCardsPerYear: 6,
+  perCardGbp: 3.99, // More: beyond the plan, posted; Moonpig's average card is £5.89
+  subscriptionYearlyGbp: 29, // Circle: eight cards a year, sent automatically
+  subscriptionCardsPerYear: 8,
   subscriberCardsUsed: 8, // [E]
   payPerCardCardsPerYear: 3.5, // [A] Moonpig's own frequency
   subscriberShare: 0.1, // [E]

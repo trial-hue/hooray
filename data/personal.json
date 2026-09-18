@@ -384,7 +384,16 @@
     }
    ],
    "aiCostGbp": 0,
-   "shareCode": "0k9w8g"
+   "shareCode": "0k9w8g",
+   "proof": {
+    "provider": "stannp",
+    "id": "",
+    "pdfUrl": "",
+    "cost": "",
+    "status": "error",
+    "at": "2026-09-27",
+    "error": "Insufficient balance: 0.0000"
+   }
   }
  ],
  "digests": [],
@@ -462,6 +471,14 @@
    {
     "at": "2026-09-27",
     "event": "Dispatched 2 cards as MOCK-0001 (2 auto-approved)"
+   },
+   {
+    "at": "2026-09-27",
+    "event": "Stannp test failed for card-1s7s81: Insufficient balance: 0.0000"
+   },
+   {
+    "at": "2026-09-27",
+    "event": "Stannp test failed for card-1s7s81: Insufficient balance: 0.0000"
    }
   ]
  },

@@ -12,7 +12,7 @@ import { occasionTitle } from "@/lib/occasions";
 import { paths } from "@/lib/paths";
 import { renderableCard } from "@/lib/render";
 import { buildStannpPayload, stannpCurl, stannpLive } from "@/lib/stannp";
-import { cardCost, gbp, pence, UNIT } from "@/lib/costs";
+import { cardCost, CONSUMER, gbp, pence, UNIT } from "@/lib/costs";
 import { currentDraft, fullName } from "@/lib/types";
 
 export function CardView({ ws, id }: { ws: Workspace; id: string }) {
@@ -113,8 +113,8 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
                       Company gift: {card.gift.name}, £{(card.gift.valuePence / 100).toFixed(0)}. Fulfilled separately by drop-ship.
                     </p>
                   )}
-                  <p className="mt-3 font-display text-2xl">{personal ? gbp(5.49) : gbp(cost.total)}</p>
-                  <p className="hint text-xs">{personal ? `including post · launching soon · costs ${gbp(cost.print)} to print and post` : `${gbp(cost.print)} print, envelope and post via Docmail · AI ${pence(cost.ai)}`}</p>
+                  <p className="mt-3 font-display text-2xl">{personal ? gbp(CONSUMER.perCardGbp) : gbp(cost.total)}</p>
+                  <p className="hint text-xs">{personal ? `a card including post, or free on Circle at ${gbp(CONSUMER.subscriptionYearlyGbp)} a year · costs ${gbp(cost.print)} to print and post` : `${gbp(cost.print)} print, envelope and post via Docmail · AI ${pence(cost.ai)}`}</p>
                 </div>
               </details>
 
