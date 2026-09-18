@@ -28,22 +28,22 @@ export default function CalendarPage() {
             <p className="label">Next eight weeks</p>
             <h1 className="font-display text-3xl">{total} occasions on the roster</h1>
           </div>
-          <p className="text-sm text-ink-3">Cards are drafted the Monday before the week they are due.</p>
+          <p className="text-sm text-ink-3">Cards are drafted ten days before they are due and sent five days before.</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {weeks.map((w) => {
-            const digest = db.digests.find((d) => d.coversFrom === w.from);
+            const drafted = w.occs.filter((o) => db.cards.some((c) => c.occurrenceKey === o.occurrenceKey)).length;
             return (
               <section key={w.from} className="card-panel p-4">
                 <div className="mb-2 flex items-center justify-between">
                   <h2 className="font-display text-lg">{formatRange(w.from, w.to)}</h2>
-                  {digest ? (
+                  {drafted > 0 ? (
                     <Link href="/digest" className="text-xs text-navy underline">
-                      {digest.status === "open" ? "in digest" : "submitted"}
+                      {drafted} of {w.occs.length} drafted
                     </Link>
-                  ) : (
+                  ) : w.occs.length > 0 ? (
                     <span className="text-xs text-ink-3">not yet drafted</span>
-                  )}
+                  ) : null}
                 </div>
                 {w.occs.length === 0 ? (
                   <p className="text-sm text-ink-3">Nothing due.</p>
