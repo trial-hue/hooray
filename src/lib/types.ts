@@ -234,6 +234,7 @@ export type Card = {
   printJobId?: string;
   collectionId?: string;
   gift?: CardGift;
+  image?: { prompt: string; provider: string; file: string; at: ISODate }; // AI-generated front picture, optional
   autoApproved?: boolean;
   dispatchOn: ISODate; // dueDate - DISPATCH_DAYS
   proof?: { provider: "stannp"; id: string; pdfUrl: string; cost: string; status: string; at: ISODate; error?: string };

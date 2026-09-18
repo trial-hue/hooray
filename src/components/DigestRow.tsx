@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
-import { approveCardAction, changeSignerAction, editCardAction, regenerateCardAction, releaseHeldAction, setCardGiftAction, skipCardAction } from "@/app/actions";
+import { approveCardAction, changeSignerAction, editCardAction, generateImageAction, regenerateCardAction, releaseHeldAction, removeImageAction, setCardGiftAction, skipCardAction } from "@/app/actions";
 import { GIFT_RANGE } from "@/lib/collections";
 import { giftLabel } from "@/lib/gifts";
 import { StatusChip } from "./StatusChip";
@@ -26,6 +26,7 @@ type Props = {
   preview?: React.ReactNode;
   ws?: "business" | "personal";
   gift?: CardGift;
+  imageReady?: boolean; // an image key is configured
 };
 
 function Pending({ label, busy, className = "btn" }: { label: string; busy: string; className?: string }) {
@@ -37,11 +38,11 @@ function Pending({ label, busy, className = "btn" }: { label: string; busy: stri
   );
 }
 
-function MenuSubmit({ label, name, value }: { label: string; name?: string; value?: string }) {
+function MenuSubmit({ label, name, value, busy = "Asking Claude…" }: { label: string; name?: string; value?: string; busy?: string }) {
   const { pending } = useFormStatus();
   return (
     <button type="submit" name={name} value={value} className={`menu-item ${pending ? "pulse-soft" : ""}`} disabled={pending}>
-      {pending ? "Asking Claude…" : label}
+      {pending ? busy : label}
     </button>
   );
 }
@@ -179,6 +180,25 @@ export function DigestRow(p: Props) {
                     <MenuSubmit label="Rewrite, shorter" name="preset" value="Shorter" />
                     <MenuSubmit label="Rewrite, more formal" name="preset" value="More formal" />
                   </form>
+                  <div className="my-1 border-t border-line" />
+                  <form action={generateImageAction} className="px-3 py-2 text-xs text-ink-3">
+                    <input type="hidden" name="id" value={card.id} />
+                    {W}
+                    <label className="block">
+                      Picture on the front
+                      <textarea name="prompt" rows={2} placeholder={card.image ? `Now: ${card.image.prompt}` : "Describe it, or leave blank to draw from the card's own brief"} className="mt-1 block w-full rounded-md border border-line bg-white px-2 py-1 text-xs text-ink placeholder:text-ink-3" />
+                    </label>
+                    <div className="mt-1 flex items-center gap-1">
+                      <MenuSubmit label={p.imageReady ? (card.image ? "Make a new picture" : "Make a picture") : "Make a picture (no image key set)"} busy="Painting…" />
+                    </div>
+                  </form>
+                  {card.image && (
+                    <form action={removeImageAction}>
+                      <input type="hidden" name="id" value={card.id} />
+                      {W}
+                      <MenuSubmit label="Back to the brand artwork" busy="…" />
+                    </form>
+                  )}
                   {ws === "business" && (p.gift || card.occasionId) && (
                     <>
                       <div className="my-1 border-t border-line" />

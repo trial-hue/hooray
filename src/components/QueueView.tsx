@@ -13,6 +13,7 @@ import { pendingCards } from "@/lib/engine";
 import { occasionTitle } from "@/lib/occasions";
 import { paths } from "@/lib/paths";
 import { renderableCard } from "@/lib/render";
+import { imageConfigured } from "@/lib/images";
 import { currentDraft, finalTextOf, fullName, type Card } from "@/lib/types";
 
 /** "This week" for either workspace. */
@@ -57,6 +58,7 @@ export function QueueView({ ws }: { ws: Workspace }) {
         ordinal={occ.ordinal}
         collection={col ? { id: col.id, contributors: col.contributions.length, invited: col.teamIds.length, status: col.status } : undefined}
         gift={c.gift}
+        imageReady={imageConfigured()}
         preview={
           rc ? (
             <div className="w-[200px]">

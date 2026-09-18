@@ -8,6 +8,7 @@ import { addDays } from "@/lib/dates";
 import { addContact, addHumanOccasion, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, loadExampleContacts, markLeaving, releaseHeld, sendNow, skipCard, startPersonal, tick } from "@/lib/engine";
 import { chooseGift, closeCollection, contribute } from "@/lib/collections";
 import { setCardGift } from "@/lib/gifts";
+import { generateCardImage, removeCardImage } from "@/lib/images";
 import type { Company } from "@/lib/types";
 
 function refresh() {
@@ -285,6 +286,26 @@ export async function closeCollectionAction(formData: FormData): Promise<void> {
   await mutate((db) => {
     const col = db.collections.find((x) => x.id === collectionId);
     if (col) closeCollection(db, col);
+  });
+  refresh();
+}
+
+export async function generateImageAction(formData: FormData): Promise<void> {
+  const id = String(formData.get("id"));
+  const prompt = String(formData.get("prompt") ?? "").trim();
+  const ws = wsOf(formData);
+  await mutate(ws, async (db) => {
+    const c = db.cards.find((x) => x.id === id);
+    if (c) await generateCardImage(db, c, prompt);
+  });
+  refresh();
+}
+
+export async function removeImageAction(formData: FormData): Promise<void> {
+  const id = String(formData.get("id"));
+  await mutate(wsOf(formData), (db) => {
+    const c = db.cards.find((x) => x.id === id);
+    if (c) removeCardImage(c);
   });
   refresh();
 }

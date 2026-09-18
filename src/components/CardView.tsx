@@ -134,7 +134,7 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
                   )}
                   {draft?.artwork_brief && (
                     <p className="mt-1 text-xs text-ink-3">
-                      Artwork: {draft.artwork_brief.template}, {draft.artwork_brief.palette_variant}. {draft.artwork_brief.style_note}
+                      Artwork: {card.image ? `AI picture (${card.image.provider}), asked for “${card.image.prompt}”` : `${draft.artwork_brief.template}, ${draft.artwork_brief.palette_variant}. ${draft.artwork_brief.style_note}`}
                     </p>
                   )}
                   {card.flags.length > 0 && (

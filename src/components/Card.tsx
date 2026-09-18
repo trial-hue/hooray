@@ -14,6 +14,7 @@ export type RenderableCard = {
   ref: string;
   signatures?: { name: string; line: string }[];
   personal?: boolean;
+  imageUrl?: string; // AI-generated picture; replaces the artwork on the front
 };
 
 // Geometry (mm)
@@ -35,8 +36,14 @@ export function FrontPanel({ card, bleed = false }: { card: RenderableCard; blee
   return (
     <div className="relative overflow-hidden" style={{ width: mm(PANEL_W), height: mm(PANEL_H), background: card.palette.paper }}>
       <div className="absolute" style={{ top: mm(inset), left: mm(inset), right: mm(inset), bottom: mm(inset) }}>
-        <Artwork art={card.art} palette={card.palette} />
+        {card.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={card.imageUrl} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        ) : (
+          <Artwork art={card.art} palette={card.palette} />
+        )}
       </div>
+      {card.imageUrl && <div className="absolute" style={{ left: mm(inset), right: mm(inset), bottom: mm(inset), height: mm(70), background: `linear-gradient(to top, ${card.palette.paper} 30%, transparent)` }} />}
       <div className="absolute" style={{ left: mm(16), right: mm(16), bottom: mm(20) }}>
         <div className="font-display" style={{ fontSize: `${headlineSize(card.text.front_headline)}pt`, lineHeight: 1.02, letterSpacing: "-0.02em", color: card.palette.ink, fontWeight: 600, maxWidth: mm(112), textWrap: "balance" as never }}>
           {card.text.front_headline}
