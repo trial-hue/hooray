@@ -120,6 +120,27 @@ export default function DashboardPage() {
         </section>
 
         <section className="card-panel mt-8 p-5">
+          <h2 className="h2">Billing</h2>
+          <p className="hint mt-0.5">Payment links, hosted by Stripe. Nothing is charged from inside the app.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {process.env.STRIPE_SEAT_LINK ? (
+              <a href={process.env.STRIPE_SEAT_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                Pay for seats
+              </a>
+            ) : (
+              <span className="btn opacity-60" title="Set STRIPE_SEAT_LINK in .env.local">Pay for seats · link not set</span>
+            )}
+            {process.env.STRIPE_POT_LINK ? (
+              <a href={process.env.STRIPE_POT_LINK} target="_blank" rel="noopener noreferrer" className="btn">
+                Contribute to a collection
+              </a>
+            ) : (
+              <span className="btn opacity-60" title="Set STRIPE_POT_LINK in .env.local">Contribute to a collection · link not set</span>
+            )}
+          </div>
+        </section>
+
+        <section className="card-panel mt-8 p-5">
           <h2 className="h2">Activity</h2>
           <ul className="mt-2 max-h-56 overflow-auto text-xs text-ink-2">
             {[...db.clock.log].reverse().map((l, i) => (
