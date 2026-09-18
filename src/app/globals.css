@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #faf7f2;
+  --paper-2: #f2ede4;
+  --ink: #1b1b1b;
+  --ink-2: #4a4a48;
+  --ink-3: #7b7a76;
+  --line: #e4ded3;
+  --navy: #1f3a5f;
+  --navy-2: #30507a;
+  --gold: #d4a24c;
+  --sage: #7fa38c;
+  --amber-bg: #fff4db;
+  --amber-fg: #7a5200;
+  --red-bg: #fde8e6;
+  --red-fg: #8a2a22;
+  --green-bg: #e6f2ea;
+  --green-fg: #1f5a35;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-gold: var(--gold);
+  --color-sage: var(--sage);
+  --font-display: var(--font-display), Georgia, serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+  --font-script: var(--font-script), cursive;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.font-script {
+  font-family: var(--font-script);
+}
+
+.btn {
+  @apply inline-flex items-center gap-1.5 rounded-md border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink shadow-sm transition hover:bg-paper-2 disabled:opacity-50;
+}
+.btn-primary {
+  @apply border-navy bg-navy text-white hover:bg-navy-2;
+}
+.btn-ghost {
+  @apply border-transparent bg-transparent shadow-none hover:bg-paper-2;
+}
+.chip {
+  @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium leading-4;
+}
+.card-panel {
+  @apply rounded-xl border border-line bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)];
+}
+.label {
+  @apply block text-xs font-medium uppercase tracking-wide text-ink-3;
+}
+.input {
+  @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink focus:border-navy focus:outline-none;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+.pulse-soft {
+  animation: pulse-soft 1.2s ease-in-out infinite;
 }
