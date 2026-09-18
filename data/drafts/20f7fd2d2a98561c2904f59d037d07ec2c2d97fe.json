@@ -1,29 +1,29 @@
 {
  "draft": {
   "front_headline": "Thank you, Rob",
-  "inside_message": "Payroll never once slipped on your watch, and half of Leeds can only do a pivot table because you sat down and showed them. You'll be missed, bacon-roll order and all. Every good wish for whatever comes next.",
+  "inside_message": "Not one late payroll run on your watch, and half of Leeds can now build a pivot table because you sat down and showed them. We'll miss you, and the Friday bacon-roll order won't be the same. Every good wish for what comes next.",
   "sign_off": "With thanks and warm wishes,",
   "signature_line": "Lucy Pemberton, Outsourcing Manager and James Hartley, Managing Partner",
   "artwork_brief": {
    "template": "waves",
    "palette_variant": "muted",
-   "style_note": "calm layered waves, understated, brand navy and paper"
+   "style_note": "calm layered waves, understated, brand navy on paper"
   },
   "flags": [
-   "Context conflicts on length of service: ordinal says 7, joined date is 2018 and facts say eight years. Years deliberately left out of the copy; add a number if you can confirm it."
+   "Context conflict: joined date is 2018 and the ordinal says seven, but the facts say eight years without a missed payroll run; I avoided naming a number of years."
   ],
-  "rationale": "Leans on the unbroken payroll record, the pivot-table teaching and the Friday bacon rolls for warmth and specificity, with the service length omitted because the context conflicts."
+  "rationale": "Leans on the unbroken payroll record, the pivot table teaching and the bacon-roll order for warmth and specificity, kept plain and brief as a leaver card from his manager and the Managing Partner."
  },
  "createdAt": "2026-10-05",
  "promptHash": "46cd96fac9dc7989",
  "model": "claude-opus-5",
  "usage": {
   "input_tokens": 532,
-  "output_tokens": 401,
+  "output_tokens": 389,
   "cache_read_input_tokens": 4522,
   "cache_creation_input_tokens": 0
  },
  "attempts": 1,
  "source": "claude",
- "ms": 6779
+ "ms": 7998
 }

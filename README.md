@@ -8,10 +8,12 @@ Built on the Telemachus trial day, 18 September 2026, as an AI-native clone of M
 
 ```bash
 # Node 24 (installed via nvm; node/npm are symlinked into ~/.local/bin)
-cp .env.local.example .env.local   # or edit .env.local: ANTHROPIC_API_KEY=sk-ant-...
+cp .env.local.example .env.local
 npm install
 npm run dev                         # http://localhost:3000
 ```
+
+**Claude access.** Either sign in once with the Anthropic CLI (`ant auth login`, a browser sign-in; the SDK then picks up the profile from `~/.config/anthropic` automatically), or put `ANTHROPIC_API_KEY=sk-ant-...` in `.env.local`. Don't do both: a set key shadows the login. The trial-day machine uses the login.
 
 Optional env: `DRAFT_MODEL` (default `claude-opus-5`), `STANNP_API_KEY` (send real test proofs), `AI_DISABLED=1` (template copy, no API calls), `DATA_MODE=memory` (no disk writes).
 
