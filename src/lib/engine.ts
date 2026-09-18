@@ -358,7 +358,8 @@ export async function releaseHeld(db: DB, card: Card): Promise<void> {
       card.coSignerId = s.coSignerId;
     }
   }
-  card.history.push({ at: db.clock.today, status: card.status, note: "Released by approver" });
+  card.history.push({ at: db.clock.today, status: "drafted", note: "Released by approver" });
+  card.status = "drafted"; // claimed before the (slow) draft so a second click cannot release it again
   await draftCard(db, card);
 }
 

@@ -169,7 +169,7 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
                   </p>
                   {card.proof && (
                     <p className="mt-2 text-ink">
-                      Stannp {card.proof.status === "test" ? "test" : "live order"} #{card.proof.id} · {card.proof.status} · cost £{card.proof.cost} ·{" "}
+                      {card.proof.status === "test" ? `Stannp proof · test mode · would cost £${card.proof.cost}` : `Stannp order #${card.proof.id} · live · cost £${card.proof.cost}`} ·{" "}
                       <a className="underline" href={card.proof.pdfUrl} target="_blank" rel="noreferrer">
                         proof PDF
                       </a>
@@ -181,7 +181,9 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
                   </a>
                   <p className="label mb-2 mt-5">History</p>
                   <ul className="text-xs text-ink-2">
-                    {card.history.map((h, i) => (
+                    {card.history
+                      .filter((h, i, all) => i === 0 || h.at !== all[i - 1].at || h.status !== all[i - 1].status || h.note !== all[i - 1].note)
+                      .map((h, i) => (
                       <li key={i} className="py-0.5">
                         <span className="text-ink-3">{h.at}</span> · {statusLabel(h.status)}
                         {h.note ? ` · ${h.note}` : ""}
