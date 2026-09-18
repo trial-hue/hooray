@@ -11,7 +11,7 @@ const MEMORY = process.env.DATA_MODE === "memory";
 
 declare global {
   // eslint-disable-next-line no-var
-  var __occasionallyDb: DB | undefined;
+  var __hoorayDb: DB | undefined;
 }
 
 function load(): DB {
@@ -34,8 +34,8 @@ function persist(db: DB): void {
 }
 
 export function getDb(): DB {
-  if (!globalThis.__occasionallyDb) globalThis.__occasionallyDb = load();
-  return globalThis.__occasionallyDb;
+  if (!globalThis.__hoorayDb) globalThis.__hoorayDb = load();
+  return globalThis.__hoorayDb;
 }
 
 /** Apply a mutation and persist atomically. Async so the fn may await (drafting). */
@@ -47,9 +47,9 @@ export async function mutate<T>(fn: (db: DB) => T | Promise<T>): Promise<T> {
 }
 
 export function resetDb(): DB {
-  globalThis.__occasionallyDb = emptyDb();
-  persist(globalThis.__occasionallyDb);
-  return globalThis.__occasionallyDb;
+  globalThis.__hoorayDb = emptyDb();
+  persist(globalThis.__hoorayDb);
+  return globalThis.__hoorayDb;
 }
 
 export function logEvent(db: DB, event: string): void {

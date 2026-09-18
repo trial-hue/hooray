@@ -15,7 +15,7 @@ export async function GET(req: NextRequest, ctx: RouteContext<"/api/cards/[id]/p
     return new Response(new Uint8Array(pdf), {
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": `${download ? "attachment" : "inline"}; filename="occasionally-${id}.pdf"`,
+        "Content-Disposition": `${download ? "attachment" : "inline"}; filename="hooray-${id}.pdf"`,
         "Cache-Control": "no-store",
       },
     });

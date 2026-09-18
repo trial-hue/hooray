@@ -1,4 +1,4 @@
-// Core domain types for Occasionally.
+// Core domain types for Hooray.
 // All simulated dates are ISO 'YYYY-MM-DD' strings. Never store Date objects in state.
 
 export type ISODate = string;

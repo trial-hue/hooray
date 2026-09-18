@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const caveat = Caveat({ subsets: ["latin"], variable: "--font-script", weight: ["500"] });
 
 export const metadata: Metadata = {
-  title: "Occasionally",
+  title: "Hooray",
   description: "Set-and-forget occasion cards for companies.",
 };
 

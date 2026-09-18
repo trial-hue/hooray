@@ -12,19 +12,19 @@ const CHROME = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Conte
 
 declare global {
   // eslint-disable-next-line no-var
-  var __occasionallyBrowser: Promise<Browser> | undefined;
+  var __hoorayBrowser: Promise<Browser> | undefined;
 }
 
 function getBrowser(): Promise<Browser> {
-  if (!globalThis.__occasionallyBrowser) {
-    globalThis.__occasionallyBrowser = puppeteer.launch({ executablePath: CHROME, headless: true, args: ["--no-sandbox", "--font-render-hinting=none"] }).then((b) => {
+  if (!globalThis.__hoorayBrowser) {
+    globalThis.__hoorayBrowser = puppeteer.launch({ executablePath: CHROME, headless: true, args: ["--no-sandbox", "--font-render-hinting=none"] }).then((b) => {
       b.on("disconnected", () => {
-        globalThis.__occasionallyBrowser = undefined;
+        globalThis.__hoorayBrowser = undefined;
       });
       return b;
     });
   }
-  return globalThis.__occasionallyBrowser;
+  return globalThis.__hoorayBrowser;
 }
 
 export function printPageUrl(id: string, origin: string, marks: boolean): string {
@@ -48,7 +48,7 @@ export async function renderCardPdf(id: string, opts: { marks?: boolean; origin:
     }
   } catch (err) {
     // Fallback: plain headless Chrome. Honours @page size from CSS.
-    const out = path.join(os.tmpdir(), `occasionally-${id}-${Date.now()}.pdf`);
+    const out = path.join(os.tmpdir(), `hooray-${id}-${Date.now()}.pdf`);
     await promisify(execFile)(CHROME, ["--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--no-sandbox", `--print-to-pdf=${out}`, url], { timeout: 45_000 });
     const buf = fs.readFileSync(out);
     fs.unlinkSync(out);

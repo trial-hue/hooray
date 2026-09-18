@@ -24,7 +24,7 @@ export function buildStannpPayload(db: DB, card: Card, pdfUrl: string): StannpPa
     file: pdfUrl,
     size: "A4",
     duplex: "true",
-    tags: `occasionally,${db.company?.id ?? "demo"},${card.id}`,
+    tags: `hooray,${db.company?.id ?? "demo"},${card.id}`,
   };
   if (d.mode === "office-batch") payload["recipient[company]"] = db.company?.name ?? "";
   return payload;

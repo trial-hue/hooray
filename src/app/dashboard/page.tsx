@@ -69,7 +69,7 @@ export default function DashboardPage() {
             <thead className="text-left text-xs uppercase tracking-wide text-ink-3">
               <tr className="border-b border-line">
                 <th className="px-5 py-2 font-medium">Line</th>
-                <th className="px-5 py-2 font-medium">Occasionally</th>
+                <th className="px-5 py-2 font-medium">Hooray</th>
                 <th className="px-5 py-2 font-medium">Moonpig</th>
               </tr>
             </thead>

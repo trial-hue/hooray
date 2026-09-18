@@ -54,7 +54,7 @@ export function BackPanel({ card }: { card: RenderableCard }) {
         </div>
       </div>
       <div className="absolute left-0 right-0 text-center font-body" style={{ bottom: mm(12), fontSize: "7pt", color: card.palette.muted }}>
-        Sent with care by {card.shortName} · made with Occasionally
+        Sent with care by {card.shortName} · made with Hooray
       </div>
       <div className="absolute left-0 right-0 text-center font-body" style={{ bottom: mm(6), fontSize: "5pt", color: card.palette.muted }}>
         {card.ref}

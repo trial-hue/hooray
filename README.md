@@ -1,4 +1,4 @@
-# Occasionally
+# Hooray
 
 Set-and-forget occasion cards and team collections for companies. A company uploads a staff roster once; from then on every birthday, work anniversary, welcome and leaver produces a drafted, printed card that a manager approves in a weekly digest, and peer collections open on the occasions people actually give for.
 

@@ -15,7 +15,7 @@ export async function sendStannpTestAction(formData: FormData): Promise<void> {
     const payload = buildStannpPayload(db, card, `${origin}/api/cards/${id}/pdf?download=1`);
     if (!payload) return;
     const pdf = await renderCardPdf(id, { marks: false, origin });
-    const res = await sendStannpTest(payload, pdf, `occasionally-${id}.pdf`);
+    const res = await sendStannpTest(payload, pdf, `hooray-${id}.pdf`);
     if (res.ok) {
       card.proof = { provider: "stannp", id: res.id, pdfUrl: res.pdf, cost: res.cost, status: res.status, at: db.clock.today };
       logEvent(db, `Stannp test proof #${res.id} for ${id} (cost ${res.cost})`);

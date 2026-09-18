@@ -18,7 +18,7 @@ export function ClockBar({ active }: { active: string }) {
     <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-5 py-3">
         <Link href="/" className="font-display text-xl tracking-tight text-navy">
-          Occasionally
+          Hooray
         </Link>
         {db.company && (
           <span className="text-sm text-ink-3">
