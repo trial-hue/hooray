@@ -19,6 +19,12 @@ export default function Onboarding() {
           <LoadDemoButton />
         </form>
         <p className="hint mt-3">Hartley &amp; Crane LLP, chartered accountants. 50 staff in Manchester and Leeds, 10 clients. A leaver, a parental leave, an opted-out colleague, a milestone birthday.</p>
+        <p className="hint mt-6">
+          <a href={process.env.NEXT_PUBLIC_SITE_URL ?? "https://hooray-your-people-project.lovable.app"} className="underline underline-offset-2 hover:text-ink">
+            About Hooray
+          </a>{" "}
+          · the product page
+        </p>
 
         <details className="card-panel mt-12 text-left">
           <summary className="cursor-pointer px-6 py-4 font-display text-lg">Or upload your own roster</summary>
