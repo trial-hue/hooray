@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "12 years, Mia",
+  "inside_message": "Twelve years in Tax, and you're still the person people come to when the answer isn't in the manual. Thank you for that, and for the care you're giving this year's two graduates. Good to have you here.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 12, understated, brand colour on plain stock"
+  },
+  "flags": [],
+  "rationale": "Anchors on twelve years in Tax and her mentoring of the two graduates, in a plain, warm line manager's voice."
+ },
+ "createdAt": "2027-01-13",
+ "promptHash": "0a52027cbf60cd36",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 419,
+  "output_tokens": 227,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3995
+}

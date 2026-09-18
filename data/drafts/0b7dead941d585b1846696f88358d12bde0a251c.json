@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Priya",
+  "inside_message": "Wishing you a lovely birthday, Priya. I hope the day is spent exactly as you'd like it, with good food and no early alarms. Thinking of you today.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, generous white space"
+  },
+  "flags": [
+   "Recipient is on leave, so the graduate mentoring fact was deliberately left out.",
+   "Context lists her role as Tax Manager but her team as Audit; worth checking before printing."
+  ],
+  "rationale": "Kept simply warm and personal with no reference to work because Priya is on leave, and no age or ordinal."
+ },
+ "createdAt": "2026-10-01",
+ "promptHash": "78daa53d6ba04fa9",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 406,
+  "output_tokens": 323,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5250
+}

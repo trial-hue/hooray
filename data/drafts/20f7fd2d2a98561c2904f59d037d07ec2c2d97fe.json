@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Thank you, Rob",
+  "inside_message": "Payroll never once slipped on your watch, and half of Leeds can only do a pivot table because you sat down and showed them. You'll be missed, bacon-roll order and all. Every good wish for whatever comes next.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "waves",
+   "palette_variant": "muted",
+   "style_note": "calm layered waves, understated, brand navy and paper"
+  },
+  "flags": [
+   "Context conflicts on length of service: ordinal says 7, joined date is 2018 and facts say eight years. Years deliberately left out of the copy; add a number if you can confirm it."
+  ],
+  "rationale": "Leans on the unbroken payroll record, the pivot-table teaching and the Friday bacon rolls for warmth and specificity, with the service length omitted because the context conflicts."
+ },
+ "createdAt": "2026-10-05",
+ "promptHash": "46cd96fac9dc7989",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 532,
+  "output_tokens": 401,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6779
+}

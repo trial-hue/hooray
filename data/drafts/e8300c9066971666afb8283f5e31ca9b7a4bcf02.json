@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Agnieszka",
+  "inside_message": "Happy birthday, Agnieszka. I hope the day is a good one, spent well away from your inbox and entirely on your own terms. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Rachel Okafor, Head of People",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, plenty of white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; a manager may wish to add a personal line."
+  ],
+  "rationale": "With no facts available, the card stays simply warm and light in Rachel's voice, and deliberately avoids repeating the December work-anniversary wording about looking after the Manchester team."
+ },
+ "createdAt": "2027-03-06",
+ "promptHash": "efc06ed7baf7be2a",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 474,
+  "output_tokens": 262,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4461
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Five years, Fatima",
+  "inside_message": "Five years in Advisory, and the work keeps getting bigger and better handled. Thank you for the way you steer a job like the Calder Valley Brewing valuation, and for being someone the rest of the team asks first. Here's to the years ahead.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean five, understated, brand colour on plain stock"
+  },
+  "flags": [
+   "Birthday card in October already referenced the Calder Valley valuation; phrasing here is new but the same fact is reused, as it is the only one provided."
+  ],
+  "rationale": "Names the five years and anchors on the Calder Valley Brewing valuation, in a plain, proud line-manager voice with the Managing Partner co-signing."
+ },
+ "createdAt": "2027-02-14",
+ "promptHash": "d853e4c7abb5fd04",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 580,
+  "output_tokens": 394,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6595
+}

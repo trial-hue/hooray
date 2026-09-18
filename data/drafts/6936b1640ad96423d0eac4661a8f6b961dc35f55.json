@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "14 years, with thanks",
+  "inside_message": "This month marks 14 years since Aire Engineering first came to us. Thank you, Grace, for your trust over that time, and for a working relationship we value greatly. We look forward to the years ahead.",
+  "sign_off": "With our thanks and warm regards,",
+  "signature_line": "Mark Ellison, Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean numeral 14, restrained, generous white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; add a specific detail if you have one."
+  ],
+  "rationale": "Formal company-to-company thanks anchored on the 14 years since 2013, kept general as no facts were provided."
+ },
+ "createdAt": "2027-09-03",
+ "promptHash": "e459bab6b445f08d",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1086,
+  "output_tokens": 603,
+  "cache_read_input_tokens": 9044,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 8925
+}

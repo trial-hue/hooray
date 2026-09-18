@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Evie",
+  "inside_message": "Happy birthday, Evie. Thank you for everything you do for the Outsourcing team in Leeds, it is noticed and much appreciated. I hope the day is a good one, and that you get to put your feet up.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, generous white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; Lucy may wish to add a personal line."
+  ],
+  "rationale": "With no specific facts available, the card stays simply warm and personal in Lucy's plain voice, naming only her team and office."
+ },
+ "createdAt": "2027-04-15",
+ "promptHash": "136fcd24efc9c4d8",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 395,
+  "output_tokens": 263,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4431
+}

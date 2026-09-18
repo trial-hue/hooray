@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Eight years, Ewan",
+  "inside_message": "Eight years in Outsourcing, and the work is always where it should be when it should be. Thank you for that steadiness, and for keeping the tidiest desk in the building whilst the rest of us try to catch up.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean eight, understated, plenty of white space"
+  },
+  "flags": [],
+  "rationale": "Leans on his eight years in Outsourcing and the one fact given, with light humour about the tidy desk in Lucy's plain, grateful voice."
+ },
+ "createdAt": "2027-01-01",
+ "promptHash": "60c325d74b9ff852",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 429,
+  "output_tokens": 245,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3956
+}

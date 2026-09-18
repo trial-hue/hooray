@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Rhys",
+  "inside_message": "Happy birthday from all of us in Manchester. I hope the day involves very little audit and, if the weather holds, a decent walk that isn't on a Wednesday. Enjoy it properly.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, lots of white space, brand colours"
+  },
+  "flags": [],
+  "rationale": "Light staff birthday leaning on the walking group with fresh phrasing, since December's anniversary card already thanked him for it; no age, one paragraph, no exclamation marks needed."
+ },
+ "createdAt": "2027-06-09",
+ "promptHash": "5b393e1bbbe5e3e5",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 528,
+  "output_tokens": 250,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4431
+}

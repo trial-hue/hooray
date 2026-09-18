@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Eight years together",
+  "inside_message": "Eight years ago Marsden Veterinary Practice first placed its trust in us, and we are grateful it has stayed with us since. Thank you, Rhys, for the steadiness of that relationship. We look forward to the years ahead.",
+  "sign_off": "With our thanks and best regards,",
+  "signature_line": "Mark Ellison, Partner",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "formal",
+   "style_note": "concentric rings, restrained, brand navy on plain stock"
+  },
+  "flags": [
+   "Only one public fact supplied, so the message stays general; add a specific detail if the team has one."
+  ],
+  "rationale": "Formal company-to-company note anchored on the eight years since 2019 and the trust placed in us, with no service or fee detail and no exclamation marks."
+ },
+ "createdAt": "2027-05-25",
+ "promptHash": "3ad84132305e5e5a",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 418,
+  "output_tokens": 274,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4915
+}

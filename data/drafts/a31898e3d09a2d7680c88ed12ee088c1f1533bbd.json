@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Ten years, Ben",
+  "inside_message": "Ten years with us, and month-end has never been in safer hands. Twenty clients get their numbers on time because you keep it that way, and none of them know how much quiet effort sits behind it. Thank you, Ben.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large ten, understated, brand colour on plain paper"
+  },
+  "flags": [],
+  "rationale": "Anchors on the ten years and the month-end close for twenty clients, in Lucy's plain, appreciative voice, co-signed by the Managing Partner."
+ },
+ "createdAt": "2026-10-17",
+ "promptHash": "c54faa577dcdbba2",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 492,
+  "output_tokens": 264,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4339
+}

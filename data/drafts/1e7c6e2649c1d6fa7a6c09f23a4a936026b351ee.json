@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Five years, Chloe",
+  "inside_message": "Five years with us, an ACA in 2024, and the Northgate close led start to finish in June. Thank you for all of it, and for dragging half of Manchester out on a Thursday lunchtime 5k.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large five, understated, brand colour on plain paper"
+  },
+  "flags": [],
+  "rationale": "Anchors on the five years, the 2024 ACA and the Northgate close, with a light nod to the 5k club to match Sarah's plain, warm voice."
+ },
+ "createdAt": "2026-09-30",
+ "promptHash": "66adf2e5c98db450",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 514,
+  "output_tokens": 259,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4064
+}

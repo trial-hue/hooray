@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Two years with Northgate",
+  "inside_message": "Two years ago Northgate Property first placed its trust in us, and we are grateful for it. Thank you, Rohan, for the straightforward way you work with the team. We look forward to the years ahead.",
+  "sign_off": "With our thanks and best regards,",
+  "signature_line": "Aisha Rahman, Advisory Partner",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "formal",
+   "style_note": "two concentric rings, restrained, brand colours on plain stock"
+  },
+  "flags": [
+   "Public facts describe Northgate as a long-standing client, but the relationship began in May 2025; card reflects two years."
+  ],
+  "rationale": "Formal company-to-company thanks anchored on the two-year mark and Rohan's role as owner, with no service or fee detail and no exclamation marks."
+ },
+ "createdAt": "2027-05-18",
+ "promptHash": "95a919b3b051e7db",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 408,
+  "output_tokens": 327,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6140
+}

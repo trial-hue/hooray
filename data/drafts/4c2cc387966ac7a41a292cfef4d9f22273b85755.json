@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Gary",
+  "inside_message": "Happy birthday, Gary. Anyone who can move an entire office and keep everyone calm doing it has more than earned a day of doing nothing at all. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, bright but uncluttered, plenty of space"
+  },
+  "flags": [
+   "Gary is listed in Manchester but the only fact given is the 2023 Leeds office move; confirm that is his before printing."
+  ],
+  "rationale": "Leans on the one fact available, the 2023 office move, with light dry humour in Sarah's brisk voice and no reference to age."
+ },
+ "createdAt": "2026-10-03",
+ "promptHash": "109b1f652d4aca6e",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 390,
+  "output_tokens": 320,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5307
+}

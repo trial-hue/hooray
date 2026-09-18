@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "12 years, Meera",
+  "inside_message": "Twelve years with Hartley & Crane in Manchester, and the Audit team is steadier for every one of them. Thank you for the calm you bring to a busy desk. It doesn't go unnoticed.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 12, understated, brand navy on plain stock"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; add a specific job or client if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card leans on the twelve years and Meera's steadiness in the Manchester audit team, in Sarah's plain, appreciative voice."
+ },
+ "createdAt": "2027-07-23",
+ "promptHash": "7c3a132b0d9f93e9",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 507,
+  "output_tokens": 303,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5126
+}

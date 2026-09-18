@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Seven years, Harriet",
+  "inside_message": "Seven years ago Kettlewell Coffee Roasters first came to us, and it has been a pleasure to watch the business grow from one roastery to three. Thank you, Harriet, for your trust and for the clarity you bring to every conversation.",
+  "sign_off": "With our thanks and best regards,",
+  "signature_line": "Aisha Rahman, Advisory Partner",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "formal",
+   "style_note": "concentric rings, restrained, brand colours on uncoated stock"
+  },
+  "flags": [
+   "The October 2026 card also thanked Harriet for her trust; wording here is deliberately different but the sentiment is close."
+  ],
+  "rationale": "Formal company-to-company note anchored on the seven years and the growth from one roastery to three, avoiding repetition of the recent Harrogate card."
+ },
+ "createdAt": "2027-03-16",
+ "promptHash": "49a56e18903d3355",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 589,
+  "output_tokens": 392,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6097
+}

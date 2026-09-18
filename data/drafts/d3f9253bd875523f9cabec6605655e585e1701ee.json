@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Bethan",
+  "inside_message": "Happy birthday from everyone in Advisory. The graduates have been warned that you're off for the day, so they'll have to think for themselves. Enjoy it, and don't check your inbox.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, lots of white space, understated"
+  },
+  "flags": [],
+  "rationale": "Light staff birthday leaning on her mentoring of the graduates, phrased differently from December's anniversary card, with no mention of age."
+ },
+ "createdAt": "2027-07-12",
+ "promptHash": "e6f6dd2469dd4ef9",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 492,
+  "output_tokens": 228,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4714
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Three years, Kwame",
+  "inside_message": "Three years with us in Leeds, and you've become someone the Audit team leans on without thinking twice about it. Thank you for that, and for keeping the five-a-side lot turning up on time. Good to have you here.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, warm brand tones, uncluttered"
+  },
+  "flags": [
+   "Only one public fact supplied, so the message leans on general reliability rather than specific work."
+  ],
+  "rationale": "Names the three years and uses the five-a-side captaincy as the one concrete fact, in a plain, slightly dry line manager voice, with different phrasing from last year's birthday card."
+ },
+ "createdAt": "2027-09-02",
+ "promptHash": "83c15e8f1fe0dca1",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 547,
+  "output_tokens": 285,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5115
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Sophia",
+  "inside_message": "Happy birthday from all of us in Manchester. No files, no queries, no me asking about the review points until tomorrow. Have a proper day off.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, plenty of white space, brand colours"
+  },
+  "flags": [
+   "No public facts supplied for Sophia, so the message stays general and light."
+  ],
+  "rationale": "With no facts available it keeps to simple warmth and Sarah's dry \"now go home\" tone, and avoids repeating April's anniversary wording."
+ },
+ "createdAt": "2027-08-11",
+ "promptHash": "4d9e4dc770dc1dc6",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 505,
+  "output_tokens": 247,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4990
+}

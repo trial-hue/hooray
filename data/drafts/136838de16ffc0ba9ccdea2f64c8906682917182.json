@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Tom",
+  "inside_message": "Happy birthday from all of us in Manchester. Your Audit team is in good hands, and I hope you get a proper break from it today. Enjoy the evening.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "simple confetti, generous white space, brand colours"
+  },
+  "flags": [
+   "No public facts supplied, so the message is kept general; add a specific line if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card stays briefly and confidently warm in James's plain Manchester voice, with no reference to age."
+ },
+ "createdAt": "2027-02-20",
+ "promptHash": "c0c69d43c1d3bf92",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1113,
+  "output_tokens": 618,
+  "cache_read_input_tokens": 9044,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 10256
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Gary",
+  "inside_message": "Happy birthday, Gary. The Leeds office runs the way it does because you quietly make it, from the 2023 move down to the Friday fruit. Put your feet up and let someone else find the spare chairs today.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, generous white space, understated colour"
+  },
+  "flags": [
+   "Signer is listed as line manager but her role is Outsourcing Manager whilst Gary sits in Operations; confirm she is the right signer."
+  ],
+  "rationale": "Leans on the 2023 Leeds office move and the Friday fruit for warmth and specifics, with light humour suited to a staff birthday and no reference to age."
+ },
+ "createdAt": "2026-10-03",
+ "promptHash": "54e778a48ff8ef68",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 436,
+  "output_tokens": 337,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6355
+}

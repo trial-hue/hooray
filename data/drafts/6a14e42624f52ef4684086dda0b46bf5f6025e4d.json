@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "11 years, Maryam",
+  "inside_message": "Eleven years in Tax here in Manchester, and the work is steadier for it. Thank you for turning up for the team year after year, Maryam. I'm glad to have you with us.",
+  "sign_off": "With thanks,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean numeral eleven, restrained, generous white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is general; add a specific detail if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card stays plainly warm and names the eleven years, in Helen's straightforward voice and avoiding the November birthday wording."
+ },
+ "createdAt": "2027-07-07",
+ "promptHash": "dd44310c1e154d76",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 527,
+  "output_tokens": 381,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6741
+}

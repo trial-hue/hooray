@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Wei",
+  "inside_message": "Happy birthday from all of us in Manchester. I hope the day is a good one and that you get to close the laptop early for once. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, lots of white space, understated"
+  },
+  "flags": [
+   "No public facts provided, so the message is warm but general."
+  ],
+  "rationale": "With no facts to draw on, the card stays simply warm in Sarah's brisk, kind voice and avoids repeating February's anniversary wording."
+ },
+ "createdAt": "2027-04-03",
+ "promptHash": "bea214c30fec9741",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 501,
+  "output_tokens": 235,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4256
+}

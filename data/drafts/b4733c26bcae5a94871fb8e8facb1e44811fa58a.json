@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Daniel",
+  "inside_message": "Happy birthday, Daniel. The third floor is a better place to work with you on it, and you've picked things up quickly since September. Have a proper day off and let the Tax inbox wait.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose scattered confetti, lots of clean paper"
+  },
+  "flags": [
+   "Available facts are all from his joining; if Daniel has done something notable since September, a manager may wish to swap that in."
+  ],
+  "rationale": "Light staff birthday leaning on his Manchester Tax team and time since joining, deliberately avoiding the welcome card's kettle and R&D lines."
+ },
+ "createdAt": "2027-06-17",
+ "promptHash": "f0bf4fa0bc069daa",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 607,
+  "output_tokens": 323,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5746
+}

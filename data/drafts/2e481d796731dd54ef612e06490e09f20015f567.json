@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "Ten years, Lily",
+  "inside_message": "Ten years with Hartley & Crane in Manchester, and the Audit team is steadier for every one of them. Thank you, Lily, for the care you bring to the work and for the calm you bring to a busy office. It's noticed.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large ten, understated, brand colour on plain paper"
+  },
+  "flags": [
+   "Only one public fact (tidy desk) and it was already used on February's birthday card, so this leans on her role and team instead.",
+   "Written in first person singular per rules but carries two signatures; check the 'I' reads correctly for a co-signed card."
+  ],
+  "rationale": "Names the ten years and anchors on her steadying presence in Manchester Audit, avoiding the tidy-desk line used on her recent birthday card."
+ },
+ "createdAt": "2027-04-12",
+ "promptHash": "63fdbafa3d627b26",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 595,
+  "output_tokens": 394,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6657
+}

@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Emma",
+  "inside_message": "Happy birthday from all of us in Manchester. You've made yourself hard to do without since October, so consider today an official instruction to stop thinking about audit files. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, bright but uncluttered, plenty of white space"
+  },
+  "flags": [],
+  "rationale": "Light staff birthday in Sarah's brisk, kind voice; avoids repeating the Ribble Print Works line used on her one-year card and says nothing about age."
+ },
+ "createdAt": "2027-02-02",
+ "promptHash": "a4a5c649b40d0a96",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 549,
+  "output_tokens": 243,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4430
+}

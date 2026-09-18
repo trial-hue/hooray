@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Nadia",
+  "inside_message": "Happy birthday, Nadia. I hope the day is a quiet one, with the phone off and someone else doing the cooking. Thank you for everything you bring to the Manchester office.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, plenty of white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; a line about Nadia's work in Tax could be added if the manager has detail.",
+   "Recipient shares the firm's name (Crane) - worth checking whether a partner-level signer other than the Managing Partner is more appropriate."
+  ],
+  "rationale": "With no facts available, the card stays simply warm and personal in James's plain voice, with light humour and no reference to age or ordinal."
+ },
+ "createdAt": "2026-11-02",
+ "promptHash": "918f42a015a89940",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 410,
+  "output_tokens": 309,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5161
+}

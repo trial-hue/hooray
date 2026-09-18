@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Ewan",
+  "inside_message": "Happy birthday from everyone in Leeds. Whatever you do today, I hope none of it involves a spreadsheet. Enjoy it properly.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "neat scattered confetti, calm spacing, plenty of paper"
+  },
+  "flags": [
+   "Only fact available was the tidy desk, already used on January's anniversary card, so this one is deliberately light on detail."
+  ],
+  "rationale": "Kept short and warm with gentle humour in Lucy's voice, avoiding the tidy-desk line used on his recent anniversary card and any mention of age."
+ },
+ "createdAt": "2027-05-12",
+ "promptHash": "8f9b3dbfb36145dc",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 546,
+  "output_tokens": 334,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5526
+}

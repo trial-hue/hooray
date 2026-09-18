@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "Nine years, Priya",
+  "inside_message": "Nine years today since you joined Hartley & Crane. I didn't want the date to pass without saying thank you properly. I hope this finds you somewhere restful, with the day entirely your own.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "formal",
+   "style_note": "quiet concentric rings, brand navy, plenty of space"
+  },
+  "flags": [
+   "Priya is on leave, so the mentoring scheme and any work detail have been left out; the anniversary itself is still named as the occasion requires the ordinal.",
+   "Check with Nadia that sending an anniversary card during leave is welcome; it could be held until she is back."
+  ],
+  "rationale": "Names the nine years as required but keeps everything else personal and restful, given she is on leave, and avoids the softer phrasing used in October's birthday card."
+ },
+ "createdAt": "2027-03-05",
+ "promptHash": "f1d6f3a9ffa5d1c8",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 584,
+  "output_tokens": 539,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 9255
+}

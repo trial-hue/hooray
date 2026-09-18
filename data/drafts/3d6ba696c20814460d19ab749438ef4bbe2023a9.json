@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "25 years, Helen",
+  "inside_message": "You arrived as a trainee in 2001, and the Tax team has grown from three people to thirty around you. Most of our partners learned the job from you, which is a rarer thing than it sounds. Thank you for 25 years.",
+  "sign_off": "With my thanks and warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 25, restrained, brand navy on plain paper"
+  },
+  "flags": [
+   "Context lists Helen as Tax Manager but her team as Audit; confirm which is correct before print.",
+   "Signer is not her line manager; check whether her line manager should co-sign."
+  ],
+  "rationale": "Anchors on her 2001 start, the growth of the Tax team and her training of the partners; plain and proud in the Managing Partner's voice, with the 25 years named as required."
+ },
+ "createdAt": "2026-10-07",
+ "promptHash": "1bd3778de46b9a75",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 427,
+  "output_tokens": 407,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6315
+}

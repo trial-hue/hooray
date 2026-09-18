@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Three years, Tariq",
+  "inside_message": "Three years with the Tax team in Manchester, and you've just got the CIMA case study behind you as well. Thank you for the steady work you do here, and for being the person people ask when they're stuck.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, warm brand tones, uncluttered"
+  },
+  "flags": [
+   "Third line assumes colleagues turn to Tariq for help; not in the facts, so edit out if it overstates things."
+  ],
+  "rationale": "Anchors on three years in the Manchester tax team and the recently completed CIMA case study, in Helen's plain, welcoming voice."
+ },
+ "createdAt": "2027-07-04",
+ "promptHash": "cc8b137eed3d1826",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 421,
+  "output_tokens": 326,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6624
+}

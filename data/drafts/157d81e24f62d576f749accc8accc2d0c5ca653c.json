@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Six years, Rohan",
+  "inside_message": "Six years in payroll and not one run late on your watch, which is quite a record. Thank you for that, and for getting half of Leeds out walking on a Wednesday.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "bright",
+   "style_note": "clean six, understated, brand colour on plain paper"
+  },
+  "flags": [
+   "The line about payroll never running late comes from Lucy's own words rather than the listed facts; confirm it holds."
+  ],
+  "rationale": "Names the six years, leans on Lucy's own praise for the payroll record and the Wednesday walking group, in a plain, light line-manager voice."
+ },
+ "createdAt": "2026-10-22",
+ "promptHash": "b949a7f914b271e1",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 431,
+  "output_tokens": 373,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6096
+}

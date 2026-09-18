@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "Ten years, Rachel",
+  "inside_message": "Ten years with Hartley & Crane, and the firm looks after its people better than it did when you arrived. Thank you for that, and for the steadiness you bring to the Manchester office. I'm glad you're here.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large ten, understated, brand ink on plain stock"
+  },
+  "flags": [
+   "No public facts supplied, so the message stays general; add a specific line if you have one.",
+   "Card follows a birthday card sent a week earlier on 27 March."
+  ],
+  "rationale": "With no facts to draw on, this leans plainly on the ten years and her Head of People role, in the signer's understated voice, and avoids the phrasing of last week's birthday card."
+ },
+ "createdAt": "2027-04-03",
+ "promptHash": "e235221f97df9448",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 513,
+  "output_tokens": 366,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6376
+}

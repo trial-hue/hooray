@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Eight years, Harry",
+  "inside_message": "Eight years with us in Leeds, and the Outsourcing team is steadier for every one of them. Thank you for the care you put into the work, week in, week out. It doesn't go unnoticed.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large eight, understated, brand navy on plain paper"
+  },
+  "flags": [
+   "No public facts supplied, so the message stays general; add a specific detail if you have one."
+  ],
+  "rationale": "Names the eight years and his Leeds Outsourcing role, staying plainly warm in Lucy's voice because no specific facts were provided."
+ },
+ "createdAt": "2026-10-24",
+ "promptHash": "b389a4471eda32e5",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 409,
+  "output_tokens": 298,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4924
+}

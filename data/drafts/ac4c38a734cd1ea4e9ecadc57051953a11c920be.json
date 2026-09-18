@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Mark",
+  "inside_message": "Happy birthday, Mark. December is never the quietest month in Leeds, so I hope you manage to shut the laptop and enjoy the day properly. Thanks for everything you do.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "understated confetti, brand colours, plenty of white space"
+  },
+  "flags": [
+   "No public facts supplied for Mark, so the message is warm but general; a personal line from James would lift it."
+  ],
+  "rationale": "With no facts available, the card stays simply warm and peer-to-peer, with a light nod to a busy December and no reference to age."
+ },
+ "createdAt": "2026-12-08",
+ "promptHash": "780c87f16fbcc30f",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 411,
+  "output_tokens": 255,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4160
+}

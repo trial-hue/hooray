@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "15 years, Gary",
+  "inside_message": "15 years in Leeds, and the office has never once felt unmanaged. The 2023 move went smoothly because you had thought of everything weeks before anyone else had. Thank you, Gary, for 15 years of getting it right.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 15, understated, brand navy on uncoated paper"
+  },
+  "flags": [
+   "Signer is listed as Outsourcing Manager and line manager to an Office Coordinator in Operations; worth confirming the reporting line.",
+   "Lucy's voice sample refers to payroll runs, which isn't in Gary's facts, so it has been left out."
+  ],
+  "rationale": "Anchors on the 15 years and the 2023 Leeds move rather than the Friday fruit, which the October birthday card already used, keeping the tone plain and proud."
+ },
+ "createdAt": "2027-06-11",
+ "promptHash": "f7f98f954567bfa2",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1696,
+  "output_tokens": 901,
+  "cache_read_input_tokens": 9044,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 12223
+}

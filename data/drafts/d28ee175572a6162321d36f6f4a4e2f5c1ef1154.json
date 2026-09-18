@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Amelia",
+  "inside_message": "Happy birthday from all of us in Manchester. It's good having you on the audit team, and I hope the day is a properly relaxed one. Go home on time for once.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, generous white space"
+  },
+  "flags": [
+   "No public facts provided, so the message is warm but general; add a specific line if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card stays simply warm and uses Sarah's dry 'go home' register for a personal note."
+ },
+ "createdAt": "2026-10-03",
+ "promptHash": "4fe640bb1523c48f",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 368,
+  "output_tokens": 241,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4209
+}

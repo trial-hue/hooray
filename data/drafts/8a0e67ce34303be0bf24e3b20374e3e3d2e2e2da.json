@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Yusuf",
+  "inside_message": "Happy birthday from everyone in Advisory. It's a good day to leave the inbox alone and let someone else make the coffee. Enjoy it properly.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, generous white space, understated brand colours"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; add a personal line if you have one."
+  ],
+  "rationale": "With no facts to draw on, this keeps to simple, light warmth in the line manager's voice, with no age and no invented detail."
+ },
+ "createdAt": "2026-11-23",
+ "promptHash": "616559f8e4d7588e",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 353,
+  "output_tokens": 246,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4248
+}

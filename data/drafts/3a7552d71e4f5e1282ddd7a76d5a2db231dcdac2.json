@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Aisha",
+  "inside_message": "Happy birthday from all of us in Manchester. I hope the day is properly your own, with the phone off and someone else making the coffee. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti, generous white space, understated"
+  },
+  "flags": [
+   "No public facts supplied for Aisha, so the message is warm but general."
+  ],
+  "rationale": "With no facts available, the card stays simply warm in James's plain voice and deliberately avoids repeating January's anniversary wording."
+ },
+ "createdAt": "2027-07-19",
+ "promptHash": "27e9342c2c374f04",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 543,
+  "output_tokens": 232,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4531
+}

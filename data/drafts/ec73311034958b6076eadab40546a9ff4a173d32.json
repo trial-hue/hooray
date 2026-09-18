@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Oliver",
+  "inside_message": "Happy birthday from all of us in Manchester. I hope the day is spent well away from your inbox, with something good to eat and nobody asking you anything difficult.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Aisha Rahman, Advisory Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, generous white space"
+  },
+  "flags": [
+   "No public facts supplied for Oliver, so the message is warm but general."
+  ],
+  "rationale": "With no facts available, the card stays simply warm and light in Aisha's voice, and deliberately avoids echoing January's work-anniversary wording."
+ },
+ "createdAt": "2027-04-11",
+ "promptHash": "55cdfffc121f42ae",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 515,
+  "output_tokens": 244,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4558
+}

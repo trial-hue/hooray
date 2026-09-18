@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Priya",
+  "inside_message": "Happy birthday, Priya. I hope the day is a good one, with decent food, good company and nothing at all in the diary. Thinking of you today.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, generous white space"
+  },
+  "flags": [
+   "Recipient is on leave, so the mentoring scheme fact was deliberately left out; confirm a card is welcome."
+  ],
+  "rationale": "Kept entirely personal because Priya is on leave, and phrased afresh to avoid echoing last year's birthday and the March anniversary card."
+ },
+ "createdAt": "2027-10-01",
+ "promptHash": "d895b73c353accb6",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 690,
+  "output_tokens": 252,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4375
+}

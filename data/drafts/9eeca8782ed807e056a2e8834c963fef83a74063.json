@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Welcome to Hartley & Crane",
+  "inside_message": "Welcome, Daniel. You'll be joining the Tax team on the third floor, where Helen will meet you on your first morning. If your interview answers on R&D tax credits are anything to go by, you'll fit in well here.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "James Hartley, Managing Partner and Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "bands",
+   "palette_variant": "bright",
+   "style_note": "clean horizontal bands, brand colours, plenty of space"
+  },
+  "flags": [
+   "Co-signed by Helen Marsh, who is also named in the message as the person greeting him; check that reads well."
+  ],
+  "rationale": "Leans on the Tax team, the third floor and his interview on R&D credits, kept short and forward-looking as he hasn't started yet."
+ },
+ "createdAt": "2026-09-28",
+ "promptHash": "908d8b366639027f",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 548,
+  "output_tokens": 356,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5936
+}

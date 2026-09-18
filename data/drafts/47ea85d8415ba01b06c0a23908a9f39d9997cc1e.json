@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "18 years, Tom",
+  "inside_message": "Eighteen years with Hartley & Crane, and most of what Audit is in Manchester now has your fingerprints on it. Thank you for the steadiness, and for the partner you've become. Good to have you with us.",
+  "sign_off": "With real gratitude,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 18, restrained, brand navy on uncoated paper"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; a line about a specific client or team moment would lift it.",
+   "Signer shares a surname with the firm and recipient shares a surname with a partner elsewhere in the firm; worth checking no relation should be acknowledged."
+  ],
+  "rationale": "With no facts to anchor on, the card leans on the eighteen years and Tom's standing in Manchester Audit, in a plain and proud Managing Partner voice."
+ },
+ "createdAt": "2027-06-15",
+ "promptHash": "e0b9b4d48dbde091",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 536,
+  "output_tokens": 328,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6040
+}

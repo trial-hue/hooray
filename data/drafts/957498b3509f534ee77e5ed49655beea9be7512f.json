@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Helen",
+  "inside_message": "Happy birthday from all of us in Manchester. Late January is not the kindest week to have a birthday in a tax team, so I hope you get the evening entirely to yourself. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, generous white space, understated colour"
+  },
+  "flags": [
+   "No public facts supplied for Helen, so the message is warm but general; add a specific line if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card stays simply warm and nods lightly to the late-January timing without dwelling on work."
+ },
+ "createdAt": "2027-01-30",
+ "promptHash": "f1ea816bb806a377",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 384,
+  "output_tokens": 333,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6245
+}

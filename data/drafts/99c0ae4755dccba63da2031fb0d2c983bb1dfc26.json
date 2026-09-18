@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "All the best, Rob",
+  "inside_message": "Eight years and not one payroll run missed, which anyone who has done the job will tell you is no small thing. We'll miss you here in Leeds, and Friday mornings won't be the same without your bacon-roll order. Good luck with whatever comes next.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "waves",
+   "palette_variant": "muted",
+   "style_note": "calm horizontal waves, understated, brand navy"
+  },
+  "flags": [],
+  "rationale": "Leans on the unbroken payroll record and the Friday bacon rolls for warmth and specificity, with light humour suited to a line manager's leaver card."
+ },
+ "createdAt": "2026-10-05",
+ "promptHash": "c9e878b1a82788bd",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 398,
+  "output_tokens": 260,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5399
+}

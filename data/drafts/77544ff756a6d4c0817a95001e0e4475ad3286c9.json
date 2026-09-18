@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "One year, Emma",
+  "inside_message": "A year in, and it still says something that you picked up the Ribble Print Works fieldwork in your first month and got on with it. Thank you for a good first year in Manchester. Here's to the second.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, light and clean"
+  },
+  "flags": [],
+  "rationale": "Anchors on the Ribble Print Works fieldwork from her first month and names the first year, in Sarah's plain, appreciative line-manager voice."
+ },
+ "createdAt": "2026-10-07",
+ "promptHash": "866c5da882192a3e",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 409,
+  "output_tokens": 228,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3601
+}

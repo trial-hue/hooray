@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "16 years, Fenwick Marine",
+  "inside_message": "This month marks 16 years since Fenwick Marine first came to Hartley & Crane. Thank you, Yuki, for the trust you and your colleagues have placed in us over that time. We value the relationship and look forward to continuing it.",
+  "sign_off": "With our thanks and best regards,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 16, restrained type, brand navy on plain stock"
+  },
+  "flags": [
+   "Only public fact given is \"long-standing client\", so the message stays general; add a specific detail if you have one.",
+   "Confirm Yuki Martin is the right named recipient for a company-level anniversary card."
+  ],
+  "rationale": "Formal company-to-company note anchored on the 16 years since 2011 and the trust placed in the firm, with no service or fee detail and no exclamation marks."
+ },
+ "createdAt": "2027-08-01",
+ "promptHash": "9d9a1ff8c2c3e333",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1230,
+  "output_tokens": 819,
+  "cache_read_input_tokens": 9044,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 11353
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Oscar",
+  "inside_message": "Happy birthday from all of us in Manchester. I hope the day is a good one, spent well away from a spreadsheet. Whatever you've got planned, enjoy it properly.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, bright but understated, plenty of white space"
+  },
+  "flags": [
+   "No public facts provided for Oscar, so the message is warm but general."
+  ],
+  "rationale": "With no facts to draw on, this keeps to simple warmth in Sarah's brisk, kind voice and deliberately avoids repeating the July work-anniversary phrasing."
+ },
+ "createdAt": "2027-09-08",
+ "promptHash": "ae776d41c641bafe",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 518,
+  "output_tokens": 266,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4600
+}

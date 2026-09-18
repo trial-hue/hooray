@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Dev",
+  "inside_message": "Happy birthday, Dev. Thank you for keeping Manchester running quietly in the background, which is where the best IT work tends to happen. Have a proper day off and let someone else answer the phone.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Rachel Okafor, Head of People",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, plenty of white space, understated"
+  },
+  "flags": [
+   "No public facts supplied for Dev, so the message stays general; add a specific line if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card keeps to confident warmth about his role and office, with the light humour the firm's tone allows and no reference to age."
+ },
+ "createdAt": "2026-11-25",
+ "promptHash": "2f2c674a32c334ec",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 341,
+  "output_tokens": 295,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4821
+}

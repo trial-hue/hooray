@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Congratulations on Harrogate",
+  "inside_message": "Congratulations on the opening of the Harrogate roastery. Three sites in six years is a considerable achievement, and we are glad to have played a small part along the way. Thank you, Harriet, for your continued trust in us.",
+  "sign_off": "With our warm regards,",
+  "signature_line": "Aisha Rahman, Advisory Partner",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "formal",
+   "style_note": "restrained sparks, brand navy, generous white space"
+  },
+  "flags": [
+   "The 2024 growth funding advice is referenced only obliquely as 'a small part'; confirm whether Aisha would prefer it named."
+  ],
+  "rationale": "Formal company-to-company note anchored on the Harrogate opening and the growth from one site to three, thanking her for her trust without naming services or fees."
+ },
+ "createdAt": "2026-10-08",
+ "promptHash": "44bf0acb7b899c2a",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 465,
+  "output_tokens": 289,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4849
+}

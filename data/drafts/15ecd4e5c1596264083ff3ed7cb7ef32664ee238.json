@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "13 years, Helen",
+  "inside_message": "13 years with Hartley & Crane, and the Manchester tax team would be a far shakier place without you. Thank you for the steadiness you bring to it, and for being the person the rest of us check things with.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean 13, restrained brand navy on plain paper"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; a specific line from Nadia would lift it."
+  ],
+  "rationale": "With no facts to draw on, the card names the 13 years plainly and thanks Helen for her steadiness in the Manchester tax team, in a tone distinct from January's birthday card."
+ },
+ "createdAt": "2027-05-12",
+ "promptHash": "f86cb29eb85859a0",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 521,
+  "output_tokens": 348,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6240
+}

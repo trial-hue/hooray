@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Six years, Rhys",
+  "inside_message": "Six years with Hartley & Crane, and Advisory in Manchester is a steadier place for it. Thank you for the care you put into your work, and for being someone the rest of the team can rely on.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large six, understated, brand navy on plain paper"
+  },
+  "flags": [
+   "No public facts supplied for Rhys, so the message is warm but general; add a specific project if you have one."
+  ],
+  "rationale": "With no facts available, this keeps to the six years and reliable teamwork in a plain line-manager voice, and avoids the spreadsheet joke used on his birthday card."
+ },
+ "createdAt": "2027-03-07",
+ "promptHash": "681d85fe36780e99",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 471,
+  "output_tokens": 315,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5035
+}

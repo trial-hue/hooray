@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Oliver",
+  "inside_message": "Happy birthday from everyone in Advisory. Sharing a name with you has caused enough confusion in Manchester to keep us all entertained, so the least I can do is wish you a proper day off. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, plenty of white space, bright but tidy"
+  },
+  "flags": [
+   "Signer and recipient share the first name Oliver; the card leans on that lightly, so check it reads well in print."
+  ],
+  "rationale": "Light staff birthday that avoids repeating January's bake sale line, using the shared first name for gentle humour in keeping with the firm's understated tone."
+ },
+ "createdAt": "2027-05-04",
+ "promptHash": "ea19192e448b8774",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 505,
+  "output_tokens": 326,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5534
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Sarah",
+  "inside_message": "Happy birthday from everyone in the Manchester office. I hope the day is yours entirely: no files, no queries, no one asking where anything is. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Tom Whitfield, Audit Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, plenty of paper showing, understated"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general rather than specific."
+  ],
+  "rationale": "With no facts to draw on, this keeps to simple warmth from her line manager with light humour, and avoids repeating the February anniversary card's phrasing."
+ },
+ "createdAt": "2027-08-21",
+ "promptHash": "408f7cc6391d58b5",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 527,
+  "output_tokens": 252,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4423
+}

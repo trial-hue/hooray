@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Ben",
+  "inside_message": "Happy birthday, Ben. Whatever the calendar says about month-end, today is yours, so put the spreadsheets down and enjoy it properly.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, bright but uncluttered, lots of white space"
+  },
+  "flags": [],
+  "rationale": "Light nod to his month-end work without repeating last October's anniversary card, which already praised the twenty clients in detail."
+ },
+ "createdAt": "2027-06-03",
+ "promptHash": "88948dd1fdd45e7d",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 548,
+  "output_tokens": 220,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3720
+}

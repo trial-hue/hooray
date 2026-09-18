@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Rohan",
+  "inside_message": "Happy birthday from all of us in Leeds. I hope the Wednesday walkers let you off the front for once and you get a proper day to yourself. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, bright but understated, lots of space"
+  },
+  "flags": [],
+  "rationale": "Light staff birthday leaning on the Wednesday walking group, deliberately avoiding the payroll line used on his six-year card."
+ },
+ "createdAt": "2027-03-10",
+ "promptHash": "16e62b102c4cdc73",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 533,
+  "output_tokens": 227,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3866
+}

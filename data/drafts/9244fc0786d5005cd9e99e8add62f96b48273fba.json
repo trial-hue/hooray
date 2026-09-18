@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Seven years, Amy",
+  "inside_message": "Seven years with Hartley & Crane today. You've become the person in Tax that people go to when something looks complicated, and the sole-trader clients are in far better shape for it. Thank you, Amy.",
+  "sign_off": "With thanks,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean seven, understated, plenty of paper showing"
+  },
+  "flags": [],
+  "rationale": "Names the seven years and leans on her Making Tax Digital work without repeating the October birthday card's phrasing; plain, warm line-manager voice."
+ },
+ "createdAt": "2027-07-06",
+ "promptHash": "9d5138e83f6c4a1e",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 552,
+  "output_tokens": 232,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4076
+}

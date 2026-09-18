@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Meera",
+  "inside_message": "Happy birthday from all of us in Audit. I hope the day is a good one, with decent cake and nothing urgent in your inbox. Enjoy it properly.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, generous white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; add a specific line if you have one."
+  ],
+  "rationale": "With no facts to draw on, this keeps to simple warmth in Sarah's brief, kindly voice, with a light nudge to take the day off."
+ },
+ "createdAt": "2026-10-10",
+ "promptHash": "cf4f165fc21abc15",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 380,
+  "output_tokens": 249,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4738
+}

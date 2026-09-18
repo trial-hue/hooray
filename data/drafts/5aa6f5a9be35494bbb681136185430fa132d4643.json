@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Two years, Wei",
+  "inside_message": "Two years with the Manchester audit team today. Thank you for the steady, careful work you bring to it, and for being someone the rest of the team is glad to have on a job. Good to have you here.",
+  "sign_off": "Warm wishes and thanks,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, warm brand tones, lots of space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is general; add a specific job or client reference if you have one."
+  ],
+  "rationale": "With no facts to draw on, this keeps to a plain, warm two-year thank you in Sarah's direct line-manager voice."
+ },
+ "createdAt": "2027-02-23",
+ "promptHash": "87e60ef87a10414e",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 393,
+  "output_tokens": 383,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6973
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "14 years, Evie",
+  "inside_message": "14 years with Hartley & Crane, and the Manchester tax team is steadier for every one of them. Thank you for the care you put into your work, and for being the person people come to when they're stuck.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large numeral fourteen, understated, brand ink on paper"
+  },
+  "flags": [
+   "No public facts provided, so the message stays general; add a specific detail if you have one."
+  ],
+  "rationale": "With no facts supplied, the card leans on the fourteen years and her place in the Manchester tax team, kept plain and warm in Helen's line-manager voice."
+ },
+ "createdAt": "2027-06-11",
+ "promptHash": "8469d2af1552ed13",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 399,
+  "output_tokens": 265,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4312
+}

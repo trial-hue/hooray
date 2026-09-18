@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Two years, Agnieszka",
+  "inside_message": "Two years with Hartley & Crane today. Thank you for the steady, thoughtful way you look after everyone in Manchester, often before they have thought to ask. It's good to have you on the team.",
+  "sign_off": "Warm wishes and thanks,",
+  "signature_line": "Rachel Okafor, Head of People",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, warm brand tones, lots of paper"
+  },
+  "flags": [
+   "No public facts supplied, so the message is generally warm rather than specific; add a detail if you have one."
+  ],
+  "rationale": "Names the two years as required and leans on her People Advisor role in Manchester, kept plainly warm because no specific facts were provided."
+ },
+ "createdAt": "2026-12-11",
+ "promptHash": "fb811ad6515f7dd6",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 361,
+  "output_tokens": 366,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6441
+}

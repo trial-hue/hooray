@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Amy",
+  "inside_message": "Happy birthday, Amy. Getting our sole traders through Making Tax Digital was no small thing, and you made it look calm. Have a proper day off and leave the inbox to us.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, plenty of white space, understated"
+  },
+  "flags": [],
+  "rationale": "Leans on the Making Tax Digital rollout for specificity, with a light line from her line manager and no reference to age."
+ },
+ "createdAt": "2026-10-06",
+ "promptHash": "7e09b59585e726f8",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 418,
+  "output_tokens": 220,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3796
+}

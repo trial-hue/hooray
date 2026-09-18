@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Six years, Chloe",
+  "inside_message": "Six years in, and Audit runs better for having you in it. Thank you for the way you steadied Northgate in June, and for the patience you show the juniors. Go home on time occasionally.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple overlapping rings, clean, plenty of white space"
+  },
+  "flags": [
+   "Mention of patience with juniors is not in the public facts; edit or cut if inaccurate."
+  ],
+  "rationale": "Anchors on six years and the Northgate close from a different angle to last year's card, with Sarah's plain, dry line at the end."
+ },
+ "createdAt": "2027-09-30",
+ "promptHash": "5a15dcafa4193a14",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 690,
+  "output_tokens": 495,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 8011
+}

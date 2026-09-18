@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Ten years, Sophia",
+  "inside_message": "Ten years in Tax, and the work has been steady and careful throughout. Thank you for that, and for keeping the tidiest desk in the building whilst the rest of us try to catch up.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Helen Marsh, Tax Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large ten, understated, brand ink on plain paper"
+  },
+  "flags": [
+   "Only one public fact supplied (tidy desk); Helen may wish to add a specific piece of work from the past year."
+  ],
+  "rationale": "Names the ten years as required and leans on the single fact provided for warmth, with light humour suited to a line manager's voice and a co-signature from the Managing Partner."
+ },
+ "createdAt": "2026-12-18",
+ "promptHash": "a77c87cd064dfe3e",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 483,
+  "output_tokens": 366,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6176
+}

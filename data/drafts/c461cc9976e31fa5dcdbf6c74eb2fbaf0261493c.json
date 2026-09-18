@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Chloe",
+  "inside_message": "Have a proper day off, Chloe. The 5k club can manage one Thursday without you, and Audit will cope for an afternoon. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, lots of white space, understated"
+  },
+  "flags": [],
+  "rationale": "Light and short in Sarah's clipped voice, nodding to the 5k club without repeating September's anniversary card, and no age."
+ },
+ "createdAt": "2027-03-08",
+ "promptHash": "d49cfc86aa5a7fd9",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 568,
+  "output_tokens": 218,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3964
+}

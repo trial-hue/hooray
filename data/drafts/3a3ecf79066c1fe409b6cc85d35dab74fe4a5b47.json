@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "14 years, Aisha",
+  "inside_message": "Fourteen years with Hartley & Crane, and the Advisory team in Manchester is the better for every one of them. Thank you for the steadiness you bring to it, and for the work you do that never needs announcing.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 14, restrained, brand navy on plain stock"
+  },
+  "flags": [
+   "No public facts supplied, so the message stays general; a line about Aisha's recent work would lift it."
+  ],
+  "rationale": "With no specific facts available, the card leans on the fourteen years and her Advisory role in Manchester, in a plain and proud Managing Partner voice."
+ },
+ "createdAt": "2027-01-07",
+ "promptHash": "a254ce77764ef577",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 426,
+  "output_tokens": 339,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5155
+}

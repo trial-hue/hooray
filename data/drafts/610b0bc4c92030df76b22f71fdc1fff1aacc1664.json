@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Priya",
+  "inside_message": "Happy birthday, Priya. I hope the day is an easy one, spent exactly as you'd like it and with nothing much asked of you. Enjoy it.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti, generous white space, gentle brand colours"
+  },
+  "flags": [
+   "Recipient is on leave, so the mentoring scheme fact was deliberately left out; no work references used."
+  ],
+  "rationale": "Kept deliberately personal and free of any work detail because Priya is on leave, with a light, unfussy birthday tone in Nadia's plain voice."
+ },
+ "createdAt": "2026-10-01",
+ "promptHash": "d0244dd44fc1b678",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 459,
+  "output_tokens": 259,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4861
+}

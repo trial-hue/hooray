@@ -51,7 +51,7 @@ export function runChecks(draft: DraftOutput, ctx: DraftContext, otherCompanyNam
   const hasName = new RegExp(`\\b${escapeRe(name)}\\b`).test(textForName);
   const companyOk = r.kind === "client" && r.clientCompanyName && textForName.includes(r.clientCompanyName);
   if (!hasName && !companyOk) v.push(`the recipient's name "${name}" must appear in the headline or message`);
-  for (const w of textForName.split(/[^A-Za-z'’-]+/)) {
+  for (const w of textForName.split(/[^\p{L}'’-]+/u)) {
     if (w.length >= 3 && w[0] === name[0] && w !== name) {
       const d = levenshtein(w.toLowerCase(), name.toLowerCase());
       if (d >= 1 && d <= 2 && w.toLowerCase() !== name.toLowerCase()) v.push(`"${w}" looks like a misspelling of "${name}"`);

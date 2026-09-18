@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Four years, Marcus",
+  "inside_message": "Four years with us, and this one has been a big one: ACA finals passed and still time given to the school sessions. Thank you for the steady, careful work you bring to the Manchester audit team. Here's to the year ahead.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, understated, brand colours on paper"
+  },
+  "flags": [
+   "Last year's birthday card also mentioned the ACA exams and Number Partners; phrasing varied, but a manager may prefer a different anchor."
+  ],
+  "rationale": "Names the four years and leans on his ACA pass and Number Partners volunteering, in Sarah's plain, brief manager voice."
+ },
+ "createdAt": "2027-09-04",
+ "promptHash": "4d5723e223baaed0",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 569,
+  "output_tokens": 288,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5518
+}

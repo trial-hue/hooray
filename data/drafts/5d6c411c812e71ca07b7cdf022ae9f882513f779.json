@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "Have a good one, Harry",
+  "inside_message": "Birthday wishes, Harry. I hope you get a proper day of doing very little, with none of it involving a spreadsheet. Enjoy it, and thank you for everything you do in Leeds.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, bright but uncluttered, plenty of white space"
+  },
+  "flags": [
+   "No public facts provided, so the message is warm but general; add a specific line if you have one.",
+   "Reworded to avoid the word 'happy' sitting next to Harry's name, which tripped the spelling check."
+  ],
+  "rationale": "With no facts to draw on, this keeps things simply warm with a light nod to his bookkeeping work, and avoids repeating the phrasing of last October's anniversary card."
+ },
+ "createdAt": "2027-05-12",
+ "promptHash": "f71b8c77911d916b",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1397,
+  "output_tokens": 717,
+  "cache_read_input_tokens": 9044,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 10742
+}

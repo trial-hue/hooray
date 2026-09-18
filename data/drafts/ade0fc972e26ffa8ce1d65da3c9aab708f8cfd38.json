@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Five years, Oscar",
+  "inside_message": "Five years with Hartley & Crane, and the Audit team in Manchester is better for every one of them. Thank you for the steady, careful work you do, and for being someone people are glad to see on a job. Here's to the year ahead.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager and James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large five, understated, brand navy on plain paper"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; add a specific job or client win if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card stays plainly warm and names the five years, in Sarah's direct voice with James co-signing."
+ },
+ "createdAt": "2027-07-03",
+ "promptHash": "b62c918df6374b4e",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 458,
+  "output_tokens": 387,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5635
+}

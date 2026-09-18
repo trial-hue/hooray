@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Joel",
+  "inside_message": "Happy birthday from all of us in Advisory. It's good to have you on the team in Manchester. I hope the day is a quiet, cheerful one, and that you get a proper break from your inbox.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, generous white space, brand colours"
+  },
+  "flags": [
+   "No public facts supplied for Joel, so the message is warm but general; a line from Oliver about recent work would lift it."
+  ],
+  "rationale": "With no facts to draw on, the card stays simply warm and personal from his line manager, keeping the firm's understated tone and avoiding any invented detail."
+ },
+ "createdAt": "2026-12-08",
+ "promptHash": "8516da831025ca18",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 350,
+  "output_tokens": 272,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5311
+}

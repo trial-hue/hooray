@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "One year, Daniel",
+  "inside_message": "A year today since you joined the Tax team, and the third floor has had the better of the deal. You arrived talking sense about R&D tax credits and you've kept it up since. Thank you for a good first year.",
+  "sign_off": "Warm wishes and thanks,",
+  "signature_line": "Helen Marsh, Tax Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, light and clean, brand colour"
+  },
+  "flags": [
+   "The public facts are still written as pre-start notes (joining from Manchester Met, will sit with Helen's team); worth refreshing them with something from Daniel's first year."
+  ],
+  "rationale": "Marks the first year and leans on the R&D tax credits detail and the third-floor team, in Helen's plain, welcoming voice, without repeating the welcome or birthday lines."
+ },
+ "createdAt": "2027-09-28",
+ "promptHash": "3ebe51e527a388f5",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 738,
+  "output_tokens": 338,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5838
+}

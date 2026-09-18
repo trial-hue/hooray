@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Welcome to Hartley & Crane",
+  "inside_message": "Welcome, Daniel. You'll be joining the Tax team in Manchester and sitting with Helen's lot on the third floor, so you'll be in good hands from day one. I look forward to meeting you properly once you're settled.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "James Hartley, Managing Partner",
+  "artwork_brief": {
+   "template": "bands",
+   "palette_variant": "bright",
+   "style_note": "clean horizontal bands, brand colours, generous white space"
+  },
+  "flags": [
+   "Helen is named by first name only; confirm which Helen greets him on the third floor."
+  ],
+  "rationale": "Uses the two known facts (Tax team, Helen's third-floor team) in future tense, kept short as he hasn't started and the signer doesn't know him yet."
+ },
+ "createdAt": "2026-09-28",
+ "promptHash": "8a7a9587116e5f19",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 415,
+  "output_tokens": 293,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5046
+}

@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "11 years, Dev",
+  "inside_message": "11 years with Hartley & Crane today, and the Manchester office has never once had to wonder whether IT was in hand. Thank you, Dev, for the steadiness. It is noticed more than you might think.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Rachel Okafor, Head of People",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean 11, understated, brand colour on plain stock"
+  },
+  "flags": [
+   "No public facts supplied, so the message stays general; add a specific line if you have one."
+  ],
+  "rationale": "With no facts to draw on, this leans on 11 years of dependable IT in Manchester and avoids reusing the November birthday card's phrasing."
+ },
+ "createdAt": "2027-03-21",
+ "promptHash": "33accdcf43e4dc02",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 479,
+  "output_tokens": 329,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5791
+}

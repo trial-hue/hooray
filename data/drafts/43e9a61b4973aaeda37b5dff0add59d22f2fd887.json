@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "14 years, Yusuf",
+  "inside_message": "14 years with Hartley & Crane, and Advisory in Manchester wouldn't be what it is without you. Thank you for the steadiness you bring to the work and to the people around you. Good to have you with us.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large 14, understated, brand navy on plain stock"
+  },
+  "flags": [
+   "No public facts supplied, so the message is general; add a specific project if you have one."
+  ],
+  "rationale": "With no facts to draw on, the card stays simply warm and names the fourteen years and his team, in a plain line manager's voice."
+ },
+ "createdAt": "2027-02-08",
+ "promptHash": "06d932ca90d5b6e7",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 480,
+  "output_tokens": 293,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4964
+}

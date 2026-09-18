@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Six years, Hannah",
+  "inside_message": "Six years with Hartley & Crane in Manchester, and the Audit team is steadier for it. Thank you for the care you put into your work, and for being someone people can rely on. Now go home.",
+  "sign_off": "Warm wishes and thanks,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "rings",
+   "palette_variant": "bright",
+   "style_note": "simple concentric rings, generous white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message stays general; add a specific job or client if you have one."
+  ],
+  "rationale": "With no facts to draw on, this stays plainly warm, names the six years and the Manchester audit team, and borrows Sarah's own closing line."
+ },
+ "createdAt": "2026-10-12",
+ "promptHash": "998c2c320250e65f",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 396,
+  "output_tokens": 395,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6797
+}

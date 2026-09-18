@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Agnieszka",
+  "inside_message": "Happy birthday from all of us in Manchester. I hope the day is spent well away from spreadsheets and anyone asking you a quick question. Enjoy it properly.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, brand colours, lots of white space"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general."
+  ],
+  "rationale": "With no facts available, the card stays simply warm and light in Sarah's dry voice, and deliberately avoids the phrasing used in February's anniversary card."
+ },
+ "createdAt": "2027-06-22",
+ "promptHash": "ed284f75cd5bdc10",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 513,
+  "output_tokens": 252,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4479
+}

@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "14 years, Bethan",
+  "inside_message": "Fourteen years with Hartley & Crane, and the Advisory team is better for every one of them. Thank you for looking after this year's two graduates so well; they're learning from the right person.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Oliver Grant, Advisory Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "clean 14, understated, brand colour on plain paper"
+  },
+  "flags": [],
+  "rationale": "Leans on the fourteen years and her mentoring of two graduates, in a plain, warm line-manager voice with the ordinal stated."
+ },
+ "createdAt": "2026-12-02",
+ "promptHash": "e800730371f97088",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 384,
+  "output_tokens": 231,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4131
+}
