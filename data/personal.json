@@ -145,25 +145,6 @@
    "createdBy": "roster",
    "isMilestone": false,
    "collectionEligible": false
-  },
-  {
-   "id": "isla-bennett-4:birthday:2026-10-02",
-   "occurrenceKey": "isla-bennett-4:birthday:2026-10-02",
-   "personId": "isla-bennett-4",
-   "type": "birthday",
-   "date": "2026-10-02",
-   "createdBy": "roster",
-   "isMilestone": false,
-   "collectionEligible": false
-  },
-  {
-   "id": "tom-okafor-3:congratulations:2026-10-03",
-   "occurrenceKey": "tom-okafor-3:congratulations:2026-10-03",
-   "personId": "tom-okafor-3",
-   "type": "congratulations",
-   "date": "2026-10-03",
-   "createdBy": "human",
-   "label": "Fifth wedding anniversary with Sam"
   }
  ],
  "cards": [
@@ -202,8 +183,8 @@
       "cache_creation_input_tokens": 328
      },
      "attempts": 1,
-     "source": "claude",
-     "ms": 4095
+     "source": "cache",
+     "ms": 0
     }
    ],
    "seed": 218291306,
@@ -211,115 +192,17 @@
     {
      "at": "2026-09-21",
      "status": "drafted",
-     "note": "claude draft"
+     "note": "cache draft"
     }
    ],
    "aiCostGbp": 0.00934518
-  },
-  {
-   "id": "card-1vklqj8",
-   "occurrenceKey": "isla-bennett-4:birthday:2026-10-02",
-   "occasionId": "isla-bennett-4:birthday:2026-10-02",
-   "personId": "isla-bennett-4",
-   "signerId": "me-akshay",
-   "dueDate": "2026-10-02",
-   "dispatchOn": "2026-09-27",
-   "status": "drafted",
-   "flags": [],
-   "versions": [
-    {
-     "draft": {
-      "front_headline": "Happy birthday, Isla",
-      "inside_message": "Happy birthday, Isla! I hear a tooth went missing in August, which means you are now officially part crocodile. Hope today involves dinosaurs, swimming, and cake in whichever order you like best.",
-      "sign_off": "Lots of love,",
-      "signature_line": "Akshay",
-      "artwork_brief": {
-       "template": "confetti",
-       "palette_variant": "bright",
-       "style_note": "bright playful confetti, cheerful and childlike"
-      },
-      "flags": [],
-      "rationale": "Leans on the dinosaur and swimming interests and the lost tooth for a silly, child-friendly tone, with no mention of age."
-     },
-     "createdAt": "2026-09-22",
-     "promptHash": "438d0892f87da935",
-     "model": "claude-opus-5",
-     "usage": {
-      "input_tokens": 362,
-      "output_tokens": 262,
-      "cache_read_input_tokens": 4680,
-      "cache_creation_input_tokens": 0
-     },
-     "attempts": 1,
-     "source": "claude",
-     "ms": 4241
-    }
-   ],
-   "seed": 4085840276,
-   "history": [
-    {
-     "at": "2026-09-22",
-     "status": "drafted",
-     "note": "claude draft"
-    }
-   ],
-   "aiCostGbp": 0.008346
-  },
-  {
-   "id": "card-1s7s81",
-   "occurrenceKey": "tom-okafor-3:congratulations:2026-10-03",
-   "occasionId": "tom-okafor-3:congratulations:2026-10-03",
-   "personId": "tom-okafor-3",
-   "signerId": "me-akshay",
-   "dueDate": "2026-10-03",
-   "dispatchOn": "2026-09-28",
-   "status": "drafted",
-   "flags": [],
-   "versions": [
-    {
-     "draft": {
-      "front_headline": "Happy anniversary, Tom",
-      "inside_message": "Happy anniversary to you and Sam. I'm very glad you found each other, and slightly jealous that Sam gets the good coffee before the market even opens. Have a lovely day, both of you.",
-      "sign_off": "Lots of love,",
-      "signature_line": "Akshay",
-      "artwork_brief": {
-       "template": "sparks",
-       "palette_variant": "bright",
-       "style_note": "loose scattered sparks, hand-drawn feel, warm colours"
-      },
-      "flags": [],
-      "rationale": "Leans on the anniversary with Sam and the coffee cart for a personal, teasing note from a lifelong friend, with no number named as the ordinal was ruled out."
-     },
-     "createdAt": "2026-09-23",
-     "promptHash": "979f59309287793b",
-     "model": "claude-opus-5",
-     "usage": {
-      "input_tokens": 1042,
-      "output_tokens": 634,
-      "cache_read_input_tokens": 9360,
-      "cache_creation_input_tokens": 0
-     },
-     "attempts": 2,
-     "source": "claude",
-     "ms": 9806
-    }
-   ],
-   "seed": 107858593,
-   "history": [
-    {
-     "at": "2026-09-23",
-     "status": "drafted",
-     "note": "claude draft"
-    }
-   ],
-   "aiCostGbp": 0.0200772
   }
  ],
  "digests": [],
  "printJobs": [],
  "collections": [],
  "clock": {
-  "today": "2026-09-23",
+  "today": "2026-09-21",
   "startedOn": "2026-09-21",
   "log": [
    {
@@ -336,7 +219,7 @@
    },
    {
     "at": "2026-09-21",
-    "event": "Drafted 1 card in 4.1s (0 cached, 1 live, 0 template)"
+    "event": "Drafted 1 card in 0.0s (1 cached, 0 live, 0 template)"
    },
    {
     "at": "2026-09-21",
@@ -345,22 +228,6 @@
    {
     "at": "2026-09-21",
     "event": "Added Isla Bennett (my goddaughter, she's turning seven)"
-   },
-   {
-    "at": "2026-09-22",
-    "event": "Detected 1 occasion due by 2026-10-02"
-   },
-   {
-    "at": "2026-09-22",
-    "event": "Drafted 1 card in 4.2s (0 cached, 1 live, 0 template)"
-   },
-   {
-    "at": "2026-09-23",
-    "event": "Detected 1 occasion due by 2026-10-03"
-   },
-   {
-    "at": "2026-09-23",
-    "event": "Drafted 1 card in 9.8s (0 cached, 1 live, 0 template)"
    }
   ]
  },

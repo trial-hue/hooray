@@ -37,6 +37,10 @@ node scripts/console-check.mjs                             # browser console err
 6. **+1 week** twice → cards dispatch automatically five days before the date (auto-approval is the feature), print jobs move printed → posted → delivered, Rob's collection closes and he picks a gift.
 7. **+1 month** a few times → the year runs itself. **Dashboard** → occasions under management, approve-without-edit rate, £1.39 a card, the Moonpig comparison, four people against 676.
 
+## Hooray for people
+
+A second workspace at `/me`: one person, the people they care about, the same drafting and print pipeline. Start at `/me/start` (three example people, or your own name), add contacts on `/me/people`, and the queue at `/me` works exactly like the business one. Data lives in `data/personal.json`, separate from the firm's `data/db.json`. The Google import page explains the flow; the live OAuth connection is not built. Pricing shown (£5.49 a card, £4.99 a month) is designed, not tested, and no payment is taken.
+
 ## How it works
 
 - `src/lib/engine.ts` — the daily job: progress print jobs, create and draft cards due in `LEAD_DAYS` (10), dispatch cards due in `DISPATCH_DAYS` (5) with auto-approval of anything untouched.
