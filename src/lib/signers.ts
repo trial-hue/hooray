@@ -31,6 +31,13 @@ export function chooseSigners(db: DB, person: Person, occ: Occasion): SignerChoi
       const co = alive(mgr) && mgr !== s ? mgr : undefined;
       return { signerId: s, coSignerId: co };
     }
+    case "leaver":
+    case "retirement": {
+      const s = alive(mgr) ?? alive(mp);
+      if (!s) return undefined;
+      const co = alive(mp) && mp !== s ? mp : undefined;
+      return { signerId: s, coSignerId: co };
+    }
     case "client-anniversary":
     case "client-milestone":
       return one(alive(owner) ?? alive(mp));

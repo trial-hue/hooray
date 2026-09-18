@@ -1,4 +1,4 @@
-// Unit economics. One place to edit. All GBP.
+// Unit economics. One place to edit. All GBP. Sources: docs/BUSINESS_PLAN.md.
 import type { Usage } from "./types";
 
 export const PRICES_USD_PER_MTOK: Record<string, { input: number; output: number; cacheRead: number; cacheWrite: number }> = {
@@ -8,35 +8,48 @@ export const PRICES_USD_PER_MTOK: Record<string, { input: number; output: number
 export const USD_GBP = Number(process.env.USD_GBP ?? 0.78);
 
 export const UNIT = {
-  printGbp: 1.3, // Prodigi A5 330gsm classic card, envelope included (from £1.10)
-  postageStaffBatchedGbp: 0.6, // one tracked parcel to the office, ~8 cards
-  postageClientGbp: 1.2, // business 2nd class letter + handling
-  postageFirstClassGbp: 1.7,
+  /** Pricing: all-inclusive per seat. Covers every company occasion plus six personal cards a year. */
+  pricePerEmployeePerYearGbp: 30,
+  /** Client contacts on the roster: platform fee per contact per year, plus per card at Moonpig for Business parity. */
+  clientPlatformPerContactGbp: 0.5,
+  clientCardPriceGbp: 3.6,
+  /** Card cost, all-in (A5 card, C5 envelope, economy post). Production: Docmail. Prototype: Stannp. */
+  cardCostProductionGbp: 1.39,
+  cardCostPrototypeGbp: 1.15,
   aiFallbackGbp: 0.02,
-  priceGbp: 6.0,
-  pricePerEmployeePerYearGbp: 12.0,
+  /** Occasions per employee per year the seat is expected to cover (birthday + anniversary, plus welcomes/leavers). */
+  occasionsPerEmployeePerYear: 2,
+  personalCardsPerEmployee: 6,
+  personalAllowanceTakeUp: 0.4,
   manualMinutesPerCard: 8,
   digestSecondsPerCard: 20,
+  /** Collections: blended take on the pot (2% fee on cash/gift card, 25% margin on sourced gifts). */
+  collectionBlendedTake: 0.11,
+  teamSize: 4,
 };
 
 export const MOONPIG = {
-  aov: 9.32,
-  grossMargin: 0.584,
-  ordersPerYear: 36_000_000,
-  marketingPerYearGbp: 75_000_000,
   revenueGbp: 373_000_000,
-  employees: 763,
-  cardPrice: 3.99,
-  postageFirstClass: 1.7,
-  postageTracked: 2.79,
+  grossMargin: 0.584,
+  ebitdaGbp: 104_600_000,
+  marketingGbp: 38_700_000, // 10.4% of revenue
+  employees: 676,
+  ordersPerYear: 36_000_000,
+  activeCustomers: 12_300_000,
+  ordersPerCustomer: 2.92,
+  aov: 9.32,
+  consumerCardPrice: 3.99,
+  consumerPostage: 1.9,
+  businessCardPrice: 3.6, // Moonpig for Business
+  remindersStored: 113_000_000,
 };
 export const MOONPIG_DERIVED = {
-  cogsPerOrder: MOONPIG.aov * (1 - MOONPIG.grossMargin), // £3.88
-  grossProfitPerOrder: MOONPIG.aov * MOONPIG.grossMargin, // £5.44
-  marketingPerOrder: MOONPIG.marketingPerYearGbp / MOONPIG.ordersPerYear, // £2.08
-  contributionPerOrder: MOONPIG.aov * MOONPIG.grossMargin - MOONPIG.marketingPerYearGbp / MOONPIG.ordersPerYear, // £3.36
-  revenuePerEmployee: MOONPIG.revenueGbp / MOONPIG.employees, // £489k
-  customerPaysPerCard: MOONPIG.cardPrice + MOONPIG.postageFirstClass, // £5.69
+  revenuePerEmployee: MOONPIG.revenueGbp / MOONPIG.employees, // ~£552k
+  marketingPct: MOONPIG.marketingGbp / MOONPIG.revenueGbp, // 10.4%
+  marketingPerOrder: MOONPIG.marketingGbp / MOONPIG.ordersPerYear, // £1.08
+  consumerAllIn: MOONPIG.consumerCardPrice + MOONPIG.consumerPostage, // £5.89
+  internalCardCostEstimate: 1.05, // [E] business plan estimate
+  cogsPerOrder: MOONPIG.aov * (1 - MOONPIG.grossMargin),
 };
 
 export function aiCostGbp(model: string, u: Usage): number {
@@ -45,21 +58,23 @@ export function aiCostGbp(model: string, u: Usage): number {
   return usd * USD_GBP;
 }
 
-export type PostageMode = "staff-batched" | "client" | "first-class";
-
-export function postageFor(mode: PostageMode): number {
-  return mode === "staff-batched" ? UNIT.postageStaffBatchedGbp : mode === "client" ? UNIT.postageClientGbp : UNIT.postageFirstClassGbp;
+/** Cost of one card, all in. */
+export function cardCost(aiGbp = UNIT.aiFallbackGbp, tier: "production" | "prototype" = "production"): { print: number; ai: number; total: number } {
+  const print = tier === "production" ? UNIT.cardCostProductionGbp : UNIT.cardCostPrototypeGbp;
+  return { print, ai: aiGbp, total: print + aiGbp };
 }
 
-export function cardCost(mode: PostageMode, aiGbp = UNIT.aiFallbackGbp): { print: number; postage: number; ai: number; total: number; margin: number } {
-  const print = UNIT.printGbp;
-  const postage = postageFor(mode);
-  const total = print + postage + aiGbp;
-  return { print, postage, ai: aiGbp, total, margin: (UNIT.priceGbp - total) / UNIT.priceGbp };
+/** Account A from the business plan, scaled to this roster. */
+export function seatEconomics(staff: number, cardsPerYear: number, aiGbp = UNIT.aiFallbackGbp) {
+  const revenue = staff * UNIT.pricePerEmployeePerYearGbp;
+  const companyCards = cardsPerYear;
+  const personalCards = staff * UNIT.personalCardsPerEmployee * UNIT.personalAllowanceTakeUp;
+  const cost = (companyCards + personalCards) * (UNIT.cardCostProductionGbp + aiGbp) + 120;
+  return { revenue, cost, grossProfit: revenue - cost, margin: revenue > 0 ? (revenue - cost) / revenue : 0, companyCards, personalCards };
 }
 
 export function gbp(n: number, dp = 2): string {
-  return `£${n.toFixed(dp)}`;
+  return `£${n.toLocaleString("en-GB", { minimumFractionDigits: dp, maximumFractionDigits: dp })}`;
 }
 export function pence(n: number): string {
   return n < 0.1 ? `${(n * 100).toFixed(1)}p` : gbp(n);

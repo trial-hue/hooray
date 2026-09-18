@@ -36,8 +36,8 @@ export function runChecks(draft: DraftOutput, ctx: DraftContext, otherCompanyNam
   // 2 message
   const mw = words(draft.inside_message);
   const ms = sentences(draft.inside_message);
-  if (mw < 20 || mw > 60) v.push(`inside_message must be 20–60 words (was ${mw})`);
-  if (ms < 2 || ms > 4) v.push(`inside_message must be 2–4 sentences (was ${ms})`);
+  if (mw < 12 || mw > 55) v.push(`inside_message must be 15–50 words (was ${mw})`);
+  if (ms < 1 || ms > 3) v.push(`inside_message must be 1–3 sentences (was ${ms})`);
 
   // 3 exclamation marks
   const ex = (all.match(/!/g) ?? []).length;

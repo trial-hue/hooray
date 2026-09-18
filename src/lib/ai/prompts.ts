@@ -2,7 +2,7 @@
 import type { ChannelRules } from "../rules";
 import type { Company, Occasion, Person } from "../types";
 
-export const PROMPT_VERSION = "v3";
+export const PROMPT_VERSION = "v4";
 
 export const BANNED_PHRASES = [
   "i hope this finds you well",
@@ -58,7 +58,9 @@ Write as the signer would if they were good at this: specific, warm, brief, plai
 ## Occasion rules
 - birthday: warm and light. Light humour is welcome on staff cards when the company tone allows. Never the age.
 - work-anniversary: name the number of years (words up to ten, numerals above) and anchor on something specific from the facts. From a senior signer, be proud and plain, not gushing.
-- welcome: written before the first day. Say which team they join and who will greet them if known. Future tense. Do not claim to know them yet.
+- welcome: written before the first day. Say which team they join and who will greet them if known. Future tense. Do not claim to know them yet. Keep it brief.
+- leaver: warm and specific. Thank them for something concrete from the facts, say they will be missed, wish them well in what comes next. Do not ask where they are going or why. No "next chapter".
+- retirement: like leaver, with more weight on the years and what they built. Plain, proud, not sentimental.
 - client-anniversary and client-milestone: formal, company-to-company, no humour, no inside jokes, no detail about fees or services. Thank them for their trust. Use "we".
 - sympathy: short, no exclamation marks, no advice, no "everything happens for a reason". Acknowledge, offer practical support, stop.
 - get-well: gentle and short. Do not name the illness unless it is in the public facts.
@@ -67,7 +69,7 @@ Write as the signer would if they were good at this: specific, warm, brief, plai
 
 ## Length
 - front_headline: 2 to 6 words, no full stop. May include the recipient's first name.
-- inside_message: 2 to 4 sentences, 20 to 60 words. Plain paragraphs, no bullet points.
+- inside_message: 1 to 3 sentences, 15 to 50 words. One paragraph, no bullet points. Shorter is better; a new starter gets one or two sentences, a long-serving colleague may have three.
 - sign_off: a short closing with its trailing comma, e.g. "With best wishes," "With thanks," "With our warm regards,".
 - signature_line: the signer's name and role exactly as given in preferred_signature. If there is a co-signer, add " and " followed by the co-signer's preferred_signature.
 
@@ -91,7 +93,7 @@ Choose template and palette_variant from the allowed lists. Templates: confetti 
  "recent_cards":[]}
 </card_request>
 {"front_headline":"Happy birthday, Priya",
- "inside_message":"Happy birthday from all of us in Audit. Northgate would still be open without you, and the Thursday 5k would be considerably slower. Take a proper day off, and if anyone emails you about a trial balance, forward it to me.",
+ "inside_message":"Happy birthday from all of us in Audit. Northgate would still be open without you, and the Thursday 5k would be considerably slower. Take a proper day off.",
  "sign_off":"With thanks and best wishes,",
  "signature_line":"Tom Reilly, Audit Partner",
  "artwork_brief":{"template":"confetti","palette_variant":"bright","style_note":"playful confetti, plenty of paper showing"},
@@ -109,7 +111,7 @@ Choose template and palette_variant from the allowed lists. Templates: confetti 
  "recent_cards":[{"type":"birthday","date":"2026-03-14","front_headline":"Happy birthday, Daniel","inside_message":"Happy birthday from everyone in Leeds. The building only works because you do. Enjoy the day."}]}
 </card_request>
 {"front_headline":"Ten years, Daniel",
- "inside_message":"Ten years ago you joined us on the front desk, and today there isn't a corner of the Leeds office that doesn't run better because of you. The 2023 move would have been chaos without your lists. Thank you for a decade of quiet competence, and for the Friday fruit.",
+ "inside_message":"Ten years ago you joined us on the front desk, and today there isn't a corner of the Leeds office that doesn't run better because of you. Thank you for a decade of quiet competence, and for the Friday fruit.",
  "sign_off":"With real gratitude,",
  "signature_line":"Margaret Ellis, Managing Director",
  "artwork_brief":{"template":"numeral","palette_variant":"formal","style_note":"large ten, restrained, brand navy on paper"},
@@ -126,7 +128,7 @@ Choose template and palette_variant from the allowed lists. Templates: confetti 
  "recent_cards":[]}
 </card_request>
 {"front_headline":"A decade together",
- "inside_message":"It has been ten years since Fenwick Marine first trusted us with its accounts, and the relationship has grown in ways neither of us would have predicted in 2016. Thank you, Alison, for the confidence you have placed in the team and for the candour that makes the work better. We look forward to the next ten.",
+ "inside_message":"It has been ten years since Fenwick Marine first trusted us with its accounts. Thank you, Alison, for the confidence you have placed in the team and for the candour that makes the work better. We look forward to the next ten.",
  "sign_off":"With our thanks and best regards,",
  "signature_line":"James Whitfield, Partner",
  "artwork_brief":{"template":"rings","palette_variant":"formal","style_note":"concentric rings, restrained, no confetti"},

@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { getDb } from "@/lib/db";
 import { addDays, dayOfWeek, formatLong } from "@/lib/dates";
-import { openDigest } from "@/lib/engine";
 import { ClockControls } from "./ClockControls";
 
 export function ClockBar({ active }: { active: string }) {
   const db = getDb();
-  const digest = openDigest(db);
-  const openCount = digest ? digest.cardIds.filter((id) => ["drafted", "needs_review", "held"].includes(db.cards.find((c) => c.id === id)?.status ?? "")).length : 0;
+  const openCount = db.cards.filter((c) => ["drafted", "needs_review", "held"].includes(c.status)).length;
+  const openCollections = db.collections.filter((c) => c.status === "open").length;
   const nav: [string, string][] = [
     ["/calendar", "Calendar"],
     ["/digest", "Digest"],
+    ["/people", "People"],
     ["/print", "Print"],
     ["/dashboard", "Dashboard"],
   ];
@@ -30,6 +30,7 @@ export function ClockBar({ active }: { active: string }) {
             <Link key={href} href={href} className={`rounded-md px-2.5 py-1 ${active === href ? "bg-white shadow-sm text-ink" : "text-ink-2 hover:bg-paper-2"}`}>
               {label}
               {href === "/digest" && openCount > 0 && <span className="ml-1.5 rounded-full bg-navy px-1.5 text-[10px] text-white">{openCount}</span>}
+              {href === "/people" && openCollections > 0 && <span className="ml-1.5 rounded-full bg-gold px-1.5 text-[10px] text-white">{openCollections}</span>}
             </Link>
           ))}
         </nav>
@@ -47,6 +48,6 @@ export function ClockBar({ active }: { active: string }) {
 
 function nextMondayLabel(today: string): string {
   const dow = dayOfWeek(today);
-  const days = dow === 1 ? 7 : ((8 - dow) % 7 || 7);
+  const days = dow === 1 ? 7 : (8 - dow) % 7 || 7;
   return formatLong(addDays(today, days));
 }

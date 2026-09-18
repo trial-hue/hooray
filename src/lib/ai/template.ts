@@ -22,6 +22,12 @@ export function templateDraft(ctx: DraftContext): DraftOutput {
     case "welcome":
       d = { front_headline: `Welcome, ${name}`, inside_message: `Welcome to ${firm}. The ${r.team} team is looking forward to having you, and there will be someone waiting to show you round on your first morning. Ask anything, as often as you need.`, sign_off: "With best wishes,", signature_line: sig + co, artwork_brief: { template: "bands", palette_variant: "bright", style_note: "diagonal bands with a name badge" } };
       break;
+    case "leaver":
+      d = { front_headline: `Thank you, ${name}`, inside_message: `Thank you for everything you have given ${firm}${n ? ` over ${years} year${n === 1 ? "" : "s"}` : ""}. You will be missed here, and we wish you every good thing in what comes next.`, sign_off: "With thanks and best wishes,", signature_line: sig + co, artwork_brief: { template: "waves", palette_variant: "formal", style_note: "calm waves, warm" } };
+      break;
+    case "retirement":
+      d = { front_headline: `Happy retirement, ${name}`, inside_message: `${cap(years)} years at ${firm}, and the place is better for every one of them. Thank you, and enjoy every minute of what comes next.`, sign_off: "With real gratitude,", signature_line: sig + co, artwork_brief: { template: "waves", palette_variant: "formal", style_note: "calm, generous white space" } };
+      break;
     case "client-anniversary":
       d = { front_headline: `${cap(years)} years together`, inside_message: `It has been ${years} years since ${r.clientCompanyName ?? r.team} first placed its trust in ${firm}. Thank you, ${name}, for the confidence you have shown in the team throughout. We look forward to the years ahead.`, sign_off: "With our thanks and best regards,", signature_line: sig, artwork_brief: { template: "rings", palette_variant: "formal", style_note: "concentric rings, calm" } };
       break;

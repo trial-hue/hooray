@@ -62,7 +62,10 @@ export type Person = {
   team: string; // clients: the client company name
   office: string;
   startDate?: ISODate; // staff: joined; clients: client since
-  birthday?: string; // 'MM-DD' — year deliberately not stored
+  birthday?: string; // 'MM-DD' (derived from dob when dob is given)
+  dob?: ISODate; // full date of birth, only when the roster supplies it (milestone birthdays)
+  endDate?: ISODate; // leaving date; set to trigger a leaver/retirement occasion
+  retiring?: boolean;
   managerId?: string; // staff: line manager
   accountOwnerId?: string; // client: relationship partner
   clientCompanyName?: string;
@@ -86,6 +89,8 @@ export type OccasionType =
   | "birthday"
   | "work-anniversary"
   | "welcome"
+  | "leaver"
+  | "retirement"
   | "client-anniversary"
   | "client-milestone"
   | "sympathy"
@@ -101,6 +106,8 @@ export type Occasion = {
   label?: string; // milestone label
   createdBy: "roster" | "human";
   occurrenceKey: string; // `${personId}:${type}:${date}`
+  isMilestone?: boolean; // milestone birthday (30/40/50/60) or anniversary (1/3/5/10/15/20)
+  collectionEligible?: boolean;
 };
 
 export type CardStatus =
@@ -211,8 +218,33 @@ export type Card = {
   skipReason?: string;
   digestId?: string;
   printJobId?: string;
+  collectionId?: string;
+  autoApproved?: boolean;
+  dispatchOn: ISODate; // dueDate - DISPATCH_DAYS
+  proof?: { provider: "stannp"; id: string; pdfUrl: string; cost: string; status: string; at: ISODate; error?: string };
   history: { at: ISODate; status: CardStatus; note?: string }[];
   aiCostGbp: number;
+};
+
+export type Contribution = {
+  contributorId: string;
+  amountPence: number;
+  message: string;
+  at: ISODate;
+};
+
+export type Collection = {
+  id: string;
+  occasionId: string;
+  personId: string;
+  cardId: string;
+  teamIds: string[]; // colleagues invited (immediate team)
+  suggestedPence: number;
+  closesOn: ISODate;
+  status: "open" | "closed";
+  giftChoice?: string;
+  contributions: Contribution[];
+  openedOn: ISODate;
 };
 
 export type Digest = {
@@ -228,7 +260,7 @@ export type Digest = {
 
 export type PrintJob = {
   id: string;
-  digestId: string;
+  digestId?: string;
   cardIds: string[];
   submittedOn: ISODate;
   provider: "mock-prodigi";
@@ -250,11 +282,16 @@ export type DB = {
   cards: Card[];
   digests: Digest[];
   printJobs: PrintJob[];
+  collections: Collection[];
   clock: SimClock;
   settings: { pricePerCard: number };
 };
 
 export const SIM_START: ISODate = "2026-09-21"; // Monday
+export const LEAD_DAYS = 10; // drafts are created this many days before the occasion
+export const DISPATCH_DAYS = 5; // anything still pending is auto-approved and sent this many days before
+export const MILESTONE_AGES = [30, 40, 50, 60];
+export const MILESTONE_YEARS = [1, 3, 5, 10, 15, 20];
 
 export function emptyDb(): DB {
   return {
@@ -264,6 +301,7 @@ export function emptyDb(): DB {
     cards: [],
     digests: [],
     printJobs: [],
+    collections: [],
     clock: { today: SIM_START, startedOn: SIM_START, log: [] },
     settings: { pricePerCard: 6 },
   };

@@ -1,6 +1,6 @@
 // Materialise occasion instances from the roster for a date window.
 import { onYear, yearOf, yearsBetween } from "./dates";
-import type { DB, ISODate, Occasion, OccasionType, Person } from "./types";
+import { MILESTONE_AGES, MILESTONE_YEARS, type DB, type ISODate, type Occasion, type OccasionType, type Person } from "./types";
 
 export function occurrenceKey(personId: string, type: OccasionType, date: ISODate): string {
   return `${personId}:${type}:${date}`;
@@ -22,25 +22,34 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
 
   for (const p of db.people) {
     if (p.status === "left") continue;
+    const gone = p.endDate && p.endDate < from; // already left before the window
+    if (gone) continue;
 
-    if (p.birthday) {
+    const bday = p.birthday ?? (p.dob ? p.dob.slice(5) : undefined);
+    if (bday) {
       for (const y of years) {
-        const d = onYear(p.birthday, y);
-        if (inWindow(d, from, to)) out.push(make(p, "birthday", d));
+        const d = onYear(bday, y);
+        if (inWindow(d, from, to) && (!p.endDate || d <= p.endDate)) {
+          const age = p.dob ? yearsBetween(p.dob, d) : undefined;
+          const milestone = age !== undefined && MILESTONE_AGES.includes(age);
+          out.push(make(p, "birthday", d, { isMilestone: milestone, collectionEligible: milestone }));
+        }
       }
     }
 
     if (p.startDate) {
       if (p.kind === "staff") {
-        // Welcome: start date falls inside the window and is after the sim start
         if (inWindow(p.startDate, from, to) && p.startDate > db.clock.startedOn) {
           out.push(make(p, "welcome", p.startDate));
         }
         for (const y of years) {
           const d = onYear(p.startDate.slice(5), y);
-          if (inWindow(d, from, to) && d > p.startDate) {
+          if (inWindow(d, from, to) && d > p.startDate && (!p.endDate || d < p.endDate)) {
             const n = yearsBetween(p.startDate, d);
-            if (n >= 1) out.push(make(p, "work-anniversary", d, { ordinal: n }));
+            if (n >= 1) {
+              const milestone = MILESTONE_YEARS.includes(n);
+              out.push(make(p, "work-anniversary", d, { ordinal: n, isMilestone: milestone, collectionEligible: milestone }));
+            }
           }
         }
       } else {
@@ -48,16 +57,19 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
           const d = onYear(p.startDate.slice(5), y);
           if (inWindow(d, from, to) && d > p.startDate) {
             const n = yearsBetween(p.startDate, d);
-            if (n >= 1) out.push(make(p, "client-anniversary", d, { ordinal: n }));
+            if (n >= 1) out.push(make(p, "client-anniversary", d, { ordinal: n, isMilestone: MILESTONE_YEARS.includes(n) }));
           }
         }
       }
     }
 
+    if (p.kind === "staff" && p.endDate && inWindow(p.endDate, from, to)) {
+      const tenure = p.startDate ? yearsBetween(p.startDate, p.endDate) : undefined;
+      out.push(make(p, p.retiring ? "retirement" : "leaver", p.endDate, { ordinal: tenure, collectionEligible: true, isMilestone: true }));
+    }
+
     for (const m of p.milestones ?? []) {
-      if (inWindow(m.date, from, to)) {
-        out.push(make(p, "client-milestone", m.date, { label: m.label, createdBy: "human" }));
-      }
+      if (inWindow(m.date, from, to)) out.push(make(p, "client-milestone", m.date, { label: m.label, createdBy: "human" }));
     }
   }
 
@@ -65,7 +77,6 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
     if (o.createdBy === "human" && inWindow(o.date, from, to) && !out.some((x) => x.id === o.id)) out.push(o);
   }
 
-  // de-dupe and sort
   const seen = new Set<string>();
   return out
     .filter((o) => (seen.has(o.id) ? false : (seen.add(o.id), true)))
@@ -76,6 +87,8 @@ export const OCCASION_LABEL: Record<OccasionType, string> = {
   birthday: "Birthday",
   "work-anniversary": "Work anniversary",
   welcome: "Welcome",
+  leaver: "Leaving",
+  retirement: "Retirement",
   "client-anniversary": "Client anniversary",
   "client-milestone": "Client milestone",
   sympathy: "Sympathy",
@@ -85,8 +98,14 @@ export const OCCASION_LABEL: Record<OccasionType, string> = {
 
 export function occasionTitle(o: Occasion): string {
   switch (o.type) {
+    case "birthday":
+      return o.isMilestone ? "Milestone birthday" : "Birthday";
     case "work-anniversary":
       return `${o.ordinal}-year work anniversary`;
+    case "leaver":
+      return o.ordinal ? `Leaving after ${o.ordinal} year${o.ordinal === 1 ? "" : "s"}` : "Leaving";
+    case "retirement":
+      return o.ordinal ? `Retiring after ${o.ordinal} years` : "Retiring";
     case "client-anniversary":
       return `${o.ordinal} years as a client`;
     case "client-milestone":

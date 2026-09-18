@@ -1,4 +1,4 @@
-import { addDays, isMonday } from "./dates";
+import { addDays } from "./dates";
 import { logEvent } from "./db";
 import { resolveDelivery } from "./delivery";
 import { gate } from "./gate";
@@ -13,25 +13,34 @@ import { fnv1a } from "./rng";
 import { parseRoster, toCsv } from "./roster";
 import { seedCompany, seedPeople } from "./seed";
 import { submitBatch, progressPrintJobs } from "./printPartner";
-import { SIM_START, type Card, type CardStatus, type DB, type Digest, type DraftVersion, type ISODate, type Occasion, type Person, type Usage } from "./types";
+import { closeCollection, openCollection } from "./collections";
+import { DISPATCH_DAYS, LEAD_DAYS, SIM_START, type Card, type CardStatus, type DB, type DraftVersion, type ISODate, type Occasion, type Person, type Usage } from "./types";
 
 const AI_DISABLED = process.env.AI_DISABLED === "1";
 const CONCURRENCY = 4;
 
 // ---------- clock ----------
 
+/** Advance one day at a time. Each day: progress print jobs, draft cards due in LEAD_DAYS, dispatch cards due in DISPATCH_DAYS. */
 export async function tick(db: DB, target: ISODate): Promise<void> {
   while (db.clock.today < target) {
     db.clock.today = addDays(db.clock.today, 1);
-    for (const e of progressPrintJobs(db)) logEvent(db, e);
-    if (isMonday(db.clock.today)) await buildDigest(db, db.clock.today);
+    await dailyJob(db);
   }
+}
+
+export async function dailyJob(db: DB): Promise<void> {
+  if (!db.company) return;
+  for (const e of progressPrintJobs(db)) logEvent(db, e);
+  await ensureCards(db, db.clock.today, addDays(db.clock.today, LEAD_DAYS));
+  dispatchDue(db);
 }
 
 // ---------- roster ----------
 
 export async function loadDemoRoster(db: DB): Promise<{ staff: number; clients: number; warnings: string[] }> {
-  const csv = toCsv(seedPeople(), new Map(seedPeople().map((p) => [p.id, p])));
+  const people = seedPeople();
+  const csv = toCsv(people, new Map(people.map((p) => [p.id, p])));
   return importRoster(db, csv, seedCompany());
 }
 
@@ -43,30 +52,26 @@ export async function importRoster(db: DB, csv: string, company = db.company): P
   db.cards = [];
   db.digests = [];
   db.printJobs = [];
+  db.collections = [];
   db.clock = { today: SIM_START, startedOn: SIM_START, log: [] };
   const staff = people.filter((p) => p.kind === "staff").length;
   const clients = people.length - staff;
   logEvent(db, `Imported roster: ${staff} staff, ${clients} clients${warnings.length ? ` (${warnings.length} warnings)` : ""}`);
-  await buildDigest(db, db.clock.today);
+  await dailyJob(db);
   return { staff, clients, warnings };
 }
 
-// ---------- digest ----------
+// ---------- card creation ----------
 
-export async function buildDigest(db: DB, monday: ISODate): Promise<Digest | undefined> {
-  if (!db.company || db.people.length === 0) return undefined;
-  const id = `digest-${monday}`;
-  if (db.digests.some((d) => d.id === id)) return undefined;
-  const from = addDays(monday, 7);
-  const to = addDays(monday, 13);
-  const occs = materialiseOccasions(db, from, to);
-  const digest: Digest = { id, weekStart: monday, coversFrom: from, coversTo: to, cardIds: [], status: "open", createdOn: monday };
-
+/** Create (and draft) cards for every occasion in [from, to] that has no card yet. */
+export async function ensureCards(db: DB, from: ISODate, to: ISODate): Promise<Card[]> {
+  if (!db.company) return [];
+  const occs = materialiseOccasions(db, from, to).filter((o) => !db.cards.some((c) => c.occurrenceKey === o.occurrenceKey));
+  const created: Card[] = [];
   const toDraft: Card[] = [];
   let held = 0;
   let skipped = 0;
   for (const occ of occs) {
-    if (db.cards.some((c) => c.occurrenceKey === occ.occurrenceKey)) continue;
     if (!db.occasions.some((o) => o.id === occ.id)) db.occasions.push(occ);
     const person = db.people.find((p) => p.id === occ.personId);
     if (!person) continue;
@@ -82,11 +87,11 @@ export async function buildDigest(db: DB, monday: ISODate): Promise<Digest | und
       signerId: signers?.signerId ?? db.company.managingPartnerId ?? "",
       coSignerId: signers?.coSignerId,
       dueDate: occ.date,
+      dispatchOn: addDays(occ.date, -DISPATCH_DAYS),
       status: "held",
       flags: [],
       versions: [],
       seed: fnv1a(occ.occurrenceKey),
-      digestId: id,
       history: [],
       aiCostGbp: 0,
     };
@@ -101,23 +106,27 @@ export async function buildDigest(db: DB, monday: ISODate): Promise<Digest | und
         card.flags.push({ kind: "gate", text: g.message });
         held++;
       }
-      card.history.push({ at: monday, status: card.status, note: g.message });
+      card.history.push({ at: db.clock.today, status: card.status, note: g.message });
     } else {
       for (const w of g.warnings) card.flags.push({ kind: "gate", text: w.message });
       toDraft.push(card);
     }
     db.cards.push(card);
-    digest.cardIds.push(card.id);
+    created.push(card);
+    if (occ.collectionEligible && person.kind === "staff" && card.status !== "skipped") {
+      const col = openCollection(db, person, occ, card, card.dispatchOn);
+      logEvent(db, `Collection opened for ${person.firstName} ${person.lastName} (${occ.type.replace("-", " ")}), ${col.teamIds.length} colleagues invited`);
+    }
   }
-  db.digests.push(digest);
-  logEvent(db, `Detected ${occs.length} occasions for ${from} – ${to}${held ? `, ${held} held` : ""}${skipped ? `, ${skipped} skipped` : ""}`);
-
+  if (created.length) {
+    logEvent(db, `Detected ${created.length} occasion${created.length === 1 ? "" : "s"} due by ${to}${held ? `, ${held} held` : ""}${skipped ? `, ${skipped} skipped` : ""}`);
+  }
   if (toDraft.length) {
     const t0 = Date.now();
     const stats = await draftMany(db, toDraft);
-    logEvent(db, `Drafted ${toDraft.length} cards in ${((Date.now() - t0) / 1000).toFixed(1)}s (${stats.cache} cached, ${stats.claude} live, ${stats.template} template)`);
+    logEvent(db, `Drafted ${toDraft.length} card${toDraft.length === 1 ? "" : "s"} in ${((Date.now() - t0) / 1000).toFixed(1)}s (${stats.cache} cached, ${stats.claude} live, ${stats.template} template)`);
   }
-  return digest;
+  return created;
 }
 
 async function draftMany(db: DB, cards: Card[]): Promise<{ cache: number; claude: number; template: number }> {
@@ -132,6 +141,48 @@ async function draftMany(db: DB, cards: Card[]): Promise<{ cache: number; claude
   });
   await Promise.all(workers);
   return stats;
+}
+
+// ---------- dispatch ----------
+
+const PENDING: CardStatus[] = ["drafted", "needs_review"];
+
+/** Cards whose dispatch day has arrived: auto-approve anything pending, close collections, send to print. */
+export function dispatchDue(db: DB): void {
+  const today = db.clock.today;
+  const due = db.cards.filter((c) => c.dispatchOn <= today && (PENDING.includes(c.status) || c.status === "approved" || c.status === "edited"));
+  if (due.length === 0) return;
+  let auto = 0;
+  for (const c of due) {
+    if (PENDING.includes(c.status)) {
+      const d = c.versions[c.versions.length - 1]?.draft;
+      if (!d) continue;
+      c.finalText = c.finalText ?? { front_headline: d.front_headline, inside_message: d.inside_message, sign_off: d.sign_off, signature_line: d.signature_line };
+      c.status = "approved";
+      c.autoApproved = true;
+      c.approvedAt = today;
+      c.approvedBy = "auto";
+      c.history.push({ at: today, status: "approved", note: "Auto-approved at dispatch" });
+      auto++;
+    }
+    if (c.collectionId) {
+      const col = db.collections.find((x) => x.id === c.collectionId);
+      if (col) closeCollection(db, col);
+    }
+  }
+  const sendable = due.filter((c) => c.status === "approved" || c.status === "edited");
+  if (sendable.length === 0) return;
+  const job = submitBatch(db, undefined, sendable);
+  for (const c of sendable) {
+    c.status = "sent_to_print";
+    c.printJobId = job.id;
+    c.history.push({ at: today, status: "sent_to_print", note: job.ref });
+  }
+  logEvent(db, `Dispatched ${sendable.length} card${sendable.length === 1 ? "" : "s"} as ${job.ref}${auto ? ` (${auto} auto-approved)` : ""}`);
+  const stillHeld = db.cards.filter((c) => c.dispatchOn <= today && c.status === "held");
+  for (const c of stillHeld) {
+    if (!c.history.some((h) => h.note === "Missed dispatch")) c.history.push({ at: today, status: "held", note: "Missed dispatch" });
+  }
 }
 
 // ---------- drafting ----------
@@ -179,7 +230,6 @@ export async function draftCard(db: DB, card: Card, opts: { hint?: string; bypas
   }
   card.versions.push(version);
   card.aiCostGbp += aiCostGbp(version.model, version.usage);
-  // rebuild flags: keep gate flags, replace model/check flags
   card.flags = card.flags.filter((f) => f.kind === "gate");
   for (const f of version.draft.flags) card.flags.push({ kind: "model", text: f });
   for (const v of violations) card.flags.push({ kind: "check", text: v });
@@ -259,25 +309,37 @@ export async function releaseHeld(db: DB, card: Card): Promise<void> {
   await draftCard(db, card);
 }
 
-export function submitDigest(db: DB, digest: Digest): { job?: ReturnType<typeof submitBatch>; sent: number } {
-  const cards = digest.cardIds
-    .map((id) => db.cards.find((c) => c.id === id)!)
-    .filter((c) => c && (c.status === "approved" || c.status === "edited"));
+/** Send every approved/edited card to print now, without waiting for dispatch day. */
+export function sendNow(db: DB): { sent: number; ref?: string } {
+  const cards = db.cards.filter((c) => c.status === "approved" || c.status === "edited");
   if (cards.length === 0) return { sent: 0 };
-  const job = submitBatch(db, digest, cards);
+  const job = submitBatch(db, undefined, cards);
   for (const c of cards) {
     c.status = "sent_to_print";
     c.printJobId = job.id;
     c.history.push({ at: db.clock.today, status: "sent_to_print", note: job.ref });
+    if (c.collectionId) {
+      const col = db.collections.find((x) => x.id === c.collectionId);
+      if (col) closeCollection(db, col);
+    }
   }
-  digest.status = "submitted";
-  digest.submittedOn = db.clock.today;
-  logEvent(db, `Submitted ${cards.length} cards to print as ${job.ref}`);
-  return { job, sent: cards.length };
+  logEvent(db, `Sent ${cards.length} card${cards.length === 1 ? "" : "s"} to print early as ${job.ref}`);
+  return { sent: cards.length, ref: job.ref };
 }
 
-export function openDigest(db: DB): Digest | undefined {
-  return [...db.digests].reverse().find((d) => d.status === "open");
+/** Mark someone as leaving (or retiring). Fires the occasion immediately, opens the collection. */
+export async function markLeaving(db: DB, person: Person, endDate: ISODate, retiring: boolean): Promise<Card | undefined> {
+  person.endDate = endDate;
+  person.retiring = retiring;
+  logEvent(db, `${person.firstName} ${person.lastName} marked as ${retiring ? "retiring" : "leaving"} on ${endDate}`);
+  const created = await ensureCards(db, endDate, endDate);
+  return created.find((c) => c.personId === person.id);
+}
+
+// ---------- queries ----------
+
+export function pendingCards(db: DB): Card[] {
+  return db.cards.filter((c) => ["held", "needs_review", "drafted", "approved", "edited", "skipped"].includes(c.status)).sort((a, b) => a.dueDate.localeCompare(b.dueDate));
 }
 
 export function personOf(db: DB, id: string): Person | undefined {

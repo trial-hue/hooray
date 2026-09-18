@@ -20,13 +20,13 @@ const PRINT_SPEC = {
   envelope: "C5 white, sealed, recipient name printed",
 };
 
-export function submitBatch(db: DB, digest: Digest, cards: Card[]): PrintJob {
+export function submitBatch(db: DB, digest: Digest | undefined, cards: Card[]): PrintJob {
   const n = db.printJobs.length + 1;
   const ref = `MOCK-${String(n).padStart(4, "0")}`;
   const today = db.clock.today;
   const job: PrintJob = {
     id: `job-${n}`,
-    digestId: digest.id,
+    digestId: digest?.id,
     cardIds: cards.map((c) => c.id),
     submittedOn: today,
     provider: "mock-prodigi",
