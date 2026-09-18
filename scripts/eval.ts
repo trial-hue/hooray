@@ -7,7 +7,7 @@ import { seedCompany } from "../src/lib/seed";
 import type { Occasion, Person } from "../src/lib/types";
 
 const company = seedCompany();
-const P = (p: Partial<Person> & Pick<Person, "id" | "firstName" | "lastName" | "role">): Person => ({ kind: "staff", team: "Audit", office: "Manchester", status: "active", optOut: false, deliverTo: "office", publicFacts: [], privateNotes: [], ...p });
+const P = (p: Partial<Person> & Pick<Person, "id" | "firstName" | "lastName" | "role">): Person => ({ kind: "staff", team: "Audit", office: "Manchester", status: "active", optOut: false, consentOccasions: true, deliverTo: "office", publicFacts: [], privateNotes: [], ...p });
 const O = (personId: string, type: Occasion["type"], date: string, extra: Partial<Occasion> = {}): Occasion => ({ id: `${personId}:${type}:${date}`, occurrenceKey: `${personId}:${type}:${date}`, personId, type, date, createdBy: "roster", ...extra });
 
 const sarah = P({ id: "sarah", firstName: "Sarah", lastName: "Lindqvist", role: "Audit Manager", preferredSignature: "Sarah Lindqvist, Audit Manager", voiceSample: "Brilliant work on this. Genuinely. Now go home." });
