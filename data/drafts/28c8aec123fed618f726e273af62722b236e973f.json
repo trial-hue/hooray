@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Congratulations, Hannah",
+  "inside_message": "Wonderful news about Wren, who arrived on 15 September. I'm so pleased for you. I'll keep saving up my puns in the meantime, since you're still the only person who laughs at them, and now you've a captive audience of your own.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "soft bright sparks, gentle and celebratory, nothing busy"
+  },
+  "flags": [],
+  "rationale": "Leans on Wren's arrival date and the running pun joke for warmth and specificity, kept light and personal with no invented shared history."
+ },
+ "createdAt": "2026-09-25",
+ "promptHash": "776f544b085b5eae",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 384,
+  "output_tokens": 408,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6469
+}

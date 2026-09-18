@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Welcome, Wren",
+  "inside_message": "Congratulations on Wren, born on the fifteenth of September. I'm so pleased for you both. Hannah, you remain the only person who laughs at my puns, so please pass the gift on to Wren in due course.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "soft scattered sparks, gentle and hand-drawn"
+  },
+  "flags": [
+   "\"you both\" assumes a partner; the facts don't confirm one, so a manager may wish to change it to \"you\"."
+  ],
+  "rationale": "Congratulates the arrival of Wren once and leans on the shared pun joke for warmth, kept light and personal as a friend from uni."
+ },
+ "createdAt": "2026-09-25",
+ "promptHash": "491b42aaeb1bfdb8",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 374,
+  "output_tokens": 267,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4772
+}

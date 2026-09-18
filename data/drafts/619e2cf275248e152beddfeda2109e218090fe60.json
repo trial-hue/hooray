@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Kwame",
+  "inside_message": "Happy birthday from everyone in Leeds. You keep the five-a-side side organised better than most people manage their diaries, and it shows in the audit work too. Enjoy the day, and don't check your emails.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, plenty of white space, brand colours"
+  },
+  "flags": [],
+  "rationale": "Leans on the one fact available, his five-a-side captaincy, with light humour to match Sarah's direct manager voice; no age mentioned."
+ },
+ "createdAt": "2026-10-08",
+ "promptHash": "2f304b587c879893",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 405,
+  "output_tokens": 242,
+  "cache_read_input_tokens": 4687,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4923
+}

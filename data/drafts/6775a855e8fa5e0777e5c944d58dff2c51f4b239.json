@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "The Harrogate roastery",
+  "inside_message": "Congratulations on opening the third Kettlewell roastery. Three sites in six years is a considerable thing to build, and we were glad to help with the growth funding along the way. Thank you, Harriet, for your trust in us.",
+  "sign_off": "With our congratulations and best regards,",
+  "signature_line": "Aisha Rahman, Advisory Partner",
+  "artwork_brief": {
+   "template": "dots",
+   "palette_variant": "formal",
+   "style_note": "restrained dot grid, brand colours, generous white space"
+  },
+  "flags": [],
+  "rationale": "Formal company-to-company note anchored on the Harrogate opening and the growth from one roastery to three, with a light nod to the 2024 funding work and no mention of fees or services."
+ },
+ "createdAt": "2026-10-08",
+ "promptHash": "b40de3d05ab6a1d3",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 465,
+  "output_tokens": 377,
+  "cache_read_input_tokens": 4687,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5504
+}

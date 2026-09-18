@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Sam",
+  "inside_message": "Four years on the list and the allotment is finally yours. Have a brilliant day, and may everything you grow turn out better than the rice ever did.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose confetti, cheerful, plenty of white space"
+  },
+  "flags": [],
+  "rationale": "Leans on the allotment win and the long-running rice joke for a light, personal birthday note between old flatmates."
+ },
+ "createdAt": "2026-10-29",
+ "promptHash": "2a07ead2358aab66",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 346,
+  "output_tokens": 195,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3849
+}

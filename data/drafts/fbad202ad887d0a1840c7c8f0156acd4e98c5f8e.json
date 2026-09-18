@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy anniversary, Tom",
+  "inside_message": "Congratulations to you and Sam on five years. You two have built something good, and I'm glad I get to watch it from a fold-out chair by the coffee cart. Have a proper celebration on Saturday.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "loose scattered sparks, hand-drawn feel, warm tones"
+  },
+  "flags": [
+   "Card mentions Sam by name; confirm Sam should be named on a card addressed to Tom."
+  ],
+  "rationale": "Leans on the anniversary with Sam and the Saturday coffee cart for warmth and specificity, in a friend's easy voice, with no reference to the wedding itself."
+ },
+ "createdAt": "2026-10-03",
+ "promptHash": "fbe23c4c108d1b86",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1078,
+  "output_tokens": 719,
+  "cache_read_input_tokens": 9332,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 10933
+}

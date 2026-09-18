@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy anniversary, Leah",
+  "inside_message": "Congratulations to you and Callum on three years. You two have built something good, and now there's a pottery business in the garage as well. Hope you both get an evening off to enjoy it.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "light scattered sparks, hand-drawn feel, warm colours"
+  },
+  "flags": [],
+  "rationale": "Leans on the anniversary with Callum and the new pottery business, in a brother's warm informal voice, with fresh wording so it doesn't echo last week's birthday card."
+ },
+ "createdAt": "2026-11-12",
+ "promptHash": "cf404884c9035dc8",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1254,
+  "output_tokens": 561,
+  "cache_read_input_tokens": 9332,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 8954
+}

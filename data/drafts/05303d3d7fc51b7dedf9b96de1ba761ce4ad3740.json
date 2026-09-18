@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Mum",
+  "inside_message": "Happy birthday, Mum. The watercolours are far better than you let on, so please stop apologising for them and frame one. Speak Sunday at six, as ever.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "soft watercolour washes with light confetti, hand-painted feel"
+  },
+  "flags": [],
+  "rationale": "Leans on her new watercolours and the Sunday six o'clock calls for warmth and specificity, in a son's plain, affectionate voice with no mention of age."
+ },
+ "createdAt": "2026-09-30",
+ "promptHash": "47b6e31b30e1f73a",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 341,
+  "output_tokens": 223,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4395
+}

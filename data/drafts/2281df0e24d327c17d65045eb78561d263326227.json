@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Congratulations, Ruairidh",
+  "inside_message": "You asked for a Moonpig clone in a day, so here it is: a card that writes and sends itself. Congratulations on the proof of concept. Thanks for the day at Telemachus, and for the deadline.",
+  "sign_off": "With thanks and best wishes,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "light scattered sparks, plenty of white space, unfussy"
+  },
+  "flags": [
+   "The duplicated fact about the proof of concept was used once; confirm nothing else was intended."
+  ],
+  "rationale": "Leans on the one-day Moonpig brief and the proof of concept itself, kept light and personal to match a friendly, informal voice."
+ },
+ "createdAt": "2026-09-26",
+ "promptHash": "c3ccafa8de1350c9",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 446,
+  "output_tokens": 389,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 6181
+}

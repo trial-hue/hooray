@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Dev",
+  "inside_message": "Happy birthday, Dev. A marathon in April is properly impressive, so I'll let the tenner from 2019 slide a little longer. Have a brilliant day.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose bright confetti, hand-drawn feel, lots of white space"
+  },
+  "flags": [],
+  "rationale": "Leans on the April marathon and the running joke about the tenner for a light, brotherly tone with no mention of age."
+ },
+ "createdAt": "2026-10-15",
+ "promptHash": "1c13f014f69b0c9c",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 340,
+  "output_tokens": 210,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3951
+}

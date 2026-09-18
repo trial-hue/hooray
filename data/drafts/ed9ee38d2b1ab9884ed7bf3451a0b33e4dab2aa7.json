@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Ten years with Bramley",
+  "inside_message": "It is ten years since Bramley Holdings first asked us to prepare the annual accounts, and the work we do together now looks rather different. Thank you, Alison, for your trust throughout, and for being so straightforward to work with. We look forward to the years ahead.",
+  "sign_off": "With our thanks and warm regards,",
+  "signature_line": "Nadia Crane, Tax Partner",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large restrained ten, brand navy on uncoated paper"
+  },
+  "flags": [
+   "Card is addressed to Alison personally whilst thanking the company; confirm she is the right recipient."
+  ],
+  "rationale": "Leans on the 2016 accounts start and the 2022 move to outsourced finance, kept formal and company-to-company with no mention of services or fees."
+ },
+ "createdAt": "2026-10-02",
+ "promptHash": "141e3e5622223e82",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 454,
+  "output_tokens": 341,
+  "cache_read_input_tokens": 4687,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5813
+}

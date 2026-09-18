@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Tom",
+  "inside_message": "Happy birthday, Tom. I hope Sam has you well looked after and that someone else makes the coffee for once. Saturday market or not, take the day slowly.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose scattered confetti, cheerful, plenty of white space"
+  },
+  "flags": [
+   "The previous card on file reads as a corporate message rather than a personal one; worth checking that record."
+  ],
+  "rationale": "Leans on the two known facts, Sam and the coffee cart, in an easy old-friends tone with light humour and no mention of age."
+ },
+ "createdAt": "2027-03-14",
+ "promptHash": "5fd43a168fac2cec",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 459,
+  "output_tokens": 268,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 5317
+}

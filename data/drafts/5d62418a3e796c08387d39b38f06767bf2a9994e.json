@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Leah",
+  "inside_message": "Happy birthday, Leah. A pottery business run out of the garage is a brilliant thing to have started, and I hope the day involves no clay whatsoever. Give Callum my love.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "loose bright confetti, hand-thrown feel, lots of white space"
+  },
+  "flags": [],
+  "rationale": "Leans on the new pottery business and a nod to Callum for warmth; light sibling humour, no age, one exclamation avoided."
+ },
+ "createdAt": "2026-11-05",
+ "promptHash": "4f82e2b610c2221a",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 340,
+  "output_tokens": 221,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 3539
+}

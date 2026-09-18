@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Six years, Hannah",
+  "inside_message": "Six years with Hartley & Crane today. Thank you for the steady, careful work you bring to the Manchester audit team, and for being someone the rest of us can rely on. Good to have you here.",
+  "sign_off": "With thanks and warm wishes,",
+  "signature_line": "Sarah Lindqvist, Audit Manager",
+  "artwork_brief": {
+   "template": "numeral",
+   "palette_variant": "formal",
+   "style_note": "large six, understated, brand colour on plain paper"
+  },
+  "flags": [
+   "No public facts supplied, so the message is warm but general; a line about Hannah's recent work would lift it."
+  ],
+  "rationale": "With no facts provided, the card leans on the six years and her reliability in the Manchester audit team, kept plain and warm in Sarah's direct voice."
+ },
+ "createdAt": "2026-10-12",
+ "promptHash": "2325e3a780d4a7b7",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 396,
+  "output_tokens": 437,
+  "cache_read_input_tokens": 4687,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 7263
+}

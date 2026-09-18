@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Nan",
+  "inside_message": "Happy birthday, Nan. No one in Leicester makes dhokla like you do, and I've given up trying to keep pace with your WhatsApp memes. Have a lovely day, and save me a plate.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "cheerful confetti, warm colours, lots of white space"
+  },
+  "flags": [],
+  "rationale": "Leans on the two given facts, the dhokla and her new WhatsApp habit, in a light grandson-to-nan voice with no mention of age."
+ },
+ "createdAt": "2026-10-22",
+ "promptHash": "14499d40bafad6e8",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 352,
+  "output_tokens": 229,
+  "cache_read_input_tokens": 4666,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4136
+}

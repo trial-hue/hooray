@@ -24,7 +24,8 @@
   "approverId": "me-akshay",
   "managingPartnerId": "me-akshay",
   "allowAgeMentions": false,
-  "circleToken": "mw0us3"
+  "circleToken": "mw0us3",
+  "email": "akshay.devon@gmail.com"
  },
  "people": [
   {
@@ -136,6 +137,234 @@
    "deliverTo": "home",
    "privateNotes": [],
    "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Ruairidh",
+   "lastName": "Forgan",
+   "relationship": "founder of Telemachus, where I spent a day building this",
+   "homeAddress": {
+    "line1": "Telemachus, 60 Cheapside",
+    "town": "London",
+    "postcode": "EC2V 6AX"
+   },
+   "publicFacts": [
+    "Cambridge physics, then Fox & Fable, then Telemachus",
+    "Asked for a Moonpig clone in a day",
+    "Proof of concept: the card that sends itself",
+    "Proof of concept: the card that sends itself"
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "ruairidh-forgan-5",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Hannah",
+   "lastName": "Cole",
+   "relationship": "my friend from uni",
+   "birthday": "02-11",
+   "homeAddress": {
+    "line1": "7 Beechwood Avenue",
+    "town": "Sheffield",
+    "postcode": "S10 3DP"
+   },
+   "publicFacts": [
+    "Baby Wren arrived on 15 September",
+    "Still the only person who laughs at my puns",
+    "Baby Wren",
+    "Baby Wren"
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "hannah-cole-6",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Priya",
+   "lastName": "Shah",
+   "relationship": "my cousin",
+   "birthday": "10-08",
+   "homeAddress": {
+    "line1": "31 Kenton Lane",
+    "town": "Harrow",
+    "postcode": "HA3 8TX"
+   },
+   "publicFacts": [
+    "Just qualified as a vet",
+    "Has beaten me at Scrabble every Christmas since 2015"
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "priya-shah-7",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Dev",
+   "lastName": "Devon",
+   "relationship": "my little brother",
+   "birthday": "10-15",
+   "dob": "1996-10-15",
+   "homeAddress": {
+    "line1": "Flat 3, 88 Chatsworth Road",
+    "town": "London",
+    "postcode": "E5 0LS"
+   },
+   "publicFacts": [
+    "Ran his first marathon in April",
+    "Still owes me a tenner from 2019"
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "dev-devon-8",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Kamla",
+   "lastName": "Devon",
+   "relationship": "my nan",
+   "birthday": "10-22",
+   "dob": "1946-10-22",
+   "homeAddress": {
+    "line1": "14 Melton Road",
+    "town": "Leicester",
+    "postcode": "LE4 5EA"
+   },
+   "publicFacts": [
+    "Makes the best dhokla in Leicester",
+    "Learned WhatsApp this year and now sends more memes than I do"
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "kamla-devon-9",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Sam",
+   "lastName": "Whitfield",
+   "relationship": "my old flatmate",
+   "birthday": "10-29",
+   "homeAddress": {
+    "line1": "52 Burton Road",
+    "town": "Manchester",
+    "postcode": "M20 3EB"
+   },
+   "publicFacts": [
+    "Finally got the allotment after four years on the list",
+    "Still cannot cook rice"
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "sam-whitfield-10",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Leah",
+   "lastName": "Morris",
+   "relationship": "my sister",
+   "birthday": "11-05",
+   "homeAddress": {
+    "line1": "9 Clifton Vale",
+    "town": "Bristol",
+    "postcode": "BS8 4PT"
+   },
+   "publicFacts": [
+    "Just started a pottery business from the garage",
+    "Married Callum on 12 November 2023"
+   ],
+   "milestones": [
+    {
+     "date": "2026-11-12",
+     "label": "Third wedding anniversary with Callum"
+    }
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "leah-morris-11",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Jonah",
+   "lastName": "Clarke",
+   "relationship": "my godson",
+   "birthday": "11-19",
+   "dob": "2016-11-19",
+   "homeAddress": {
+    "line1": "3 Meadow Way",
+    "town": "Norwich",
+    "postcode": "NR4 6QH"
+   },
+   "publicFacts": [
+    "Football mad, plays for the under-11s",
+    "Wants to be a marine biologist this week"
+   ],
+   "role": "",
+   "team": "",
+   "office": "",
+   "id": "jonah-clarke-12",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
   }
  ],
  "occasions": [
@@ -149,6 +378,28 @@
    "isMilestone": false,
    "collectionEligible": false,
    "companyGiftEligible": false
+  },
+  {
+   "id": "ruairidh-forgan-5:congratulations:2026-09-26",
+   "occurrenceKey": "ruairidh-forgan-5:congratulations:2026-09-26",
+   "personId": "ruairidh-forgan-5",
+   "type": "congratulations",
+   "date": "2026-09-26",
+   "createdBy": "human",
+   "label": "Proof of concept: the card that sends itself",
+   "collectionEligible": false,
+   "isMilestone": false
+  },
+  {
+   "id": "hannah-cole-6:congratulations:2026-09-25",
+   "occurrenceKey": "hannah-cole-6:congratulations:2026-09-25",
+   "personId": "hannah-cole-6",
+   "type": "congratulations",
+   "date": "2026-09-25",
+   "createdBy": "human",
+   "label": "Baby Wren",
+   "collectionEligible": true,
+   "isMilestone": true
   }
  ],
  "cards": [
@@ -187,8 +438,8 @@
       "cache_creation_input_tokens": 0
      },
      "attempts": 1,
-     "source": "claude",
-     "ms": 4396
+     "source": "cache",
+     "ms": 0
     }
    ],
    "seed": 218291306,
@@ -196,11 +447,118 @@
     {
      "at": "2026-09-21",
      "status": "drafted",
-     "note": "claude draft"
+     "note": "cache draft"
     }
    ],
    "aiCostGbp": 0.00749814,
    "shareCode": "1hx0yd"
+  },
+  {
+   "id": "card-bg18kp",
+   "occurrenceKey": "ruairidh-forgan-5:congratulations:2026-09-26",
+   "occasionId": "ruairidh-forgan-5:congratulations:2026-09-26",
+   "personId": "ruairidh-forgan-5",
+   "signerId": "me-akshay",
+   "dueDate": "2026-09-26",
+   "dispatchOn": "2026-09-21",
+   "status": "drafted",
+   "flags": [
+    {
+     "kind": "model",
+     "text": "The duplicated fact about the proof of concept was used once; confirm nothing else was intended."
+    }
+   ],
+   "versions": [
+    {
+     "draft": {
+      "front_headline": "Congratulations, Ruairidh",
+      "inside_message": "You asked for a Moonpig clone in a day, so here it is: a card that writes and sends itself. Congratulations on the proof of concept. Thanks for the day at Telemachus, and for the deadline.",
+      "sign_off": "With thanks and best wishes,",
+      "signature_line": "Akshay",
+      "artwork_brief": {
+       "template": "sparks",
+       "palette_variant": "bright",
+       "style_note": "light scattered sparks, plenty of white space, unfussy"
+      },
+      "flags": [
+       "The duplicated fact about the proof of concept was used once; confirm nothing else was intended."
+      ],
+      "rationale": "Leans on the one-day Moonpig brief and the proof of concept itself, kept light and personal to match a friendly, informal voice."
+     },
+     "createdAt": "2026-09-21",
+     "promptHash": "c3ccafa8de1350c9",
+     "model": "claude-opus-5",
+     "usage": {
+      "input_tokens": 446,
+      "output_tokens": 389,
+      "cache_read_input_tokens": 4666,
+      "cache_creation_input_tokens": 0
+     },
+     "attempts": 1,
+     "source": "claude",
+     "ms": 6182
+    }
+   ],
+   "seed": 692059561,
+   "history": [
+    {
+     "at": "2026-09-21",
+     "status": "drafted",
+     "note": "claude draft"
+    }
+   ],
+   "aiCostGbp": 0.01114464,
+   "shareCode": "t8fxji"
+  },
+  {
+   "id": "card-m25e5l",
+   "occurrenceKey": "hannah-cole-6:congratulations:2026-09-25",
+   "occasionId": "hannah-cole-6:congratulations:2026-09-25",
+   "personId": "hannah-cole-6",
+   "signerId": "me-akshay",
+   "dueDate": "2026-09-25",
+   "dispatchOn": "2026-09-20",
+   "status": "drafted",
+   "flags": [],
+   "versions": [
+    {
+     "draft": {
+      "front_headline": "Congratulations, Hannah",
+      "inside_message": "Wonderful news about Wren, who arrived on 15 September. I'm so pleased for you. I'll keep saving up my puns in the meantime, since you're still the only person who laughs at them, and now you've a captive audience of your own.",
+      "sign_off": "Lots of love,",
+      "signature_line": "Akshay",
+      "artwork_brief": {
+       "template": "sparks",
+       "palette_variant": "bright",
+       "style_note": "soft bright sparks, gentle and celebratory, nothing busy"
+      },
+      "flags": [],
+      "rationale": "Leans on Wren's arrival date and the running pun joke for warmth and specificity, kept light and personal with no invented shared history."
+     },
+     "createdAt": "2026-09-21",
+     "promptHash": "776f544b085b5eae",
+     "model": "claude-opus-5",
+     "usage": {
+      "input_tokens": 384,
+      "output_tokens": 408,
+      "cache_read_input_tokens": 4666,
+      "cache_creation_input_tokens": 0
+     },
+     "attempts": 1,
+     "source": "claude",
+     "ms": 6470
+    }
+   ],
+   "seed": 1333866729,
+   "history": [
+    {
+     "at": "2026-09-21",
+     "status": "drafted",
+     "note": "claude draft"
+    }
+   ],
+   "aiCostGbp": 0.011273340000000001,
+   "shareCode": "dlb7de"
   }
  ],
  "digests": [],
@@ -220,7 +578,31 @@
    },
    {
     "at": "2026-09-21",
-    "event": "Drafted 1 card in 4.4s (0 cached, 1 live, 0 template)"
+    "event": "Drafted 1 card in 0.0s (1 cached, 0 live, 0 template)"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Ruairidh Forgan: Proof of concept: the card that sends itself added for 2026-09-26"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Detected 1 occasion due by 2026-09-26"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Drafted 1 card in 6.2s (0 cached, 1 live, 0 template)"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Hannah Cole: Baby Wren added for 2026-09-25"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Detected 1 occasion due by 2026-09-25"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Drafted 1 card in 6.5s (0 cached, 1 live, 0 template)"
    }
   ]
  },

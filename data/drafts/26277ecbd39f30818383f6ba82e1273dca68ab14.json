@@ -1,0 +1,27 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Isla",
+  "inside_message": "Happy birthday, Isla! I hear a tooth went missing in August, so I hope the cake is a soft one. Have a brilliant day of dinosaurs and swimming.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "bold bright confetti, cheerful and simple for a child"
+  },
+  "flags": [],
+  "rationale": "Leans on the lost tooth and her love of dinosaurs and swimming, in a playful godparent voice, with no mention of her age."
+ },
+ "createdAt": "2026-10-02",
+ "promptHash": "0c17ef152dbdbe9a",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 362,
+  "output_tokens": 242,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 4666
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4488
+}
