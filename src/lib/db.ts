@@ -12,6 +12,16 @@ const MEMORY = process.env.DATA_MODE === "memory";
 declare global {
   // eslint-disable-next-line no-var
   var __hoorayDb: DB | undefined;
+  // eslint-disable-next-line no-var
+  var __hoorayDbMtime: number | undefined;
+}
+
+function fileMtime(): number {
+  try {
+    return fs.statSync(DB_PATH).mtimeMs;
+  } catch {
+    return 0;
+  }
 }
 
 function load(): DB {
@@ -31,10 +41,16 @@ function persist(db: DB): void {
   const tmp = DB_PATH + ".tmp";
   fs.writeFileSync(tmp, JSON.stringify(db, null, 1));
   fs.renameSync(tmp, DB_PATH);
+  globalThis.__hoorayDbMtime = fileMtime();
 }
 
 export function getDb(): DB {
-  if (!globalThis.__hoorayDb) globalThis.__hoorayDb = load();
+  // Reload if another process (a script) rewrote the file since we last read it.
+  const m = MEMORY ? 0 : fileMtime();
+  if (!globalThis.__hoorayDb || (!MEMORY && m !== globalThis.__hoorayDbMtime)) {
+    globalThis.__hoorayDb = load();
+    globalThis.__hoorayDbMtime = m;
+  }
   return globalThis.__hoorayDb;
 }
 

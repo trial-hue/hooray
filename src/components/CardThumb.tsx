@@ -20,7 +20,7 @@ export function CardThumb({ width = 104, brandHex, accentHex, template, variant,
   const height = Math.round((width * 210) / 148.5);
   const fontPx = Math.max(7, Math.round(width / 9));
   return (
-    <div className="relative overflow-hidden rounded-[3px] shadow-[0_1px_3px_rgba(0,0,0,0.18)]" style={{ width, height, background: palette.paper }}>
+    <div className="paper-shadow relative overflow-hidden rounded-[4px]" style={{ width, height, background: palette.paper }}>
       <Artwork art={art} palette={palette} />
       <div className="absolute inset-0 flex items-end p-[8%]">
         <span className="font-display leading-[1.05]" style={{ color: art.template === "bands" ? palette.ink : palette.ink, fontSize: fontPx, fontWeight: 600 }}>

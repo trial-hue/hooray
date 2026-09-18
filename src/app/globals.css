@@ -2,15 +2,19 @@
 
 :root {
   --paper: #faf7f2;
-  --paper-2: #f2ede4;
+  --paper-2: #f1ece3;
   --ink: #1b1b1b;
   --ink-2: #4a4a48;
   --ink-3: #7b7a76;
-  --line: #e4ded3;
+  --line: #dcd5c7;
   --navy: #1f3a5f;
   --navy-2: #30507a;
   --gold: #d4a24c;
+  --gold-bg: #fbf1dc;
   --sage: #7fa38c;
+  --sage-bg: #e9f1ec;
+  --hooray: #e4536b;
+  --hooray-bg: #fbe9ec;
   --amber-bg: #fff4db;
   --amber-fg: #7a5200;
   --red-bg: #fde8e6;
@@ -29,7 +33,11 @@
   --color-navy: var(--navy);
   --color-navy-2: var(--navy-2);
   --color-gold: var(--gold);
+  --color-gold-bg: var(--gold-bg);
   --color-sage: var(--sage);
+  --color-sage-bg: var(--sage-bg);
+  --color-hooray: var(--hooray);
+  --color-hooray-bg: var(--hooray-bg);
   --font-display: var(--font-display), Georgia, serif;
   --font-body: var(--font-body), system-ui, sans-serif;
   --font-script: var(--font-script), cursive;
@@ -48,26 +56,108 @@ body {
   font-family: var(--font-script);
 }
 
+/* type */
+.h1 {
+  @apply font-display text-[34px] leading-[1.1] tracking-[-0.01em];
+}
+.h2 {
+  @apply font-display text-[22px] leading-tight;
+}
+.stat {
+  @apply font-display text-[40px] leading-none tracking-tight;
+}
+.hint {
+  @apply text-sm text-ink-3;
+}
+.label {
+  @apply block text-[11px] font-medium uppercase tracking-[0.12em] text-ink-3;
+}
+
+/* buttons */
 .btn {
-  @apply inline-flex items-center gap-1.5 rounded-md border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink shadow-sm transition hover:bg-paper-2 disabled:opacity-50;
+  @apply inline-flex items-center gap-1.5 rounded-lg border border-line bg-white px-3.5 py-2 text-[13px] font-medium text-ink shadow-sm transition hover:bg-paper-2 disabled:cursor-default disabled:opacity-50 disabled:hover:bg-white;
+}
+.btn-sm {
+  @apply rounded-md px-2.5 py-1 text-xs;
 }
 .btn-primary {
-  @apply border-navy bg-navy text-white hover:bg-navy-2;
+  @apply border-navy bg-navy text-white hover:bg-navy-2 disabled:hover:bg-navy;
 }
 .btn-ghost {
-  @apply border-transparent bg-transparent shadow-none hover:bg-paper-2;
+  @apply border-transparent bg-transparent text-ink-2 shadow-none hover:bg-paper-2 hover:text-ink;
 }
+
+/* chips */
 .chip {
   @apply inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium leading-4;
 }
+.chip-amber {
+  background: var(--amber-bg);
+  color: var(--amber-fg);
+}
+.chip-red {
+  background: var(--red-bg);
+  color: var(--red-fg);
+}
+.chip-green {
+  background: var(--green-bg);
+  color: var(--green-fg);
+}
+.chip-navy {
+  background: color-mix(in srgb, var(--navy) 10%, transparent);
+  color: var(--navy);
+}
+.chip-gold {
+  background: var(--gold-bg);
+  color: var(--amber-fg);
+}
+.chip-muted {
+  background: var(--paper-2);
+  color: var(--ink-3);
+}
+
+/* panels */
 .card-panel {
   @apply rounded-xl border border-line bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)];
 }
-.label {
-  @apply block text-xs font-medium uppercase tracking-wide text-ink-3;
+.card-panel-hero {
+  @apply rounded-xl border border-line bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04),0_10px_28px_-18px_rgba(0,0,0,0.3)];
 }
+.paper-shadow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 12px 28px -14px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* inputs */
 .input {
   @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink focus:border-navy focus:outline-none;
+}
+
+/* native details menu */
+details.menu-host {
+  position: relative;
+}
+details.menu-host > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details.menu-host > summary::-webkit-details-marker {
+  display: none;
+}
+.menu {
+  @apply absolute right-0 z-30 mt-1 min-w-56 rounded-xl border border-line bg-white p-1 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.3)];
+}
+.menu-item {
+  @apply block w-full rounded-md px-3 py-2 text-left text-sm text-ink hover:bg-paper-2;
+}
+
+/* progress */
+.bar {
+  @apply h-1.5 overflow-hidden rounded-full;
+  background: var(--gold-bg);
+}
+.bar-fill {
+  @apply h-full rounded-full;
+  background: var(--gold);
 }
 
 @keyframes pulse-soft {

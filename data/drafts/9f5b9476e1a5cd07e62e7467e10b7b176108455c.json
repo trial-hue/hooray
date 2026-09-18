@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Sophie",
+  "inside_message": "Happy birthday, Sophie. I hope you get the day to yourself, wherever you're spending it, with the laptop firmly shut. Thank you for everything you do for the Outsourcing team.",
+  "sign_off": "Warm wishes,",
+  "signature_line": "Lucy Pemberton, Outsourcing Manager",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "light confetti scatter, plenty of white space"
+  },
+  "flags": [
+   "Only fact available was home working, so the card is deliberately general; add a specific line if Lucy has one."
+  ],
+  "rationale": "Few public facts, so this stays simply warm with a light nod to her working pattern rather than inventing detail."
+ },
+ "createdAt": "2026-09-30",
+ "promptHash": "5e0fb8b42157f8c2",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 416,
+  "output_tokens": 258,
+  "cache_read_input_tokens": 4522,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 4483
+}

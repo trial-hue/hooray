@@ -115,7 +115,7 @@ export async function changeSignerAction(formData: FormData): Promise<void> {
 
 export async function regenerateCardAction(formData: FormData): Promise<void> {
   const id = String(formData.get("id"));
-  const hint = String(formData.get("hint") ?? "").trim();
+  const hint = String(formData.get("hint") ?? "").trim() || String(formData.get("preset") ?? "").trim();
   await mutate(async (db) => {
     const c = db.cards.find((x) => x.id === id);
     if (c && (c.status === "drafted" || c.status === "needs_review")) await draftCard(db, c, { hint: hint || undefined, bypassCache: true });
