@@ -49,6 +49,7 @@ function one(id?: string): SignerChoice | undefined {
 }
 
 export function relationshipOf(signer: Person, recipient: Person, company: Company | undefined): string {
+  if (recipient.kind === "friend") return recipient.relationship ? `${recipient.relationship} (the signer is writing personally)` : "a friend (the signer is writing personally)";
   if (recipient.kind === "client") {
     return recipient.accountOwnerId === signer.id
       ? `relationship partner for ${recipient.clientCompanyName ?? recipient.team}`

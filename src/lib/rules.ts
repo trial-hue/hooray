@@ -12,8 +12,9 @@ export type ChannelRules = {
 
 export function rulesFor(p: Person, occ: Occasion, c: Company | undefined): ChannelRules {
   const client = p.kind === "client";
+  const friend = p.kind === "friend";
   const solemn = occ.type === "sympathy" || occ.type === "get-well";
-  const formality = c?.formality ?? "medium";
+  const formality = friend ? "low" : (c?.formality ?? "medium");
   return {
     formality: client || solemn ? "high" : formality,
     humour: client || solemn ? "none" : "light",

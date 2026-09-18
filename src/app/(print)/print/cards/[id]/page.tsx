@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { CardSheet, SHEET_H, SHEET_W } from "@/components/Card";
-import { getDb } from "@/lib/db";
+import { getDb, isWorkspace } from "@/lib/db";
 import { renderableCard } from "@/lib/render";
 
 export const dynamic = "force-dynamic";
@@ -10,7 +10,7 @@ export default async function PrintCardPage({ params, searchParams }: PageProps<
   const { id } = await params;
   const sp = await searchParams;
   if (process.env.PRINT_TOKEN && sp.t !== process.env.PRINT_TOKEN) notFound();
-  const db = getDb();
+  const db = getDb(isWorkspace(sp.ws) ? sp.ws : "business");
   const card = db.cards.find((c) => c.id === id);
   if (!card) notFound();
   const rc = renderableCard(db, card);

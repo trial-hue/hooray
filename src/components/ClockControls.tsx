@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { advanceClockAction, resetDemoAction } from "@/app/actions";
+import { advanceClockAction, resetDemoAction, resetPersonalAction } from "@/app/actions";
 
 export type ClockPreview = { days: number; label: string; dispatch: number; drafts: number; closing: number };
 
@@ -34,12 +34,13 @@ function MenuItem({ title, sub }: { title: string; sub?: string }) {
   );
 }
 
-export function ClockControls({ hasCompany, previews }: { hasCompany: boolean; previews: ClockPreview[] }) {
+export function ClockControls({ hasCompany, previews, ws = "business" }: { hasCompany: boolean; previews: ClockPreview[]; ws?: "business" | "personal" }) {
   const [day, week, month] = previews;
   if (!hasCompany) return null;
   return (
     <div className="flex items-center gap-1.5">
       <form action={advanceClockAction}>
+        <input type="hidden" name="ws" value={ws} />
         <input type="hidden" name="days" value="7" />
         <Primary p={week} />
       </form>
@@ -47,16 +48,18 @@ export function ClockControls({ hasCompany, previews }: { hasCompany: boolean; p
         <summary className="btn btn-ghost">More ▾</summary>
         <div className="menu">
           <form action={advanceClockAction}>
+            <input type="hidden" name="ws" value={ws} />
             <input type="hidden" name="days" value="1" />
             <MenuItem title="Tomorrow" sub={summary(day)} />
           </form>
           <form action={advanceClockAction}>
+            <input type="hidden" name="ws" value={ws} />
             <input type="hidden" name="days" value="30" />
             <MenuItem title={`A month on → ${month.label.slice(0, -5)}`} sub={summary(month)} />
           </form>
           <div className="my-1 border-t border-line" />
-          <form action={resetDemoAction}>
-            <MenuItem title="Reset the demo" sub="Back to a fresh roster on 21 Sep" />
+          <form action={ws === "personal" ? resetPersonalAction : resetDemoAction}>
+            <MenuItem title={ws === "personal" ? "Start again" : "Reset the demo"} sub={ws === "personal" ? "Clears this personal account" : "Back to a fresh roster on 21 Sep"} />
           </form>
         </div>
       </details>

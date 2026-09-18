@@ -13,7 +13,7 @@ export function gate(p: Person, occ: Occasion, signer: Person | undefined, addr:
   if (existing) return block("duplicate-occurrence", "A card already exists for this occasion.");
   if (p.status === "left") return block("left-company", `${name} has left; no card.`);
   if (p.optOut) return block("opted-out", `${name} has opted out of cards.`);
-  if (occ.type === "birthday" && !p.consentOccasions) return block("no-consent", `${name} has not consented to birthdays being marked. Payroll date of birth cannot be reused without it.`);
+  if (occ.type === "birthday" && p.kind === "staff" && !p.consentOccasions) return block("no-consent", `${name} has not consented to birthdays being marked. Payroll date of birth cannot be reused without it.`);
   if (p.status === "on-leave" && p.leaveReason === "sick") return block("on-leave-sick", `${name} is on sick leave. Send anyway?`);
   if (p.bereavementUntil && occ.date <= p.bereavementUntil && occ.type !== "sympathy")
     return block("bereavement-window", `${name} had a recent bereavement; a ${occ.type.replace("-", " ")} card may land badly.`);

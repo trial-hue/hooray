@@ -25,6 +25,10 @@ export default function Onboarding() {
           <Link href="/connect" className="underline underline-offset-2 hover:text-ink">
             connect your HR system or CRM
           </Link>
+          . Sending cards for yourself?{" "}
+          <Link href="/me/start" className="underline underline-offset-2 hover:text-ink">
+            Hooray for people
+          </Link>
           .
         </p>
         <p className="hint mt-6">

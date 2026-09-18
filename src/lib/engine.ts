@@ -12,6 +12,7 @@ import { aiCostGbp } from "./costs";
 import { fnv1a } from "./rng";
 import { parseRoster, toCsv } from "./roster";
 import { seedCompany, seedPeople } from "./seed";
+import { seedPersonalAccount, seedPersonalContacts } from "./seedPersonal";
 import { submitBatch, progressPrintJobs } from "./printPartner";
 import { closeCollection, openCollection } from "./collections";
 import { DISPATCH_DAYS, LEAD_DAYS, SIM_START, type Card, type CardStatus, type DB, type DraftVersion, type ISODate, type Occasion, type Person, type Usage } from "./types";
@@ -42,6 +43,36 @@ export async function loadDemoRoster(db: DB): Promise<{ staff: number; clients: 
   const people = seedPeople();
   const csv = toCsv(people, new Map(people.map((p) => [p.id, p])));
   return importRoster(db, csv, seedCompany());
+}
+
+/** Personal workspace: start an account for one person. */
+export async function startPersonal(db: DB, opts: { name: string; brandHex: string; toneWords: string[]; signOff: string; address?: Person["homeAddress"] }): Promise<void> {
+  const acct = seedPersonalAccount(opts);
+  db.company = acct.company;
+  db.people = [acct.owner];
+  db.occasions = [];
+  db.cards = [];
+  db.digests = [];
+  db.printJobs = [];
+  db.collections = [];
+  db.clock = { today: SIM_START, startedOn: SIM_START, log: [] };
+  logEvent(db, `${opts.name} started a personal account`);
+}
+
+export async function addContact(db: DB, contact: Omit<Person, "id" | "kind" | "status" | "optOut" | "consentOccasions" | "deliverTo" | "publicFacts" | "privateNotes" | "managerId"> & { publicFacts?: string[] }): Promise<Person> {
+  const owner = db.people.find((p) => p.id === db.company?.managingPartnerId);
+  const id = `${contact.firstName}-${contact.lastName}`.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + (db.people.length + 1);
+  const p: Person = { ...contact, id, kind: "friend", status: "active", optOut: false, consentOccasions: true, deliverTo: "home", publicFacts: contact.publicFacts ?? [], privateNotes: [], managerId: owner?.id };
+  db.people.push(p);
+  logEvent(db, `Added ${p.firstName} ${p.lastName} (${p.relationship ?? "friend"})`);
+  await ensureCards(db, db.clock.today, addDays(db.clock.today, LEAD_DAYS));
+  return p;
+}
+
+export async function loadExampleContacts(db: DB): Promise<number> {
+  const before = db.people.length;
+  for (const c of seedPersonalContacts()) await addContact(db, c);
+  return db.people.length - before;
 }
 
 export async function importRoster(db: DB, csv: string, company = db.company): Promise<{ staff: number; clients: number; warnings: string[] }> {

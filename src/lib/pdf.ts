@@ -27,14 +27,14 @@ function getBrowser(): Promise<Browser> {
   return globalThis.__hoorayBrowser;
 }
 
-export function printPageUrl(id: string, origin: string, marks: boolean): string {
+export function printPageUrl(id: string, origin: string, marks: boolean, ws: "business" | "personal" = "business"): string {
   const base = process.env.NEXT_PUBLIC_BASE_URL ?? origin;
   const t = process.env.PRINT_TOKEN ? `&t=${encodeURIComponent(process.env.PRINT_TOKEN)}` : "";
-  return `${base}/print/cards/${id}?marks=${marks ? 1 : 0}${t}`;
+  return `${base}/print/cards/${id}?marks=${marks ? 1 : 0}&ws=${ws}${t}`;
 }
 
-export async function renderCardPdf(id: string, opts: { marks?: boolean; origin: string }): Promise<Buffer> {
-  const url = printPageUrl(id, opts.origin, Boolean(opts.marks));
+export async function renderCardPdf(id: string, opts: { marks?: boolean; origin: string; ws?: "business" | "personal" }): Promise<Buffer> {
+  const url = printPageUrl(id, opts.origin, Boolean(opts.marks), opts.ws ?? "business");
   try {
     const browser = await getBrowser();
     const page = await browser.newPage();

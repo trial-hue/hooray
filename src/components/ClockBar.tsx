@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { getDb } from "@/lib/db";
+import { getDb, type Workspace } from "@/lib/db";
 import { addDays, formatLong } from "@/lib/dates";
 import { materialiseOccasions } from "@/lib/occasions";
+import { paths } from "@/lib/paths";
 import { LEAD_DAYS, type DB } from "@/lib/types";
 import { ClockControls, type ClockPreview } from "./ClockControls";
 
@@ -29,28 +30,44 @@ export function Wordmark({ className = "" }: { className?: string }) {
   );
 }
 
-export function ClockBar({ active }: { active: string }) {
-  const db = getDb();
+export function ClockBar({ active, ws = "business" }: { active: string; ws?: Workspace }) {
+  const db = getDb(ws);
+  const p = paths(ws);
   const openCount = db.cards.filter((c) => ["drafted", "needs_review", "held"].includes(c.status)).length;
   const openCollections = db.collections.filter((c) => c.status === "open").length;
-  const nav: [string, string][] = [
-    ["/digest", "This week"],
-    ["/people", "People"],
-    ["/dashboard", "Numbers"],
-  ];
+  const nav: [string, string][] =
+    ws === "personal"
+      ? [
+          ["/me", "This week"],
+          ["/me/people", "My people"],
+        ]
+      : [
+          ["/digest", "This week"],
+          ["/people", "People"],
+          ["/dashboard", "Numbers"],
+        ];
+  const homeActive = (href: string) => active === href || (href === p.home && (active === p.calendar || active === p.post));
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-5 py-2.5">
-        <Link href="/" className="flex items-baseline gap-2">
+        <Link href={ws === "personal" ? "/me" : "/"} className="flex items-baseline gap-2">
           <Wordmark />
           {db.company && <span className="text-sm text-ink-3">· {db.company.shortName}</span>}
         </Link>
+        <div className="flex items-center rounded-lg border border-line bg-white p-0.5 text-xs">
+          <Link href="/digest" className={`rounded-md px-2 py-1 ${ws === "business" ? "bg-navy text-white" : "text-ink-2 hover:bg-paper-2"}`}>
+            For businesses
+          </Link>
+          <Link href="/me" className={`rounded-md px-2 py-1 ${ws === "personal" ? "bg-navy text-white" : "text-ink-2 hover:bg-paper-2"}`}>
+            For people
+          </Link>
+        </div>
         {db.company && (
           <nav className="flex items-center gap-0.5 text-sm">
             {nav.map(([href, label]) => (
-              <Link key={href} href={href} className={`rounded-md px-2.5 py-1.5 ${active === href || (href === "/digest" && (active === "/calendar" || active === "/print")) ? "bg-white text-ink shadow-sm" : "text-ink-2 hover:bg-paper-2"}`}>
+              <Link key={href} href={href} className={`rounded-md px-2.5 py-1.5 ${homeActive(href) ? "bg-white text-ink shadow-sm" : "text-ink-2 hover:bg-paper-2"}`}>
                 {label}
-                {href === "/digest" && openCount > 0 && <span className="ml-1.5 rounded-full bg-navy px-1.5 text-[10px] text-white">{openCount}</span>}
+                {href === p.home && openCount > 0 && <span className="ml-1.5 rounded-full bg-navy px-1.5 text-[10px] text-white">{openCount}</span>}
                 {href === "/people" && openCollections > 0 && <span className="ml-1.5 rounded-full bg-gold px-1.5 text-[10px] text-white">{openCollections}</span>}
               </Link>
             ))}
@@ -61,7 +78,7 @@ export function ClockBar({ active }: { active: string }) {
             <div className="text-[10px] uppercase tracking-[0.12em] text-ink-3">Today</div>
             <div className="font-display text-[15px]">{formatLong(db.clock.today)}</div>
           </div>
-          <ClockControls hasCompany={Boolean(db.company)} previews={[preview(db, 1), preview(db, 7), preview(db, 30)]} />
+          <ClockControls hasCompany={Boolean(db.company)} previews={[preview(db, 1), preview(db, 7), preview(db, 30)]} ws={ws} />
         </div>
       </div>
     </header>

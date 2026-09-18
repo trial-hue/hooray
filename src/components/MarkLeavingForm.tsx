@@ -14,11 +14,13 @@ function Item({ label, sub }: { label: string; sub?: string }) {
 }
 
 /** One menu per person: everything a manager might record about them. */
-export function PersonMenu({ personId }: { personId: string }) {
+export function PersonMenu({ personId, ws = "business" }: { personId: string; ws?: "business" | "personal" }) {
+  const personal = ws === "personal";
   return (
     <details className="menu-host">
-      <summary className="btn btn-sm">Record ▾</summary>
+      <summary className="btn btn-sm">{personal ? "Add occasion ▾" : "Record ▾"}</summary>
       <div className="menu">
+        {!personal && (<>
         <form action={markLeavingAction}>
           <input type="hidden" name="personId" value={personId} />
           <input type="hidden" name="days" value="14" />
@@ -32,17 +34,27 @@ export function PersonMenu({ personId }: { personId: string }) {
           <Item label="Retiring in four weeks" sub="opens a team collection today" />
         </form>
         <div className="my-1 border-t border-line" />
+        </>)}
         {(
-          [
-            ["wedding", "Wedding", "opens a team collection"],
-            ["new-baby", "New baby", "opens a team collection"],
-            ["congratulations", "Congratulations", "company card only"],
-            ["get-well", "Get well", "company card only"],
-            ["sympathy", "Sympathy", "company card only"],
-          ] as [string, string, string][]
+          personal
+            ? ([
+                ["wedding", "Wedding", "a card in two weeks"],
+                ["new-baby", "New baby", "a card in two weeks"],
+                ["congratulations", "Congratulations", "a card in two weeks"],
+                ["get-well", "Get well", "a card in two weeks"],
+                ["sympathy", "Sympathy", "a card in two weeks"],
+              ] as [string, string, string][])
+            : ([
+                ["wedding", "Wedding", "opens a team collection"],
+                ["new-baby", "New baby", "opens a team collection"],
+                ["congratulations", "Congratulations", "company card only"],
+                ["get-well", "Get well", "company card only"],
+                ["sympathy", "Sympathy", "company card only"],
+              ] as [string, string, string][])
         ).map(([kind, label, sub]) => (
           <form key={kind} action={addOccasionAction}>
             <input type="hidden" name="personId" value={personId} />
+            <input type="hidden" name="ws" value={ws} />
             <input type="hidden" name="kind" value={kind} />
             <input type="hidden" name="days" value="14" />
             <Item label={label} sub={sub} />

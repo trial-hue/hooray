@@ -20,7 +20,7 @@ export function resolveDelivery(p: Person, company: Company | undefined, dueDate
       mode: "individual",
     };
   }
-  if (p.deliverTo === "home" || p.status === "on-leave") {
+  if (p.kind === "friend" || p.deliverTo === "home" || p.status === "on-leave") {
     if (!p.homeAddress) return undefined;
     return { address: p.homeAddress, attention: name, envelopeLine: name, mode: "individual" };
   }

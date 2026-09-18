@@ -32,12 +32,12 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
         if (inWindow(d, from, to) && (!p.endDate || d <= p.endDate)) {
           const age = p.dob ? yearsBetween(p.dob, d) : undefined;
           const milestone = age !== undefined && MILESTONE_AGES.includes(age);
-          out.push(make(p, "birthday", d, { isMilestone: milestone, collectionEligible: milestone }));
+          out.push(make(p, "birthday", d, { isMilestone: milestone, collectionEligible: milestone && p.kind === "staff" }));
         }
       }
     }
 
-    if (p.startDate) {
+    if (p.startDate && p.kind !== "friend") {
       if (p.kind === "staff") {
         if (inWindow(p.startDate, from, to) && p.startDate > db.clock.startedOn) {
           out.push(make(p, "welcome", p.startDate));
@@ -69,7 +69,7 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
     }
 
     for (const m of p.milestones ?? []) {
-      if (inWindow(m.date, from, to)) out.push(make(p, "client-milestone", m.date, { label: m.label, createdBy: "human" }));
+      if (inWindow(m.date, from, to)) out.push(make(p, p.kind === "friend" ? "congratulations" : "client-milestone", m.date, { label: m.label, createdBy: "human" }));
     }
   }
 

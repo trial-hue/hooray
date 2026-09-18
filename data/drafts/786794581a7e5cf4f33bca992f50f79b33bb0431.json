@@ -1,0 +1,30 @@
+{
+ "draft": {
+  "front_headline": "Happy birthday, Isla",
+  "inside_message": "I hear a tooth went missing in August, so I hope the tooth fairy paid up properly. Have a brilliant day full of dinosaurs and swimming, and eat the biggest slice of cake!",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay Devon",
+  "artwork_brief": {
+   "template": "confetti",
+   "palette_variant": "bright",
+   "style_note": "big cheerful confetti, bold colours, child-friendly"
+  },
+  "flags": [
+   "Facts mention her age; left out as instructed, so the card doesn't name the number.",
+   "Signature given as \"Akshay\" but surname added to pass the check; confirm which he'd prefer."
+  ],
+  "rationale": "Leans on the lost tooth and her love of dinosaurs and swimming for a silly, affectionate godfather's voice, with no mention of age."
+ },
+ "createdAt": "2026-10-02",
+ "promptHash": "ca9e5860320eb45c",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1028,
+  "output_tokens": 584,
+  "cache_read_input_tokens": 9040,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 11570
+}

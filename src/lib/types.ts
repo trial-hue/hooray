@@ -22,6 +22,7 @@ export type Formality = "low" | "medium" | "high";
 
 export type Company = {
   id: string;
+  kind?: "business" | "personal"; // personal: one person's account; shortName is their name
   name: string; // "Hartley & Crane LLP"
   shortName: string; // "Hartley & Crane"
   sector: Sector;
@@ -42,7 +43,7 @@ export type Company = {
   source?: { provider: string; kind: "hr" | "crm" | "csv"; simulated: boolean; syncedOn: ISODate };
 };
 
-export type PersonKind = "staff" | "client";
+export type PersonKind = "staff" | "client" | "friend";
 export type PersonStatus = "active" | "on-leave" | "left";
 export type LeaveReason =
   | "parental"
@@ -70,6 +71,7 @@ export type Person = {
   managerId?: string; // staff: line manager
   accountOwnerId?: string; // client: relationship partner
   clientCompanyName?: string;
+  relationship?: string; // friend: "my mum", "my best friend from school"
   status: PersonStatus;
   leaveReason?: LeaveReason;
   leaveUntil?: ISODate;
