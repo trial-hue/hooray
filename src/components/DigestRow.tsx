@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
-import { approveCardAction, changeSignerAction, editCardAction, regenerateCardAction, releaseHeldAction, skipCardAction } from "@/app/actions";
+import { approveCardAction, changeSignerAction, editCardAction, regenerateCardAction, releaseHeldAction, setCardGiftAction, skipCardAction } from "@/app/actions";
+import { GIFT_RANGE } from "@/lib/collections";
+import { giftLabel } from "@/lib/gifts";
 import { StatusChip } from "./StatusChip";
 import { CardThumb } from "./CardThumb";
 import { formatShort } from "@/lib/dates";
-import { currentDraft, finalTextOf, fullName, type Card, type OccasionType, type Person } from "@/lib/types";
+import { currentDraft, finalTextOf, fullName, type Card, type CardGift, type OccasionType, type Person } from "@/lib/types";
 
 type Props = {
   card: Card;
@@ -23,6 +25,7 @@ type Props = {
   collection?: { id: string; contributors: number; invited: number; status: "open" | "closed" };
   preview?: React.ReactNode;
   ws?: "business" | "personal";
+  gift?: CardGift;
 };
 
 function Pending({ label, busy, className = "btn" }: { label: string; busy: string; className?: string }) {
@@ -79,6 +82,7 @@ export function DigestRow(p: Props) {
               collection · {p.collection.contributors} of {p.collection.invited} signed
             </Link>
           )}
+          {p.gift && <span className="chip chip-gold">Gift · {giftLabel(p.gift)}</span>}
         </div>
 
         {firstFlag && (
@@ -175,6 +179,26 @@ export function DigestRow(p: Props) {
                     <MenuSubmit label="Rewrite, shorter" name="preset" value="Shorter" />
                     <MenuSubmit label="Rewrite, more formal" name="preset" value="More formal" />
                   </form>
+                  {ws === "business" && (p.gift || card.occasionId) && (
+                    <>
+                      <div className="my-1 border-t border-line" />
+                      <form action={setCardGiftAction} className="px-3 py-2 text-xs text-ink-3">
+                        <input type="hidden" name="id" value={card.id} />
+                        {W}
+                        <label className="block">
+                          Company gift
+                          <select name="giftId" defaultValue={p.gift?.id ?? ""} className="mt-1 block w-full rounded-md border border-line bg-white px-1.5 py-1 text-xs text-ink" onChange={(e) => e.currentTarget.form?.requestSubmit()}>
+                            <option value="">No gift</option>
+                            {GIFT_RANGE.filter((g) => g.fromPence > 0).map((g) => (
+                              <option key={g.id} value={g.id}>
+                                {g.name} · from £{g.fromPence / 100}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      </form>
+                    </>
+                  )}
                   {ws === "business" && <div className="my-1 border-t border-line" />}
                   {ws === "business" && (
                   <form action={changeSignerAction} className="px-3 py-2 text-xs text-ink-3">

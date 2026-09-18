@@ -37,8 +37,12 @@ export default function DashboardPage() {
   const potTotal = collections.reduce((s, c) => s + potPence(c), 0) / 100;
   const contributors = collections.reduce((s, c) => s + c.contributions.length, 0);
   const moonpigAdminPerCard = (UNIT.manualMinutesPerCard / 60) * 15;
-  const clientGiftValue = clients.length * UNIT.clientGiftRate * UNIT.clientGiftValueGbp; //
-  const giftUnderManagement = potTotal + clientGiftValue;
+  const gifted = db.cards.filter((c) => c.gift);
+  const staffGiftValue = gifted.filter((c) => c.gift!.reason === "staff-milestone").reduce((s, c) => s + c.gift!.valuePence, 0) / 100;
+  const clientGiftValue = gifted.filter((c) => c.gift!.reason === "client").reduce((s, c) => s + c.gift!.valuePence, 0) / 100;
+  const companyGiftTotal = staffGiftValue + clientGiftValue;
+  const giftUnderManagement = potTotal + companyGiftTotal;
+  const giftMargin = giftUnderManagement * UNIT.giftMarginRate;
   const seat = seatMargin(UNIT.cardCostProductionGbp, aiPerCard);
   const seatDoubled = seatMargin(UNIT.cardCostProductionGbp * 2, aiPerCard);
 
@@ -67,7 +71,7 @@ export default function DashboardPage() {
           <Hero value={pct(seat.margin)} label="seat margin" sub={`print is ${gbp(seat.printPerSeat)} of a £30 seat (two cards at ${gbp(UNIT.cardCostProductionGbp)}) · AI ${pence(seat.aiPerSeat)} · still ${pct(seatDoubled.margin)} if card cost doubles`} />
         </div>
         <div className="mt-4 grid gap-4 sm:grid-cols-4">
-          <Tile label="Gift value under management" value={gbp(giftUnderManagement, 0)} sub={`${gbp(potTotal, 0)} in collection pots · ${gbp(clientGiftValue, 0)} client gifts · Moonpig attaches a gift to ${pct(MOONPIG.giftAttachRate)} of orders`} accent="gold" />
+          <Tile label="Gift value under management" value={gbp(giftUnderManagement, 0)} sub={`${gbp(potTotal, 0)} in collection pots · ${gbp(staffGiftValue, 0)} staff milestone gifts · ${gbp(clientGiftValue, 0)} client gifts · gift margin, estimate: ${gbp(giftMargin, 0)} at ${pct(UNIT.giftMarginRate)}`} accent="gold" />
           <Tile label="Collections" value={String(collections.length)} sub={`${contributors} contributions · ${gbp(potTotal, 0)} raised`} accent="gold" />
           <Tile label="Human minutes" value={String(Math.round((touches * UNIT.digestSecondsPerCard) / 60))} sub={`${touches} touches · ${hoursSaved.toFixed(1)} hours saved against doing it by hand`} />
           <Tile label="AI spend, measured" value={gbp(aiTotal, 2)} sub={`${drafted.length} drafts · ${liveDrafts} live · ${pence(aiPerCard)} a card at Claude Opus 5 prices`} />

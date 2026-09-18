@@ -25,9 +25,10 @@ export const UNIT = {
   digestSecondsPerCard: 20,
   /** Collections: blended take on the pot (2% fee on cash/gift card, 25% margin on sourced gifts). */
   collectionBlendedTake: 0.11,
-  /** Client gifts [E]: one in ten client contacts a year at ~£50. Gift value under management, not revenue. */
-  clientGiftRate: 0.1,
+  /** Company-paid gifts [E]: attached by policy to staff milestones and client dates. Gift value under management, not revenue. */
+  staffMilestoneGiftValueGbp: 50,
   clientGiftValueGbp: 50,
+  giftMarginRate: 0.25,
   teamSize: 4,
 };
 

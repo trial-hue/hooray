@@ -32,7 +32,7 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
         if (inWindow(d, from, to) && (!p.endDate || d <= p.endDate)) {
           const age = p.dob ? yearsBetween(p.dob, d) : undefined;
           const milestone = age !== undefined && MILESTONE_AGES.includes(age);
-          out.push(make(p, "birthday", d, { isMilestone: milestone, collectionEligible: milestone && p.kind === "staff" }));
+          out.push(make(p, "birthday", d, { isMilestone: milestone, collectionEligible: milestone && p.kind === "staff", companyGiftEligible: milestone && p.kind === "staff" }));
         }
       }
     }
@@ -48,7 +48,7 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
             const n = yearsBetween(p.startDate, d);
             if (n >= 1) {
               const milestone = MILESTONE_YEARS.includes(n);
-              out.push(make(p, "work-anniversary", d, { ordinal: n, isMilestone: milestone, collectionEligible: milestone }));
+              out.push(make(p, "work-anniversary", d, { ordinal: n, isMilestone: milestone, collectionEligible: milestone, companyGiftEligible: milestone }));
             }
           }
         }
@@ -57,7 +57,7 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
           const d = onYear(p.startDate.slice(5), y);
           if (inWindow(d, from, to) && d > p.startDate) {
             const n = yearsBetween(p.startDate, d);
-            if (n >= 1) out.push(make(p, "client-anniversary", d, { ordinal: n, isMilestone: MILESTONE_YEARS.includes(n) }));
+            if (n >= 1) out.push(make(p, "client-anniversary", d, { ordinal: n, isMilestone: MILESTONE_YEARS.includes(n), companyGiftEligible: MILESTONE_YEARS.includes(n) }));
           }
         }
       }
@@ -69,7 +69,7 @@ export function materialiseOccasions(db: DB, from: ISODate, to: ISODate): Occasi
     }
 
     for (const m of p.milestones ?? []) {
-      if (inWindow(m.date, from, to)) out.push(make(p, p.kind === "friend" ? "congratulations" : "client-milestone", m.date, { label: m.label, createdBy: "human" }));
+      if (inWindow(m.date, from, to)) out.push(make(p, p.kind === "friend" ? "congratulations" : "client-milestone", m.date, { label: m.label, createdBy: "human", companyGiftEligible: p.kind === "client" }));
     }
   }
 

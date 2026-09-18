@@ -56,6 +56,7 @@ export function QueueView({ ws }: { ws: Workspace }) {
         occasionType={occ.type}
         ordinal={occ.ordinal}
         collection={col ? { id: col.id, contributors: col.contributions.length, invited: col.teamIds.length, status: col.status } : undefined}
+        gift={c.gift}
         preview={
           rc ? (
             <div className="w-[200px]">

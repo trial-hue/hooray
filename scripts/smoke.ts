@@ -80,6 +80,14 @@ async function main() {
   const auto = db.cards.filter((c) => c.autoApproved).length;
   console.log(`\nyear simulated in ${((Date.now() - t1) / 1000).toFixed(1)}s: ${db.cards.length} cards, ${sent} sent, ${auto} auto-approved, ${db.collections.length} collections, ${db.printJobs.length} print jobs`);
   assert(sent > 80, "a year produces a steady stream of sent cards");
+  const gifted = db.cards.filter((c) => c.gift);
+  const staffGifts = gifted.filter((c) => c.gift!.reason === "staff-milestone");
+  const clientGifts = gifted.filter((c) => c.gift!.reason === "client");
+  assert(staffGifts.length >= 1, `at least one staff milestone card carries a company gift (${staffGifts.length})`);
+  assert(clientGifts.length >= 1, `at least one client card carries a company gift (${clientGifts.length})`);
+  const giftTotal = gifted.reduce((s, c) => s + c.gift!.valuePence, 0) / 100 + db.collections.reduce((s, c) => s + potPence(c), 0) / 100;
+  assert(giftTotal > 0, `gift value under management is non-zero (£${giftTotal.toFixed(0)})`);
+  assert(db.cards.filter((c) => c.gift && (db.occasions.find((o) => o.id === c.occasionId)?.type === "leaver")).length === 0, "leavers carry no company gift");
   const total = db.cards.reduce((s, c) => s + c.aiCostGbp, 0);
   console.log(`AI spend: £${total.toFixed(3)} across ${db.cards.filter((c) => c.versions.length).length} drafted cards`);
   console.log("log (last 12):\n " + db.clock.log.slice(-12).map((l) => `${l.at} ${l.event}`).join("\n "));

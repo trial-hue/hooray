@@ -15,6 +15,7 @@ import { seedCompany, seedPeople } from "./seed";
 import { seedPersonalAccount, seedPersonalContacts } from "./seedPersonal";
 import { submitBatch, progressPrintJobs } from "./printPartner";
 import { closeCollection, openCollection } from "./collections";
+import { defaultGiftFor } from "./gifts";
 import { DISPATCH_DAYS, LEAD_DAYS, SIM_START, type Card, type CardStatus, type DB, type DraftVersion, type ISODate, type Occasion, type Person, type Usage } from "./types";
 
 const AI_DISABLED = process.env.AI_DISABLED === "1";
@@ -142,6 +143,7 @@ export async function ensureCards(db: DB, from: ISODate, to: ISODate): Promise<C
       for (const w of g.warnings) card.flags.push({ kind: "gate", text: w.message });
       toDraft.push(card);
     }
+    if (occ.companyGiftEligible && card.status !== "skipped") card.gift = defaultGiftFor(occ, person);
     db.cards.push(card);
     created.push(card);
     if (occ.collectionEligible && person.kind === "staff" && card.status !== "skipped") {

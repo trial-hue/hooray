@@ -112,6 +112,15 @@ export type Occasion = {
   occurrenceKey: string; // `${personId}:${type}:${date}`
   isMilestone?: boolean; // milestone birthday (30/40/50/60) or anniversary (1/3/5/10/15/20)
   collectionEligible?: boolean;
+  companyGiftEligible?: boolean; // policy: staff milestones and client dates carry a company-paid gift
+};
+
+export type CardGift = {
+  id: string;
+  name: string;
+  valuePence: number;
+  paidBy: "company";
+  reason: "staff-milestone" | "client";
 };
 
 export type CardStatus =
@@ -224,6 +233,7 @@ export type Card = {
   digestId?: string;
   printJobId?: string;
   collectionId?: string;
+  gift?: CardGift;
   autoApproved?: boolean;
   dispatchOn: ISODate; // dueDate - DISPATCH_DAYS
   proof?: { provider: "stannp"; id: string; pdfUrl: string; cost: string; status: string; at: ISODate; error?: string };
