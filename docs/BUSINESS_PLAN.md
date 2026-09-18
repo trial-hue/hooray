@@ -2,7 +2,7 @@
 
 ### Business unit plan: occasion cards for companies, then for everyone
 
-*Telemachus trial day, 18 September 2026, revised 16:00. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
+*Telemachus trial day, 18 September 2026, revised 17:10. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
 
 ---
 
@@ -89,6 +89,8 @@ The same loop for your own life. Sign in with Google or Microsoft and the birthd
 The social mechanic that does work needs no platform: a share link that says "tell me your birthday". Each person adds their own date. It is opt-in, it crosses every network because it is a message rather than an API call, and every reply is a lead with a known occasion attached. It is how gift registries grow, and it is the third loop in phase three.
 
 Ten days before each occasion, the card exists. One tap sends it.
+
+**How the person hears about it.** Not a weekly digest; a person has about nine occasions a year, so most weeks would be empty. One email per occasion, ten days out: "Mum's birthday is in ten days. Here's the card." Three buttons: send, change a line, skip. Nothing goes without the tap, because it is the person's money. The subscription tier is the exception and auto-sends, which is what "sent for you" means. **Not built.** The company digest is built and tested; the per-occasion personal email and the scheduler that fires both on real time are week one alongside hosting.
 
 Against Moonpig the difference is the order of operations. They send a reminder and wait. We send a finished card and wait.
 

@@ -23,6 +23,7 @@ export type Formality = "low" | "medium" | "high";
 export type Company = {
   id: string;
   kind?: "business" | "personal"; // personal: one person's account; shortName is their name
+  subscription?: boolean; // personal: subscribed accounts send automatically; pay-per-card accounts wait for a tap
   name: string; // "Hartley & Crane LLP"
   shortName: string; // "Hartley & Crane"
   sector: Sector;

@@ -185,8 +185,16 @@ export function dispatchDue(db: DB): void {
   const today = db.clock.today;
   const due = db.cards.filter((c) => c.dispatchOn <= today && (PENDING.includes(c.status) || c.status === "approved" || c.status === "edited"));
   if (due.length === 0) return;
+  // Personal accounts on pay-per-card wait for a tap; subscribed accounts and businesses send automatically.
+  const waitsForTap = db.company?.kind === "personal" && !db.company.subscription;
   let auto = 0;
+  let waiting = 0;
   for (const c of due) {
+    if (PENDING.includes(c.status) && waitsForTap) {
+      if (!c.history.some((h) => h.note === "Waiting for a tap")) c.history.push({ at: today, status: c.status, note: "Waiting for a tap" });
+      waiting++;
+      continue;
+    }
     if (PENDING.includes(c.status)) {
       const d = c.versions[c.versions.length - 1]?.draft;
       if (!d) continue;
@@ -203,6 +211,7 @@ export function dispatchDue(db: DB): void {
       if (col) closeCollection(db, col);
     }
   }
+  if (waiting) logEvent(db, `${waiting} card${waiting === 1 ? "" : "s"} waiting for a tap`);
   const sendable = due.filter((c) => c.status === "approved" || c.status === "edited");
   if (sendable.length === 0) return;
   const job = submitBatch(db, undefined, sendable);

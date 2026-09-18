@@ -6,6 +6,7 @@ import { loadDemoRoster, tick, approveCard, editCard, markLeaving, pendingCards 
 import { contribute, potPence } from "../src/lib/collections";
 import { currentDraft, finalTextOf } from "../src/lib/types";
 import { addDays } from "../src/lib/dates";
+import { loadExampleContacts, startPersonal } from "../src/lib/engine";
 
 function assert(cond: unknown, msg: string) {
   if (!cond) {
@@ -91,6 +92,23 @@ async function main() {
   const total = db.cards.reduce((s, c) => s + c.aiCostGbp, 0);
   console.log(`AI spend: £${total.toFixed(3)} across ${db.cards.filter((c) => c.versions.length).length} drafted cards`);
   console.log("log (last 12):\n " + db.clock.log.slice(-12).map((l) => `${l.at} ${l.event}`).join("\n "));
+
+  // Personal workspace: pay-per-card accounts wait for a tap at dispatch.
+  resetDb("personal");
+  await mutate("personal", async (p) => {
+    await startPersonal(p, { name: "Akshay Devon", brandHex: "#1F3A5F", toneWords: ["warm"], signOff: "Lots of love", address: { line1: "7 Ridgeway Gardens", town: "London", postcode: "N6 5RB" } });
+    await loadExampleContacts(p);
+  });
+  const pdb = getDb("personal");
+  const meera = pdb.cards.find((c) => c.personId.startsWith("meera"))!;
+  assert(meera && meera.status === "drafted", "personal: Meera's card drafted");
+  await mutate("personal", (p) => tick(p, addDays(meera.dispatchOn, 1)));
+  const after = getDb("personal").cards.find((c) => c.id === meera.id)!;
+  assert(after.status === "drafted" && !after.autoApproved, `personal: pending card still pending after dispatch day (${after.status})`);
+  assert(getDb("personal").clock.log.some((l) => l.event.includes("waiting for a tap")), "personal: logged as waiting for a tap");
+  await mutate("personal", async (p) => { p.company!.subscription = true; await tick(p, addDays(p.clock.today, 1)); });
+  const subbed = getDb("personal").cards.find((c) => c.id === meera.id)!;
+  assert(subbed.status === "sent_to_print" && subbed.autoApproved === true, "personal: subscribed account sends automatically");
 }
 
 main().catch((e) => {
