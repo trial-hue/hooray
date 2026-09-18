@@ -28,7 +28,8 @@ function getBrowser(): Promise<Browser> {
 }
 
 export function printPageUrl(id: string, origin: string, marks: boolean, ws: "business" | "personal" = "business"): string {
-  const base = process.env.NEXT_PUBLIC_BASE_URL ?? origin;
+  // Chrome renders from the local server, never through the public tunnel: PRINT_BASE_URL, else the request origin.
+  const base = process.env.PRINT_BASE_URL ?? origin;
   const t = process.env.PRINT_TOKEN ? `&t=${encodeURIComponent(process.env.PRINT_TOKEN)}` : "";
   return `${base}/print/cards/${id}?marks=${marks ? 1 : 0}&ws=${ws}${t}`;
 }
