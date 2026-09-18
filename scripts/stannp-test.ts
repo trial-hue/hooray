@@ -1,6 +1,6 @@
 import { getDb, mutate, logEvent } from "../src/lib/db";
 import { renderCardPdf } from "../src/lib/pdf";
-import { buildStannpPayload, sendStannpTest } from "../src/lib/stannp";
+import { buildStannpPayload, sendStannp } from "../src/lib/stannp";
 async function main() {
   const db = getDb();
   const card = db.cards.find((c) => c.personId === (process.argv[2] ?? "rob-sinclair") && c.versions.length) ?? db.cards.find((c) => c.versions.length);
@@ -11,7 +11,7 @@ async function main() {
   const t0 = Date.now();
   const pdf = await renderCardPdf(card.id, { marks: false, origin });
   console.log(`pdf ${Math.round(pdf.length / 1024)}KB in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
-  const res = await sendStannpTest(payload, pdf, `hooray-${card.id}.pdf`);
+  const res = await sendStannp(payload, pdf, `hooray-${card.id}.pdf`);
   console.log(res);
   if (res.ok) {
     await mutate((db) => {

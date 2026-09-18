@@ -11,7 +11,7 @@ import { resolveDelivery } from "@/lib/delivery";
 import { occasionTitle } from "@/lib/occasions";
 import { paths } from "@/lib/paths";
 import { renderableCard } from "@/lib/render";
-import { buildStannpPayload, stannpCurl } from "@/lib/stannp";
+import { buildStannpPayload, stannpCurl, stannpLive } from "@/lib/stannp";
 import { cardCost, gbp, pence, UNIT } from "@/lib/costs";
 import { currentDraft, fullName } from "@/lib/types";
 
@@ -33,6 +33,7 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
   const payload = buildStannpPayload(db, card, `${process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"}${pdfPath}${sep}download=1`);
   const col = card.collectionId ? db.collections.find((c) => c.id === card.collectionId) : undefined;
   const hasStannp = Boolean(process.env.STANNP_API_KEY);
+  const live = stannpLive();
   const cost = cardCost(card.aiCostGbp || UNIT.aiFallbackGbp);
   const personal = ws === "personal";
 
@@ -66,7 +67,7 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
               <form action={sendStannpTestAction}>
                 <input type="hidden" name="id" value={card.id} />
                 <input type="hidden" name="ws" value={ws} />
-                <button className="btn">Send test to Stannp</button>
+                <button className={live ? "btn btn-primary border-hooray bg-hooray hover:bg-hooray" : "btn"}>{live ? "Print and post for real" : "Send test to Stannp"}</button>
               </form>
             )}
             <a href={`${pdfPath}${sep}download=1&marks=1`} className="btn btn-primary">
@@ -159,7 +160,7 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
                   </p>
                   {card.proof && (
                     <p className="mt-2 text-ink">
-                      Stannp test #{card.proof.id} · {card.proof.status} · cost {card.proof.cost} ·{" "}
+                      Stannp {card.proof.status === "test" ? "test" : "live order"} #{card.proof.id} · {card.proof.status} · cost £{card.proof.cost} ·{" "}
                       <a className="underline" href={card.proof.pdfUrl} target="_blank" rel="noreferrer">
                         proof PDF
                       </a>

@@ -1,5 +1,5 @@
 // Stannp print API: POST https://api-eu1.stannp.com/v1/letters/create with Basic auth (API key as username).
-// test=true returns a proof PDF without dispatching or charging.
+// test=true returns a proof PDF without dispatching or charging. Live sends are behind STANNP_LIVE=1.
 import { resolveDelivery } from "./delivery";
 import type { Card, DB } from "./types";
 
@@ -7,7 +7,12 @@ export const STANNP_ENDPOINT = "https://api-eu1.stannp.com/v1/letters/create";
 
 export type StannpPayload = Record<string, string>;
 
-export function buildStannpPayload(db: DB, card: Card, pdfUrl: string): StannpPayload | undefined {
+/** Live printing is off unless STANNP_LIVE=1 is set in the environment. */
+export function stannpLive(): boolean {
+  return process.env.STANNP_LIVE === "1";
+}
+
+export function buildStannpPayload(db: DB, card: Card, pdfUrl: string, test: boolean = !stannpLive()): StannpPayload | undefined {
   const p = db.people.find((x) => x.id === card.personId);
   if (!p) return undefined;
   const d = resolveDelivery(p, db.company, card.dueDate);
@@ -17,7 +22,7 @@ export function buildStannpPayload(db: DB, card: Card, pdfUrl: string): StannpPa
   const address1 = office && d.address.line2 ? d.address.line2 : d.address.line1;
   const address2 = office && d.address.line2 ? "" : (d.address.line2 ?? "");
   const payload: StannpPayload = {
-    test: "true",
+    test: test ? "true" : "false",
     "recipient[firstname]": p.firstName,
     "recipient[lastname]": p.lastName,
     "recipient[address1]": address1,
@@ -43,8 +48,8 @@ export function stannpCurl(payload: StannpPayload): string {
 
 export type StannpResult = { ok: true; id: string; pdf: string; cost: string; status: string } | { ok: false; error: string };
 
-/** Send a test letter with the PDF bytes attached. Requires STANNP_API_KEY. */
-export async function sendStannpTest(payload: StannpPayload, pdf: Buffer, filename: string): Promise<StannpResult> {
+/** Send a letter with the PDF bytes attached. Requires STANNP_API_KEY. Test unless the payload says otherwise. */
+export async function sendStannp(payload: StannpPayload, pdf: Buffer, filename: string): Promise<StannpResult> {
   const key = process.env.STANNP_API_KEY;
   if (!key) return { ok: false, error: "STANNP_API_KEY not set" };
   const form = new FormData();
@@ -54,8 +59,13 @@ export async function sendStannpTest(payload: StannpPayload, pdf: Buffer, filena
     const res = await fetch(STANNP_ENDPOINT, { method: "POST", headers: { Authorization: `Basic ${Buffer.from(`${key}:`).toString("base64")}` }, body: form });
     const json = (await res.json()) as { success?: boolean; data?: { id?: number | string; pdf?: string; cost?: string; status?: string }; error?: string };
     if (!res.ok || !json.success || !json.data) return { ok: false, error: json.error ?? `HTTP ${res.status}` };
-    return { ok: true, id: String(json.data.id ?? ""), pdf: json.data.pdf ?? "", cost: json.data.cost ?? "", status: json.data.status ?? "test" };
+    const result: StannpResult = { ok: true, id: String(json.data.id ?? ""), pdf: json.data.pdf ?? "", cost: json.data.cost ?? "", status: json.data.status ?? "test" };
+    if (payload.test !== "true") console.log(`[stannp] LIVE order id=${result.id} cost=£${result.cost} status=${result.status}`);
+    return result;
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }
 }
+
+/** Kept for older callers. */
+export const sendStannpTest = sendStannp;
