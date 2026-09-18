@@ -1,10 +1,10 @@
+import { Fragment } from "react";
 import { redirect } from "next/navigation";
 import { ClockBar } from "@/components/ClockBar";
 import { getDb } from "@/lib/db";
-import { daysBetween, formatLong } from "@/lib/dates";
+import { addDays, daysBetween, formatLong } from "@/lib/dates";
 import { cardCost, gbp, MOONPIG, MOONPIG_DERIVED, pct, pence, seatEconomics, UNIT } from "@/lib/costs";
 import { materialiseOccasions } from "@/lib/occasions";
-import { addDays } from "@/lib/dates";
 import { potPence } from "@/lib/collections";
 
 export const dynamic = "force-dynamic";
@@ -36,86 +36,105 @@ export default function DashboardPage() {
   const collections = db.collections;
   const potTotal = collections.reduce((s, c) => s + potPence(c), 0) / 100;
   const contributors = collections.reduce((s, c) => s + c.contributions.length, 0);
-  const moonpigAdminPerCard = (UNIT.manualMinutesPerCard / 60) * 15; // office manager at ~£15/hour choosing, writing, scheduling
+  const moonpigAdminPerCard = (UNIT.manualMinutesPerCard / 60) * 15;
+
+  const versus: [string, string, string, string, string][] = [
+    ["Gross margin", pct(seats.margin), `on ${gbp(seats.revenue, 0)} of seats for this roster`, pct(MOONPIG.grossMargin), "group, FY26"],
+    ["Marketing to win an order", "≈ £0", "one signature per firm; the roster does the reminding", gbp(MOONPIG_DERIVED.marketingPerOrder), `£38.7m a year across 36m orders`],
+    ["Revenue per person", `${gbp(3_100_000 / UNIT.teamSize / 1000, 0)}k`, `${UNIT.teamSize} people at £3.1m ARR`, `${gbp(MOONPIG_DERIVED.revenuePerEmployee / 1000, 0)}k`, `${MOONPIG.employees} people`],
+    ["Team collections", "Built in", "leaver, retirement, milestones, weddings, babies", "Not offered", "cards and gifts only"],
+  ];
 
   return (
     <>
       <ClockBar active="/dashboard" />
       <main className="mx-auto w-full max-w-6xl px-5 py-8">
         <div className="mb-6">
-          <p className="label">
+          <p className="label mb-1">
             {db.company.shortName} · day {daysRun} · {formatLong(db.clock.today)}
           </p>
-          <h1 className="font-display text-3xl">
-            {sent.length} cards sent, {pct(approveRate)} approved without an edit
-          </h1>
+          <h1 className="h1">The year so far, in numbers</h1>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          <Tile label="Occasions under management" value={String(cardsPerYear)} sub={`next 12 months · ${staff.length} staff, ${clients.length} clients`} />
-          <Tile label="Drafted · approved · edited" value={`${drafted.length} · ${decided.length - skipped} · ${editedCount}`} sub={`${autoApproved} auto-approved at dispatch · ${skipped} skipped`} />
-          <Tile label="Approve-without-edit" value={pct(approveRate)} sub="the drafting is good enough when this holds above 60%" />
-          <Tile label="Cost per card" value={gbp(cost.total)} sub={`${gbp(UNIT.cardCostProductionGbp)} print, envelope and post · AI ${pence(aiPerCard)}`} />
-          <Tile label="Human minutes spent" value={String(Math.round((touches * UNIT.digestSecondsPerCard) / 60))} sub={`${touches} approver touches · ${hoursSaved.toFixed(1)} hours saved vs doing it by hand`} />
-          <Tile label="Collections" value={String(collections.length)} sub={`${contributors} contributions · ${gbp(potTotal, 0)} raised · leaver, retirement and milestones only`} />
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Hero value={String(sent.length)} label="cards sent" sub={`${cardsPerYear} occasions under management for ${staff.length} staff and ${clients.length} clients`} />
+          <Hero value={pct(approveRate)} label="approved without an edit" sub={`${decided.length - skipped} approved · ${editedCount} edited · ${autoApproved} went out by themselves`} accent="hooray" />
+          <Hero value={gbp(cost.total)} label="per card, all in" sub={`${gbp(UNIT.cardCostProductionGbp)} print, envelope and post · AI ${pence(aiPerCard)} · Moonpig for Business charges ${gbp(MOONPIG.businessCardPrice)}`} />
+        </div>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <Tile label="Collections" value={String(collections.length)} sub={`${contributors} contributions · ${gbp(potTotal, 0)} raised`} accent="gold" />
+          <Tile label="Human minutes" value={String(Math.round((touches * UNIT.digestSecondsPerCard) / 60))} sub={`${touches} touches · ${hoursSaved.toFixed(1)} hours saved against doing it by hand`} />
+          <Tile label="AI spend, measured" value={gbp(aiTotal, 2)} sub={`${drafted.length} drafts · ${liveDrafts} live · ${pence(aiPerCard)} a card at Claude Opus 5 prices`} />
         </div>
 
-        <section className="card-panel mt-8 overflow-hidden">
-          <div className="border-b border-line px-5 py-4">
-            <h2 className="font-display text-xl">Next to Moonpig</h2>
-            <p className="text-xs text-ink-3">Moonpig Group FY26 (year to 30 April 2026): £373m revenue, 58.4% gross margin, £38.7m marketing (10.4%), 676 average employees, 36m orders at £9.32. Moonpig for Business: £3.60 a card, CSV upload, 90-day scheduling, no HR sync, no drafting, no collections.</p>
+        <section className="card-panel mt-8 p-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="h2">Next to Moonpig</h2>
+            <span className="hint">Moonpig Group FY26 · £373m revenue · 676 people · Moonpig for Business at £3.60 a card</span>
           </div>
-          <table className="w-full text-sm">
-            <thead className="text-left text-xs uppercase tracking-wide text-ink-3">
-              <tr className="border-b border-line">
-                <th className="px-5 py-2 font-medium">Line</th>
-                <th className="px-5 py-2 font-medium">Hooray</th>
-                <th className="px-5 py-2 font-medium">Moonpig</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-line">
-              <Row k="What the firm pays" a={`${gbp(UNIT.pricePerEmployeePerYearGbp, 0)} per employee per year, all occasions included, plus six personal cards each`} b={`Moonpig for Business: ${gbp(MOONPIG.businessCardPrice)} a card, someone still has to run it. Consumer: ${gbp(MOONPIG.consumerCardPrice)} + ${gbp(MOONPIG.consumerPostage)} post = ${gbp(MOONPIG_DERIVED.consumerAllIn)}`} />
-              <Row k="For this roster" a={`${gbp(seats.revenue, 0)} a year for ${staff.length} seats covering ~${cardsPerYear} occasions`} b={`${gbp(cardsPerYear * MOONPIG.businessCardPrice, 0)} in cards at £3.60, plus ~${gbp(cardsPerYear * moonpigAdminPerCard, 0)} of an office manager's time (${UNIT.manualMinutesPerCard} min a card)`} />
-              <Row k="Card cost, all in" a={`${gbp(UNIT.cardCostProductionGbp)} Docmail production (A5, C5 envelope, economy post) · ${gbp(UNIT.cardCostPrototypeGbp)} Stannp prototype · AI ${pence(aiPerCard)}`} b={`~${gbp(MOONPIG_DERIVED.internalCardCostEstimate)} internal estimate, three factories and Royal Mail contracts`} />
-              <Row k="Gross margin on the seat" a={`${pct(seats.margin)} (${gbp(seats.grossProfit, 0)} on ${gbp(seats.revenue, 0)})`} b={`${pct(MOONPIG.grossMargin)} group`} />
-              <Row k="Marketing to win the order" a="≈ £0 · one signature per firm, then the roster does the reminding" b={`${gbp(MOONPIG_DERIVED.marketingPerOrder)} per order · ${gbp(MOONPIG.marketingGbp / 1e6, 1)}m a year to re-win 12.3m customers`} />
-              <Row k="Who remembers the date" a="The roster. Every occasion is known the day the HR export lands." b={`The customer, prompted by ${(MOONPIG.remindersStored / 1e6).toFixed(0)}m stored reminders driving ~40% of orders`} />
-              <Row k="Peer collections" a={`Fire from the roster on leaver, retirement and milestones. ${collections.length} so far, team-scoped, amounts hidden.`} b="Not offered" />
-              <Row k="People" a={`${UNIT.teamSize}, at £3.1m ARR that is ~${gbp(3_100_000 / UNIT.teamSize / 1000, 0)}k each`} b={`${MOONPIG.employees} · ${gbp(MOONPIG_DERIVED.revenuePerEmployee / 1000, 0)}k revenue per employee`} />
-            </tbody>
-          </table>
+          <div className="mt-4 grid grid-cols-[1fr_auto_1fr] gap-x-6">
+            <div className="label">Hooray</div>
+            <div />
+            <div className="label text-right">Moonpig</div>
+            {versus.map(([k, a, aSub, b, bSub]) => (
+              <Fragment key={k}>
+                <div className="border-t border-line py-4">
+                  <div className="stat text-navy">{a}</div>
+                  <div className="hint mt-1">{aSub}</div>
+                </div>
+                <div className="label self-center border-t border-line py-4 text-center">{k}</div>
+                <div className="border-t border-line py-4 text-right">
+                  <div className="stat text-ink-3">{b}</div>
+                  <div className="hint mt-1">{bSub}</div>
+                </div>
+              </Fragment>
+            ))}
+          </div>
+          <details className="mt-4">
+            <summary className="cursor-pointer text-sm underline">Full comparison</summary>
+            <table className="mt-3 w-full text-sm">
+              <tbody className="divide-y divide-line">
+                <Row k="What the firm pays" a={`${gbp(UNIT.pricePerEmployeePerYearGbp, 0)} per employee per year, all occasions, plus six personal cards each`} b={`${gbp(MOONPIG.businessCardPrice)} a card at Moonpig for Business. Consumer: ${gbp(MOONPIG.consumerCardPrice)} + ${gbp(MOONPIG.consumerPostage)} post = ${gbp(MOONPIG_DERIVED.consumerAllIn)}`} />
+                <Row k="For this roster" a={`${gbp(seats.revenue, 0)} a year for ${staff.length} seats covering ~${cardsPerYear} occasions`} b={`${gbp(cardsPerYear * MOONPIG.businessCardPrice, 0)} in cards, plus ~${gbp(cardsPerYear * moonpigAdminPerCard, 0)} of an office manager's time`} />
+                <Row k="Card cost, all in" a={`${gbp(UNIT.cardCostProductionGbp)} Docmail production · ${gbp(UNIT.cardCostPrototypeGbp)} Stannp prototype · AI ${pence(aiPerCard)}`} b={`~${gbp(MOONPIG_DERIVED.internalCardCostEstimate)} internal estimate, three factories and Royal Mail contracts`} />
+                <Row k="Who remembers the date" a="The roster. Every occasion is known the day the HR export lands." b={`The customer, prompted by ${(MOONPIG.remindersStored / 1e6).toFixed(0)}m stored reminders driving ~40% of orders`} />
+                <Row k="Human minutes per card" a="≈ 0.3 · one glance in the weekly queue" b={`≈ ${UNIT.manualMinutesPerCard} · remember, choose, write, address, pay`} />
+              </tbody>
+            </table>
+          </details>
         </section>
 
-        <section className="mt-8 grid gap-6 md:grid-cols-[1fr_1.2fr]">
-          <div className="card-panel p-5">
-            <h2 className="font-display text-xl">AI spend, measured</h2>
-            <p className="mt-1 text-sm text-ink-2">
-              {drafted.length} drafts · {liveDrafts} live calls · {gbp(aiTotal, 3)} total · {pence(aiPerCard)} per card, from real token usage at Claude Opus 5 pricing.
-            </p>
-            <p className="mt-2 text-xs text-ink-3">Every draft is cached by occasion, signer and prompt version, so re-running the clock never re-bills. Approved and edited text is frozen.</p>
-          </div>
-          <div className="card-panel p-5">
-            <h2 className="font-display text-xl">Activity</h2>
-            <ul className="mt-2 max-h-72 overflow-auto text-xs text-ink-2">
-              {[...db.clock.log].reverse().map((l, i) => (
-                <li key={i} className="border-b border-line py-1 last:border-0">
-                  <span className="text-ink-3">{l.at}</span> · {l.event}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <section className="card-panel mt-8 p-5">
+          <h2 className="h2">Activity</h2>
+          <ul className="mt-2 max-h-56 overflow-auto text-xs text-ink-2">
+            {[...db.clock.log].reverse().map((l, i) => (
+              <li key={i} className="border-b border-line py-1 last:border-0">
+                <span className="text-ink-3">{l.at}</span> · {l.event}
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
     </>
   );
 }
 
-function Tile({ label, value, sub }: { label: string; value: string; sub: string }) {
+function Hero({ value, label, sub, accent }: { value: string; label: string; sub: string; accent?: "hooray" }) {
   return (
-    <div className="card-panel p-4">
+    <div className="card-panel-hero p-6">
+      <div className={`stat ${accent === "hooray" ? "text-hooray" : ""}`}>{value}</div>
+      <div className="mt-1 text-sm text-ink-2">{label}</div>
+      <div className="hint mt-2 text-xs">{sub}</div>
+    </div>
+  );
+}
+
+function Tile({ label, value, sub, accent }: { label: string; value: string; sub: string; accent?: "gold" }) {
+  return (
+    <div className={`card-panel px-4 py-3 ${accent === "gold" ? "border-l-[3px] border-l-gold" : ""}`}>
       <div className="label">{label}</div>
-      <div className="mt-1 font-display text-2xl">{value}</div>
-      <div className="mt-1 text-xs text-ink-3">{sub}</div>
+      <div className="mt-1 font-display text-[28px] leading-none">{value}</div>
+      <div className="hint mt-1 text-xs">{sub}</div>
     </div>
   );
 }
@@ -123,9 +142,9 @@ function Tile({ label, value, sub }: { label: string; value: string; sub: string
 function Row({ k, a, b }: { k: string; a: string; b: string }) {
   return (
     <tr>
-      <td className="px-5 py-2.5 align-top font-medium">{k}</td>
-      <td className="px-5 py-2.5 align-top text-ink">{a}</td>
-      <td className="px-5 py-2.5 align-top text-ink-2">{b}</td>
+      <td className="py-2.5 pr-4 align-top font-medium">{k}</td>
+      <td className="py-2.5 pr-4 align-top text-ink">{a}</td>
+      <td className="py-2.5 align-top text-ink-2">{b}</td>
     </tr>
   );
 }

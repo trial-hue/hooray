@@ -1,48 +1,40 @@
 "use client";
 
-import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { addOccasionAction } from "@/app/actions";
 
-function Submit() {
+function Item({ label, sub }: { label: string; sub?: string }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" className={`btn btn-primary text-xs ${pending ? "pulse-soft" : ""}`} disabled={pending}>
-      {pending ? "Drafting…" : "Add"}
+    <button type="submit" className={`menu-item ${pending ? "pulse-soft" : ""}`} disabled={pending}>
+      {pending ? "Drafting…" : label}
+      {sub && <span className="block text-xs text-ink-3">{sub}</span>}
     </button>
   );
 }
 
+const KINDS: [string, string, string][] = [
+  ["wedding", "Wedding", "opens a team collection"],
+  ["new-baby", "New baby", "opens a team collection"],
+  ["congratulations", "Congratulations", "company card only"],
+  ["get-well", "Get well", "company card only"],
+  ["sympathy", "Sympathy", "company card only"],
+];
+
 export function AddOccasionForm({ personId }: { personId: string }) {
-  const [open, setOpen] = useState(false);
-  if (!open)
-    return (
-      <button type="button" className="btn btn-ghost text-xs text-ink-3" onClick={() => setOpen(true)}>
-        Add occasion
-      </button>
-    );
   return (
-    <form action={addOccasionAction} className="flex flex-wrap items-center justify-end gap-1.5">
-      <input type="hidden" name="personId" value={personId} />
-      <select name="kind" defaultValue="wedding" className="rounded-md border border-line bg-white px-1.5 py-1 text-xs">
-        <option value="wedding">Wedding (collection)</option>
-        <option value="new-baby">New baby (collection)</option>
-        <option value="congratulations">Congratulations</option>
-        <option value="get-well">Get well</option>
-        <option value="sympathy">Sympathy</option>
-      </select>
-      <input name="label" placeholder="what happened, one line" className="w-40 rounded-md border border-line bg-white px-1.5 py-1 text-xs" />
-      <span className="text-xs text-ink-3">in</span>
-      <select name="days" defaultValue="14" className="rounded-md border border-line bg-white px-1.5 py-1 text-xs">
-        <option value="3">3 days</option>
-        <option value="7">a week</option>
-        <option value="14">two weeks</option>
-        <option value="28">four weeks</option>
-      </select>
-      <Submit />
-      <button type="button" className="btn btn-ghost text-xs" onClick={() => setOpen(false)}>
-        Cancel
-      </button>
-    </form>
+    <details className="menu-host">
+      <summary className="btn btn-sm btn-ghost">Add occasion ▾</summary>
+      <div className="menu">
+        {KINDS.map(([kind, label, sub]) => (
+          <form key={kind} action={addOccasionAction}>
+            <input type="hidden" name="personId" value={personId} />
+            <input type="hidden" name="kind" value={kind} />
+            <input type="hidden" name="days" value="14" />
+            <Item label={label} sub={sub} />
+          </form>
+        ))}
+      </div>
+    </details>
   );
 }

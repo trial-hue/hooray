@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { getDb, mutate, resetDb } from "@/lib/db";
 import { addDays } from "@/lib/dates";
 import { addHumanOccasion, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, markLeaving, releaseHeld, sendNow, skipCard, tick } from "@/lib/engine";
-import { chooseGift, contribute } from "@/lib/collections";
+import { chooseGift, closeCollection, contribute } from "@/lib/collections";
 import type { Company } from "@/lib/types";
 
 function refresh() {
@@ -210,6 +210,15 @@ export async function contributeManyAction(formData: FormData): Promise<void> {
     ];
     const team = col.teamIds.filter((id) => !col.contributions.some((c) => c.contributorId === id)).slice(0, 8);
     team.forEach((id, i) => contribute(db, col, id, [1000, 1500, 1000, 2000, 1000, 500, 1000, 2500][i % 8], lines[i % lines.length]));
+  });
+  refresh();
+}
+
+export async function closeCollectionAction(formData: FormData): Promise<void> {
+  const collectionId = String(formData.get("collectionId"));
+  await mutate((db) => {
+    const col = db.collections.find((x) => x.id === collectionId);
+    if (col) closeCollection(db, col);
   });
   refresh();
 }

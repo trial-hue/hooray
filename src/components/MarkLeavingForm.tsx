@@ -1,43 +1,52 @@
 "use client";
 
-import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { markLeavingAction } from "@/app/actions";
 
-function Submit({ label }: { label: string }) {
+function Submit({ label, className }: { label: string; className: string }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" className={`btn btn-primary text-xs ${pending ? "pulse-soft" : ""}`} disabled={pending}>
+    <button type="submit" name="days" value="14" className={`${className} ${pending ? "pulse-soft" : ""}`} disabled={pending}>
       {pending ? "Opening collection…" : label}
     </button>
   );
 }
 
-export function MarkLeavingForm({ personId, name }: { personId: string; name: string }) {
-  const [open, setOpen] = useState(false);
-  if (!open)
-    return (
-      <button type="button" className="btn btn-ghost text-xs text-ink-3" onClick={() => setOpen(true)}>
-        Mark as leaving
-      </button>
-    );
+function Item({ label }: { label: string }) {
+  const { pending } = useFormStatus();
   return (
-    <form action={markLeavingAction} className="flex flex-wrap items-center justify-end gap-1.5">
-      <input type="hidden" name="personId" value={personId} />
-      <span className="text-xs text-ink-3">{name} leaves in</span>
-      <select name="days" defaultValue="14" className="rounded-md border border-line bg-white px-1.5 py-1 text-xs">
-        <option value="7">a week</option>
-        <option value="14">two weeks</option>
-        <option value="28">four weeks</option>
-      </select>
-      <select name="retiring" defaultValue="false" className="rounded-md border border-line bg-white px-1.5 py-1 text-xs">
-        <option value="false">leaving</option>
-        <option value="true">retiring</option>
-      </select>
-      <Submit label="Confirm" />
-      <button type="button" className="btn btn-ghost text-xs" onClick={() => setOpen(false)}>
-        Cancel
-      </button>
-    </form>
+    <button type="submit" className={`menu-item ${pending ? "pulse-soft" : ""}`} disabled={pending}>
+      {pending ? "Opening collection…" : label}
+    </button>
+  );
+}
+
+export function MarkLeavingForm({ personId }: { personId: string; name?: string }) {
+  return (
+    <div className="flex items-center">
+      <form action={markLeavingAction}>
+        <input type="hidden" name="personId" value={personId} />
+        <Submit label="Leaving in 2 weeks" className="btn btn-sm rounded-r-none" />
+      </form>
+      <details className="menu-host">
+        <summary className="btn btn-sm rounded-l-none border-l-0 px-1.5" aria-label="More leaving options">
+          ▾
+        </summary>
+        <div className="menu">
+          {[
+            ["7", "false", "Leaving in a week"],
+            ["28", "false", "Leaving in four weeks"],
+            ["28", "true", "Retiring in four weeks"],
+          ].map(([d, r, l]) => (
+            <form key={l} action={markLeavingAction}>
+              <input type="hidden" name="personId" value={personId} />
+              <input type="hidden" name="days" value={d} />
+              <input type="hidden" name="retiring" value={r} />
+              <Item label={l} />
+            </form>
+          ))}
+        </div>
+      </details>
+    </div>
   );
 }
