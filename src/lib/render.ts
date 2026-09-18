@@ -32,6 +32,7 @@ export function renderableCard(db: DB, card: Card): RenderableCard | undefined {
     ref: `${company.id.slice(0, 2).toUpperCase()}-${card.dueDate.replace(/-/g, "").slice(2)}-${card.id.slice(-5)}`,
     signatures,
     personal: company.kind === "personal",
+    shareCode: card.shareCode,
     imageUrl: card.image ? `/api/cards/${card.id}/image?v=${encodeURIComponent(card.image.at)}` : undefined,
   };
 }

@@ -119,6 +119,33 @@ export default function DashboardPage() {
           </details>
         </section>
 
+        <section className="card-panel mt-8 p-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="h2">The data</h2>
+            <span className="hint">What the roster knows that a card shop never will. It grows on its own.</span>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {[
+              ["Relationships", String(db.people.filter((p) => p.status !== "left").length), "staff and clients, with who signs for whom"],
+              ["Dates known", String(db.people.filter((p) => p.birthday || p.startDate).length), "birthdays, start dates, client-since"],
+              ["Occasions ahead", String(cardsPerYear), "next twelve months, already scheduled"],
+              ["Addresses", String(db.people.filter((p) => p.homeAddress || p.registeredAddress || (p.kind === "staff" && db.company?.offices[p.office])).length), "deliverable today"],
+              ["Consented birthdays", String(db.people.filter((p) => p.kind === "staff" && p.consentOccasions && !p.optOut).length), "of " + String(db.people.filter((p) => p.kind === "staff").length) + " staff, asked once"],
+              ["Voice learned", db.company.voiceExamples?.length ? `${db.company.voiceExamples.length} edits` : "0 edits", "every edit shapes the next draft"],
+            ].map(([k, v, sub]) => (
+              <div key={k} className="rounded-lg border border-line px-4 py-3">
+                <div className="label">{k}</div>
+                <div className="mt-1 font-display text-[26px] leading-none">{v}</div>
+                <div className="hint mt-1 text-xs">{sub}</div>
+              </div>
+            ))}
+          </div>
+          <p className="hint mt-4">
+            Every printed card carries a code on the back; the recipient can start their own list with the sender already on it.{" "}
+            {(db.signups?.length ?? 0) > 0 ? `${db.signups!.length} recipient${db.signups!.length === 1 ? " has" : "s have"} done so.` : "None yet on this roster."}
+          </p>
+        </section>
+
         <section className="card-panel mt-8 p-5">
           <h2 className="h2">Billing</h2>
           <p className="hint mt-0.5">Payment links, hosted by Stripe. Nothing is charged from inside the app.</p>

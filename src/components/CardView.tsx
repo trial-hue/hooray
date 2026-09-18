@@ -148,6 +148,15 @@ export function CardView({ ws, id }: { ws: Workspace; id: string }) {
                     </ul>
                   )}
                   {person.publicFacts.length > 0 && <p className="mt-2 text-xs text-ink-3">Context used: {person.publicFacts.join(" · ")}</p>}
+                  {(db.company.voiceExamples?.length ?? 0) > 0 && <p className="mt-2 text-xs text-ink-3">Shaped by {db.company.voiceExamples!.length} of your earlier edits.</p>}
+                  {card.shareCode && (
+                    <p className="mt-2 text-xs text-ink-3">
+                      Code on the back: hooray.cards/c/{card.shareCode} ·{" "}
+                      <Link href={`/c/${card.shareCode}`} className="underline" target="_blank">
+                        what the recipient sees
+                      </Link>
+                    </p>
+                  )}
                 </div>
               </details>
 

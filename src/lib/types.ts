@@ -25,6 +25,8 @@ export type Company = {
   kind?: "business" | "personal"; // personal: one person's account; shortName is their name
   subscription?: boolean; // personal: subscribed accounts send automatically; pay-per-card accounts wait for a tap
   email?: string; // personal: where the one-email-per-occasion goes
+  circleToken?: string; // personal: the share link that lets people add their own date
+  voiceExamples?: { before: string; after: string; at: ISODate }[]; // edits that teach the voice; newest last, max 5
   name: string; // "Hartley & Crane LLP"
   shortName: string; // "Hartley & Crane"
   sector: Sector;
@@ -74,6 +76,7 @@ export type Person = {
   accountOwnerId?: string; // client: relationship partner
   clientCompanyName?: string;
   relationship?: string; // friend: "my mum", "my best friend from school"
+  source?: "manual" | "roster" | "circle" | "card"; // where the record came from
   status: PersonStatus;
   leaveReason?: LeaveReason;
   leaveUntil?: ISODate;
@@ -237,6 +240,7 @@ export type Card = {
   collectionId?: string;
   gift?: CardGift;
   image?: { prompt: string; provider: string; file: string; at: ISODate }; // AI-generated front picture, optional
+  shareCode?: string; // printed on the back: hooray.cards/c/<code>; the recipient can start their own list
   autoApproved?: boolean;
   dispatchOn: ISODate; // dueDate - DISPATCH_DAYS
   proof?: { provider: "stannp"; id: string; pdfUrl: string; cost: string; status: string; at: ISODate; error?: string };
@@ -293,7 +297,10 @@ export type SimClock = {
   log: { at: ISODate; event: string }[];
 };
 
+export type Signup = { name: string; email?: string; birthday?: string; fromCardId: string; at: ISODate };
+
 export type DB = {
+  signups?: Signup[]; // card recipients who started their own list from the code on the back
   company?: Company;
   people: Person[];
   occasions: Occasion[];

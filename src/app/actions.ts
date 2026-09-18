@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { getDb, isWorkspace, mutate, resetDb, type Workspace } from "@/lib/db";
 import { paths } from "@/lib/paths";
 import { addDays } from "@/lib/dates";
-import { addContact, addHumanOccasion, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, loadExampleContacts, markLeaving, releaseHeld, sendNow, skipCard, startPersonal, tick } from "@/lib/engine";
+import { addContact, addHumanOccasion, recordSignup, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, loadExampleContacts, markLeaving, releaseHeld, sendNow, skipCard, startPersonal, tick } from "@/lib/engine";
 import { chooseGift, closeCollection, contribute } from "@/lib/collections";
 import { setCardGift } from "@/lib/gifts";
 import { generateCardImage, removeCardImage } from "@/lib/images";
@@ -237,6 +237,55 @@ export async function loadExampleContactsAction(): Promise<void> {
   });
   refresh();
   redirect("/me");
+}
+
+export async function joinCircleAction(formData: FormData): Promise<void> {
+  const token = String(formData.get("token") ?? "");
+  const name = String(formData.get("name") ?? "").trim();
+  const birthday = String(formData.get("birthday") ?? "").trim();
+  const bd = birthday.match(/^(\d{4}-)?(\d{2}-\d{2})$/);
+  if (!token || !name || !bd) return;
+  const [first, ...rest] = name.split(/\s+/);
+  const line1 = String(formData.get("line1") ?? "").trim();
+  const town = String(formData.get("town") ?? "").trim();
+  const postcode = String(formData.get("postcode") ?? "").trim();
+  let ok = false;
+  await mutate("personal", async (db) => {
+    if (!db.company?.circleToken || db.company.circleToken !== token) return;
+    await addContact(db, {
+      firstName: first,
+      lastName: rest.join(" "),
+      role: "",
+      team: "",
+      office: "",
+      relationship: String(formData.get("relationship") ?? "").trim() || undefined,
+      birthday: bd[2],
+      dob: bd[1] ? birthday : undefined,
+      homeAddress: line1 && postcode ? { line1, town, postcode } : undefined,
+      source: "circle",
+    });
+    ok = true;
+  });
+  refresh();
+  redirect(`/circle/${token}?done=${ok ? 1 : 0}`);
+}
+
+export async function recipientSignupAction(formData: FormData): Promise<void> {
+  const code = String(formData.get("code") ?? "");
+  const name = String(formData.get("name") ?? "").trim();
+  if (!code || !name) return;
+  for (const ws of ["personal", "business"] as const) {
+    let hit = false;
+    await mutate(ws, (db) => {
+      const card = db.cards.find((c) => c.shareCode === code);
+      if (!card) return;
+      recordSignup(db, { name, email: String(formData.get("email") ?? "").trim() || undefined, birthday: String(formData.get("birthday") ?? "").trim() || undefined, fromCardId: card.id });
+      hit = true;
+    });
+    if (hit) break;
+  }
+  refresh();
+  redirect(`/c/${code}?done=1`);
 }
 
 export async function resetPersonalAction(): Promise<void> {

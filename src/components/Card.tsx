@@ -15,6 +15,7 @@ export type RenderableCard = {
   signatures?: { name: string; line: string }[];
   personal?: boolean;
   imageUrl?: string; // AI-generated picture; replaces the artwork on the front
+  shareCode?: string; // printed on the back so the recipient can start their own list
 };
 
 // Geometry (mm)
@@ -65,6 +66,7 @@ export function BackPanel({ card }: { card: RenderableCard }) {
       )}
       <div className="absolute left-0 right-0 text-center font-body" style={{ bottom: mm(12), fontSize: "7pt", color: card.palette.muted }}>
         {card.personal ? "Made with Hooray" : `Sent with care by ${card.shortName} · made with Hooray`}
+        {card.shareCode ? ` · hooray.cards/c/${card.shareCode}` : ""}
       </div>
       <div className="absolute left-0 right-0 text-center font-body" style={{ bottom: mm(6), fontSize: "5pt", color: card.palette.muted }}>
         {card.ref}

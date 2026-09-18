@@ -50,6 +50,7 @@ export async function loadDemoRoster(db: DB): Promise<{ staff: number; clients: 
 /** Personal workspace: start an account for one person. */
 export async function startPersonal(db: DB, opts: { name: string; brandHex: string; toneWords: string[]; signOff: string; address?: Person["homeAddress"]; email?: string }): Promise<void> {
   const acct = seedPersonalAccount(opts);
+  acct.company.circleToken = fnv1a(`circle:${opts.name}:${Date.now()}`).toString(36).padStart(8, "0").slice(0, 8);
   db.company = acct.company;
   db.people = [acct.owner];
   db.occasions = [];
@@ -64,9 +65,9 @@ export async function startPersonal(db: DB, opts: { name: string; brandHex: stri
 export async function addContact(db: DB, contact: Omit<Person, "id" | "kind" | "status" | "optOut" | "consentOccasions" | "deliverTo" | "publicFacts" | "privateNotes" | "managerId"> & { publicFacts?: string[] }): Promise<Person> {
   const owner = db.people.find((p) => p.id === db.company?.managingPartnerId);
   const id = `${contact.firstName}-${contact.lastName}`.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + (db.people.length + 1);
-  const p: Person = { ...contact, id, kind: "friend", status: "active", optOut: false, consentOccasions: true, deliverTo: "home", publicFacts: contact.publicFacts ?? [], privateNotes: [], managerId: owner?.id };
+  const p: Person = { source: "manual", ...contact, id, kind: "friend", status: "active", optOut: false, consentOccasions: true, deliverTo: "home", publicFacts: contact.publicFacts ?? [], privateNotes: [], managerId: owner?.id };
   db.people.push(p);
-  logEvent(db, `Added ${p.firstName} ${p.lastName} (${p.relationship ?? "friend"})`);
+  logEvent(db, p.source === "circle" ? `${p.firstName} ${p.lastName} added themselves through your circle link` : `Added ${p.firstName} ${p.lastName} (${p.relationship ?? "friend"})`);
   await ensureCards(db, db.clock.today, addDays(db.clock.today, LEAD_DAYS));
   return p;
 }
@@ -144,6 +145,7 @@ export async function ensureCards(db: DB, from: ISODate, to: ISODate): Promise<C
       for (const w of g.warnings) card.flags.push({ kind: "gate", text: w.message });
       toDraft.push(card);
     }
+    card.shareCode = fnv1a(`share:${occ.occurrenceKey}`).toString(36).padStart(6, "0").slice(0, 6);
     if (occ.companyGiftEligible && card.status !== "skipped") card.gift = defaultGiftFor(occ, person);
     db.cards.push(card);
     created.push(card);
@@ -315,6 +317,10 @@ export function editCard(db: DB, card: Card, insideMessage: string, by: string):
   if (!d) return;
   const base = card.finalText ?? { front_headline: d.front_headline, inside_message: d.inside_message, sign_off: d.sign_off, signature_line: d.signature_line };
   card.finalText = { ...base, inside_message: insideMessage.trim() };
+  if (db.company && base.inside_message.trim() !== insideMessage.trim()) {
+    db.company.voiceExamples = [...(db.company.voiceExamples ?? []), { before: base.inside_message, after: insideMessage.trim(), at: db.clock.today }].slice(-5);
+    logEvent(db, `Learned from an edit: ${db.company.voiceExamples.length} example${db.company.voiceExamples.length === 1 ? "" : "s"} now shape new drafts`);
+  }
   card.status = "edited";
   card.editedAt = db.clock.today;
   card.approvedBy = by;
@@ -372,6 +378,12 @@ export function sendNow(db: DB): { sent: number; ref?: string } {
   }
   logEvent(db, `Sent ${cards.length} card${cards.length === 1 ? "" : "s"} to print early as ${job.ref}`);
   return { sent: cards.length, ref: job.ref };
+}
+
+/** A card recipient started their own list from the code on the back. Recorded here; their account is phase 2. */
+export function recordSignup(db: DB, s: { name: string; email?: string; birthday?: string; fromCardId: string }): void {
+  db.signups = [...(db.signups ?? []), { ...s, at: db.clock.today }];
+  logEvent(db, `${s.name} started their own list from the card code`);
 }
 
 /** Mark someone as leaving (or retiring). Fires the occasion immediately, opens the collection. */

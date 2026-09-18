@@ -55,11 +55,11 @@ export function ClockBar({ active, ws = "business" }: { active: string; ws?: Wor
           {db.company && <span className="text-sm text-ink-3">· {db.company.shortName}</span>}
         </Link>
         <div className="flex items-center rounded-lg border border-line bg-white p-0.5 text-xs">
-          <Link href="/digest" className={`rounded-md px-2 py-1 ${ws === "business" ? "bg-navy text-white" : "text-ink-2 hover:bg-paper-2"}`}>
-            For businesses
-          </Link>
           <Link href="/me" className={`rounded-md px-2 py-1 ${ws === "personal" ? "bg-navy text-white" : "text-ink-2 hover:bg-paper-2"}`}>
             For people
+          </Link>
+          <Link href="/digest" className={`rounded-md px-2 py-1 ${ws === "business" ? "bg-navy text-white" : "text-ink-2 hover:bg-paper-2"}`}>
+            For businesses
           </Link>
         </div>
         {db.company && (

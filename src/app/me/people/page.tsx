@@ -13,6 +13,13 @@ export default function MyPeoplePage() {
   const db = getDb("personal");
   if (!db.company) redirect("/me/start");
   const contacts = db.people.filter((p) => p.kind === "friend");
+  const base = (process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+  const circleUrl = db.company.circleToken ? `${base}/circle/${db.company.circleToken}` : undefined;
+  const viaCircle = contacts.filter((p) => p.source === "circle").length;
+  const datesKnown = contacts.filter((p) => p.birthday || p.milestones?.length).length;
+  const addresses = contacts.filter((p) => p.homeAddress).length;
+  const learned = db.company.voiceExamples?.length ?? 0;
+  const signups = db.signups?.length ?? 0;
   return (
     <>
       <ClockBar active="/me/people" ws="personal" />
@@ -28,6 +35,36 @@ export default function MyPeoplePage() {
             .
           </p>
         </div>
+
+        <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-5">
+          {[
+            ["People", String(contacts.length), "on your list"],
+            ["Dates known", String(datesKnown), "birthdays and anniversaries"],
+            ["Addresses", String(addresses), "ready to post to"],
+            ["Joined via your link", String(viaCircle), "added their own date"],
+            ["Voice", learned ? `${learned} edit${learned === 1 ? "" : "s"}` : "—", learned ? "learned; shaping new drafts" : "edit a card and it learns"],
+          ].map(([k, v, sub]) => (
+            <div key={k} className="card-panel px-4 py-3">
+              <div className="label">{k}</div>
+              <div className="mt-1 font-display text-[26px] leading-none">{v}</div>
+              <div className="hint mt-1 text-xs">{sub}</div>
+            </div>
+          ))}
+        </div>
+        {signups > 0 && <p className="hint mb-6">{signups} {signups === 1 ? "person who received one of your cards has" : "people who received your cards have"} started their own list from the code on the back.</p>}
+
+        {circleUrl && (
+          <section className="card-panel-hero mb-6 border-l-[3px] border-l-gold p-5">
+            <h2 className="h2">Ask your circle</h2>
+            <p className="hint mt-0.5">Send this link once. Each person adds their own date. Works in a WhatsApp group, a story, a post.</p>
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <code className="rounded-md border border-line bg-white px-3 py-2 text-sm">{circleUrl}</code>
+              <Link href={`/circle/${db.company.circleToken}`} className="btn btn-sm" target="_blank">
+                See what they see
+              </Link>
+            </div>
+          </section>
+        )}
 
         <section className="card-panel mb-8 p-5">
           <h2 className="h2">Add someone</h2>
@@ -50,7 +87,10 @@ export default function MyPeoplePage() {
                   <tr key={p.id} className="hover:bg-paper-2/60">
                     <td className="px-4 py-2">
                       <div className="font-medium">{fullName(p)}</div>
-                      <div className="text-xs text-ink-3">{p.relationship ?? "friend"}</div>
+                      <div className="text-xs text-ink-3">
+                        {p.relationship ?? "friend"}
+                        {p.source === "circle" && <span className="chip chip-gold ml-2">via your link</span>}
+                      </div>
                     </td>
                     <td className="px-4 py-2 text-ink-2">{p.birthday ? formatShort(`2026-${p.birthday}`) : "—"}</td>
                     <td className="px-4 py-2 text-ink-2">{p.publicFacts.join(" · ") || <span className="text-ink-3">nothing yet</span>}</td>

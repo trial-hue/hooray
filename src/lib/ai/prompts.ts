@@ -135,6 +135,12 @@ Choose template and palette_variant from the allowed lists. Templates: confetti 
  "flags":["Card is addressed to Alison Reid personally but thanks the company; confirm she, not the MD, should receive it."],
  "rationale":"Company-to-company and formal; anchored on the 2016 start and the 2022 expansion without naming services or fees; zero exclamation marks."}`;
 
+function voiceBlock(c: Company): string {
+  const ex = c.voiceExamples ?? [];
+  if (!ex.length) return "";
+  return ["## How this account edits drafts (learn from these; match the after, not the before)", ...ex.map((e, i) => `${i + 1}. Before: "${e.before}"\n   After: "${e.after}"`)].join("\n");
+}
+
 export function companyBlock(c: Company): string {
   if (c.kind === "personal") {
     return [
@@ -146,6 +152,7 @@ export function companyBlock(c: Company): string {
       "Only the facts given are known. Do not claim the signer was present at an event, remembers a moment, or shares a memory unless a fact says so. Referring to a fact ('I hear a tooth went missing') is fine; inventing shared history is not.",
       "Address people the way the signer would ('Mum', 'Tom'); the headline may use either. signature_line is just the signer's first name as given in preferred_signature, no surname, no role. Do not flag the recipient being described as family or friend; that is expected here.",
       c.neverMention.length ? `Never mention: ${c.neverMention.join("; ")}` : "",
+      voiceBlock(c),
     ]
       .filter(Boolean)
       .join("\n");
@@ -158,6 +165,7 @@ export function companyBlock(c: Company): string {
     `Formality: ${c.formality} for staff, high for clients`,
     `House style: first names on staff cards; British English; no "Dear"; the firm's usual sign-off is "${c.signOff}" but vary it to suit the card`,
     c.neverMention.length ? `Never mention: ${c.neverMention.join("; ")}` : "",
+    voiceBlock(c),
   ]
     .filter(Boolean)
     .join("\n");

@@ -52,6 +52,7 @@ export function cacheKeyFor(ctx: DraftContext): string {
     tone: ctx.company.toneWords,
     facts: r.publicFacts,
     leave: ctx.onLeaveNote ?? null,
+    voice: (ctx.company.voiceExamples ?? []).length,
   });
 }
 

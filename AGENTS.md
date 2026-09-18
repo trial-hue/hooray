@@ -42,3 +42,9 @@ Decisions that override earlier drafts:
 17. **Gifts are drop-ship or marketplace only.** Never model or hold gift inventory. A collection's gift choice resolves to a supplier order, not stock. Moonpig carries £8.7m of finished goods and all the markdown risk; we carry none.
 
 All figures in the plan carry **[V]** verified, **[D]** derived, **[E]** estimate, **[A]** from the reference build's model or **[C]** from the 6 August filings analysis. Keep that discipline in any copy shown to the user.
+
+### Revision 19:40, 18 September — people first, and the data loops
+
+18. **For people is the front door.** `/` opens the personal workspace; the switch lists For people before For businesses; the landing page defaults to the people view. The business product is unchanged and still the revenue case.
+19. **Three loops that grow the data without us typing it**, all built: the **circle link** (`/circle/<token>`, each person adds their own date; contacts carry `source: "circle"`), the **code on the back of every card** (`hooray.cards/c/<code>` → `/c/<code>`, the recipient starts their own list with the sender pre-filled; recorded in `db.signups`, accounts are phase 2), and **voice learning** (an edit to an inside message is kept on the account as a before/after pair, the last five are fed into the prompt, and the draft cache key changes with the count). Decision 14's wait for a measurable approve-without-edit baseline is met (85%).
+20. **Show the data, not the headcount.** Numbers has a "The data" section (relationships, dates, occasions ahead, addresses, consents, edits learned) and My people has the same strip. This is what the moat looks like on screen.
