@@ -12,12 +12,16 @@ export function buildStannpPayload(db: DB, card: Card, pdfUrl: string): StannpPa
   if (!p) return undefined;
   const d = resolveDelivery(p, db.company, card.dueDate);
   if (!d) return undefined;
+  // Office deliveries carry the firm as the company line, so don't repeat it as address line 1.
+  const office = d.mode === "office-batch";
+  const address1 = office && d.address.line2 ? d.address.line2 : d.address.line1;
+  const address2 = office && d.address.line2 ? "" : (d.address.line2 ?? "");
   const payload: StannpPayload = {
     test: "true",
     "recipient[firstname]": p.firstName,
     "recipient[lastname]": p.lastName,
-    "recipient[address1]": d.address.line1,
-    "recipient[address2]": d.address.line2 ?? "",
+    "recipient[address1]": address1,
+    "recipient[address2]": address2,
     "recipient[town]": d.address.town,
     "recipient[postcode]": d.address.postcode,
     "recipient[country]": "GB",
@@ -26,7 +30,7 @@ export function buildStannpPayload(db: DB, card: Card, pdfUrl: string): StannpPa
     duplex: "true",
     tags: `hooray,${db.company?.id ?? "demo"},${card.id}`,
   };
-  if (d.mode === "office-batch") payload["recipient[company]"] = db.company?.name ?? "";
+  if (office) payload["recipient[company]"] = db.company?.name ?? "";
   return payload;
 }
 
