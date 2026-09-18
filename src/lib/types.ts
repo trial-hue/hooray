@@ -74,6 +74,7 @@ export type Person = {
   leaveUntil?: ISODate;
   bereavementUntil?: ISODate;
   optOut: boolean;
+  consentOccasions: boolean; // asked once at onboarding; payroll DOB cannot be reused for a birthday without it
   deliverTo: "office" | "home" | "client-registered";
   homeAddress?: Address;
   registeredAddress?: Address;
@@ -182,6 +183,7 @@ export type DraftVersion = {
 export type GateReason =
   | "left-company"
   | "opted-out"
+  | "no-consent"
   | "on-leave-sick"
   | "on-leave-other"
   | "bereavement-window"

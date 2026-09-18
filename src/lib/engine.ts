@@ -97,7 +97,7 @@ export async function ensureCards(db: DB, from: ISODate, to: ISODate): Promise<C
     };
     if (!g.ok) {
       card.holdReason = g.reason;
-      if (g.reason === "opted-out" || g.reason === "left-company") {
+      if (g.reason === "opted-out" || g.reason === "left-company" || g.reason === "no-consent") {
         card.status = "skipped";
         card.skipReason = g.message;
         skipped++;
@@ -333,6 +333,20 @@ export async function markLeaving(db: DB, person: Person, endDate: ISODate, reti
   person.retiring = retiring;
   logEvent(db, `${person.firstName} ${person.lastName} marked as ${retiring ? "retiring" : "leaving"} on ${endDate}`);
   const created = await ensureCards(db, endDate, endDate);
+  return created.find((c) => c.personId === person.id);
+}
+
+/** A human-added occasion (wedding, new baby, sympathy, get-well, other). Weddings and babies open a collection. */
+export async function addHumanOccasion(db: DB, person: Person, kind: "wedding" | "new-baby" | "sympathy" | "get-well" | "congratulations", date: ISODate, label?: string): Promise<Card | undefined> {
+  const type: Occasion["type"] = kind === "wedding" || kind === "new-baby" || kind === "congratulations" ? "congratulations" : kind;
+  const key = `${person.id}:${type}:${date}`;
+  if (db.occasions.some((o) => o.id === key)) return db.cards.find((c) => c.occurrenceKey === key);
+  const collection = kind === "wedding" || kind === "new-baby";
+  const occ: Occasion = { id: key, occurrenceKey: key, personId: person.id, type, date, createdBy: "human", label: label ?? (kind === "wedding" ? "Wedding" : kind === "new-baby" ? "New baby" : undefined), collectionEligible: collection, isMilestone: collection };
+  db.occasions.push(occ);
+  if (label && kind !== "sympathy" && kind !== "get-well") person.publicFacts = [...person.publicFacts, label];
+  logEvent(db, `${person.firstName} ${person.lastName}: ${occ.label ?? type} added for ${date}`);
+  const created = await ensureCards(db, date, date);
   return created.find((c) => c.personId === person.id);
 }
 

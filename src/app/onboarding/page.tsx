@@ -24,7 +24,7 @@ export default function Onboarding() {
           <section className="card-panel p-6">
             <h2 className="font-display text-2xl">Try it with a demo firm</h2>
             <p className="mt-2 text-sm text-ink-2">
-              Hartley &amp; Crane LLP, chartered accountants. 120 staff across Manchester and Leeds, 40 clients. Includes a five-year anniversary, a new starter, a partner on leave, an opted-out colleague and a ten-year client.
+              Hartley &amp; Crane LLP, chartered accountants. 50 staff across Manchester and Leeds, 10 clients. The first fortnight has a five-year anniversary, a new starter, a manager on parental leave, an opted-out colleague, a milestone birthday and a ten-year client. Mark anyone as leaving and watch the team collection open.
             </p>
             <form action={loadDemoRosterAction} className="mt-5">
               <LoadDemoButton />

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { ClockBar } from "@/components/ClockBar";
 import { MarkLeavingForm } from "@/components/MarkLeavingForm";
+import { AddOccasionForm } from "@/components/AddOccasionForm";
 import { getDb } from "@/lib/db";
 import { formatShort } from "@/lib/dates";
 import { fullName } from "@/lib/types";
@@ -21,7 +22,7 @@ export default function PeoplePage() {
           <h1 className="font-display text-3xl">
             {staff.length} staff · {clients.length} clients
           </h1>
-          <p className="mt-1 text-sm text-ink-2">The roster is the asset. Mark someone as leaving and a team collection opens the same day, before anyone has to organise anything.</p>
+          <p className="mt-1 text-sm text-ink-2">The roster is the asset. Mark someone as leaving and a team collection opens the same day, before anyone has to organise anything. Weddings and new babies open one too; routine birthdays never do. Everyone was asked once whether they want birthdays marked.</p>
         </div>
         <div className="card-panel overflow-hidden">
           <table className="w-full text-sm">
@@ -48,9 +49,14 @@ export default function PeoplePage() {
                   <td className="px-4 py-2 text-ink-2">{p.startDate}</td>
                   <td className="px-4 py-2 text-ink-2">{p.birthday ? formatShort(`2026-${p.birthday}`) : "—"}</td>
                   <td className="px-4 py-2 text-ink-2">
-                    {p.optOut ? "opted out" : p.status === "on-leave" ? `on ${p.leaveReason ?? ""} leave` : p.endDate ? `${p.retiring ? "retiring" : "leaving"} ${formatShort(p.endDate)}` : "active"}
+                    {p.optOut ? "opted out" : !p.consentOccasions ? "no birthday consent" : p.status === "on-leave" ? `on ${p.leaveReason ?? ""} leave` : p.endDate ? `${p.retiring ? "retiring" : "leaving"} ${formatShort(p.endDate)}` : "active"}
                   </td>
-                  <td className="px-4 py-2 text-right">{!p.endDate && <MarkLeavingForm personId={p.id} name={p.firstName} />}</td>
+                  <td className="px-4 py-2 text-right">
+                    <div className="flex flex-wrap items-center justify-end gap-1">
+                      {!p.endDate && <AddOccasionForm personId={p.id} />}
+                      {!p.endDate && <MarkLeavingForm personId={p.id} name={p.firstName} />}
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>

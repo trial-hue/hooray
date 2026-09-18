@@ -65,7 +65,7 @@ function randomDate(rng: () => number, fromYear: number, toYear: number, before 
 }
 
 function staff(p: Partial<Person> & Pick<Person, "id" | "firstName" | "lastName" | "role" | "team" | "office">): Person {
-  return { kind: "staff", email: `${p.id}@hartleycrane.co.uk`, status: "active", optOut: false, deliverTo: "office", publicFacts: [], privateNotes: [], ...p };
+  return { kind: "staff", email: `${p.id}@hartleycrane.co.uk`, status: "active", optOut: false, consentOccasions: true, deliverTo: "office", publicFacts: [], privateNotes: [], ...p };
 }
 
 export function seedPeople(): Person[] {
@@ -104,12 +104,14 @@ export function seedPeople(): Person[] {
     staff({ id: "rob-sinclair", firstName: "Rob", lastName: "Sinclair", role: "Payroll Specialist", team: "Outsourcing", office: "Leeds", startDate: "2018-10-14", dob: "1988-10-11", managerId: "lucy-pemberton", publicFacts: ["Never once missed a payroll run in eight years", "Taught half the Leeds office to use pivot tables", "Famous for the Friday bacon-roll order"] }),
     staff({ id: "ben-achebe", firstName: "Ben", lastName: "Achebe", role: "Management Accountant", team: "Outsourcing", office: "Leeds", startDate: "2016-10-17", dob: "1986-06-03", managerId: "lucy-pemberton", publicFacts: ["Runs the month-end close for twenty clients"] }),
     staff({ id: "dev-patel", firstName: "Dev", lastName: "Patel", role: "IT Manager", team: "Operations", office: "Manchester", startDate: "2016-03-21", dob: "1983-11-25", managerId: "rachel-okafor", signAs: "Dev", preferredSignature: "Dev Patel, IT Manager" }),
+    // Declined the consent question at onboarding: work anniversaries only, never a birthday.
+    staff({ id: "hannah-quinn", firstName: "Hannah", lastName: "Quinn", role: "Audit Senior", team: "Audit", office: "Manchester", startDate: "2020-10-12", dob: "1992-09-30", managerId: "sarah-lindqvist", consentOccasions: false }),
   );
   for (const p of people) used.add(`${p.firstName} ${p.lastName}`);
 
   // Generated staff to reach 50, dates spread through the year
   const teams: { name: string; managerId: string; office: string; size: number; roles: string[] }[] = [
-    { name: "Audit", managerId: "sarah-lindqvist", office: "Manchester", size: 8, roles: ["Audit Associate", "Audit Senior", "Audit Assistant Manager"] },
+    { name: "Audit", managerId: "sarah-lindqvist", office: "Manchester", size: 7, roles: ["Audit Associate", "Audit Senior", "Audit Assistant Manager"] },
     { name: "Tax", managerId: "helen-marsh", office: "Manchester", size: 6, roles: ["Tax Associate", "Tax Senior"] },
     { name: "Advisory", managerId: "oliver-grant", office: "Manchester", size: 5, roles: ["Advisory Analyst", "Advisory Consultant"] },
     { name: "Outsourcing", managerId: "lucy-pemberton", office: "Leeds", size: 5, roles: ["Bookkeeper", "Payroll Specialist", "Management Accountant"] },
@@ -177,6 +179,7 @@ function client(id: string, first: string, last: string, role: string, company: 
     accountOwnerId: ownerId,
     status: "active",
     optOut: false,
+    consentOccasions: true,
     deliverTo: "client-registered",
     registeredAddress: { ...address, line1: /^\d/.test(address.line1) ? `${company}, ${address.line1}` : address.line1 },
     publicFacts: facts,

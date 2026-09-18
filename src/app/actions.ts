@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getDb, mutate, resetDb } from "@/lib/db";
 import { addDays } from "@/lib/dates";
-import { approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, markLeaving, releaseHeld, sendNow, skipCard, tick } from "@/lib/engine";
+import { addHumanOccasion, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, markLeaving, releaseHeld, sendNow, skipCard, tick } from "@/lib/engine";
 import { chooseGift, contribute } from "@/lib/collections";
 import type { Company } from "@/lib/types";
 
@@ -158,6 +158,23 @@ export async function markLeavingAction(formData: FormData): Promise<void> {
   });
   refresh();
   if (collectionId) redirect(`/collections/${collectionId}`);
+}
+
+export async function addOccasionAction(formData: FormData): Promise<void> {
+  const personId = String(formData.get("personId"));
+  const kind = String(formData.get("kind")) as "wedding" | "new-baby" | "sympathy" | "get-well" | "congratulations";
+  const days = Math.max(0, Math.min(90, Number(formData.get("days") ?? 14)));
+  const label = String(formData.get("label") ?? "").trim() || undefined;
+  let collectionId: string | undefined;
+  await mutate(async (db) => {
+    const p = db.people.find((x) => x.id === personId);
+    if (!p) return;
+    const card = await addHumanOccasion(db, p, kind, addDays(db.clock.today, days), label);
+    collectionId = card?.collectionId;
+  });
+  refresh();
+  if (collectionId) redirect(`/collections/${collectionId}`);
+  redirect("/digest");
 }
 
 export async function contributeAction(formData: FormData): Promise<void> {
