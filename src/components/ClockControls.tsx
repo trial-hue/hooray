@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { advanceClockAction, resetDemoAction, resetPersonalAction } from "@/app/actions";
+import { advanceClockAction, resetDemoAction, resetPersonalAction, restartClockAction } from "@/app/actions";
 
 export type ClockPreview = { days: number; label: string; dispatch: number; drafts: number; closing: number };
 
@@ -58,6 +58,12 @@ export function ClockControls({ hasCompany, previews, ws = "business" }: { hasCo
             <MenuItem title={`A month on → ${month.label.slice(0, -5)}`} sub={summary(month)} />
           </form>
           <div className="my-1 border-t border-line" />
+          {ws === "personal" && (
+            <form action={restartClockAction}>
+              <input type="hidden" name="ws" value={ws} />
+              <MenuItem title="Restart the clock" sub="Back to 21 Sep; your people, email and voice stay" />
+            </form>
+          )}
           <form action={ws === "personal" ? resetPersonalAction : resetDemoAction}>
             <MenuItem title={ws === "personal" ? "Start again" : "Reset the demo"} sub={ws === "personal" ? "Clears this personal account" : "Back to a fresh roster on 21 Sep"} />
           </form>

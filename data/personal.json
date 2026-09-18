@@ -1,830 +1,231 @@
 {
-  "company": {
-    "id": "personal-akshay",
-    "kind": "personal",
-    "subscription": true,
-    "name": "Akshay Devon",
-    "shortName": "Akshay",
-    "sector": "other",
-    "toneWords": [
-      "warm"
-    ],
-    "formality": "low",
-    "brandHex": "#1F3A5F",
-    "offices": {
-      "Home": {
-        "line1": "7 Ridgeway Gardens",
-        "town": "London",
-        "postcode": "N6 5RB"
-      }
-    },
-    "primaryOffice": "Home",
-    "neverMention": [],
-    "signOff": "Lots of love",
-    "approverId": "me-akshay",
-    "managingPartnerId": "me-akshay",
-    "allowAgeMentions": false,
-    "circleToken": "mw0us3"
+ "company": {
+  "id": "personal-akshay",
+  "kind": "personal",
+  "subscription": true,
+  "name": "Akshay Devon",
+  "shortName": "Akshay",
+  "sector": "other",
+  "toneWords": [
+   "warm"
+  ],
+  "formality": "low",
+  "brandHex": "#1F3A5F",
+  "offices": {
+   "Home": {
+    "line1": "7 Ridgeway Gardens",
+    "town": "London",
+    "postcode": "N6 5RB"
+   }
   },
-  "people": [
-    {
-      "id": "me-akshay",
-      "kind": "staff",
-      "firstName": "Akshay",
-      "lastName": "Devon",
-      "role": "",
-      "team": "",
-      "office": "Home",
-      "status": "active",
-      "optOut": true,
-      "consentOccasions": false,
-      "deliverTo": "home",
-      "homeAddress": {
-        "line1": "7 Ridgeway Gardens",
-        "town": "London",
-        "postcode": "N6 5RB"
-      },
-      "publicFacts": [],
-      "privateNotes": [],
-      "signAs": "Akshay",
-      "preferredSignature": "Akshay"
-    },
-    {
-      "source": "manual",
-      "firstName": "Meera",
-      "lastName": "Devon",
-      "role": "",
-      "team": "",
-      "office": "",
-      "relationship": "my mum",
-      "birthday": "09-30",
-      "homeAddress": {
-        "line1": "18 Orchard Close",
-        "town": "Harrow",
-        "postcode": "HA1 3QT"
-      },
-      "publicFacts": [
-        "Just took up watercolours and is better than she admits",
-        "Still rings every Sunday at six"
-      ],
-      "id": "meera-devon-2",
-      "kind": "friend",
-      "status": "active",
-      "optOut": false,
-      "consentOccasions": true,
-      "deliverTo": "home",
-      "privateNotes": [],
-      "managerId": "me-akshay"
-    },
-    {
-      "source": "manual",
-      "firstName": "Tom",
-      "lastName": "Okafor",
-      "role": "",
-      "team": "",
-      "office": "",
-      "relationship": "my best friend since school",
-      "birthday": "03-14",
-      "homeAddress": {
-        "line1": "4 Wharf Street",
-        "town": "Bristol",
-        "postcode": "BS1 4RH"
-      },
-      "publicFacts": [
-        "Married Sam on 3 October 2021",
-        "Runs a coffee cart at the Saturday market"
-      ],
-      "milestones": [
-        {
-          "date": "2026-10-03",
-          "label": "Fifth wedding anniversary with Sam"
-        }
-      ],
-      "id": "tom-okafor-3",
-      "kind": "friend",
-      "status": "active",
-      "optOut": false,
-      "consentOccasions": true,
-      "deliverTo": "home",
-      "privateNotes": [],
-      "managerId": "me-akshay"
-    },
-    {
-      "source": "manual",
-      "firstName": "Isla",
-      "lastName": "Bennett",
-      "role": "",
-      "team": "",
-      "office": "",
-      "relationship": "my goddaughter, she's turning seven",
-      "birthday": "10-02",
-      "dob": "2019-10-02",
-      "homeAddress": {
-        "line1": "22 Ferndale Road",
-        "town": "Leeds",
-        "postcode": "LS8 2PY"
-      },
-      "publicFacts": [
-        "Obsessed with dinosaurs and swimming",
-        "Lost her first tooth in August"
-      ],
-      "id": "isla-bennett-4",
-      "kind": "friend",
-      "status": "active",
-      "optOut": false,
-      "consentOccasions": true,
-      "deliverTo": "home",
-      "privateNotes": [],
-      "managerId": "me-akshay"
-    }
-  ],
-  "occasions": [
-    {
-      "id": "meera-devon-2:birthday:2026-09-30",
-      "occurrenceKey": "meera-devon-2:birthday:2026-09-30",
-      "personId": "meera-devon-2",
-      "type": "birthday",
-      "date": "2026-09-30",
-      "createdBy": "roster",
-      "isMilestone": false,
-      "collectionEligible": false,
-      "companyGiftEligible": false
-    },
-    {
-      "id": "isla-bennett-4:birthday:2026-10-02",
-      "occurrenceKey": "isla-bennett-4:birthday:2026-10-02",
-      "personId": "isla-bennett-4",
-      "type": "birthday",
-      "date": "2026-10-02",
-      "createdBy": "roster",
-      "isMilestone": false,
-      "collectionEligible": false,
-      "companyGiftEligible": false
-    },
-    {
-      "id": "tom-okafor-3:congratulations:2026-10-03",
-      "occurrenceKey": "tom-okafor-3:congratulations:2026-10-03",
-      "personId": "tom-okafor-3",
-      "type": "congratulations",
-      "date": "2026-10-03",
-      "createdBy": "human",
-      "label": "Fifth wedding anniversary with Sam",
-      "companyGiftEligible": false
-    },
-    {
-      "id": "meera-devon-2:congratulations:2027-01-03",
-      "occurrenceKey": "meera-devon-2:congratulations:2027-01-03",
-      "personId": "meera-devon-2",
-      "type": "congratulations",
-      "date": "2027-01-03",
-      "createdBy": "human",
-      "label": "Wedding",
-      "collectionEligible": true,
-      "isMilestone": true
-    }
-  ],
-  "cards": [
-    {
-      "id": "card-3lyqne",
-      "occurrenceKey": "meera-devon-2:birthday:2026-09-30",
-      "occasionId": "meera-devon-2:birthday:2026-09-30",
-      "personId": "meera-devon-2",
-      "signerId": "me-akshay",
-      "dueDate": "2026-09-30",
-      "dispatchOn": "2026-09-25",
-      "status": "delivered",
-      "flags": [
-        {
-          "kind": "model",
-          "text": "Fallback template copy: the AI draft was unavailable. Please read before approving."
-        }
-      ],
-      "versions": [
-        {
-          "draft": {
-            "front_headline": "Happy birthday, Meera",
-            "inside_message": "Happy birthday from all of us at Akshay. I hope the day is a good one and that you get some proper time to yourself. Enjoy it.",
-            "sign_off": "With best wishes,",
-            "signature_line": "Akshay",
-            "artwork_brief": {
-              "template": "confetti",
-              "palette_variant": "bright",
-              "style_note": "light confetti, plenty of paper"
-            },
-            "flags": [
-              "Fallback template copy: the AI draft was unavailable. Please read before approving."
-            ],
-            "rationale": "Template copy used because the AI draft was refused, failed checks, or the service was unavailable."
-          },
-          "createdAt": "2026-09-21",
-          "promptHash": "disabled",
-          "model": "template",
-          "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cache_read_input_tokens": 0,
-            "cache_creation_input_tokens": 0
-          },
-          "attempts": 0,
-          "source": "template"
-        }
-      ],
-      "seed": 218291306,
-      "history": [
-        {
-          "at": "2026-09-21",
-          "status": "drafted",
-          "note": "template draft"
-        },
-        {
-          "at": "2026-09-25",
-          "status": "drafted",
-          "note": "Waiting for a tap"
-        },
-        {
-          "at": "2026-09-27",
-          "status": "approved",
-          "note": "Auto-approved at dispatch"
-        },
-        {
-          "at": "2026-09-27",
-          "status": "sent_to_print",
-          "note": "MOCK-0001"
-        },
-        {
-          "at": "2026-09-28",
-          "status": "printed"
-        },
-        {
-          "at": "2026-09-29",
-          "status": "posted"
-        },
-        {
-          "at": "2026-10-01",
-          "status": "delivered"
-        }
-      ],
-      "aiCostGbp": 0,
-      "shareCode": "1hx0yd",
-      "finalText": {
-        "front_headline": "Happy birthday, Meera",
-        "inside_message": "Happy birthday from all of us at Akshay. I hope the day is a good one and that you get some proper time to yourself. Enjoy it.",
-        "sign_off": "With best wishes,",
-        "signature_line": "Akshay"
-      },
-      "autoApproved": true,
-      "approvedAt": "2026-09-27",
-      "approvedBy": "auto",
-      "printJobId": "job-1"
-    },
-    {
-      "id": "card-1vklqj8",
-      "occurrenceKey": "isla-bennett-4:birthday:2026-10-02",
-      "occasionId": "isla-bennett-4:birthday:2026-10-02",
-      "personId": "isla-bennett-4",
-      "signerId": "me-akshay",
-      "dueDate": "2026-10-02",
-      "dispatchOn": "2026-09-27",
-      "status": "delivered",
-      "flags": [
-        {
-          "kind": "model",
-          "text": "Fallback template copy: the AI draft was unavailable. Please read before approving."
-        }
-      ],
-      "versions": [
-        {
-          "draft": {
-            "front_headline": "Happy birthday, Isla",
-            "inside_message": "Happy birthday from all of us at Akshay. I hope the day is a good one and that you get some proper time to yourself. Enjoy it.",
-            "sign_off": "With best wishes,",
-            "signature_line": "Akshay",
-            "artwork_brief": {
-              "template": "confetti",
-              "palette_variant": "bright",
-              "style_note": "light confetti, plenty of paper"
-            },
-            "flags": [
-              "Fallback template copy: the AI draft was unavailable. Please read before approving."
-            ],
-            "rationale": "Template copy used because the AI draft was refused, failed checks, or the service was unavailable."
-          },
-          "createdAt": "2026-09-22",
-          "promptHash": "disabled",
-          "model": "template",
-          "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cache_read_input_tokens": 0,
-            "cache_creation_input_tokens": 0
-          },
-          "attempts": 0,
-          "source": "template"
-        }
-      ],
-      "seed": 4085840276,
-      "history": [
-        {
-          "at": "2026-09-22",
-          "status": "drafted",
-          "note": "template draft"
-        },
-        {
-          "at": "2026-09-27",
-          "status": "approved",
-          "note": "Auto-approved at dispatch"
-        },
-        {
-          "at": "2026-09-27",
-          "status": "sent_to_print",
-          "note": "MOCK-0001"
-        },
-        {
-          "at": "2026-09-28",
-          "status": "printed"
-        },
-        {
-          "at": "2026-09-29",
-          "status": "posted"
-        },
-        {
-          "at": "2026-10-01",
-          "status": "delivered"
-        }
-      ],
-      "aiCostGbp": 0,
-      "shareCode": "171kk9",
-      "finalText": {
-        "front_headline": "Happy birthday, Isla",
-        "inside_message": "Happy birthday from all of us at Akshay. I hope the day is a good one and that you get some proper time to yourself. Enjoy it.",
-        "sign_off": "With best wishes,",
-        "signature_line": "Akshay"
-      },
-      "autoApproved": true,
-      "approvedAt": "2026-09-27",
-      "approvedBy": "auto",
-      "printJobId": "job-1"
-    },
-    {
-      "id": "card-1s7s81",
-      "occurrenceKey": "tom-okafor-3:congratulations:2026-10-03",
-      "occasionId": "tom-okafor-3:congratulations:2026-10-03",
-      "personId": "tom-okafor-3",
-      "signerId": "me-akshay",
-      "dueDate": "2026-10-03",
-      "dispatchOn": "2026-09-28",
-      "status": "delivered",
-      "flags": [
-        {
-          "kind": "model",
-          "text": "Fallback template copy: the AI draft was unavailable. Please read before approving."
-        }
-      ],
-      "versions": [
-        {
-          "draft": {
-            "front_headline": "Congratulations, Tom",
-            "inside_message": "Congratulations from all of us at Akshay. It is a pleasure to see your work recognised like this. Thank you for everything you bring to the team.",
-            "sign_off": "With best wishes,",
-            "signature_line": "Akshay",
-            "artwork_brief": {
-              "template": "sparks",
-              "palette_variant": "bright",
-              "style_note": "bursts in brand colour"
-            },
-            "flags": [
-              "Fallback template copy: the AI draft was unavailable. Please read before approving."
-            ],
-            "rationale": "Template copy used because the AI draft was refused, failed checks, or the service was unavailable."
-          },
-          "createdAt": "2026-09-23",
-          "promptHash": "disabled",
-          "model": "template",
-          "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cache_read_input_tokens": 0,
-            "cache_creation_input_tokens": 0
-          },
-          "attempts": 0,
-          "source": "template"
-        }
-      ],
-      "seed": 107858593,
-      "history": [
-        {
-          "at": "2026-09-23",
-          "status": "drafted",
-          "note": "template draft"
-        },
-        {
-          "at": "2026-09-28",
-          "status": "approved",
-          "note": "Auto-approved at dispatch"
-        },
-        {
-          "at": "2026-09-28",
-          "status": "sent_to_print",
-          "note": "MOCK-0002"
-        },
-        {
-          "at": "2026-09-29",
-          "status": "printed"
-        },
-        {
-          "at": "2026-09-30",
-          "status": "posted"
-        },
-        {
-          "at": "2026-10-02",
-          "status": "delivered"
-        }
-      ],
-      "aiCostGbp": 0,
-      "shareCode": "0k9w8g",
-      "proof": {
-        "provider": "stannp",
-        "id": "",
-        "pdfUrl": "",
-        "cost": "",
-        "status": "error",
-        "at": "2026-09-27",
-        "error": "Insufficient balance: 0.0000"
-      },
-      "finalText": {
-        "front_headline": "Congratulations, Tom",
-        "inside_message": "Congratulations from all of us at Akshay. It is a pleasure to see your work recognised like this. Thank you for everything you bring to the team.",
-        "sign_off": "With best wishes,",
-        "signature_line": "Akshay"
-      },
-      "autoApproved": true,
-      "approvedAt": "2026-09-28",
-      "approvedBy": "auto",
-      "printJobId": "job-2"
-    },
-    {
-      "id": "card-dnbf0f",
-      "occurrenceKey": "meera-devon-2:congratulations:2027-01-03",
-      "occasionId": "meera-devon-2:congratulations:2027-01-03",
-      "personId": "meera-devon-2",
-      "signerId": "me-akshay",
-      "dueDate": "2027-01-03",
-      "dispatchOn": "2026-12-29",
-      "status": "delivered",
-      "flags": [
-        {
-          "kind": "model",
-          "text": "The occasion is labelled as a wedding but that isn't in the public facts, so the message stays general; please confirm the wording suits the day."
-        }
-      ],
-      "versions": [
-        {
-          "draft": {
-            "front_headline": "Congratulations, Mum",
-            "inside_message": "Congratulations, Mum. I'm so happy for you, and I hope the day is everything you want it to be. Don't worry about Sunday at six this week; I'll ring you.",
-            "sign_off": "Lots of love,",
-            "signature_line": "Akshay",
-            "artwork_brief": {
-              "template": "sparks",
-              "palette_variant": "bright",
-              "style_note": "light scattered sparks, hand-painted feel, soft watercolour edges"
-            },
-            "flags": [
-              "The occasion is not named in the message, as it isn't in the public facts; add it if the manager is happy to.",
-              "Card assumes the Sunday call still happens that week; edit if the timing is off."
-            ],
-            "rationale": "Keeps the congratulations warm and personal, leaning on the Sunday six o'clock call, with her watercolours nodded to in the artwork rather than the words."
-          },
-          "createdAt": "2026-12-20",
-          "promptHash": "8b5367d23aa5edfd",
-          "model": "claude-opus-5",
-          "usage": {
-            "input_tokens": 1270,
-            "output_tokens": 802,
-            "cache_read_input_tokens": 4666,
-            "cache_creation_input_tokens": 4666
-          },
-          "attempts": 2,
-          "source": "claude",
-          "ms": 12943
-        },
-        {
-          "draft": {
-            "front_headline": "Congratulations, Mum",
-            "inside_message": "Congratulations, Mum. I'm so happy for you. Enjoy every bit of the day, and don't worry, I'll still expect the call at six on Sunday.",
-            "sign_off": "Lots of love,",
-            "signature_line": "Akshay",
-            "artwork_brief": {
-              "template": "sparks",
-              "palette_variant": "bright",
-              "style_note": "light celebratory sparks, hand-painted feel, soft washes"
-            },
-            "flags": [
-              "Occasion label says Wedding but it isn't in the public facts, so the card congratulates her without naming the event; add a line if you'd like it named.",
-              "Watercolours fact not used, as it didn't fit the occasion."
-            ],
-            "rationale": "Leans on the Sunday six o'clock call for warmth and a light joke, keeps the congratulations general as the occasion isn't in the facts, and stays in a son's voice."
-          },
-          "createdAt": "2026-12-20",
-          "promptHash": "8b5367d23aa5edfd",
-          "model": "claude-opus-5",
-          "usage": {
-            "input_tokens": 1254,
-            "output_tokens": 750,
-            "cache_read_input_tokens": 9332,
-            "cache_creation_input_tokens": 0
-          },
-          "attempts": 2,
-          "source": "claude",
-          "ms": 11144
-        },
-        {
-          "draft": {
-            "front_headline": "Congratulations, Mum",
-            "inside_message": "Congratulations, Mum. I couldn't be happier for you, and I hope the day is everything you wanted it to be. Keep the Sunday six o'clock calls coming, and bring the watercolours you keep insisting aren't any good.",
-            "sign_off": "Lots of love,",
-            "signature_line": "Akshay",
-            "artwork_brief": {
-              "template": "sparks",
-              "palette_variant": "bright",
-              "style_note": "soft celebratory sparks, hand-painted feel, plenty of white space"
-            },
-            "flags": [
-              "The occasion is labelled as a wedding but that isn't in the public facts, so the message stays general; please confirm the wording suits the day."
-            ],
-            "rationale": "Congratulates warmly without naming the occasion detail, leaning on the two known facts, the watercolours and the Sunday calls, in a son-to-mother voice."
-          },
-          "createdAt": "2026-12-20",
-          "promptHash": "8b5367d23aa5edfd",
-          "model": "claude-opus-5",
-          "usage": {
-            "input_tokens": 1255,
-            "output_tokens": 1018,
-            "cache_read_input_tokens": 9332,
-            "cache_creation_input_tokens": 0
-          },
-          "attempts": 2,
-          "source": "claude",
-          "ms": 15360
-        }
-      ],
-      "seed": 825224127,
-      "history": [
-        {
-          "at": "2026-12-20",
-          "status": "drafted",
-          "note": "Released by approver"
-        },
-        {
-          "at": "2026-12-20",
-          "status": "drafted",
-          "note": "Released by approver"
-        },
-        {
-          "at": "2026-12-20",
-          "status": "drafted",
-          "note": "claude draft"
-        },
-        {
-          "at": "2026-12-20",
-          "status": "drafted",
-          "note": "claude draft"
-        },
-        {
-          "at": "2026-12-20",
-          "status": "drafted",
-          "note": "claude draft"
-        },
-        {
-          "at": "2026-12-29",
-          "status": "approved",
-          "note": "Auto-approved at dispatch"
-        },
-        {
-          "at": "2026-12-29",
-          "status": "sent_to_print",
-          "note": "MOCK-0003"
-        },
-        {
-          "at": "2026-12-30",
-          "status": "printed"
-        },
-        {
-          "at": "2026-12-31",
-          "status": "posted"
-        },
-        {
-          "at": "2027-01-04",
-          "status": "delivered"
-        }
-      ],
-      "aiCostGbp": 0.09669855000000001,
-      "shareCode": "1k7zi6",
-      "proof": {
-        "provider": "stannp",
-        "id": "0",
-        "pdfUrl": "https://api-eu1.stannp.com/api/v1/storage/get/bourbon/1789762807/pdf-samples/93672-b858191b-cd4e-42d2-a4f3-86a2db56a63a-A4-096563be-6279-414b-b8f7-475ffc6e9595.pdf?expiry_token=1789764607-48b3fc223d1ae92d89c34058ca16ab21573178442d3041ff616408f455f48309",
-        "cost": "1.04",
-        "status": "test",
-        "at": "2026-12-20"
-      },
-      "finalText": {
-        "front_headline": "Congratulations, Mum",
-        "inside_message": "Congratulations, Mum. I couldn't be happier for you, and I hope the day is everything you wanted it to be. Keep the Sunday six o'clock calls coming, and bring the watercolours you keep insisting aren't any good.",
-        "sign_off": "Lots of love,",
-        "signature_line": "Akshay"
-      },
-      "autoApproved": true,
-      "approvedAt": "2026-12-29",
-      "approvedBy": "auto",
-      "printJobId": "job-3"
-    }
-  ],
-  "digests": [],
-  "printJobs": [
-    {
-      "id": "job-1",
-      "cardIds": [
-        "card-3lyqne",
-        "card-1vklqj8"
-      ],
-      "submittedOn": "2026-09-27",
-      "provider": "mock-prodigi",
-      "ref": "MOCK-0001",
-      "expected": {
-        "printed": "2026-09-28",
-        "posted": "2026-09-29",
-        "delivered": "2026-10-01"
-      },
-      "orderPath": "data/print-orders/MOCK-0001.json"
-    },
-    {
-      "id": "job-2",
-      "cardIds": [
-        "card-1s7s81"
-      ],
-      "submittedOn": "2026-09-28",
-      "provider": "mock-prodigi",
-      "ref": "MOCK-0002",
-      "expected": {
-        "printed": "2026-09-29",
-        "posted": "2026-09-30",
-        "delivered": "2026-10-02"
-      },
-      "orderPath": "data/print-orders/MOCK-0002.json"
-    },
-    {
-      "id": "job-3",
-      "cardIds": [
-        "card-dnbf0f"
-      ],
-      "submittedOn": "2026-12-29",
-      "provider": "mock-prodigi",
-      "ref": "MOCK-0003",
-      "expected": {
-        "printed": "2026-12-30",
-        "posted": "2026-12-31",
-        "delivered": "2027-01-04"
-      },
-      "orderPath": "data/print-orders/MOCK-0003.json"
-    }
-  ],
-  "collections": [],
-  "clock": {
-    "today": "2027-02-14",
-    "startedOn": "2026-09-21",
-    "log": [
-      {
-        "at": "2026-09-21",
-        "event": "Akshay Devon started a personal account"
-      },
-      {
-        "at": "2026-09-21",
-        "event": "Added Meera Devon (my mum)"
-      },
-      {
-        "at": "2026-09-21",
-        "event": "Detected 1 occasion due by 2026-10-01"
-      },
-      {
-        "at": "2026-09-21",
-        "event": "Drafted 1 card in 0.0s (0 cached, 0 live, 1 template)"
-      },
-      {
-        "at": "2026-09-21",
-        "event": "Added Tom Okafor (my best friend since school)"
-      },
-      {
-        "at": "2026-09-21",
-        "event": "Added Isla Bennett (my goddaughter, she's turning seven)"
-      },
-      {
-        "at": "2026-09-22",
-        "event": "Detected 1 occasion due by 2026-10-02"
-      },
-      {
-        "at": "2026-09-22",
-        "event": "Drafted 1 card in 0.0s (0 cached, 0 live, 1 template)"
-      },
-      {
-        "at": "2026-09-23",
-        "event": "Detected 1 occasion due by 2026-10-03"
-      },
-      {
-        "at": "2026-09-23",
-        "event": "Drafted 1 card in 0.0s (0 cached, 0 live, 1 template)"
-      },
-      {
-        "at": "2026-09-25",
-        "event": "1 card waiting for a tap"
-      },
-      {
-        "at": "2026-09-26",
-        "event": "1 card waiting for a tap"
-      },
-      {
-        "at": "2026-09-27",
-        "event": "Dispatched 2 cards as MOCK-0001 (2 auto-approved)"
-      },
-      {
-        "at": "2026-09-27",
-        "event": "Stannp test failed for card-1s7s81: Insufficient balance: 0.0000"
-      },
-      {
-        "at": "2026-09-27",
-        "event": "Stannp test failed for card-1s7s81: Insufficient balance: 0.0000"
-      },
-      {
-        "at": "2026-09-28",
-        "event": "MOCK-0001: 2 cards printed"
-      },
-      {
-        "at": "2026-09-28",
-        "event": "Dispatched 1 card as MOCK-0002 (1 auto-approved)"
-      },
-      {
-        "at": "2026-09-29",
-        "event": "MOCK-0001: 2 cards posted"
-      },
-      {
-        "at": "2026-09-29",
-        "event": "MOCK-0002: 1 card printed"
-      },
-      {
-        "at": "2026-09-30",
-        "event": "MOCK-0002: 1 card posted"
-      },
-      {
-        "at": "2026-10-01",
-        "event": "MOCK-0001: 2 cards delivered"
-      },
-      {
-        "at": "2026-10-02",
-        "event": "MOCK-0002: 1 card delivered"
-      },
-      {
-        "at": "2026-12-20",
-        "event": "Meera Devon: Wedding added for 2027-01-03"
-      },
-      {
-        "at": "2026-12-20",
-        "event": "Detected 1 occasion due by 2027-01-03"
-      },
-      {
-        "at": "2026-12-20",
-        "event": "Drafted 1 card in 12.9s (0 cached, 1 live, 0 template)"
-      },
-      {
-        "at": "2026-12-20",
-        "event": "Occasion email sent to trial@telemachus.io: Meera's congratulations is in 14 days"
-      },
-      {
-        "at": "2026-12-20",
-        "event": "Stannp test proof #0 for card-dnbf0f (would cost \u00a31.02)"
-      },
-      {
-        "at": "2026-12-20",
-        "event": "Stannp test proof #0 for card-dnbf0f (would cost \u00a31.04)"
-      },
-      {
-        "at": "2026-12-29",
-        "event": "Dispatched 1 card as MOCK-0003 (1 auto-approved)"
-      },
-      {
-        "at": "2026-12-30",
-        "event": "MOCK-0003: 1 card printed"
-      },
-      {
-        "at": "2026-12-31",
-        "event": "MOCK-0003: 1 card posted"
-      },
-      {
-        "at": "2027-01-04",
-        "event": "MOCK-0003: 1 card delivered"
-      }
-    ]
+  "primaryOffice": "Home",
+  "neverMention": [],
+  "signOff": "Lots of love",
+  "approverId": "me-akshay",
+  "managingPartnerId": "me-akshay",
+  "allowAgeMentions": false,
+  "circleToken": "mw0us3"
+ },
+ "people": [
+  {
+   "id": "me-akshay",
+   "kind": "staff",
+   "firstName": "Akshay",
+   "lastName": "Devon",
+   "role": "",
+   "team": "",
+   "office": "Home",
+   "status": "active",
+   "optOut": true,
+   "consentOccasions": false,
+   "deliverTo": "home",
+   "homeAddress": {
+    "line1": "7 Ridgeway Gardens",
+    "town": "London",
+    "postcode": "N6 5RB"
+   },
+   "publicFacts": [],
+   "privateNotes": [],
+   "signAs": "Akshay",
+   "preferredSignature": "Akshay"
   },
-  "settings": {
-    "pricePerCard": 6
+  {
+   "source": "manual",
+   "firstName": "Meera",
+   "lastName": "Devon",
+   "role": "",
+   "team": "",
+   "office": "",
+   "relationship": "my mum",
+   "birthday": "09-30",
+   "homeAddress": {
+    "line1": "18 Orchard Close",
+    "town": "Harrow",
+    "postcode": "HA1 3QT"
+   },
+   "publicFacts": [
+    "Just took up watercolours and is better than she admits",
+    "Still rings every Sunday at six"
+   ],
+   "id": "meera-devon-2",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Tom",
+   "lastName": "Okafor",
+   "role": "",
+   "team": "",
+   "office": "",
+   "relationship": "my best friend since school",
+   "birthday": "03-14",
+   "homeAddress": {
+    "line1": "4 Wharf Street",
+    "town": "Bristol",
+    "postcode": "BS1 4RH"
+   },
+   "publicFacts": [
+    "Married Sam on 3 October 2021",
+    "Runs a coffee cart at the Saturday market"
+   ],
+   "milestones": [
+    {
+     "date": "2026-10-03",
+     "label": "Fifth wedding anniversary with Sam"
+    }
+   ],
+   "id": "tom-okafor-3",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
+  },
+  {
+   "source": "manual",
+   "firstName": "Isla",
+   "lastName": "Bennett",
+   "role": "",
+   "team": "",
+   "office": "",
+   "relationship": "my goddaughter, she's turning seven",
+   "birthday": "10-02",
+   "dob": "2019-10-02",
+   "homeAddress": {
+    "line1": "22 Ferndale Road",
+    "town": "Leeds",
+    "postcode": "LS8 2PY"
+   },
+   "publicFacts": [
+    "Obsessed with dinosaurs and swimming",
+    "Lost her first tooth in August"
+   ],
+   "id": "isla-bennett-4",
+   "kind": "friend",
+   "status": "active",
+   "optOut": false,
+   "consentOccasions": true,
+   "deliverTo": "home",
+   "privateNotes": [],
+   "managerId": "me-akshay"
   }
+ ],
+ "occasions": [
+  {
+   "id": "meera-devon-2:birthday:2026-09-30",
+   "occurrenceKey": "meera-devon-2:birthday:2026-09-30",
+   "personId": "meera-devon-2",
+   "type": "birthday",
+   "date": "2026-09-30",
+   "createdBy": "roster",
+   "isMilestone": false,
+   "collectionEligible": false,
+   "companyGiftEligible": false
+  }
+ ],
+ "cards": [
+  {
+   "id": "card-3lyqne",
+   "occurrenceKey": "meera-devon-2:birthday:2026-09-30",
+   "occasionId": "meera-devon-2:birthday:2026-09-30",
+   "personId": "meera-devon-2",
+   "signerId": "me-akshay",
+   "dueDate": "2026-09-30",
+   "dispatchOn": "2026-09-25",
+   "status": "drafted",
+   "flags": [],
+   "versions": [
+    {
+     "draft": {
+      "front_headline": "Happy birthday, Mum",
+      "inside_message": "Happy birthday, Mum. The watercolours are far better than you let on, so please stop apologising for them and frame one. Speak Sunday at six, as ever.",
+      "sign_off": "Lots of love,",
+      "signature_line": "Akshay",
+      "artwork_brief": {
+       "template": "confetti",
+       "palette_variant": "bright",
+       "style_note": "soft watercolour washes with light confetti, hand-painted feel"
+      },
+      "flags": [],
+      "rationale": "Leans on her new watercolours and the Sunday six o'clock calls for warmth and specificity, in a son's plain, affectionate voice with no mention of age."
+     },
+     "createdAt": "2026-09-21",
+     "promptHash": "47b6e31b30e1f73a",
+     "model": "claude-opus-5",
+     "usage": {
+      "input_tokens": 341,
+      "output_tokens": 223,
+      "cache_read_input_tokens": 4666,
+      "cache_creation_input_tokens": 0
+     },
+     "attempts": 1,
+     "source": "claude",
+     "ms": 4396
+    }
+   ],
+   "seed": 218291306,
+   "history": [
+    {
+     "at": "2026-09-21",
+     "status": "drafted",
+     "note": "claude draft"
+    }
+   ],
+   "aiCostGbp": 0.00749814,
+   "shareCode": "1hx0yd"
+  }
+ ],
+ "digests": [],
+ "printJobs": [],
+ "collections": [],
+ "clock": {
+  "today": "2026-09-21",
+  "startedOn": "2026-09-21",
+  "log": [
+   {
+    "at": "2026-09-21",
+    "event": "Clock restarted"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Detected 1 occasion due by 2026-10-01"
+   },
+   {
+    "at": "2026-09-21",
+    "event": "Drafted 1 card in 4.4s (0 cached, 1 live, 0 template)"
+   }
+  ]
+ },
+ "settings": {
+  "pricePerCard": 6
+ },
+ "signups": []
 }

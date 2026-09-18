@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { getDb, isWorkspace, logEvent, mutate, resetDb, type Workspace } from "@/lib/db";
 import { paths } from "@/lib/paths";
 import { addDays } from "@/lib/dates";
-import { addContact, addHumanOccasion, recordSignup, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, loadExampleContacts, markLeaving, releaseHeld, sendNow, skipCard, startPersonal, tick } from "@/lib/engine";
+import { addContact, addHumanOccasion, recordSignup, restartClock, approveCard, changeSigner, dailyJob, draftCard, editCard, importRoster, loadDemoRoster, loadExampleContacts, markLeaving, releaseHeld, sendNow, skipCard, startPersonal, tick } from "@/lib/engine";
 import { chooseGift, closeCollection, contribute } from "@/lib/collections";
 import { setCardGift } from "@/lib/gifts";
 import { generateCardImage, removeCardImage } from "@/lib/images";
@@ -296,6 +296,13 @@ export async function setPersonalEmailAction(formData: FormData): Promise<void> 
     logEvent(db, email ? `Reminders now go to ${email}` : "Reminder email cleared");
   });
   refresh();
+}
+
+export async function restartClockAction(formData: FormData): Promise<void> {
+  const ws = wsOf(formData);
+  await mutate(ws, (db) => restartClock(db));
+  refresh();
+  redirect(ws === "personal" ? "/me" : "/digest");
 }
 
 export async function resetPersonalAction(): Promise<void> {

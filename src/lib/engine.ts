@@ -62,6 +62,19 @@ export async function startPersonal(db: DB, opts: { name: string; brandHex: stri
   logEvent(db, `${opts.name} started a personal account`);
 }
 
+/** Start the year again on the same account: people, email, circle link and learned voice stay; cards and the clock reset. */
+export async function restartClock(db: DB): Promise<void> {
+  db.occasions = [];
+  db.cards = [];
+  db.digests = [];
+  db.printJobs = [];
+  db.collections = [];
+  db.signups = [];
+  db.clock = { today: SIM_START, startedOn: SIM_START, log: [] };
+  logEvent(db, "Clock restarted");
+  await ensureCards(db, db.clock.today, addDays(db.clock.today, LEAD_DAYS));
+}
+
 export async function addContact(db: DB, contact: Omit<Person, "id" | "kind" | "status" | "optOut" | "consentOccasions" | "deliverTo" | "publicFacts" | "privateNotes" | "managerId"> & { publicFacts?: string[] }): Promise<Person> {
   const owner = db.people.find((p) => p.id === db.company?.managingPartnerId);
   const id = `${contact.firstName}-${contact.lastName}`.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + (db.people.length + 1);

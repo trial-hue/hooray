@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { ClockBar } from "@/components/ClockBar";
 import { AddContactForm } from "@/components/AddContactForm";
 import { setPersonalEmailAction } from "@/app/actions";
+import { EmailPrompt } from "@/components/EmailPrompt";
 import { PersonMenu } from "@/components/MarkLeavingForm";
 import { getDb } from "@/lib/db";
 import { formatShort } from "@/lib/dates";
@@ -54,6 +55,8 @@ export default function MyPeoplePage() {
         </div>
         {signups > 0 && <p className="hint mb-6">{signups} {signups === 1 ? "person who received one of your cards has" : "people who received your cards have"} started their own list from the code on the back.</p>}
 
+        <EmailPrompt email={db.company.email} />
+        {db.company.email && (
         <form action={setPersonalEmailAction} className="card-panel mb-6 flex flex-wrap items-end gap-3 p-4">
           <div className="min-w-[260px] flex-1">
             <label className="label">Reminders go to</label>
@@ -64,6 +67,7 @@ export default function MyPeoplePage() {
           </div>
           <button className="btn btn-sm">Save</button>
         </form>
+        )}
 
         {circleUrl && (
           <section className="card-panel-hero mb-6 border-l-[3px] border-l-gold p-5">

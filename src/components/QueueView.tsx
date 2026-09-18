@@ -7,6 +7,7 @@ import { StatusChip } from "@/components/StatusChip";
 import { FrontPanel, PANEL_H, PANEL_W } from "@/components/Card";
 import { Scaled } from "@/components/CardPreview";
 import { advanceClockAction } from "@/app/actions";
+import { EmailPrompt } from "@/components/EmailPrompt";
 import { getDb, type Workspace } from "@/lib/db";
 import { formatLong, formatShort, formatSpoken } from "@/lib/dates";
 import { pendingCards } from "@/lib/engine";
@@ -78,6 +79,7 @@ export function QueueView({ ws }: { ws: Workspace }) {
     <>
       <ClockBar active={P.home} ws={ws} />
       <main className="mx-auto w-full max-w-6xl px-5 py-8">
+        {personal && <EmailPrompt email={db.company.email} />}
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="label mb-1">This week · {formatLong(db.clock.today)}</p>
