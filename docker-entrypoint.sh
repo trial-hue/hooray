@@ -2,6 +2,8 @@
 # First boot on an empty volume: copy the year of cached drafts and the personal demo, and stage the business demo.
 set -e
 DATA_DIR="${DATA_DIR:-/data}"
+# Chrome renders print pages from this same container, on whatever port the host assigned.
+export PRINT_BASE_URL="http://127.0.0.1:${PORT:-3000}"
 mkdir -p "$DATA_DIR"
 [ -d "$DATA_DIR/drafts" ] || cp -r /app/data/drafts "$DATA_DIR/drafts"
 [ -f "$DATA_DIR/personal.json" ] || cp /app/data/personal.json "$DATA_DIR/personal.json"

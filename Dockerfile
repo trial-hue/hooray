@@ -16,7 +16,7 @@ RUN npm run build
 FROM node:24-bookworm-slim AS run
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends chromium fonts-liberation fonts-noto-core ca-certificates && rm -rf /var/lib/apt/lists/*
-ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 CHROME_PATH=/usr/bin/chromium DATA_DIR=/data PRINT_BASE_URL=http://127.0.0.1:3000 PORT=3000 HOSTNAME=0.0.0.0
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 CHROME_PATH=/usr/bin/chromium DATA_DIR=/data PORT=3000 HOSTNAME=0.0.0.0
 COPY --from=build /app ./
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
