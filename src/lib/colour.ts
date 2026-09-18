@@ -75,7 +75,13 @@ export function derivePalette(brandHex: string, variant: PaletteVariant = "brigh
   const paper = hslToHex(h, Math.min(s, 0.25), 0.975);
   const tint = hslToHex(h, s * 0.8, variant === "muted" ? 0.9 : 0.86);
   const tintSoft = hslToHex(h, s * 0.6, 0.94);
-  const accent = accentHex && variant !== "muted" ? accentHex : hslToHex((h + 35) % 360, variant === "formal" ? s * 0.6 : s, 0.58);
+  let accent: string;
+  if (accentHex) {
+    const a = hexToHsl(accentHex);
+    accent = variant === "muted" ? hslToHex(a.h, a.s * 0.45, Math.min(0.7, a.l + 0.08)) : variant === "formal" ? hslToHex(a.h, a.s * 0.75, a.l) : accentHex;
+  } else {
+    accent = hslToHex((h + 35) % 360, variant === "formal" ? s * 0.6 : s, 0.58);
+  }
   const muted = hslToHex(h, 0.25, 0.42);
   const onBrand = contrastRatio("#ffffff", brand) >= 4.5 ? "#ffffff" : ink;
   return { brand, ink, paper, tint, tintSoft, accent, onBrand, muted };
