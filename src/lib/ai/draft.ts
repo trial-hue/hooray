@@ -10,6 +10,9 @@ import { aiCostGbp } from "../costs";
 
 export const DRAFT_MODEL = process.env.DRAFT_MODEL ?? "claude-opus-5";
 
+// TODO: Preference learning from digest edits — extract durable preferences scoped to company or person,
+// feed into next draft. Not before approve-without-edit baseline exists.
+
 let client: Anthropic | undefined;
 function getClient(): Anthropic {
   if (!client) client = new Anthropic();

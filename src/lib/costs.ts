@@ -25,6 +25,9 @@ export const UNIT = {
   digestSecondsPerCard: 20,
   /** Collections: blended take on the pot (2% fee on cash/gift card, 25% margin on sourced gifts). */
   collectionBlendedTake: 0.11,
+  /** Client gifts [E]: one in ten client contacts a year at ~£50. Gift value under management, not revenue. */
+  clientGiftRate: 0.1,
+  clientGiftValueGbp: 50,
   teamSize: 4,
 };
 
@@ -42,6 +45,18 @@ export const MOONPIG = {
   consumerPostage: 1.9,
   businessCardPrice: 3.6, // Moonpig for Business
   remindersStored: 113_000_000,
+  segmentGrossMargin: 0.559, // [V] Moonpig segment; the group figure blends in Experiences
+  experiencesGrossMargin: 0.938, // [V]
+  shippingGbp: 88_200_000, // [V] shipping and logistics, 23.6% of revenue, grew 9.4%
+  inventoryCostPct: 0.145, // [V]
+  attachedGiftingGbp: 123_000_000, // [V]
+  standaloneGiftingGbp: 8_000_000, // [V]
+  brandRevenueGbp: 284_500_000, // [V] Moonpig brand
+  giftAttachRate: 0.179, // [V]
+  giftRevenuePerAttachedOrder: 19, // [V] ~£19
+  cardsPerCustomerPerYear: 3.5, // [V]
+  occasionCaptureRate: 0.18, // [V] 3.5 cards against ~19 bought
+  groupCardMaxContributors: 50, // [V] Moonpig group cards, shared by link
 };
 export const MOONPIG_DERIVED = {
   revenuePerEmployee: MOONPIG.revenueGbp / MOONPIG.employees, // ~£552k
@@ -50,6 +65,20 @@ export const MOONPIG_DERIVED = {
   consumerAllIn: MOONPIG.consumerCardPrice + MOONPIG.consumerPostage, // £5.89
   internalCardCostEstimate: 1.05, // [E] business plan estimate
   cogsPerOrder: MOONPIG.aov * (1 - MOONPIG.grossMargin),
+  shippingPerOrder: MOONPIG.shippingGbp / MOONPIG.ordersPerYear, // [D] ~£2.45
+  shippingPct: MOONPIG.shippingGbp / MOONPIG.revenueGbp, // [D] 23.6%
+  giftShareOfBrandRevenue: MOONPIG.attachedGiftingGbp / MOONPIG.brandRevenueGbp, // [D] £123m / £284.5m ≈ 43%
+};
+
+/** Phase 2 consumer pricing. DESIGNED, NOT TESTED [E]. No consumer UI today; used only for the dashboard's phase 2 line. */
+export const CONSUMER = {
+  perCardGbp: 5.49, // including post; matches Moonpig's £5.89 within a few pence
+  subscriptionMonthlyGbp: 4.99, // up to twelve cards a year, sent automatically
+  subscriptionCardsPerYear: 12,
+  subscriberCardsUsed: 8, // [E]
+  payPerCardCardsPerYear: 3.5, // [A] Moonpig's own frequency
+  subscriberShare: 0.1, // [E]
+  employeeActivation: 0.3, // [E] share of employees who activate a personal account
 };
 
 export function aiCostGbp(model: string, u: Usage): number {
