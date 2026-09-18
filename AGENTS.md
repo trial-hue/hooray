@@ -39,5 +39,6 @@ Decisions that override earlier drafts:
 
 15. **Category volume is shrinking.** Orders fell 9.5% FY22 to FY26 while AOV rose 21%. We do not need the category to grow; a 200-person firm produces ~400 occasions a year regardless.
 16. **Four people is our cost structure, not our defence.** Never present headcount as a moat. The defence is the contract, the roster and the collection. The dashboard may show 4 against 676 as a fact, with that framing.
+17. **Gifts are drop-ship or marketplace only.** Never model or hold gift inventory. A collection's gift choice resolves to a supplier order, not stock. Moonpig carries £8.7m of finished goods and all the markdown risk; we carry none.
 
 All figures in the plan carry **[V]** verified, **[D]** derived, **[E]** estimate, **[A]** from the reference build's model or **[C]** from the 6 August filings analysis. Keep that discipline in any copy shown to the user.

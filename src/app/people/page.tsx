@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ClockBar } from "@/components/ClockBar";
-import { MarkLeavingForm } from "@/components/MarkLeavingForm";
-import { AddOccasionForm } from "@/components/AddOccasionForm";
+import { PersonMenu } from "@/components/MarkLeavingForm";
 import { getDb } from "@/lib/db";
 import { formatShort } from "@/lib/dates";
 import { occasionTitle } from "@/lib/occasions";
@@ -25,7 +24,7 @@ export default function PeoplePage() {
           <h1 className="h1">
             {staff.length} staff · {clients.length} clients
           </h1>
-          <p className="hint mt-1.5">Mark someone as leaving and their team&apos;s collection opens the same day. Everyone was asked once whether they want birthdays marked.</p>
+          <p className="hint mt-1.5">Record a leaver, a wedding or a new baby and the rest happens by itself.</p>
         </div>
 
         {collections.length > 0 && (
@@ -96,10 +95,7 @@ export default function PeoplePage() {
                     )}
                   </td>
                   <td className="px-4 py-2 text-right">
-                    <div className="flex flex-wrap items-center justify-end gap-1.5">
-                      {!p.endDate && <AddOccasionForm personId={p.id} />}
-                      {!p.endDate && <MarkLeavingForm personId={p.id} />}
-                    </div>
+                    <div className="flex items-center justify-end">{!p.endDate && <PersonMenu personId={p.id} />}</div>
                   </td>
                 </tr>
               ))}

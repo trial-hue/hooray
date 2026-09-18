@@ -1,27 +1,27 @@
 {
  "draft": {
   "front_headline": "Happy birthday, Marcus",
-  "inside_message": "Happy birthday, Marcus. It's been quite a year for you already, with the final ACA exams behind you and the school sessions you keep turning up for. Enjoy the day, and don't answer your emails.",
+  "inside_message": "Happy birthday, Marcus. Quite a year already, with the final ACA exams behind you and the school sessions you keep turning up for. Enjoy the day, and don't spend any of it near a spreadsheet.",
   "sign_off": "Warm wishes,",
   "signature_line": "Sarah Lindqvist, Audit Manager",
   "artwork_brief": {
    "template": "confetti",
    "palette_variant": "bright",
-   "style_note": "loose confetti, lots of white space, understated"
+   "style_note": "loose confetti, bright but uncluttered, plenty of white space"
   },
   "flags": [],
-  "rationale": "Leans on his ACA pass and Number Partners volunteering for specificity, with light humour in Sarah's brisk line-manager voice and no mention of age."
+  "rationale": "Leans on the July ACA pass and the Number Partners volunteering for specificity, with the dry, brief warmth of Sarah's own voice and no mention of age."
  },
  "createdAt": "2026-09-29",
  "promptHash": "1667391eac4ecc37",
  "model": "claude-opus-5",
  "usage": {
   "input_tokens": 425,
-  "output_tokens": 243,
+  "output_tokens": 256,
   "cache_read_input_tokens": 4522,
   "cache_creation_input_tokens": 0
  },
  "attempts": 1,
  "source": "claude",
- "ms": 3949
+ "ms": 4337
 }

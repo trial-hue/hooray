@@ -6,7 +6,7 @@ import { CardThumb } from "@/components/CardThumb";
 import { StatusChip } from "@/components/StatusChip";
 import { FrontPanel, PANEL_H, PANEL_W } from "@/components/Card";
 import { Scaled } from "@/components/CardPreview";
-import { advanceClockAction, approveAllAction, sendNowAction } from "@/app/actions";
+import { advanceClockAction } from "@/app/actions";
 import { getDb } from "@/lib/db";
 import { formatLong, formatShort, formatSpoken } from "@/lib/dates";
 import { pendingCards } from "@/lib/engine";
@@ -24,7 +24,6 @@ export default function DigestPage() {
   const ready = cards.filter((c) => c.status === "drafted");
   const done = cards.filter((c) => ["approved", "edited", "skipped"].includes(c.status));
   const sendable = cards.filter((c) => c.status === "approved" || c.status === "edited").length;
-  const unflagged = ready.filter((c) => c.flags.length === 0).length;
   const staff = db.people.filter((p) => p.kind === "staff" && p.status !== "left");
   const nextDispatch = cards.filter((c) => c.status !== "skipped").map((c) => c.dispatchOn).sort()[0];
   const openCols = db.collections.filter((c) => c.status === "open");
@@ -72,42 +71,42 @@ export default function DigestPage() {
     <>
       <ClockBar active="/digest" />
       <main className="mx-auto w-full max-w-6xl px-5 py-8">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="label mb-1">This week · {formatLong(db.clock.today)}</p>
             <h1 className="h1">{cards.length === 0 ? "Nothing waiting. Enjoy the quiet." : `${needs.length + ready.length} card${needs.length + ready.length === 1 ? "" : "s"} waiting on you`}</h1>
-            <p className="hint mt-1.5">Drafted ten days out. Anything you don&apos;t touch goes out by itself five days before the date.</p>
+            <p className="hint mt-2 max-w-3xl">
+              Anything you don&apos;t touch goes out by itself{nextDispatch ? <>, next on {formatSpoken(nextDispatch)}</> : null}.
+              {sendable > 0 && <> {sendable} already approved.</>}
+              {openCols.length > 0 && firstCol && firstColPerson && (
+                <>
+                  {" "}
+                  <Link href={`/collections/${firstCol.id}`} className="underline underline-offset-2 hover:text-ink">
+                    {openCols.length === 1 ? `${firstColPerson.firstName}'s collection` : `${openCols.length} collections`}
+                  </Link>{" "}
+                  open{openCols.length === 1 ? `, ${firstCol.contributions.length} of ${firstCol.teamIds.length} chipped in` : ""}.
+                </>
+              )}
+              {inPost > 0 && (
+                <>
+                  {" "}
+                  <Link href="/print" className="underline underline-offset-2 hover:text-ink">
+                    {inPost} in the post
+                  </Link>
+                  .
+                </>
+              )}{" "}
+              <Link href="/calendar" className="underline underline-offset-2 hover:text-ink">
+                What&apos;s coming up
+              </Link>
+              .
+            </p>
           </div>
           {cards.length > 0 && (
-            <div className="flex items-center gap-2">
-              <Link href="/digest/email" className="btn">
-                Email this week
-              </Link>
-              <form action={approveAllAction}>
-                <button className="btn" disabled={unflagged === 0}>
-                  Approve all unflagged{unflagged ? ` (${unflagged})` : ""}
-                </button>
-              </form>
-              <form action={sendNowAction}>
-                <button className="btn btn-primary" disabled={sendable === 0}>
-                  Send {sendable || ""} to print now
-                </button>
-              </form>
-            </div>
+            <Link href="/digest/email" className="btn btn-ghost">
+              Email this week
+            </Link>
           )}
-        </div>
-
-        <div className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4">
-          <Stat label="Waiting on you" value={String(needs.length + ready.length)} sub={needs.length ? `${needs.length} need a decision` : "all drafted, none flagged"} accent="hooray" />
-          <Stat label="Next dispatch" value={nextDispatch ? formatShort(nextDispatch) : "—"} sub={nextDispatch ? `${sendable} approved · others go by themselves` : "nothing scheduled"} />
-          <Stat
-            label="Open collections"
-            value={String(openCols.length)}
-            sub={firstCol && firstColPerson ? `${firstColPerson.firstName} · ${firstCol.contributions.length} of ${firstCol.teamIds.length} chipped in` : "none open"}
-            href={firstCol ? `/collections/${firstCol.id}` : undefined}
-            accent="gold"
-          />
-          <Stat label="In the post" value={String(inPost)} sub="printed or on their way" href="/print" accent="sage" />
         </div>
 
         {cards.length === 0 && (
@@ -119,11 +118,11 @@ export default function DigestPage() {
               <button className="btn btn-primary">Run to next Monday</button>
             </form>
             <p className="hint mt-3">
-              Or{" "}
+              Or go to{" "}
               <Link href="/people" className="underline">
-                mark someone as leaving
+                People
               </Link>{" "}
-              and watch a collection open.
+              and mark someone as leaving.
             </p>
           </div>
         )}
@@ -182,21 +181,3 @@ function Section({ title, hint, children }: { title: string; hint: string; child
   );
 }
 
-function Stat({ label, value, sub, href, accent }: { label: string; value: string; sub: string; href?: string; accent?: "hooray" | "gold" | "sage" }) {
-  const accentCls = accent === "gold" ? "border-l-[3px] border-l-gold" : accent === "sage" ? "border-l-[3px] border-l-sage" : accent === "hooray" ? "border-l-[3px] border-l-hooray" : "";
-  const inner = (
-    <>
-      <div className="label">{label}</div>
-      <div className={`mt-1 font-display text-[28px] leading-none ${accent === "hooray" ? "text-hooray" : ""}`}>{value}</div>
-      <div className="hint mt-1 truncate text-xs">{sub}</div>
-    </>
-  );
-  const cls = `card-panel px-4 py-3 ${accentCls} ${href ? "transition hover:bg-paper-2/60" : ""}`;
-  return href ? (
-    <Link href={href} className={cls}>
-      {inner}
-    </Link>
-  ) : (
-    <div className={cls}>{inner}</div>
-  );
-}

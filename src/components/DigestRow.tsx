@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
-import { approveCardAction, changeSignerAction, contributeManyAction, editCardAction, regenerateCardAction, releaseHeldAction, skipCardAction } from "@/app/actions";
+import { approveCardAction, changeSignerAction, editCardAction, regenerateCardAction, releaseHeldAction, skipCardAction } from "@/app/actions";
 import { StatusChip } from "./StatusChip";
 import { CardThumb } from "./CardThumb";
 import { formatShort } from "@/lib/dates";
@@ -33,21 +33,12 @@ function Pending({ label, busy, className = "btn" }: { label: string; busy: stri
   );
 }
 
-function RegenerateForm({ cardId }: { cardId: string }) {
+function MenuSubmit({ label, name, value }: { label: string; name?: string; value?: string }) {
   const { pending } = useFormStatus();
   return (
-    <>
-      <button type="submit" className={`btn ${pending ? "pulse-soft" : ""}`} disabled={pending}>
-        {pending ? "Asking Claude…" : "Regenerate"}
-      </button>
-      <input name="hint" placeholder="with a note, e.g. mention the Leeds move" className="w-56 rounded-md border border-transparent bg-transparent px-2 py-1 text-xs text-ink placeholder:text-ink-3 focus:border-line focus:bg-white focus:outline-none" />
-      {["Warmer", "Shorter", "More formal"].map((h) => (
-        <button key={h} type="submit" name="preset" value={h} className="btn btn-sm btn-ghost" disabled={pending}>
-          {h}
-        </button>
-      ))}
-      <input type="hidden" name="id" value={cardId} />
-    </>
+    <button type="submit" name={name} value={value} className={`menu-item ${pending ? "pulse-soft" : ""}`} disabled={pending}>
+      {pending ? "Asking Claude…" : label}
+    </button>
   );
 }
 
@@ -58,6 +49,7 @@ export function DigestRow(p: Props) {
   const text = finalTextOf(card);
   const frozen = ["approved", "edited", "skipped", "sent_to_print", "printed", "posted", "delivered"].includes(card.status);
   const held = card.status === "held";
+  const [firstFlag, ...moreFlags] = card.flags;
 
   return (
     <article className="card-panel-hero flex gap-5 p-5">
@@ -75,38 +67,30 @@ export function DigestRow(p: Props) {
           <span className="text-sm text-ink-2">
             {p.occasionLabel}
             {person.kind === "client" && ` · ${person.clientCompanyName}`}
-            <span className="text-ink-3"> · due {formatShort(card.dueDate)}</span>
+            <span className="text-ink-3"> · {formatShort(card.dueDate)}</span>
           </span>
           {card.status !== "drafted" && <StatusChip status={card.status} />}
-          {card.autoApproved && <span className="chip chip-muted">auto-approved</span>}
+          {p.collection && (
+            <Link href={`/collections/${p.collection.id}`} className="chip chip-gold hover:opacity-80">
+              collection · {p.collection.contributors} of {p.collection.invited} signed
+            </Link>
+          )}
         </div>
 
-        {card.flags.length > 0 && (
-          <ul className="mt-2 flex max-w-prose flex-wrap gap-1.5">
-            {card.flags.map((f, i) => (
-              <li key={i} className={`chip ${f.kind === "check" ? "chip-red" : "chip-amber"}`}>
-                {f.text}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {p.collection && (
-          <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg bg-gold-bg/70 px-3 py-2">
-            <Link href={`/collections/${p.collection.id}`} className="text-sm font-medium hover:underline">
-              Team collection
-            </Link>
-            <div className="bar w-32 bg-white/70">
-              <div className="bar-fill" style={{ width: `${Math.round((100 * p.collection.contributors) / Math.max(1, p.collection.invited))}%` }} />
-            </div>
-            <span className="text-xs text-ink-2">
-              {p.collection.contributors} of {p.collection.invited} chipped in{p.collection.status === "closed" ? " · closed" : ""}
-            </span>
-            {p.collection.status === "open" && p.collection.contributors < p.collection.invited && (
-              <form action={contributeManyAction} className="ml-auto">
-                <input type="hidden" name="collectionId" value={p.collection.id} />
-                <Pending label="Demo: team chips in" busy="…" className="btn btn-sm" />
-              </form>
+        {firstFlag && (
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            <span className={`chip ${firstFlag.kind === "check" ? "chip-red" : "chip-amber"}`}>{firstFlag.text}</span>
+            {moreFlags.length > 0 && (
+              <details className="menu-host inline-block">
+                <summary className="chip chip-muted">+{moreFlags.length} more</summary>
+                <div className="menu left-0 right-auto max-w-md">
+                  {moreFlags.map((f, i) => (
+                    <p key={i} className="px-3 py-1.5 text-xs text-ink-2">
+                      {f.text}
+                    </p>
+                  ))}
+                </div>
+              </details>
             )}
           </div>
         )}
@@ -135,7 +119,7 @@ export function DigestRow(p: Props) {
                 type="button"
                 onClick={() => !frozen && setEditing(true)}
                 className={`block w-full rounded-lg border border-line/70 bg-white px-5 py-4 text-left ${frozen ? "cursor-default" : "hover:border-line hover:bg-paper/40"}`}
-                title={frozen ? undefined : "Click to edit the inside message"}
+                title={frozen ? undefined : "Click to edit"}
               >
                 <p className="font-display text-[17px] leading-relaxed text-ink">{text.inside_message}</p>
                 <p className="mt-2 text-sm text-ink-2">
@@ -143,12 +127,6 @@ export function DigestRow(p: Props) {
                   <span className="text-ink-3"> · {text.signature_line}</span>
                 </p>
               </button>
-            )}
-            {draft?.rationale && !editing && (
-              <p className="mt-1.5 px-1 text-xs text-ink-3">
-                <span className="font-medium text-ink-2">Why: </span>
-                {draft.rationale}
-              </p>
             )}
           </div>
         )}
@@ -171,28 +149,49 @@ export function DigestRow(p: Props) {
                 Edit
               </button>
             )}
-            {!held && (
-              <form action={regenerateCardAction} className="flex flex-wrap items-center gap-1">
-                <RegenerateForm cardId={card.id} />
-              </form>
-            )}
             <form action={skipCardAction}>
               <input type="hidden" name="id" value={card.id} />
               <Pending label="Skip" busy="…" className="btn btn-ghost" />
             </form>
             {!held && (
-              <form action={changeSignerAction} className="ml-auto flex items-center gap-1.5 text-xs text-ink-3">
-                <input type="hidden" name="id" value={card.id} />
-                <span>Signed by</span>
-                <select name="signerId" defaultValue={card.signerId} className="rounded-md border border-line bg-white px-1.5 py-1 text-xs text-ink" onChange={(e) => e.currentTarget.form?.requestSubmit()}>
-                  {p.signers.map((s) => (
-                    <option key={s.id} value={s.id}>
-                      {s.name}
-                    </option>
-                  ))}
-                </select>
-                {p.coSignerName && <span>and {p.coSignerName}</span>}
-              </form>
+              <details className="menu-host ml-auto">
+                <summary className="btn btn-ghost px-2" aria-label="More options">
+                  …
+                </summary>
+                <div className="menu min-w-64">
+                  <form action={regenerateCardAction}>
+                    <input type="hidden" name="id" value={card.id} />
+                    <MenuSubmit label="Rewrite it" />
+                    <MenuSubmit label="Rewrite, warmer" name="preset" value="Warmer" />
+                    <MenuSubmit label="Rewrite, shorter" name="preset" value="Shorter" />
+                    <MenuSubmit label="Rewrite, more formal" name="preset" value="More formal" />
+                  </form>
+                  <div className="my-1 border-t border-line" />
+                  <form action={changeSignerAction} className="px-3 py-2 text-xs text-ink-3">
+                    <input type="hidden" name="id" value={card.id} />
+                    <label className="block">
+                      Signed by
+                      <select name="signerId" defaultValue={card.signerId} className="mt-1 block w-full rounded-md border border-line bg-white px-1.5 py-1 text-xs text-ink" onChange={(e) => e.currentTarget.form?.requestSubmit()}>
+                        {p.signers.map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {s.name}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    {p.coSignerName && <span className="mt-1 block">and {p.coSignerName}</span>}
+                  </form>
+                  {draft?.rationale && (
+                    <>
+                      <div className="my-1 border-t border-line" />
+                      <p className="px-3 py-2 text-xs text-ink-3">
+                        <span className="font-medium text-ink-2">Why this draft: </span>
+                        {draft.rationale}
+                      </p>
+                    </>
+                  )}
+                </div>
+              </details>
             )}
           </div>
         )}

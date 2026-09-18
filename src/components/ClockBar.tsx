@@ -35,9 +35,7 @@ export function ClockBar({ active }: { active: string }) {
   const openCollections = db.collections.filter((c) => c.status === "open").length;
   const nav: [string, string][] = [
     ["/digest", "This week"],
-    ["/calendar", "Calendar"],
     ["/people", "People"],
-    ["/print", "In the post"],
     ["/dashboard", "Numbers"],
   ];
   return (
@@ -50,7 +48,7 @@ export function ClockBar({ active }: { active: string }) {
         {db.company && (
           <nav className="flex items-center gap-0.5 text-sm">
             {nav.map(([href, label]) => (
-              <Link key={href} href={href} className={`rounded-md px-2.5 py-1.5 ${active === href ? "bg-white text-ink shadow-sm" : "text-ink-2 hover:bg-paper-2"}`}>
+              <Link key={href} href={href} className={`rounded-md px-2.5 py-1.5 ${active === href || (href === "/digest" && (active === "/calendar" || active === "/print")) ? "bg-white text-ink shadow-sm" : "text-ink-2 hover:bg-paper-2"}`}>
                 {label}
                 {href === "/digest" && openCount > 0 && <span className="ml-1.5 rounded-full bg-navy px-1.5 text-[10px] text-white">{openCount}</span>}
                 {href === "/people" && openCollections > 0 && <span className="ml-1.5 rounded-full bg-gold px-1.5 text-[10px] text-white">{openCollections}</span>}

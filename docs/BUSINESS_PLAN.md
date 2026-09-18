@@ -2,7 +2,7 @@
 
 ### Business unit plan: occasion cards for companies, then for everyone
 
-*Telemachus trial day, 18 September 2026, revised 15:10. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
+*Telemachus trial day, 18 September 2026, revised 15:25. **[V]** verified from Moonpig's FY26 annual report, directly or via the 16 September reference dossier. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing. **[A]** from the 16 September reference build's report, a model rather than a measurement. **[C]** from the 6 August filings analysis's own derivations rather than directly from a filing.*
 
 ---
 
@@ -135,6 +135,22 @@ A Moonpig customer produces £27.28 of revenue a year **[C]** and about £15.25 
 
 Our company seat is £30 a year. The revenue per head is nearly identical to Moonpig's per active customer; the difference is that ours is contracted annually, costs a signature rather than £3.15 of marketing to keep, and covers every work occasion instead of about 18% of them.
 
+## 6b. Supply chain position
+
+Five things the incumbent's own disclosures settle. **[V]** unless marked.
+
+**Print: buy in phase one, revisit at scale.** Moonpig runs a hybrid, majority in-house with a third-party print network that is load-bearing rather than nominal. It scaled through the Covid volume spike on outsourced card fabrication, then insourced from FY21 to lift gross margin from 49.3% to 58.4%. In-house print is not a day-one requirement; it is where margin ends up at 36m orders. Tangible capex is only £4.6m a year, so when the time comes it is more accessible than the industrial-printer mental model suggests. Their structure also carries legacy cost we do not inherit: a Guernsey factory whose output is air-freighted to the mainland, a relic of pre-2012 VAT treatment.
+
+**Postage: nobody is insulated.** Moonpig discloses "cost increases above inflation from both Royal Mail and PostNL". Our £1.39 via Docmail carries the same exposure. Seat pricing absorbs it, since print is £2.78 of a £30 seat. The consumer per-card tier is the line that would feel it first.
+
+**Gifts: never hold inventory.** Cards carry almost no stock risk; gifts carry all of it, £8.7m of finished goods at Moonpig and every markdown, expiry and obsolescence problem in the business. Drop-ship or marketplace only. Moonpig's own flowers are entirely outsourced to a single supplier per country, which is the model to copy and the concentration risk to avoid.
+
+**Working capital: the customer finances us, not the supplier.** Moonpig runs on roughly minus £43m of working capital, payables at about 134 days against inventory turning in 51. Suppliers finance the business. A new entrant gets 30-day terms and does not inherit that. We do not need it: annual seats are paid in advance and collections settle before they are spent. That is a structurally better position than the incumbent's, and it does not depend on negotiating power we lack.
+
+**Peak: designed out.** Christmas runs five to ten times baseline and H1 free cash flow is £8.6m of £73.5m. Work occasions are flat across the year. Attack table, row 8a.
+
+The 60-person-day supply chain programme in the same analysis, print RFQs at five million cards, tariff matrices, competitor teardowns, is the right plan for a head-on consumer clone building its own physical operation. This plan does not need it in phase one, for the reason that runs through the whole document: we buy the loop's physical links at a price list and put the money into the contract, the roster and the collection.
+
 ## 7. The path to scale
 
 ### Phase 1 · Companies, months 1 to 12
@@ -229,6 +245,8 @@ No product on either side of the market drafts the card before being asked. Feat
 | Paid acquisition started too early | Only against measured cohort lifetime value | Any paid spend before month twelve |
 | Account values stay staff-only | Client roster and gift attach | Expansion below 30% by month nine |
 | We are read as a cost play | The plan's margin is the seat, not the card. Never claim a print-cost advantage; claim the contract, the roster and the collection | Any pitch line that leads with "cheaper than Moonpig" |
+| Royal Mail tariff rises pass through the print partner | Seat pricing absorbs it; print is under 10% of the seat. Two suppliers by day 90 | Card cost above £2.50 makes the consumer per-card tier unviable |
+| Gift supplier concentration | Drop-ship from more than one supplier per category; never hold stock | A single supplier above 60% of gift value |
 
 Context for all of the above: the incumbent's category has not grown on volume in four years, and its weaknesses are on the revenue side, frequency at 2.92 and attach at +0.2 points a year, not the cost side. **[V]**
 
@@ -240,6 +258,6 @@ Four people through phase one. That is our cost structure, not our defence: Moon
 
 ## Sources
 
-Moonpig Group plc FY26 Annual Report and Final Results RNS, 25 June and 10 July 2026, via moonpig.group and Investegate, read directly. Segment margins, gift attach, occasion capture and the AI posture quotation via the 16 September reference dossier, itself sourced to the same report. The 16 September reference build report for the consumer subscription model and its acquisition-cost result. Filings analysis of Moonpig Group plc, 6 August 2026, 62 documents FY21 to FY26 with per-row citations, orders times average order value reconciled to reported revenue in every year FY23 to FY26; marked **[C]** where a figure is taken from its derivations rather than directly from a filing. Moonpig for Business pricing and Moonpig Plus FAQ, moonpig.com. Stannp and Docmail price lists. instantprint workplace collections survey, 2023. Collection Pot platform data via HR News. Reward Gateway pricing via GetApp UK. Google People API reference. Telemachus thesis from careers.telemachus.io and jobs.ashbyhq.com/telemachus.
+Moonpig Group plc FY26 Annual Report and Final Results RNS, 25 June and 10 July 2026, via moonpig.group and Investegate, read directly. Segment margins, gift attach, occasion capture and the AI posture quotation via the 16 September reference dossier, itself sourced to the same report. The 16 September reference build report for the consumer subscription model and its acquisition-cost result. Filings analysis of Moonpig Group plc, 6 August 2026, 62 documents FY21 to FY26 with per-row citations, orders times average order value reconciled to reported revenue in every year FY23 to FY26; marked **[C]** where a figure is taken from its derivations rather than directly from a filing. Its supplier findings of the same date, from sustainability disclosures, SECR energy reporting and the Companies House charges register, for the make-versus-buy position, facilities, named carriers and working capital structure. Moonpig for Business pricing and Moonpig Plus FAQ, moonpig.com. Stannp and Docmail price lists. instantprint workplace collections survey, 2023. Collection Pot platform data via HR News. Reward Gateway pricing via GetApp UK. Google People API reference. Telemachus thesis from careers.telemachus.io and jobs.ashbyhq.com/telemachus.
 
 Full inefficiency teardown with workings in `docs/INEFFICIENCY.md`. Presentation prep in `docs/QA_PREP.md`.

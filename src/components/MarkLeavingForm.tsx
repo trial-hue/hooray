@@ -1,52 +1,56 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { markLeavingAction } from "@/app/actions";
+import { addOccasionAction, markLeavingAction } from "@/app/actions";
 
-function Submit({ label, className }: { label: string; className: string }) {
-  const { pending } = useFormStatus();
-  return (
-    <button type="submit" name="days" value="14" className={`${className} ${pending ? "pulse-soft" : ""}`} disabled={pending}>
-      {pending ? "Opening collection…" : label}
-    </button>
-  );
-}
-
-function Item({ label }: { label: string }) {
+function Item({ label, sub }: { label: string; sub?: string }) {
   const { pending } = useFormStatus();
   return (
     <button type="submit" className={`menu-item ${pending ? "pulse-soft" : ""}`} disabled={pending}>
-      {pending ? "Opening collection…" : label}
+      {pending ? "One moment…" : label}
+      {sub && <span className="block text-xs text-ink-3">{sub}</span>}
     </button>
   );
 }
 
-export function MarkLeavingForm({ personId }: { personId: string; name?: string }) {
+/** One menu per person: everything a manager might record about them. */
+export function PersonMenu({ personId }: { personId: string }) {
   return (
-    <div className="flex items-center">
-      <form action={markLeavingAction}>
-        <input type="hidden" name="personId" value={personId} />
-        <Submit label="Leaving in 2 weeks" className="btn btn-sm rounded-r-none" />
-      </form>
-      <details className="menu-host">
-        <summary className="btn btn-sm rounded-l-none border-l-0 px-1.5" aria-label="More leaving options">
-          ▾
-        </summary>
-        <div className="menu">
-          {[
-            ["7", "false", "Leaving in a week"],
-            ["28", "false", "Leaving in four weeks"],
-            ["28", "true", "Retiring in four weeks"],
-          ].map(([d, r, l]) => (
-            <form key={l} action={markLeavingAction}>
-              <input type="hidden" name="personId" value={personId} />
-              <input type="hidden" name="days" value={d} />
-              <input type="hidden" name="retiring" value={r} />
-              <Item label={l} />
-            </form>
-          ))}
-        </div>
-      </details>
-    </div>
+    <details className="menu-host">
+      <summary className="btn btn-sm">Record ▾</summary>
+      <div className="menu">
+        <form action={markLeavingAction}>
+          <input type="hidden" name="personId" value={personId} />
+          <input type="hidden" name="days" value="14" />
+          <input type="hidden" name="retiring" value="false" />
+          <Item label="Leaving in two weeks" sub="opens a team collection today" />
+        </form>
+        <form action={markLeavingAction}>
+          <input type="hidden" name="personId" value={personId} />
+          <input type="hidden" name="days" value="28" />
+          <input type="hidden" name="retiring" value="true" />
+          <Item label="Retiring in four weeks" sub="opens a team collection today" />
+        </form>
+        <div className="my-1 border-t border-line" />
+        {(
+          [
+            ["wedding", "Wedding", "opens a team collection"],
+            ["new-baby", "New baby", "opens a team collection"],
+            ["congratulations", "Congratulations", "company card only"],
+            ["get-well", "Get well", "company card only"],
+            ["sympathy", "Sympathy", "company card only"],
+          ] as [string, string, string][]
+        ).map(([kind, label, sub]) => (
+          <form key={kind} action={addOccasionAction}>
+            <input type="hidden" name="personId" value={personId} />
+            <input type="hidden" name="kind" value={kind} />
+            <input type="hidden" name="days" value="14" />
+            <Item label={label} sub={sub} />
+          </form>
+        ))}
+      </div>
+    </details>
   );
 }
+
+export { PersonMenu as MarkLeavingForm };

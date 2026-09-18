@@ -145,8 +145,9 @@ export default async function CardPage({ params }: PageProps<"/cards/[id]">) {
               </details>
 
               <details className="card-panel">
-                <summary className="cursor-pointer px-4 py-3 font-display text-lg">Print partner</summary>
+                <summary className="cursor-pointer px-4 py-3 font-display text-lg">More</summary>
                 <div className="px-4 pb-4">
+                  <p className="label mb-2">Print partner</p>
                   <p className="text-ink-2">
                     Production: Docmail, {gbp(UNIT.cardCostProductionGbp)} all in. Prototype: Stannp, {gbp(UNIT.cardCostPrototypeGbp)}. {hasStannp ? "A key is configured; send a test to get a real proof back." : "No Stannp key today, so the PDF is rendered locally and this is the exact request that would go."}
                   </p>
@@ -162,19 +163,16 @@ export default async function CardPage({ params }: PageProps<"/cards/[id]">) {
                   <a href={pdfPath} target="_blank" rel="noreferrer" className="btn btn-sm mt-3">
                     Open PDF in a tab
                   </a>
-                </div>
-              </details>
-
-              <details className="card-panel">
-                <summary className="cursor-pointer px-4 py-3 font-display text-lg">History</summary>
-                <ul className="px-4 pb-4 text-xs text-ink-2">
+                  <p className="label mb-2 mt-5">History</p>
+                  <ul className="text-xs text-ink-2">
                   {card.history.map((h, i) => (
                     <li key={i} className="py-0.5">
                       <span className="text-ink-3">{h.at}</span> · {statusLabel(h.status)}
                       {h.note ? ` · ${h.note}` : ""}
                     </li>
                   ))}
-                </ul>
+                  </ul>
+                </div>
               </details>
             </aside>
           </div>
