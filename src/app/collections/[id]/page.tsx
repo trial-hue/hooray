@@ -78,7 +78,7 @@ export default async function CollectionPage({ params }: PageProps<"/collections
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-[1fr_1.15fr]">
+        <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
           <section className="card-panel p-5">
             <div className="flex items-baseline justify-between">
               <h2 className="h2">
@@ -112,7 +112,7 @@ export default async function CollectionPage({ params }: PageProps<"/collections
             </ul>
           </section>
 
-          <div className="grid content-start gap-6">
+          <div className="grid min-w-0 content-start gap-6">
             <section className="card-panel-hero p-5">
               <div className="flex items-baseline justify-between">
                 <h2 className="h2">The card, inside</h2>

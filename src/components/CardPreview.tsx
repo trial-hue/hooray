@@ -17,7 +17,7 @@ export function Scaled({ widthMm, heightMm, children, shadow = true }: { widthMm
     return () => ro.disconnect();
   }, [widthMm]);
   return (
-    <div ref={ref} className="w-full" style={{ height: heightMm * MM_PX * scale }}>
+    <div ref={ref} className="w-full min-w-0 overflow-hidden" style={{ height: heightMm * MM_PX * scale }}>
       <div className={`origin-top-left ${shadow ? "shadow-[0_12px_30px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(0,0,0,0.06)]" : ""}`} style={{ transform: `scale(${scale})`, width: widthMm * MM_PX, height: heightMm * MM_PX }}>
         {children}
       </div>

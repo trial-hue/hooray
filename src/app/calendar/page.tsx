@@ -5,7 +5,7 @@ import { StatusChip } from "@/components/StatusChip";
 import { getDb } from "@/lib/db";
 import { addDays, formatRange, formatShort, mondayOf } from "@/lib/dates";
 import { materialiseOccasions, occasionTitle } from "@/lib/occasions";
-import { displayName, fullName } from "@/lib/types";
+import { fullName } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -23,20 +23,21 @@ export default function CalendarPage() {
     <>
       <ClockBar active="/calendar" />
       <main className="mx-auto w-full max-w-6xl px-5 py-8">
-        <div className="mb-6 flex items-end justify-between">
-          <div>
-            <p className="label">Next eight weeks</p>
-            <h1 className="font-display text-3xl">{total} occasions on the roster</h1>
-          </div>
-          <p className="text-sm text-ink-3">Cards are drafted ten days before they are due and sent five days before.</p>
+        <div className="mb-6">
+          <p className="label mb-1">Next eight weeks</p>
+          <h1 className="h1">{total} occasions the roster already knows about</h1>
+          <p className="hint mt-1.5">Drafted ten days before they are due, sent five days before. Milestones open a team collection.</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {weeks.map((w) => {
             const drafted = w.occs.filter((o) => db.cards.some((c) => c.occurrenceKey === o.occurrenceKey)).length;
             return (
-              <section key={w.from} className="card-panel p-4">
+              <section key={w.from} className={`card-panel p-5 ${w.from === start ? "border-navy/40" : ""}`}>
                 <div className="mb-2 flex items-center justify-between">
-                  <h2 className="font-display text-lg">{formatRange(w.from, w.to)}</h2>
+                  <h2 className="h2 text-lg">
+                    {formatRange(w.from, w.to)}
+                    {w.from === start && <span className="chip chip-navy ml-2 align-middle">this week</span>}
+                  </h2>
                   {drafted > 0 ? (
                     <Link href="/digest" className="text-xs text-navy underline">
                       {drafted} of {w.occs.length} drafted
@@ -60,7 +61,8 @@ export default function CalendarPage() {
                             <span className="text-ink-3"> · {occasionTitle(o)}</span>
                             {p.kind === "client" && <span className="text-ink-3"> · {p.clientCompanyName}</span>}
                           </span>
-                          {card ? <StatusChip status={card.status} /> : p.optOut ? <span className="chip bg-paper-2 text-ink-3">opted out</span> : null}
+                          {o.collectionEligible && <span className="chip chip-gold">collection</span>}
+                          {card ? <StatusChip status={card.status} /> : p.optOut ? <span className="chip chip-muted">opted out</span> : null}
                         </li>
                       );
                     })}
@@ -70,7 +72,6 @@ export default function CalendarPage() {
             );
           })}
         </div>
-        <p className="mt-6 text-xs text-ink-3">{db.people.filter((p) => p.kind === "staff").length} staff and {db.people.filter((p) => p.kind === "client").length} clients on the roster. First names: {db.people.slice(0, 3).map(displayName).join(", ")}…</p>
       </main>
     </>
   );

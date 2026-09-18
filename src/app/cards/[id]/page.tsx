@@ -41,119 +41,133 @@ export default async function CardPage({ params }: PageProps<"/cards/[id]">) {
       <main className="mx-auto w-full max-w-6xl px-5 py-8">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="label">
+            <p className="label mb-1">
               <Link href="/digest" className="hover:underline">
-                Digest
+                This week
               </Link>{" "}
-              · {occasionTitle(occ)} · due {formatLong(card.dueDate)}
+              › {occasionTitle(occ)} · due {formatLong(card.dueDate)}
             </p>
-            <h1 className="font-display text-3xl">{fullName(person)}</h1>
-            <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-ink-2">
+            <h1 className="h1">{fullName(person)}</h1>
+            <div className="mt-1.5 flex flex-wrap items-center gap-2 text-sm text-ink-2">
               <StatusChip status={card.status} />
               {signer && <span>signed by {fullName(signer)}</span>}
               {col && (
-                <Link href={`/collections/${col.id}`} className="chip bg-gold/15 text-[var(--amber-fg)]">
+                <Link href={`/collections/${col.id}`} className="chip chip-gold">
                   collection · {col.contributions.length} signed
                 </Link>
               )}
-              {card.autoApproved && <span className="chip bg-paper-2 text-ink-3">auto-approved</span>}
+              {card.autoApproved && <span className="chip chip-muted">went out by itself</span>}
             </div>
           </div>
           <div className="flex items-center gap-2">
+            {hasStannp && payload && !card.proof && (
+              <form action={sendStannpTestAction}>
+                <input type="hidden" name="id" value={card.id} />
+                <button className="btn">Send test to Stannp</button>
+              </form>
+            )}
             <a href={`${pdfPath}?download=1&marks=1`} className="btn btn-primary">
               Download print PDF
-            </a>
-            <a href={pdfPath} target="_blank" rel="noreferrer" className="btn">
-              Open PDF
             </a>
           </div>
         </div>
 
         {rc ? (
-          <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
-            <div className="grid gap-5">
-              <div>
-                <p className="label mb-2">Outside · back and front · {SHEET_W}×{SHEET_H}mm with 3mm bleed</p>
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+            <div className="grid min-w-0 gap-6">
+              <section className="card-panel-hero p-5">
+                <p className="label mb-3">
+                  Outside · back and front · {SHEET_W}×{SHEET_H}mm with 3mm bleed
+                </p>
                 <Scaled widthMm={SHEET_W} heightMm={SHEET_H}>
                   <CardSheet card={rc} side="outside" />
                 </Scaled>
-              </div>
-              <div>
-                <p className="label mb-2">Inside · {rc.signatures?.length ? `${rc.signatures.length} team signatures and` : "blank and"} message</p>
+              </section>
+              <section className="card-panel-hero p-5">
+                <p className="label mb-3">Inside · {rc.signatures?.length ? `${rc.signatures.length} team signatures and the message` : "message"}</p>
                 <Scaled widthMm={SHEET_W} heightMm={SHEET_H}>
                   <CardSheet card={rc} side="inside" />
                 </Scaled>
-              </div>
+              </section>
             </div>
 
-            <aside className="grid content-start gap-4">
-              <section className="card-panel p-4 text-sm">
-                <h2 className="font-display text-lg">Delivery</h2>
-                {delivery ? (
-                  <p className="mt-1 text-ink-2">
-                    {delivery.mode === "office-batch" ? "In the weekly office parcel" : "Posted individually"} to {delivery.address.line1}
-                    {delivery.address.line2 ? `, ${delivery.address.line2}` : ""}, {delivery.address.town} {delivery.address.postcode}.
-                    <br />
-                    <span className="text-ink-3">Envelope: {delivery.envelopeLine}</span>
+            <aside className="grid min-w-0 content-start gap-3 text-sm">
+              <details className="card-panel" open>
+                <summary className="cursor-pointer px-4 py-3 font-display text-lg">Delivery and cost</summary>
+                <div className="px-4 pb-4">
+                  {delivery ? (
+                    <p className="text-ink-2">
+                      {delivery.mode === "office-batch" ? "In the weekly office parcel" : "Posted individually"} to {delivery.address.line1}
+                      {delivery.address.line2 ? `, ${delivery.address.line2}` : ""}, {delivery.address.town} {delivery.address.postcode}.
+                      <span className="mt-1 block text-ink-3">Envelope: {delivery.envelopeLine}</span>
+                    </p>
+                  ) : (
+                    <p className="text-[var(--amber-fg)]">No delivery address.</p>
+                  )}
+                  <p className="mt-3 font-display text-2xl">{gbp(cost.total)}</p>
+                  <p className="hint text-xs">
+                    {gbp(cost.print)} print, envelope and post via Docmail · AI {pence(cost.ai)}
                   </p>
-                ) : (
-                  <p className="mt-1 text-[var(--amber-fg)]">No delivery address.</p>
-                )}
-                <p className="mt-2 text-xs text-ink-3">
-                  Cost {gbp(cost.total)}: {gbp(cost.print)} print, envelope and post via Docmail · AI {pence(cost.ai)}
-                </p>
-              </section>
+                </div>
+              </details>
 
-              <section className="card-panel p-4 text-sm">
-                <h2 className="font-display text-lg">Draft</h2>
-                {last && (
-                  <p className="mt-1 text-ink-2">
-                    {last.source === "claude" ? "Live Claude draft" : last.source === "cache" ? "Cached Claude draft" : "Template copy"} · {last.model} · {last.usage.input_tokens + last.usage.cache_read_input_tokens} in / {last.usage.output_tokens} out · {pence(card.aiCostGbp)}
-                    {last.ms ? ` · ${(last.ms / 1000).toFixed(1)}s` : ""}
-                  </p>
-                )}
-                {draft?.rationale && <p className="mt-2 text-xs text-ink-3">{draft.rationale}</p>}
-                {draft?.artwork_brief && (
-                  <p className="mt-1 text-xs text-ink-3">
-                    Artwork: {draft.artwork_brief.template}, {draft.artwork_brief.palette_variant}. {draft.artwork_brief.style_note}
-                  </p>
-                )}
-                {card.flags.length > 0 && (
-                  <ul className="mt-2 flex flex-wrap gap-1.5">
-                    {card.flags.map((f, i) => (
-                      <li key={i} className={`chip ${f.kind === "check" ? "bg-[var(--red-bg)] text-[var(--red-fg)]" : "bg-[var(--amber-bg)] text-[var(--amber-fg)]"}`}>
-                        {f.text}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {person.publicFacts.length > 0 && <p className="mt-2 text-xs text-ink-3">Context used: {person.publicFacts.join(" · ")}</p>}
-              </section>
+              <details className="card-panel" open>
+                <summary className="cursor-pointer px-4 py-3 font-display text-lg">How it was drafted</summary>
+                <div className="px-4 pb-4">
+                  {last && (
+                    <p className="text-ink-2">
+                      {last.source === "claude" ? "Live Claude draft" : last.source === "cache" ? "Cached Claude draft" : "Template copy"} · {last.usage.input_tokens + last.usage.cache_read_input_tokens} in / {last.usage.output_tokens} out · {pence(card.aiCostGbp)}
+                      {last.ms ? ` · ${(last.ms / 1000).toFixed(1)}s` : ""}
+                    </p>
+                  )}
+                  {draft?.rationale && (
+                    <p className="mt-2 text-xs text-ink-3">
+                      <span className="font-medium text-ink-2">Why: </span>
+                      {draft.rationale}
+                    </p>
+                  )}
+                  {draft?.artwork_brief && (
+                    <p className="mt-1 text-xs text-ink-3">
+                      Artwork: {draft.artwork_brief.template}, {draft.artwork_brief.palette_variant}. {draft.artwork_brief.style_note}
+                    </p>
+                  )}
+                  {card.flags.length > 0 && (
+                    <ul className="mt-2 flex flex-wrap gap-1.5">
+                      {card.flags.map((f, i) => (
+                        <li key={i} className={`chip ${f.kind === "check" ? "chip-red" : "chip-amber"}`}>
+                          {f.text}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {person.publicFacts.length > 0 && <p className="mt-2 text-xs text-ink-3">Context used: {person.publicFacts.join(" · ")}</p>}
+                </div>
+              </details>
 
-              <section className="card-panel p-4 text-sm">
-                <h2 className="font-display text-lg">Print partner</h2>
-                <p className="mt-1 text-ink-2">
-                  Production: Docmail, {gbp(UNIT.cardCostProductionGbp)} all in. Prototype: Stannp, {gbp(UNIT.cardCostPrototypeGbp)}. {hasStannp ? "A key is configured; send a test to get a real proof back." : "No Stannp key today, so the PDF is rendered locally and this is the exact request that would go."}
-                </p>
-                {card.proof ? (
-                  <p className="mt-2 text-ink">
-                    Stannp test #{card.proof.id} · {card.proof.status} · cost {card.proof.cost} ·{" "}
-                    <a className="underline" href={card.proof.pdfUrl} target="_blank" rel="noreferrer">
-                      proof PDF
-                    </a>
+              <details className="card-panel">
+                <summary className="cursor-pointer px-4 py-3 font-display text-lg">Print partner</summary>
+                <div className="px-4 pb-4">
+                  <p className="text-ink-2">
+                    Production: Docmail, {gbp(UNIT.cardCostProductionGbp)} all in. Prototype: Stannp, {gbp(UNIT.cardCostPrototypeGbp)}. {hasStannp ? "A key is configured; send a test to get a real proof back." : "No Stannp key today, so the PDF is rendered locally and this is the exact request that would go."}
                   </p>
-                ) : hasStannp && payload ? (
-                  <form action={sendStannpTestAction} className="mt-2">
-                    <input type="hidden" name="id" value={card.id} />
-                    <button className="btn btn-primary">Send test to Stannp</button>
-                  </form>
-                ) : null}
-                {payload && <pre className="mt-3 max-h-64 overflow-auto rounded-md bg-ink p-3 text-[10.5px] leading-relaxed text-paper">{stannpCurl(payload)}</pre>}
-              </section>
+                  {card.proof && (
+                    <p className="mt-2 text-ink">
+                      Stannp test #{card.proof.id} · {card.proof.status} · cost {card.proof.cost} ·{" "}
+                      <a className="underline" href={card.proof.pdfUrl} target="_blank" rel="noreferrer">
+                        proof PDF
+                      </a>
+                    </p>
+                  )}
+                  {payload && <pre className="mt-3 max-h-64 overflow-auto rounded-md bg-ink p-3 text-[10.5px] leading-relaxed text-paper">{stannpCurl(payload)}</pre>}
+                  <a href={pdfPath} target="_blank" rel="noreferrer" className="btn btn-sm mt-3">
+                    Open PDF in a tab
+                  </a>
+                </div>
+              </details>
 
-              <section className="card-panel p-4 text-sm">
-                <h2 className="font-display text-lg">History</h2>
-                <ul className="mt-1 text-xs text-ink-2">
+              <details className="card-panel">
+                <summary className="cursor-pointer px-4 py-3 font-display text-lg">History</summary>
+                <ul className="px-4 pb-4 text-xs text-ink-2">
                   {card.history.map((h, i) => (
                     <li key={i} className="py-0.5">
                       <span className="text-ink-3">{h.at}</span> · {statusLabel(h.status)}
@@ -161,11 +175,19 @@ export default async function CardPage({ params }: PageProps<"/cards/[id]">) {
                     </li>
                   ))}
                 </ul>
-              </section>
+              </details>
             </aside>
           </div>
         ) : (
-          <p className="text-ink-2">This card has no draft yet{card.holdReason ? ` (${card.holdReason})` : ""}. Release it from the digest to draft it.</p>
+          <div className="card-panel mx-auto max-w-lg p-8 text-center">
+            <h2 className="h2">Nothing to show yet</h2>
+            <p className="hint mt-1">
+              This card is held{card.holdReason ? ` (${card.holdReason.replace(/-/g, " ")})` : ""}. Release it from This week to draft it.
+            </p>
+            <Link href="/digest" className="btn btn-primary mt-4">
+              Back to This week
+            </Link>
+          </div>
         )}
       </main>
     </>

@@ -1,6 +1,6 @@
 # Hooray
 
-### Business unit plan: set-and-forget occasion cards and team collections for companies
+### Business unit plan: occasion cards for companies, then for everyone
 
 *Telemachus trial day, 18 September 2026. **[V]** verified from the sources at the end. **[D]** derived by arithmetic from verified figures. **[E]** estimate, needs testing.*
 
@@ -12,119 +12,115 @@ Moonpig Group plc, year to 30 April 2026. **[V]**
 
 | | |
 |---|---|
-| Revenue | £373.0m |
+| Revenue | £373.0m, of which Moonpig UK £284.5m |
 | Gross margin | 58.4% |
 | Adjusted EBITDA | £104.6m at 28.0% |
 | Profit after tax | £51.7m |
 | Free cash flow | £73.5m |
 | Marketing | £38.7m, 10.4% of revenue |
+| Active customers | 12.3m, ordering 2.92 times a year at £9.32 |
+| Occasion reminders held | 113m |
 | Average employees | 676, of which 143 in operations |
 | Revenue per employee **[D]** | £552k |
 
-Comfortably past the Telemachus threshold of more than $10m annual net profit. Running at roughly half the revenue-per-employee bar. No serious challenger in the category.
+Comfortably past the Telemachus threshold of more than $10m annual net profit. Half the revenue-per-employee bar. No serious challenger in the category. And the profit is consumer profit, which is where this plan has to end up.
 
 ## 2. The thesis in one line
 
-Moonpig holds 113 million occasion reminders, converts about 13% of them, employs 533 people outside the factory to manage that failure, spends roughly a new customer's entire first-year revenue to replace the ones who leave, and returns almost all its free cash flow to shareholders because it has nothing better to do with it.
+Moonpig holds 113 million occasion reminders and converts about 13% of them, because a reminder hands the work to the customer. We do the work first and ask for approval second. We enter through companies, where acquisition costs a signature rather than £38.7m a year, and we reach consumers through the people who work there.
 
-We take the same loop, sell it to companies instead of consumers, and run it with four people.
+## 3. Three phases, one loop
 
-## 3. The attack
+The loop never changes: know an occasion, draft the card before anyone asks, approve in one tap, print and post, repeat next year. What changes is who pays and how they arrived.
 
-This is the spine of the plan. Each row is a measured inefficiency, the structural change that removes it, and whether today's build proves it.
-
-| # | Moonpig's inefficiency | Our structural attack | In the MVP today |
+| Phase | Who pays | How they arrive | What it proves |
 |---|---|---|---|
-| 1 | 87% of reminders produce no order. 113m held, ~14.4m orders caused **[D]** | Draft the card first, ask for approval second. Anything untouched at dispatch goes anyway | **Built.** Rolling engine drafts at T-10, dispatches at T-5, auto-approves whatever nobody touched |
-| 2 | Marketing of £38.7m against ~£39.5m of new-customer revenue **[D]** | Sell to the company. One signature buys a roster that regenerates occasions forever | **Built.** Roster import, 50 staff and 10 clients in the demo. Commercially unproven, no customer has paid |
-| 3 | 533 of 676 staff outside operations **[V]** | No catalogue, no editor, no merchandising, no marketing department. Artwork generated per brand | **Built.** Templated layouts from company colours, no catalogue exists |
-| 4 | The customer does ~7 minutes of unpaid work per card **[E]**, about 4.2m hours a year **[D]** | One tap to approve, or nothing at all | **Built.** Weekly digest, one-line edit, auto-approval |
-| 5 | Shipping cost grew 9.4% against 6.5% revenue growth; >40% of card-only orders pay for tracked delivery **[V]** | Draft ten days ahead so economy post always arrives in time | **Built.** Ten-day lead, five-day dispatch, economy post assumed in costs |
-| 6 | Same-day printing exists to serve panic buying caused by the failed reminder | Treat print as a supplier, never own a factory | **Built.** Stannp request payload and print-ready PDF with bleed and crop marks |
-| 7 | Thousands of catalogue designs, licensing and merchandising to guess what the customer wants | Generate per person, per occasion, per brand | **Built.** Drafting layer with wording checks and an eval script |
-| 8 | Growth is average order value, up 5.7%, while frequency fell to 2.92 **[V]** | Growth is new rosters plus expansion inside the account | **Partly.** Client rows exist in the demo roster. The client product is not built |
-| 9 | Moonpig for Business is a spreadsheet uploader at £3.60 a card, absent from the annual report **[V]** | This is our entire product, not a side channel | **Built.** The whole application |
-| 10 | Business channel already 39% below the consumer price, so improving it cannibalises **[V]** | We have no consumer channel to protect | Structural. Nothing to build |
-| 11 | Plus discounts 30% to buy loyalty they should get free from the reminder data **[V]** | Retention is structural. The roster refills itself as people join and leave | Structural, expressed in per-seat pricing |
-| 12 | Reusing payroll date of birth for celebrations has no lawful basis on its own | Ask each employee once. Consent is a product feature | **Built.** Consent gate, held cards where no home address is permitted, on-leave flag |
-| 13 | Nobody automates the farewell collection, the highest-consent occasion **[V]** | Fire it from the roster the moment someone resigns | **Built.** Leaver and milestone collections, team-scoped, contributions and group signing |
+| 1 · Companies | The employer, per seat | An operator's signature | The loop runs unattended and the drafting is good enough |
+| 2 · Employees | The employer, then the employee | The consent email, the collection page, the card allowance | Consumers at zero acquisition cost, and the reminder calendar comes with them |
+| 3 · Everyone | The consumer | The received card, referral, calendar import | The consumer product grows on its own loops without a marketing line |
 
-## 4. What was built today
+Phase 1 is the business for the first year. Phase 2 starts in month two and is the bridge. Phase 3 is the destination, because that is where the £373m is, and the plan says how to get there without buying customers.
 
-A working system, not a mock. Verified in the repository:
+## 4. The attack
 
-- **Rolling occasion engine** on a simulated clock. Progresses print jobs, drafts everything due in ten days, dispatches at five days with auto-approval.
-- **Roster import** with staff and client rows, consent flags, delivery preference, leave status and per-person notes.
-- **Drafting layer** producing per-person copy in the company's voice with the correct signer, plus wording checks and a ten-case evaluation script.
-- **Card rendering** to a 303 by 216mm print PDF with bleed and crop marks, and the exact Stannp request payload.
-- **Collections** on leaver, retirement, wedding, new baby and milestone occasions, scoped to the immediate team, with contributions, group signing and recipient gift choice.
-- **Consent gate** blocking any occasion the employee has not agreed to.
-- **Dashboard** carrying the economics against Moonpig's real figures.
-- **Headless smoke test** running the entire loop and a simulated year without an API key.
+Each row is a measured inefficiency at the incumbent, the structural change that removes it, and whether today's build proves it.
 
-**Not built, and honestly out of scope for one day:** live HR and CRM connectors, real payment handling, gift supplier fulfilment, employee personal accounts and the card allowance, authentication, billing, multi-tenancy.
+| # | The inefficiency | Our structural attack | In the MVP today |
+|---|---|---|---|
+| 1 | 87% of reminders produce no order. 113m held, ~14.4m orders caused **[D]** | Draft first, approve second. Anything untouched at dispatch goes anyway | **Built.** Rolling engine drafts at T-10, dispatches at T-5, auto-approves |
+| 2 | Marketing of £38.7m against ~£39.5m of new-customer revenue **[D]** | Acquire consumers through the employer, not through advertising | **Partly.** Roster import built. The employee account is not, and it is now on the critical path |
+| 3 | 533 of 676 staff outside operations **[V]** | No catalogue, no editor, no merchandising, no marketing department | **Built.** Templated layouts from brand colours, no catalogue exists |
+| 4 | The customer does ~7 minutes of unpaid work per card **[E]** | One tap, or nothing at all | **Built.** Weekly digest, one-line edit, auto-approval |
+| 5 | Shipping cost grew 9.4% against 6.5% revenue; >40% of card-only orders pay for tracked delivery **[V]** | Draft ten days ahead so economy post always arrives in time | **Built.** Ten-day lead, five-day dispatch |
+| 6 | Same-day printing exists to serve panic buying caused by the failed reminder | Treat print as a supplier, never own a factory | **Built.** Real print request and print-ready PDF |
+| 7 | Reminders accumulated one at a time since 2011 | Import the calendar in one consent | **Not built.** Google People API returns contact birthdays under one OAuth scope **[V]** |
+| 8 | Plus discounts 30% to buy loyalty the reminder data should deliver free **[V]** | A subscription that sends the cards, rather than one that discounts them | **Not built.** Consumer pricing is designed, not tested |
+| 9 | Business channel 39% below consumer price, so improving it cannibalises **[V]** | We have no legacy channel to protect | Structural |
+| 10 | Nobody automates the farewell collection, the highest-consent occasion **[V]** | Fire it from the roster the moment someone resigns | **Built.** Team-scoped collections with contributions and group signing |
+| 11 | Reusing payroll date of birth for celebrations has no lawful basis alone | Ask each employee once. The consent email is also the consumer signup | **Built** as a gate. **Not built** as a signup |
 
-## 5. The product
+## 5. The products
 
-Connect the roster once. The calendar builds itself from birthdays, work anniversaries with tenure milestones, welcomes, leavers and client dates. Cards draft themselves in the company's voice, signed by the right manager. A weekly digest is the only human touch, and ignoring it still produces the right outcome. Collections fire on the occasions people actually give for: 78% of people contribute for a leaver, 22% for a routine birthday. **[V]**
+### 5a. Hooray for companies
+
+Connect the roster once. The calendar builds itself from birthdays, work anniversaries with tenure milestones, welcomes, leavers and client dates. Cards draft themselves in the company's voice, signed by the right manager. A weekly digest is the only human touch, and ignoring it still produces the right outcome. Collections open on the occasions people actually give for: 78% contribute for a leaver, 22% for a routine birthday. **[V]**
+
+Priced at £30 per employee per year, all occasions included, plus six personal cards for each employee's own family. That allowance is the bridge to 5b.
+
+### 5b. Hooray for people
+
+The same loop for your own life. Sign in with Google and the birthdays in your contacts become your calendar in one consent. Ten days before each one, the card exists: a design, a message drafted from what you have told us about the person, their address if we have it. One tap sends it. Nothing to browse, nothing to type, nothing to remember.
+
+Against Moonpig, the difference is the order of operations. They send a reminder and wait. We send a finished card and wait. That is the whole product, and it is the difference between 13% conversion and whatever the seeded cohort turns out to convert at.
+
+**Pricing, designed not tested. [E]**
+
+| Tier | Price | What it covers |
+|---|---|---|
+| Per card | £5.49 including post | Matches Moonpig's £5.89 within a few pence |
+| Subscription | £4.99 a month | Up to twelve cards a year, sent automatically, gifts at cost plus margin |
+
+The subscription is positioned as insurance against forgetting, not as a discount. Moonpig Plus proves consumers will pay £10.99 a year for a card subscription; 1.2m of them do, and they place 23% of UK orders. **[V]** Ours sends the cards rather than discounting them.
+
+**What the consumer product deliberately does not do.** Same-day rescue. If someone has forgotten and it is today, Moonpig's factory wins and we should not fight it. Our customer is the one who wants never to be in that position.
 
 ## 6. Unit economics
 
-Card cost verified at £1.39 all-in via Docmail, A5 card in a C5 envelope with economy post, and £1.15 via Stannp. **[V]**
+Card cost verified at £1.39 all-in via Docmail. **[V]**
 
-**Account A, staff roster, 200 employees**
+**Company account A, staff roster, 200 employees**
 
 | Line | Revenue | Cost | Gross profit |
 |---|---|---|---|
-| 200 seats at £30/yr, all occasions plus six personal cards each | £6,000 | £1,343 | £4,657 |
+| 200 seats at £30/yr | £6,000 | £1,343 | £4,657 |
 | 37 collections, £145 average pot, 11% blended take **[E]** | £597 | £0 | £597 |
 | **Total** | **£6,597** | £1,343 | **£5,254, 80%** |
 
-**Account B, the same firm with 2,000 client contacts**
+**Company account B, the same firm with 2,000 client contacts**
 
 | Line | Revenue | Cost | Gross profit |
 |---|---|---|---|
-| Platform, 2,000 contacts at £0.50/yr | £1,000 | £100 | £900 |
-| 2,000 cards at £3.60 | £7,200 | £2,780 | £4,420 |
-| 200 client gifts at £50, 25% margin **[E]** | £2,500 | £0 | £2,500 |
-| **Total** | **£10,700** | £2,880 | **£7,820, 73%** |
+| Platform, cards and client gifts | £10,700 | £2,880 | £7,820, 73% |
 
-Fully expanded account: **£17,297 revenue, £13,074 gross profit.**
+Fully expanded company account: **£17,297 revenue, £13,074 gross profit.**
 
-**On price.** £30 per employee per year sits inside a benefits budget, where Reward Gateway charges £72 to £96 and entry-level UK perks platforms start near £36. **[V]** Six personal cards cost us £8.34 and cost £35.34 at Moonpig's consumer counter. **[V]** The employer pays £30 and the employee personally receives £35 of value before the company's own occasions are counted. Moonpig cannot match that without undercutting its own consumer price.
+**Consumer account, annual [E]**
 
-## 7. Growth
+| Type | Revenue | Cost | Gross profit |
+|---|---|---|---|
+| Subscriber, eight cards used | £59.88 | £11.12 | £48.76, 81% |
+| Pay-per-card, 3.5 cards a year | £19.22 | £4.87 | £14.35, 75% |
+| Blended at 10% subscribers | £23.28 | £5.49 | £17.79 |
 
-### Week one
+For comparison, a Moonpig customer produces £27.22 of revenue a year and about £15.90 of gross profit, from which roughly £3.15 of marketing per active customer is spent to keep them. **[D]** Our blended consumer account is worth about the same before marketing and carries no marketing cost, because it arrived through an employer.
 
-| | |
-|---|---|
-| Contract Docmail as the production print supplier, Stannp as the fallback | Removes the only external dependency |
-| Replace faked contributions with Stripe Connect | Holding funds directly is regulated e-money activity |
-| Ten design-partner firms onboarded free | The roster data is worth more than the revenue at this stage |
-| One named warm introduction converted to a signed pilot | The operator's job, not the machine's |
+The 3.5 cards a year assumes proactive drafting lifts conversion above Moonpig's 2.92 orders. It is the number the seeded cohort will test first.
 
-### Days 1 to 30
+## 7. The path to scale
 
-Build the two connectors that remove the CSV: BambooHR and HiBob cover a large share of UK firms of this size. Ship the employee consent and personal-account flow, which is both the lawful basis for birthdays and the start of the consumer bridge. Get ten pilots live and instrument the one metric that matters, the share of drafts approved without edit.
+### Phase 1 · Companies, months 1 to 12
 
-**Gate to the next block:** approve-without-edit above 70% and at least five pilots asking to pay.
-
-### Days 31 to 60
-
-Convert pilots to paid and open the client-roster product, which is where account values multiply. Sign gift supplier terms so collections buy a real product rather than handing over a gift card, since the fee on a bare pot has been competed down to between 1% and 3%. **[V]** Add the first CRM connector.
-
-**Gate:** 30 paying accounts and at least a quarter of them expanded to client rosters.
-
-### Days 61 to 90
-
-Scale the motion that works. A second print supplier for redundancy. Slack and Teams approval so the digest lives where managers already are. Begin the employee card allowance, which turns every roster into consumer accounts at no acquisition cost.
-
-**Target at 90 days: £1m ARR**, matching the Telemachus first-unit bar. That needs roughly 150 accounts at £6.6k, or a mix of 100 staff accounts and 25 client-roster accounts. **[D]**
-
-**Three things must be true for that number.** Onboarding stays under ten minutes, so the operator sells rather than implements. The approve-without-edit rate stays high enough that nobody needs to supervise it. And the client roster attaches to at least a quarter of accounts, because staff-only accounts alone do not clear the bar.
-
-### Year one
+Four people above $1m each is roughly £3.1m of recurring revenue.
 
 | Route | Account value | Accounts for £3.1m |
 |---|---|---|
@@ -132,50 +128,88 @@ Scale the motion that works. A second print supplier for redundancy. Slack and T
 | Staff only | £6.6k | ~470 |
 | Blended, land then expand half | ~£11k | ~280 |
 
-£3.1m of recurring revenue is four people at more than $1m each. Year one targets 300 accounts at an average of £7k, with expansion carrying year two past the bar.
+Year one target: 300 accounts at an average of £7k, **£2.1m ARR**, with expansion into client rosters carrying year two past the bar.
 
-**The upside, which is not the plan.** A 200-person firm runs about 37 collections a year with roughly 12 contributors each. **[V]** At 300 accounts that is around 36,000 employees a year putting a card into our checkout at no marginal cost. Google's People API returns contact birthdays under one OAuth consent on a web page **[V]**, so the personal calendar comes with them. This is the only route into Moonpig's £373m consumer pool without an advertising budget. Model it as optionality, never rely on it.
+### Phase 2 · Employees, months 2 to 24
 
-## 8. What the machine does and what the operator does
+Every signed company puts its staff in front of the product three ways. The consent email that the law requires. The collection page, which about 120 distinct employees in a 200-person firm touch each year. **[V]** And the card allowance, which is a benefit rather than a request.
 
-**Machine:** roster sync, occasion calendar, copy and design generation, approval digest, print orchestration, address validation, collection pages, gift sourcing, billing, support triage.
+| | Year one | Year two |
+|---|---|---|
+| Company accounts | 300 | 500 |
+| Employees with a Hooray account **[E]** | 60,000 | 100,000 |
+| Active as consumers, at 30% **[E]** | 18,000 | 30,000 |
+| Consumer gross profit at £17.79 each **[D]** | £320k | £534k |
+| Marketing spent to acquire them | £0 | £0 |
 
-**Operator:** the first twenty customer relationships, the print supplier contract, corporate etiquette that exists nowhere online such as bereavement, parental leave and religious observance, and the politics of who may sign for whom.
+Small against the company revenue in year one. The point is not the revenue. It is that by the end of year two the unit holds 30,000 consumer accounts whose behaviour it can measure, acquired for nothing, before it has spent a pound on advertising.
 
-## 9. Competition
+### Phase 3 · Everyone, year two onwards
+
+Three loops that do not need a marketing budget.
+
+**The received card.** Every card arrives at a home with a small mark on the back. Moonpig does this too, but pays to acquire the sender. At 100,000 company and consumer cards a year and a 1.5% recipient conversion **[E]**, that is 1,500 new accounts a year that compound as volume grows.
+
+**The calendar import.** A new consumer's reminders are seeded in one consent rather than typed in over years. It turns a sign-up into a customer with nine known occasions on day one.
+
+**Referral.** Send a card, the recipient's first is free. Standard, and it works because the product is already in their hands.
+
+Paid acquisition begins only when the seeded cohort has shown a lifetime value that a campaign can be priced against. That is the discipline that keeps this unit from becoming a second Moonpig with a smaller brand.
+
+**Where it ends up. [E]** If the seeded cohort behaves like Moonpig's customers, consumer gross profit reaches about £1m by year three on the employer channel alone. If proactive drafting lifts conversion the way the thesis says it should, and the three loops add a further 20,000 accounts a year, the consumer line passes the company line in year four. Neither is promised. Both are measurable from month two.
+
+## 8. Ninety days
+
+| Block | Build | Gate |
+|---|---|---|
+| Days 1 to 30 | BambooHR and HiBob connectors. The consent email as the consumer signup. Ten free pilots | Approve-without-edit above 70%, five pilots asking to pay |
+| Days 31 to 60 | Convert pilots to paid. Client-roster product. Gift supplier terms. Google calendar import live for employees | 30 paying accounts, a quarter expanded, first 2,000 employee accounts |
+| Days 61 to 90 | Second print supplier. Slack and Teams approval. The card allowance switched on | £1m ARR, first consumer subscription taken |
+
+**Week one, before any of it.** Contract Docmail. Stripe Connect under collections. One named pilot from the operator's own network.
+
+The one change from the earlier plan: the employee account moves from "not built" to the first thirty days, because it is no longer an option, it is the bridge.
+
+## 9. What the machine does and what the operator does
+
+**Machine:** roster sync, occasion calendar, copy and design generation, approval digest, print orchestration, address validation, collection pages, calendar import, consumer notifications, gift sourcing, billing, support triage.
+
+**Operator:** the first twenty company relationships, the print supplier contract, corporate etiquette that exists nowhere online, the politics of who may sign for whom, and the judgement about when the consumer cohort is ready for paid acquisition.
+
+## 10. Competition
 
 | Player | Gap |
 |---|---|
-| Moonpig for Business, £3.60 a card **[V]** | Spreadsheet upload and 90-day scheduling. No API, no integration, no drafting, no collections |
-| Thankbox, UK **[V]** | Digital cards and pots with some HR provisioning. One-off creation, no physical automation |
-| Reachdesk, Sendoso, $15k+/yr **[V]** | Real HR triggers, but gifts at enterprise prices for enterprise buyers |
-| Cardly, ~£2.05 UK-printed **[V]** | The customer builds their own automation and writes every message |
-| Print.one Moments, Netherlands **[V]** | Closest full stack. Dutch connectors, templated copy, no approval step |
-| Collection Pot, Givetastic, GiftRound **[V]** | Pots at 0% to 4.5%, manually created, no roster trigger |
+| Moonpig for Business, £3.60 a card **[V]** | Spreadsheet upload and 90-day scheduling. No integration, no drafting, no collections |
+| Moonpig consumer, £5.89 all-in **[V]** | Sends a reminder and waits. 87% of the time nothing happens |
+| Moonpig Plus, £10.99/yr **[V]** | Discounts the card. Does not send it |
+| Thankbox, UK **[V]** | Digital pots with some HR provisioning. No physical automation |
+| Reachdesk, Sendoso, $15k+/yr **[V]** | HR triggers for gifts at enterprise prices |
+| Print.one Moments, Netherlands **[V]** | Closest B2B full stack. Dutch connectors, no approval step |
 
-No UK product combines native roster sync, AI-drafted copy, an approval digest, UK print and post, staff and client occasions in one system, and automated collections.
+No product on either side of the market drafts the card before being asked. That is the gap, and it is the same gap for a company and for a person.
 
-## 10. Risks and kill criteria
+## 11. Risks and kill criteria
 
 | Risk | Mitigation | Kill signal |
 |---|---|---|
-| Moonpig ships an HR integration | Channel conflict makes it costly for them | They launch one within six months |
-| AI copy is not good enough | Approval digest and wording checks | Approve-without-edit below 60% at month three |
-| Collections read as social pressure | High-consent occasions only, team-scoped, suggested amount, amounts hidden | Leaver participation below 50% |
-| Date of birth reuse breaches purpose limitation | Consent gate, opt-out honoured | A customer's legal team blocks rollout |
-| Holding contributions is regulated | Stripe Connect, never hold funds | No compliant provider at acceptable cost |
-| Print supplier concentration | Two suppliers live by day 90 | Either fails on quality at volume |
-| Account values stay small | Client roster and gift attach | Expansion below 30% by month nine |
-| Sales slower than the wedge implies | Ten-minute onboarding, first month free | Acquisition cost above £2,000 or cycle beyond six weeks |
+| AI copy is not good enough | Approval digest, wording checks | Approve-without-edit below 60% at month three |
+| Employees do not activate as consumers | The allowance is a benefit, not a request. Separate data controller, employer never sees it | Activation below 15% at month six |
+| Consumers do not send more cards than at Moonpig | Proactive drafting, calendar import | Cards per consumer account below 2.5 at month twelve |
+| The received-card loop does not convert | Referral and import carry it | Recipient conversion below 0.5% |
+| Moonpig ships an HR integration | Channel conflict makes it costly for them | Within six months |
+| Collections read as social pressure | High-consent occasions only, team-scoped, amounts hidden | Leaver participation below 50% |
+| Paid acquisition is started too early | Started only against measured cohort LTV | Any paid spend before month twelve |
+| Account values stay staff-only | Client roster and gift attach | Expansion below 30% by month nine |
 
-## 11. Capital and team
+## 12. Capital and team
 
-Four people: one operator selling and holding relationships, two engineers, one generalist covering supply, support and finance. Working capital is light. Cards are paid for before they are printed, and collections settle before they are spent.
+Four people through phase one. A fifth, on consumer growth, when phase two has 10,000 active accounts to work with. Working capital is light: cards are paid for before they are printed and collections settle before they are spent. The consumer product adds no fixed cost, since it is the same engine with a different customer at the front.
 
 ---
 
 ## Sources
 
-Moonpig Group plc FY26 Annual Report and Final Results RNS, 25 June and 10 July 2026, via moonpig.group and Investegate. Moonpig for Business pricing, moonpig.com/uk/business/pricing. Stannp pricing, stannp.com/uk/detailed-pricing. Docmail price list, cfhdocmail.com. Royal Mail Business Price Guide, April 2026. instantprint workplace collections survey, 2023, n=1,000. Collection Pot platform data via HR News. Thankbox, Collection Pot, Givetastic and GiftRound pricing pages. Reward Gateway and Perkbox pricing via GetApp UK and ITQlick. CIPD Reward Survey 2026. Google People API reference. Apple WWDC24 session 10121. Telemachus thesis from careers.telemachus.io and jobs.ashbyhq.com/telemachus.
+Moonpig Group plc FY26 Annual Report and Final Results RNS, 25 June and 10 July 2026, via moonpig.group and Investegate. Moonpig for Business pricing and Moonpig Plus FAQ, moonpig.com. Stannp and Docmail price lists. instantprint workplace collections survey, 2023. Collection Pot platform data via HR News. Reward Gateway pricing via GetApp UK. Google People API reference. Telemachus thesis from careers.telemachus.io and jobs.ashbyhq.com/telemachus.
 
-The full inefficiency teardown with workings is in `docs/INEFFICIENCY.md`.
+Full inefficiency teardown with workings in `docs/INEFFICIENCY.md`. Presentation prep in `docs/QA_PREP.md`.
