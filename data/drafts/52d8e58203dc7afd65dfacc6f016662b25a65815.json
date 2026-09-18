@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Congratulations, Mum",
+  "inside_message": "Congratulations, Mum. I couldn't be happier for you, and I hope the day is everything you wanted it to be. Keep the Sunday six o'clock calls coming, and bring the watercolours you keep insisting aren't any good.",
+  "sign_off": "Lots of love,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "soft celebratory sparks, hand-painted feel, plenty of white space"
+  },
+  "flags": [
+   "The occasion is labelled as a wedding but that isn't in the public facts, so the message stays general; please confirm the wording suits the day."
+  ],
+  "rationale": "Congratulates warmly without naming the occasion detail, leaning on the two known facts, the watercolours and the Sunday calls, in a son-to-mother voice."
+ },
+ "createdAt": "2027-01-03",
+ "promptHash": "8b5367d23aa5edfd",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 1255,
+  "output_tokens": 1018,
+  "cache_read_input_tokens": 9332,
+  "cache_creation_input_tokens": 0
+ },
+ "attempts": 2,
+ "source": "claude",
+ "ms": 15360
+}

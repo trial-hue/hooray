@@ -1,0 +1,29 @@
+{
+ "draft": {
+  "front_headline": "Proof of concept, Ruairidh",
+  "inside_message": "Congratulations on Telemachus, which I now believe in rather more than I did this morning. This card was drafted, printed and posted by the thing I built on my trial day, so if the envelope arrived, it works. Thank you for the day.",
+  "sign_off": "With thanks and a bit of glee,",
+  "signature_line": "Akshay",
+  "artwork_brief": {
+   "template": "sparks",
+   "palette_variant": "bright",
+   "style_note": "small bright sparks, generous white space, unfussy"
+  },
+  "flags": [
+   "The card refers to itself being drafted and posted by the product, which is the point of the occasion but reads as self-referential; confirm that is intended."
+  ],
+  "rationale": "Leans on the trial day and Telemachus itself as the proof, with light self-deprecating humour in Akshay's own voice."
+ },
+ "createdAt": "2026-09-24",
+ "promptHash": "f8cb1eb1556fc426",
+ "model": "claude-opus-5",
+ "usage": {
+  "input_tokens": 508,
+  "output_tokens": 529,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 4680
+ },
+ "attempts": 1,
+ "source": "claude",
+ "ms": 9569
+}
